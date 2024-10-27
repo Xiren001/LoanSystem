@@ -34,6 +34,16 @@ namespace LoanSystem
 
         private void SignUpBtn_Click(object sender, EventArgs e)
         {
+            // Check if all required fields are filled
+            if (string.IsNullOrWhiteSpace(signupEmail.Text) ||
+                string.IsNullOrWhiteSpace(signupName.Text) ||
+                string.IsNullOrWhiteSpace(signupPass.Text) ||
+                string.IsNullOrWhiteSpace(signupConpass.Text))
+            {
+                MessageBox.Show("All fields are required. Please fill in all fields.", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Exit the method if any field is empty
+            }
+
             // Check if the passwords match
             if (signupPass.Text.Trim() != signupConpass.Text.Trim())
             {
@@ -102,9 +112,6 @@ namespace LoanSystem
                 }
             }
         }
-
-
-
 
         private void SignupShowpass_CheckedChanged(object sender, EventArgs e)
         {
