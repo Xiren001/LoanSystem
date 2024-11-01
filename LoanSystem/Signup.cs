@@ -13,7 +13,7 @@ namespace LoanSystem
 {
     public partial class SignupForm : Form
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\maryj\Documents\LoanWiseBank.mdf;Integrated Security=True;Connect Timeout=30");
+        SqlConnection connect = new SqlConnection(@"Data Source=XIREN\SQLEXPRESS;Initial Catalog=LoanWise;Integrated Security=True");
 
         public SignupForm()
         {
@@ -59,7 +59,7 @@ namespace LoanSystem
                     connect.Open();
 
                     // Parameterized query to check for existing username
-                    string checkUserName = "SELECT * FROM admin WHERE username = @username";
+                    string checkUserName = "SELECT * FROM users_tbl WHERE username = @username";
 
                     using (SqlCommand checkUser = new SqlCommand(checkUserName, connect))
                     {
@@ -78,7 +78,7 @@ namespace LoanSystem
                         else
                         {
                             // Parameterized query to insert new user data
-                            string insertData = "INSERT INTO admin (email, username, password, date_created) " +
+                            string insertData = "INSERT INTO users_tbl (email, username, password, date_created) " +
                                                 "VALUES (@Email, @Username, @Password, @DateCreated)";
 
                             DateTime date = DateTime.Today;

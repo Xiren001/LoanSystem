@@ -6,7 +6,7 @@ namespace LoanSystem
     public partial class SignInForm : Form
     {
 
-        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\maryj\Documents\LoanWiseBank.mdf;Integrated Security=True;Connect Timeout=30");
+        SqlConnection connect = new SqlConnection(@"Data Source=XIREN\SQLEXPRESS;Initial Catalog=LoanWise;Integrated Security=True");
         public SignInForm()
         {
             InitializeComponent();
@@ -55,7 +55,7 @@ namespace LoanSystem
                     {
                         connect.Open();
 
-                        String selectData = "SELECT * FROM admin WHERE email = @email AND password = @pass";
+                        String selectData = "SELECT * FROM users_tbl WHERE email = @email AND password = @pass";
                         using (SqlCommand cmd = new SqlCommand(selectData, connect))
                         {
                             cmd.Parameters.AddWithValue("@email", SigninEmail.Text);
