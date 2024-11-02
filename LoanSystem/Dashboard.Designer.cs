@@ -84,10 +84,12 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(1124, 16);
+            label2.BorderStyle = BorderStyle.Fixed3D;
+            label2.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.Red;
+            label2.Location = new Point(1118, 16);
             label2.Name = "label2";
-            label2.Size = new Size(14, 16);
+            label2.Size = new Size(21, 21);
             label2.TabIndex = 2;
             label2.Text = "x";
             label2.Click += label2_Click;
@@ -159,7 +161,7 @@
             menuContainer.Controls.Add(panel10);
             menuContainer.Location = new Point(3, 72);
             menuContainer.Name = "menuContainer";
-            menuContainer.Size = new Size(230, 225);
+            menuContainer.Size = new Size(230, 53);
             menuContainer.TabIndex = 6;
             // 
             // panel3
@@ -201,10 +203,10 @@
             btnNewApp.ForeColor = Color.Transparent;
             btnNewApp.Image = (Image)resources.GetObject("btnNewApp.Image");
             btnNewApp.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNewApp.Location = new Point(-9, -10);
+            btnNewApp.Location = new Point(-24, -10);
             btnNewApp.Name = "btnNewApp";
             btnNewApp.Padding = new Padding(35, 0, 0, 0);
-            btnNewApp.Size = new Size(248, 68);
+            btnNewApp.Size = new Size(263, 68);
             btnNewApp.TabIndex = 2;
             btnNewApp.Text = "    New Application";
             btnNewApp.UseVisualStyleBackColor = false;
@@ -225,10 +227,10 @@
             btnPending.ForeColor = Color.Transparent;
             btnPending.Image = (Image)resources.GetObject("btnPending.Image");
             btnPending.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPending.Location = new Point(-9, -10);
+            btnPending.Location = new Point(-24, -10);
             btnPending.Name = "btnPending";
             btnPending.Padding = new Padding(35, 0, 0, 0);
-            btnPending.Size = new Size(248, 68);
+            btnPending.Size = new Size(263, 68);
             btnPending.TabIndex = 2;
             btnPending.Text = "      Pending Applications\r\n";
             btnPending.UseVisualStyleBackColor = false;
@@ -249,10 +251,10 @@
             btnAppRej.ForeColor = Color.Transparent;
             btnAppRej.Image = (Image)resources.GetObject("btnAppRej.Image");
             btnAppRej.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAppRej.Location = new Point(-9, -10);
+            btnAppRej.Location = new Point(-24, -10);
             btnAppRej.Name = "btnAppRej";
             btnAppRej.Padding = new Padding(35, 0, 0, 0);
-            btnAppRej.Size = new Size(248, 68);
+            btnAppRej.Size = new Size(263, 68);
             btnAppRej.TabIndex = 2;
             btnAppRej.Text = "      Approved/Rejected Applications";
             btnAppRej.UseVisualStyleBackColor = false;
@@ -261,7 +263,7 @@
             // pnLoanM
             // 
             pnLoanM.Controls.Add(btnLoanM);
-            pnLoanM.Location = new Point(3, 303);
+            pnLoanM.Location = new Point(3, 131);
             pnLoanM.Name = "pnLoanM";
             pnLoanM.Size = new Size(230, 48);
             pnLoanM.TabIndex = 4;
@@ -285,7 +287,7 @@
             // pnCustomer
             // 
             pnCustomer.Controls.Add(btnCustomer);
-            pnCustomer.Location = new Point(3, 357);
+            pnCustomer.Location = new Point(3, 185);
             pnCustomer.Name = "pnCustomer";
             pnCustomer.Size = new Size(230, 48);
             pnCustomer.TabIndex = 4;
@@ -309,7 +311,7 @@
             // pnRepayment
             // 
             pnRepayment.Controls.Add(btnRepayment);
-            pnRepayment.Location = new Point(3, 411);
+            pnRepayment.Location = new Point(3, 239);
             pnRepayment.Name = "pnRepayment";
             pnRepayment.Size = new Size(230, 48);
             pnRepayment.TabIndex = 4;
@@ -333,7 +335,7 @@
             // pnReport
             // 
             pnReport.Controls.Add(btnReport);
-            pnReport.Location = new Point(3, 465);
+            pnReport.Location = new Point(3, 293);
             pnReport.Name = "pnReport";
             pnReport.Size = new Size(230, 48);
             pnReport.TabIndex = 4;
@@ -345,10 +347,10 @@
             btnReport.ForeColor = Color.Transparent;
             btnReport.Image = (Image)resources.GetObject("btnReport.Image");
             btnReport.ImageAlign = ContentAlignment.MiddleLeft;
-            btnReport.Location = new Point(-21, -11);
+            btnReport.Location = new Point(-9, -11);
             btnReport.Name = "btnReport";
             btnReport.Padding = new Padding(25, 0, 0, 0);
-            btnReport.Size = new Size(248, 68);
+            btnReport.Size = new Size(251, 68);
             btnReport.TabIndex = 2;
             btnReport.Text = "         Reports and Analytics";
             btnReport.UseVisualStyleBackColor = false;
@@ -378,6 +380,7 @@
             IsMdiContainer = true;
             Margin = new Padding(4);
             Name = "Dashboard";
+            Padding = new Padding(68, 52, 0, 0);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Loan Management System";
             Load += Dashboard_Load;

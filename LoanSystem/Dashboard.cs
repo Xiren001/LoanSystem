@@ -70,8 +70,8 @@ namespace LoanSystem
         {
             if (sidebarExpand)
             {
-                sidebar.Width -= 5;
-                if (sidebar.Width <= 77)
+                sidebar.Width -= 10;
+                if (sidebar.Width <= 74)
                 {
                     sidebarExpand = false;
                     sidebarTransition.Stop();
@@ -87,7 +87,7 @@ namespace LoanSystem
             }
             else
             {
-                sidebar.Width += 5;
+                sidebar.Width += 10;
                 if (sidebar.Width >= 237)
                 {
                     sidebarExpand = true;

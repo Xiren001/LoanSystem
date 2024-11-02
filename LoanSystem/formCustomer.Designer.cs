@@ -45,7 +45,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1164, 661);
+            ClientSize = new Size(1092, 609);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "formCustomer";

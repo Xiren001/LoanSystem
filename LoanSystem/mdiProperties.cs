@@ -28,35 +28,37 @@ namespace LoanSystem
         private const uint SWP_FRAMECHANGE = 0x0020;
         private const uint SWP_NOOWNERZORDER = 0x0200;
 
-        public static bool SetBevel(this Form form,bool show)
+        public static bool SetBevel(this Form form, bool show)
         {
             foreach (Control c in form.Controls)
             {
-                MdiClient client = c as MdiClient;
-                if (client != null)
+                if (c is MdiClient client)
                 {
-                 
                     int windowLong = GetWindowLong(c.Handle, GWL_EXSTYLE);
+
                     if (show)
                     {
+                        // Add the WS_EX_CLIENTEDGE style
                         windowLong |= WS_EX_CLIENTEDGE;
-
                     }
                     else
                     {
-                        windowLong &= WS_EX_CLIENTEDGE;
+                        // Remove the WS_EX_CLIENTEDGE style using bitwise negation
+                        windowLong &= ~WS_EX_CLIENTEDGE;
                     }
 
                     SetWindowLong(c.Handle, GWL_EXSTYLE, windowLong);
                     SetWindowPos(client.Handle, IntPtr.Zero, 0, 0, 0, 0,
                         SWO_NOACTIVE | SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER |
                         SWP_NOOWNERZORDER | SWP_FRAMECHANGE
-                        );
-                    return true;
+                    );
+
+                    return true; // Return true if MdiClient found and modified
                 }
             }
-            return false;
+            return false; // Return false if no MdiClient was found
         }
+
 
     }
 
