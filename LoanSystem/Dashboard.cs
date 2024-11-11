@@ -21,6 +21,7 @@ namespace LoanSystem
         formRepayment? rePayment;
         formReport? report;
         formLoanM? loanM;
+        SignupForm? signup;
 
         public Dashboard()
         {
@@ -81,7 +82,9 @@ namespace LoanSystem
                     pnCustomer.Width = sidebar.Width;
                     pnRepayment.Width = sidebar.Width;
                     pnReport.Width = sidebar.Width;
+                    pnEmplo.Width = sidebar.Width;
                     menuContainer.Width = sidebar.Width;
+
 
                 }
             }
@@ -98,6 +101,7 @@ namespace LoanSystem
                     pnCustomer.Width = sidebar.Width;
                     pnRepayment.Width = sidebar.Width;
                     pnReport.Width = sidebar.Width;
+                    pnEmplo.Width = sidebar.Width;
                     menuContainer.Width = sidebar.Width;
                 }
             }
@@ -292,6 +296,30 @@ namespace LoanSystem
         private void report_FormClosed(object? sender, FormClosedEventArgs e)
         {
             report = null;
+        }
+
+        private void btnEmplo_Click(object sender, EventArgs e)
+        {
+
+            if (signup == null)
+            {
+                signup = new SignupForm();
+                signup.FormClosed += signup_FormClosed;
+                signup.MdiParent = this;
+                signup.Dock = DockStyle.Fill;
+                signup.Show();
+
+            }
+            else
+            {
+                signup.Activate();
+            }
+
+        }
+
+        private void signup_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            signup = null;
         }
     }
 }

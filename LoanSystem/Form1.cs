@@ -11,14 +11,6 @@ namespace LoanSystem
         {
             InitializeComponent();
         }
-
-        private void register_Click(object sender, EventArgs e)
-        {
-            SignupForm sForm = new SignupForm();
-            sForm.Show();
-            this.Hide();
-        }
-
         private void closeSignin_Click(object sender, EventArgs e)
         {
             Application.Exit();

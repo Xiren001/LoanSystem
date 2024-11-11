@@ -20,18 +20,6 @@ namespace LoanSystem
             InitializeComponent();
         }
 
-        private void login_Click(object sender, EventArgs e)
-        {
-            SignInForm form = new SignInForm();
-            form.Show();
-            this.Hide();
-        }
-
-        private void closeSignUp_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void SignUpBtn_Click(object sender, EventArgs e)
         {
             // Check if all required fields are filled
@@ -110,21 +98,6 @@ namespace LoanSystem
                 {
                     connect.Close();
                 }
-            }
-        }
-
-        private void SignupShowpass_CheckedChanged(object sender, EventArgs e)
-        {
-            if (SignupShowpass.Checked)
-            {
-                signupPass.PasswordChar = '\0';
-                signupConpass.PasswordChar = '\0';
-
-            }
-            else
-            {
-                signupPass.PasswordChar = '*';
-                signupConpass.PasswordChar = '*';
             }
         }
     }

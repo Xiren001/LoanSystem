@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignInForm));
             lblSign = new Label();
             panelSign = new Panel();
-            label2 = new Label();
-            register = new Button();
             label1 = new Label();
             SigninHello = new Label();
             SigninEmail = new TextBox();
@@ -62,8 +60,6 @@
             // panelSign
             // 
             panelSign.BackColor = Color.SeaGreen;
-            panelSign.Controls.Add(label2);
-            panelSign.Controls.Add(register);
             panelSign.Controls.Add(label1);
             panelSign.Controls.Add(SigninHello);
             panelSign.Location = new Point(0, -1);
@@ -71,40 +67,13 @@
             panelSign.Size = new Size(363, 450);
             panelSign.TabIndex = 2;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(95, 237);
-            label2.Name = "label2";
-            label2.Size = new Size(173, 19);
-            label2.TabIndex = 5;
-            label2.Text = "Don't have an account?";
-            // 
-            // register
-            // 
-            register.BackColor = Color.SeaGreen;
-            register.FlatAppearance.BorderColor = Color.White;
-            register.FlatAppearance.BorderSize = 2;
-            register.FlatStyle = FlatStyle.Flat;
-            register.ForeColor = Color.White;
-            register.Location = new Point(118, 274);
-            register.Name = "register";
-            register.Size = new Size(129, 43);
-            register.TabIndex = 4;
-            register.Text = "Sign up";
-            register.UseVisualStyleBackColor = false;
-            register.Click += register_Click;
-            // 
             // label1
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(82, 203);
+            label1.Location = new Point(79, 226);
             label1.Name = "label1";
             label1.Size = new Size(198, 19);
             label1.TabIndex = 3;
@@ -116,7 +85,7 @@
             SigninHello.BackColor = Color.Transparent;
             SigninHello.Font = new Font("Tahoma", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SigninHello.ForeColor = Color.White;
-            SigninHello.Location = new Point(130, 143);
+            SigninHello.Location = new Point(112, 158);
             SigninHello.Name = "SigninHello";
             SigninHello.Size = new Size(100, 35);
             SigninHello.TabIndex = 2;
@@ -261,7 +230,6 @@
         public Panel panelSign;
         private Label SigninHello;
         private Label label1;
-        private Button register;
         private TextBox SigninEmail;
         private Panel panel1;
         private Panel panel2;
@@ -269,7 +237,6 @@
         private Button SignInBtn;
         private LinkLabel forgotpass;
         private CheckBox SigninShowpass;
-        private Label label2;
         private Label closeSignin;
     }
 }

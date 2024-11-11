@@ -54,6 +54,8 @@
             btnRepayment = new Button();
             pnReport = new Panel();
             btnReport = new Button();
+            pnEmplo = new Panel();
+            btnEmplo = new Button();
             menuTransition = new System.Windows.Forms.Timer(components);
             sidebarTransition = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
@@ -69,6 +71,7 @@
             pnCustomer.SuspendLayout();
             pnRepayment.SuspendLayout();
             pnReport.SuspendLayout();
+            pnEmplo.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -123,6 +126,7 @@
             sidebar.Controls.Add(pnCustomer);
             sidebar.Controls.Add(pnRepayment);
             sidebar.Controls.Add(pnReport);
+            sidebar.Controls.Add(pnEmplo);
             sidebar.Location = new Point(0, 50);
             sidebar.Name = "sidebar";
             sidebar.Padding = new Padding(0, 15, 0, 0);
@@ -356,6 +360,30 @@
             btnReport.UseVisualStyleBackColor = false;
             btnReport.Click += btnReport_Click;
             // 
+            // pnEmplo
+            // 
+            pnEmplo.Controls.Add(btnEmplo);
+            pnEmplo.Location = new Point(3, 347);
+            pnEmplo.Name = "pnEmplo";
+            pnEmplo.Size = new Size(230, 48);
+            pnEmplo.TabIndex = 5;
+            // 
+            // btnEmplo
+            // 
+            btnEmplo.BackColor = Color.SeaGreen;
+            btnEmplo.FlatStyle = FlatStyle.Flat;
+            btnEmplo.ForeColor = Color.Transparent;
+            btnEmplo.Image = (Image)resources.GetObject("btnEmplo.Image");
+            btnEmplo.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEmplo.Location = new Point(-9, -14);
+            btnEmplo.Name = "btnEmplo";
+            btnEmplo.Padding = new Padding(25, 0, 0, 0);
+            btnEmplo.Size = new Size(251, 74);
+            btnEmplo.TabIndex = 2;
+            btnEmplo.Text = "         Employees";
+            btnEmplo.UseVisualStyleBackColor = false;
+            btnEmplo.Click += btnEmplo_Click;
+            // 
             // menuTransition
             // 
             menuTransition.Interval = 10;
@@ -398,6 +426,7 @@
             pnCustomer.ResumeLayout(false);
             pnRepayment.ResumeLayout(false);
             pnReport.ResumeLayout(false);
+            pnEmplo.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -429,5 +458,7 @@
         private System.Windows.Forms.Timer menuTransition;
         private System.Windows.Forms.Timer sidebarTransition;
         private Label label2;
+        private Panel pnEmplo;
+        private Button btnEmplo;
     }
 }

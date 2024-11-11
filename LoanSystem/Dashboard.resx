@@ -126,6 +126,18 @@
         RK5CYII=
 </value>
   </data>
+  <data name="btnEmplo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAAVBJREFUSEvdlT1Ow0AQhUPLX01AQtwAOAaEyyAFKNKAQsFZcodwE4QEFQVIBAqo
+        lje7X7AJ+xfT8UlP9sy8Gdu7G6X3/3DOHUuPUo4X6ZSW5VBjabhxz/WStnpoLLEr3YVbd0NrHTRlwdft
+        ITRkwdrtIZizYPUo3JPme1LeeIxZsH6j1Pwhz6TS2IC/wJg0+DrDmDT4OsOYNPhqeZJG0oG0Jq0yJo1M
+        tUykDdrqCb1FbPgK/hNpKr1Lb9wP/LAYKpawZfFvruu1z8QZ+4GLUMwxwmdvbnxIQ6nvo5/8/hIKOfbx
+        3YbQDX2jIG4zpdRAIcc6PltvY8s3CuI2M0oNFHJs4puF0PV9YwvldkLJvZJqULL0h3OIz06LceYbWyh3
+        EUrxJTqSHnw5zhW+QQj9Jp9L28iGf0pG+rjWoAHjMCdK/JguiwbZl9hy2aYv/NB6vS/1srsKNe9o6AAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
   <data name="btnDashboard.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
