@@ -82,10 +82,11 @@ namespace LoanSystem
 
                                 MessageBox.Show("Registered successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                // Show sign-in form and hide current form
-                                SignInForm form = new SignInForm();
-                                form.Show();
-                                this.Hide();
+                                // Clear the text fields
+                                signupEmail.Text = "";
+                                signupName.Text = "";
+                                signupPass.Text = "";
+                                signupConpass.Text = "";
                             }
                         }
                     }
