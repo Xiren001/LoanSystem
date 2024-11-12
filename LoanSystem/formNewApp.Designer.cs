@@ -81,7 +81,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Tahoma", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(502, 68);
+            label2.Location = new Point(514, 69);
             label2.Name = "label2";
             label2.Size = new Size(218, 23);
             label2.TabIndex = 1;
@@ -227,7 +227,7 @@
             // 
             textBox9.BorderStyle = BorderStyle.FixedSingle;
             textBox9.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox9.Location = new Point(633, 232);
+            textBox9.Location = new Point(645, 233);
             textBox9.Name = "textBox9";
             textBox9.PlaceholderText = "Contact Details";
             textBox9.Size = new Size(166, 27);
@@ -239,7 +239,7 @@
             comboBox6.ForeColor = SystemColors.WindowFrame;
             comboBox6.FormattingEnabled = true;
             comboBox6.Items.AddRange(new object[] { "1", "2", "3", "4", "5+" });
-            comboBox6.Location = new Point(445, 231);
+            comboBox6.Location = new Point(457, 232);
             comboBox6.Name = "comboBox6";
             comboBox6.Size = new Size(170, 27);
             comboBox6.TabIndex = 12;
@@ -251,7 +251,7 @@
             comboBox5.ForeColor = SystemColors.WindowFrame;
             comboBox5.FormattingEnabled = true;
             comboBox5.Items.AddRange(new object[] { "Php 10000 - php 20000", "Php 10000 - php 20000", "Php 10000 - php 20000", "Php 10000 - php 20000" });
-            comboBox5.Location = new Point(676, 172);
+            comboBox5.Location = new Point(688, 173);
             comboBox5.Name = "comboBox5";
             comboBox5.Size = new Size(123, 27);
             comboBox5.TabIndex = 11;
@@ -261,7 +261,7 @@
             // 
             textBox8.BorderStyle = BorderStyle.FixedSingle;
             textBox8.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox8.Location = new Point(445, 173);
+            textBox8.Location = new Point(457, 174);
             textBox8.Name = "textBox8";
             textBox8.PlaceholderText = "Job Title / Position";
             textBox8.Size = new Size(215, 27);
@@ -273,7 +273,7 @@
             comboBox4.ForeColor = SystemColors.WindowFrame;
             comboBox4.FormattingEnabled = true;
             comboBox4.Items.AddRange(new object[] { "Full-time", "Part-time", "Self-employed", "Unemployed", "Retired" });
-            comboBox4.Location = new Point(676, 115);
+            comboBox4.Location = new Point(688, 116);
             comboBox4.Name = "comboBox4";
             comboBox4.Size = new Size(123, 27);
             comboBox4.TabIndex = 9;
@@ -283,7 +283,7 @@
             // 
             textBox7.BorderStyle = BorderStyle.FixedSingle;
             textBox7.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox7.Location = new Point(445, 116);
+            textBox7.Location = new Point(457, 117);
             textBox7.Name = "textBox7";
             textBox7.PlaceholderText = "Employer Name";
             textBox7.Size = new Size(215, 27);
@@ -412,7 +412,7 @@
             // 
             textBox14.BorderStyle = BorderStyle.FixedSingle;
             textBox14.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox14.Location = new Point(599, 426);
+            textBox14.Location = new Point(611, 427);
             textBox14.Name = "textBox14";
             textBox14.PlaceholderText = "Estimated Value";
             textBox14.Size = new Size(200, 27);
@@ -422,7 +422,7 @@
             // 
             textBox13.BorderStyle = BorderStyle.FixedSingle;
             textBox13.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox13.Location = new Point(445, 484);
+            textBox13.Location = new Point(457, 485);
             textBox13.Name = "textBox13";
             textBox13.PlaceholderText = "Collateral Description";
             textBox13.Size = new Size(354, 27);
@@ -432,7 +432,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Tahoma", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(533, 370);
+            label6.Location = new Point(545, 371);
             label6.Name = "label6";
             label6.Size = new Size(187, 23);
             label6.TabIndex = 3;
@@ -444,7 +444,7 @@
             comboBox10.ForeColor = SystemColors.WindowFrame;
             comboBox10.FormattingEnabled = true;
             comboBox10.Items.AddRange(new object[] { "Property", "Vehicle", "Jewelry" });
-            comboBox10.Location = new Point(445, 426);
+            comboBox10.Location = new Point(457, 427);
             comboBox10.Name = "comboBox10";
             comboBox10.Size = new Size(133, 27);
             comboBox10.TabIndex = 10;
