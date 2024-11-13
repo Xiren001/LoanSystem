@@ -28,35 +28,110 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            dataGridView1 = new DataGridView();
+            ApplicationID = new DataGridViewTextBoxColumn();
+            ApplicantName = new DataGridViewTextBoxColumn();
+            ApplicationDate = new DataGridViewTextBoxColumn();
+            LoanType = new DataGridViewTextBoxColumn();
+            LoanAmount = new DataGridViewTextBoxColumn();
+            EmploymentStatus = new DataGridViewTextBoxColumn();
+            AnnualIncome = new DataGridViewTextBoxColumn();
+            VerificationStatus = new DataGridViewTextBoxColumn();
+            AssignedOfficer = new DataGridViewTextBoxColumn();
+            Action = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // dataGridView1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(442, 265);
-            label1.Name = "label1";
-            label1.Size = new Size(294, 77);
-            label1.TabIndex = 1;
-            label1.Text = "Pending";
+            dataGridView1.BackgroundColor = Color.White;
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ApplicationID, ApplicantName, ApplicationDate, LoanType, LoanAmount, EmploymentStatus, AnnualIncome, VerificationStatus, AssignedOfficer, Action });
+            dataGridView1.GridColor = Color.Black;
+            dataGridView1.Location = new Point(12, 12);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(1068, 585);
+            dataGridView1.TabIndex = 26;
+            // 
+            // ApplicationID
+            // 
+            ApplicationID.HeaderText = "Application ID";
+            ApplicationID.Name = "ApplicationID";
+            // 
+            // ApplicantName
+            // 
+            ApplicantName.HeaderText = "Applicant Name";
+            ApplicantName.Name = "ApplicantName";
+            // 
+            // ApplicationDate
+            // 
+            ApplicationDate.HeaderText = "Application Date";
+            ApplicationDate.Name = "ApplicationDate";
+            // 
+            // LoanType
+            // 
+            LoanType.HeaderText = "Loan Type";
+            LoanType.Name = "LoanType";
+            // 
+            // LoanAmount
+            // 
+            LoanAmount.HeaderText = "Loan Amount";
+            LoanAmount.Name = "LoanAmount";
+            // 
+            // EmploymentStatus
+            // 
+            EmploymentStatus.HeaderText = "Employment Status";
+            EmploymentStatus.Name = "EmploymentStatus";
+            // 
+            // AnnualIncome
+            // 
+            AnnualIncome.HeaderText = "Annual Income";
+            AnnualIncome.Name = "AnnualIncome";
+            // 
+            // VerificationStatus
+            // 
+            VerificationStatus.HeaderText = "Verification Status";
+            VerificationStatus.Name = "VerificationStatus";
+            // 
+            // AssignedOfficer
+            // 
+            AssignedOfficer.HeaderText = "Assigned Officer";
+            AssignedOfficer.Name = "AssignedOfficer";
+            // 
+            // Action
+            // 
+            Action.HeaderText = "Action";
+            Action.Name = "Action";
+            Action.Width = 125;
             // 
             // formPending
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(1092, 609);
-            Controls.Add(label1);
+            Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "formPending";
             Text = "formPending";
             Load += formPending_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn ApplicationID;
+        private DataGridViewTextBoxColumn ApplicantName;
+        private DataGridViewTextBoxColumn ApplicationDate;
+        private DataGridViewTextBoxColumn LoanType;
+        private DataGridViewTextBoxColumn LoanAmount;
+        private DataGridViewTextBoxColumn EmploymentStatus;
+        private DataGridViewTextBoxColumn AnnualIncome;
+        private DataGridViewTextBoxColumn VerificationStatus;
+        private DataGridViewTextBoxColumn AssignedOfficer;
+        private DataGridViewTextBoxColumn Action;
     }
 }

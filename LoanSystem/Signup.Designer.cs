@@ -38,10 +38,19 @@
             signupConpass = new TextBox();
             panel5 = new Panel();
             signupName = new TextBox();
+            panel1 = new Panel();
+            label1 = new Label();
+            dataGridView1 = new DataGridView();
+            EmployeeID = new DataGridViewTextBoxColumn();
+            FullName = new DataGridViewTextBoxColumn();
+            Email = new DataGridViewTextBoxColumn();
+            Position = new DataGridViewTextBoxColumn();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // SignUpBtn
@@ -51,7 +60,7 @@
             SignUpBtn.FlatAppearance.BorderSize = 2;
             SignUpBtn.FlatStyle = FlatStyle.Flat;
             SignUpBtn.ForeColor = Color.White;
-            SignUpBtn.Location = new Point(210, 332);
+            SignUpBtn.Location = new Point(37, 399);
             SignUpBtn.Name = "SignUpBtn";
             SignUpBtn.Size = new Size(325, 43);
             SignUpBtn.TabIndex = 10;
@@ -63,7 +72,7 @@
             // 
             panel2.BackColor = Color.Gainsboro;
             panel2.Controls.Add(signupPass);
-            panel2.Location = new Point(210, 171);
+            panel2.Location = new Point(37, 238);
             panel2.Name = "panel2";
             panel2.Size = new Size(325, 42);
             panel2.TabIndex = 7;
@@ -87,7 +96,7 @@
             // 
             panel3.BackColor = Color.Gainsboro;
             panel3.Controls.Add(signupEmail);
-            panel3.Location = new Point(210, 114);
+            panel3.Location = new Point(37, 181);
             panel3.Name = "panel3";
             panel3.Size = new Size(325, 42);
             panel3.TabIndex = 8;
@@ -110,7 +119,7 @@
             // 
             panel4.BackColor = Color.Gainsboro;
             panel4.Controls.Add(signupConpass);
-            panel4.Location = new Point(210, 231);
+            panel4.Location = new Point(37, 298);
             panel4.Name = "panel4";
             panel4.Size = new Size(325, 42);
             panel4.TabIndex = 8;
@@ -134,7 +143,7 @@
             // 
             panel5.BackColor = Color.Gainsboro;
             panel5.Controls.Add(signupName);
-            panel5.Location = new Point(210, 57);
+            panel5.Location = new Point(37, 124);
             panel5.Name = "panel5";
             panel5.Size = new Size(325, 42);
             panel5.TabIndex = 9;
@@ -153,17 +162,74 @@
             signupName.Size = new Size(299, 20);
             signupName.TabIndex = 4;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.SeaGreen;
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(panel5);
+            panel1.Controls.Add(panel3);
+            panel1.Controls.Add(panel4);
+            panel1.Controls.Add(panel2);
+            panel1.Controls.Add(SignUpBtn);
+            panel1.Location = new Point(702, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(391, 610);
+            panel1.TabIndex = 11;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Tahoma", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(97, 58);
+            label1.Name = "label1";
+            label1.Size = new Size(196, 35);
+            label1.TabIndex = 11;
+            label1.Text = "Add Employee";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.BackgroundColor = Color.White;
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { EmployeeID, FullName, Email, Position });
+            dataGridView1.Location = new Point(12, 12);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(684, 585);
+            dataGridView1.TabIndex = 12;
+            // 
+            // EmployeeID
+            // 
+            EmployeeID.HeaderText = "Employee ID";
+            EmployeeID.Name = "EmployeeID";
+            EmployeeID.Width = 150;
+            // 
+            // FullName
+            // 
+            FullName.HeaderText = "Full Name";
+            FullName.Name = "FullName";
+            FullName.Width = 200;
+            // 
+            // Email
+            // 
+            Email.HeaderText = "Email";
+            Email.Name = "Email";
+            Email.Width = 200;
+            // 
+            // Position
+            // 
+            Position.HeaderText = "Position";
+            Position.Name = "Position";
+            Position.Width = 90;
+            // 
             // SignupForm
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(755, 450);
-            Controls.Add(panel5);
-            Controls.Add(panel4);
-            Controls.Add(SignUpBtn);
-            Controls.Add(panel2);
-            Controls.Add(panel3);
+            ClientSize = new Size(1092, 609);
+            Controls.Add(dataGridView1);
+            Controls.Add(panel1);
             Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -180,6 +246,9 @@
             panel4.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -193,5 +262,12 @@
         private TextBox signupConpass;
         private Panel panel5;
         private TextBox signupName;
+        private Panel panel1;
+        private DataGridView dataGridView1;
+        private Label label1;
+        private DataGridViewTextBoxColumn EmployeeID;
+        private DataGridViewTextBoxColumn FullName;
+        private DataGridViewTextBoxColumn Email;
+        private DataGridViewTextBoxColumn Position;
     }
 }

@@ -46,8 +46,6 @@
             btnPending = new Button();
             panel10 = new Panel();
             btnAppRej = new Button();
-            pnLoanM = new Panel();
-            btnLoanM = new Button();
             pnCustomer = new Panel();
             btnCustomer = new Button();
             pnRepayment = new Panel();
@@ -67,7 +65,6 @@
             panel8.SuspendLayout();
             panel9.SuspendLayout();
             panel10.SuspendLayout();
-            pnLoanM.SuspendLayout();
             pnCustomer.SuspendLayout();
             pnRepayment.SuspendLayout();
             pnReport.SuspendLayout();
@@ -76,6 +73,7 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.SeaGreen;
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(menu);
@@ -87,12 +85,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.BorderStyle = BorderStyle.Fixed3D;
             label2.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.Red;
+            label2.ForeColor = Color.White;
             label2.Location = new Point(1118, 16);
             label2.Name = "label2";
-            label2.Size = new Size(21, 21);
+            label2.Size = new Size(19, 19);
             label2.TabIndex = 2;
             label2.Text = "x";
             label2.Click += label2_Click;
@@ -100,6 +97,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.ForeColor = Color.White;
             label1.Location = new Point(71, 16);
             label1.Name = "label1";
             label1.Size = new Size(120, 19);
@@ -122,7 +120,6 @@
             sidebar.BackColor = Color.SeaGreen;
             sidebar.Controls.Add(pnDashboard);
             sidebar.Controls.Add(menuContainer);
-            sidebar.Controls.Add(pnLoanM);
             sidebar.Controls.Add(pnCustomer);
             sidebar.Controls.Add(pnRepayment);
             sidebar.Controls.Add(pnReport);
@@ -264,34 +261,10 @@
             btnAppRej.UseVisualStyleBackColor = false;
             btnAppRej.Click += btnAppRej_Click;
             // 
-            // pnLoanM
-            // 
-            pnLoanM.Controls.Add(btnLoanM);
-            pnLoanM.Location = new Point(3, 131);
-            pnLoanM.Name = "pnLoanM";
-            pnLoanM.Size = new Size(230, 48);
-            pnLoanM.TabIndex = 4;
-            // 
-            // btnLoanM
-            // 
-            btnLoanM.BackColor = Color.SeaGreen;
-            btnLoanM.FlatStyle = FlatStyle.Flat;
-            btnLoanM.ForeColor = Color.Transparent;
-            btnLoanM.Image = (Image)resources.GetObject("btnLoanM.Image");
-            btnLoanM.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLoanM.Location = new Point(-9, -10);
-            btnLoanM.Name = "btnLoanM";
-            btnLoanM.Padding = new Padding(25, 0, 0, 0);
-            btnLoanM.Size = new Size(248, 68);
-            btnLoanM.TabIndex = 2;
-            btnLoanM.Text = "      Loan Management";
-            btnLoanM.UseVisualStyleBackColor = false;
-            btnLoanM.Click += btnLoanM_Click;
-            // 
             // pnCustomer
             // 
             pnCustomer.Controls.Add(btnCustomer);
-            pnCustomer.Location = new Point(3, 185);
+            pnCustomer.Location = new Point(3, 131);
             pnCustomer.Name = "pnCustomer";
             pnCustomer.Size = new Size(230, 48);
             pnCustomer.TabIndex = 4;
@@ -308,14 +281,14 @@
             btnCustomer.Padding = new Padding(25, 0, 0, 0);
             btnCustomer.Size = new Size(248, 68);
             btnCustomer.TabIndex = 2;
-            btnCustomer.Text = "Customers";
+            btnCustomer.Text = "Client";
             btnCustomer.UseVisualStyleBackColor = false;
             btnCustomer.Click += btnCustomer_Click;
             // 
             // pnRepayment
             // 
             pnRepayment.Controls.Add(btnRepayment);
-            pnRepayment.Location = new Point(3, 239);
+            pnRepayment.Location = new Point(3, 185);
             pnRepayment.Name = "pnRepayment";
             pnRepayment.Size = new Size(230, 48);
             pnRepayment.TabIndex = 4;
@@ -339,7 +312,7 @@
             // pnReport
             // 
             pnReport.Controls.Add(btnReport);
-            pnReport.Location = new Point(3, 293);
+            pnReport.Location = new Point(3, 239);
             pnReport.Name = "pnReport";
             pnReport.Size = new Size(230, 48);
             pnReport.TabIndex = 4;
@@ -363,7 +336,7 @@
             // pnEmplo
             // 
             pnEmplo.Controls.Add(btnEmplo);
-            pnEmplo.Location = new Point(3, 347);
+            pnEmplo.Location = new Point(3, 293);
             pnEmplo.Name = "pnEmplo";
             pnEmplo.Size = new Size(230, 48);
             pnEmplo.TabIndex = 5;
@@ -422,7 +395,6 @@
             panel8.ResumeLayout(false);
             panel9.ResumeLayout(false);
             panel10.ResumeLayout(false);
-            pnLoanM.ResumeLayout(false);
             pnCustomer.ResumeLayout(false);
             pnRepayment.ResumeLayout(false);
             pnReport.ResumeLayout(false);
@@ -440,8 +412,6 @@
         private Panel pnDashboard;
         private Panel panel3;
         private Button loanApp;
-        private Panel pnLoanM;
-        private Button btnLoanM;
         private Panel pnCustomer;
         private Button btnCustomer;
         private Panel pnRepayment;

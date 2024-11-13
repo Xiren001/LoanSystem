@@ -20,7 +20,6 @@ namespace LoanSystem
         formCustomer? customer;
         formRepayment? rePayment;
         formReport? report;
-        formLoanM? loanM;
         SignupForm? signup;
 
         public Dashboard()
@@ -78,7 +77,6 @@ namespace LoanSystem
                     sidebarTransition.Stop();
 
                     pnDashboard.Width = sidebar.Width;
-                    pnLoanM.Width = sidebar.Width;
                     pnCustomer.Width = sidebar.Width;
                     pnRepayment.Width = sidebar.Width;
                     pnReport.Width = sidebar.Width;
@@ -97,7 +95,6 @@ namespace LoanSystem
                     sidebarTransition.Stop();
 
                     pnDashboard.Width = sidebar.Width;
-                    pnLoanM.Width = sidebar.Width;
                     pnCustomer.Width = sidebar.Width;
                     pnRepayment.Width = sidebar.Width;
                     pnReport.Width = sidebar.Width;
@@ -154,6 +151,9 @@ namespace LoanSystem
                 newApplication.Dock = DockStyle.Fill;
                 newApplication.Show();
 
+
+
+
             }
             else
             {
@@ -208,28 +208,6 @@ namespace LoanSystem
         private void approved_FormClosed(object? sender, FormClosedEventArgs e)
         {
             approved = null;
-        }
-
-        private void btnLoanM_Click(object sender, EventArgs e)
-        {
-            if (loanM == null)
-            {
-                loanM = new formLoanM();
-                loanM.FormClosed += loanM_FormClosed;
-                loanM.MdiParent = this;
-                loanM.Dock = DockStyle.Fill;
-                loanM.Show();
-
-            }
-            else
-            {
-                loanM.Activate();
-            }
-        }
-
-        private void loanM_FormClosed(object? sender, FormClosedEventArgs e)
-        {
-            loanM = null;
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)

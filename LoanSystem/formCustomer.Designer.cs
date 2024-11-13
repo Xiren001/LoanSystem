@@ -28,35 +28,110 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            dataGridView1 = new DataGridView();
+            ClientID = new DataGridViewTextBoxColumn();
+            FullName = new DataGridViewTextBoxColumn();
+            ContactInformation = new DataGridViewTextBoxColumn();
+            LoanAmount = new DataGridViewTextBoxColumn();
+            OutstandingLoanBalance = new DataGridViewTextBoxColumn();
+            RecentActivityDate = new DataGridViewTextBoxColumn();
+            TotalPaidtoDate = new DataGridViewTextBoxColumn();
+            AssignedOfficer = new DataGridViewTextBoxColumn();
+            AccountStatus = new DataGridViewTextBoxColumn();
+            Action = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // dataGridView1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(423, 253);
-            label1.Name = "label1";
-            label1.Size = new Size(344, 77);
-            label1.TabIndex = 1;
-            label1.Text = "Customer";
+            dataGridView1.BackgroundColor = Color.White;
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ClientID, FullName, ContactInformation, LoanAmount, OutstandingLoanBalance, RecentActivityDate, TotalPaidtoDate, AssignedOfficer, AccountStatus, Action });
+            dataGridView1.GridColor = Color.Black;
+            dataGridView1.Location = new Point(12, 12);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(1068, 585);
+            dataGridView1.TabIndex = 26;
+            // 
+            // ClientID
+            // 
+            ClientID.HeaderText = "Client ID";
+            ClientID.Name = "ClientID";
+            // 
+            // FullName
+            // 
+            FullName.HeaderText = "Full Name";
+            FullName.Name = "FullName";
+            // 
+            // ContactInformation
+            // 
+            ContactInformation.HeaderText = "Contact Information";
+            ContactInformation.Name = "ContactInformation";
+            // 
+            // LoanAmount
+            // 
+            LoanAmount.HeaderText = "Loan Amount";
+            LoanAmount.Name = "LoanAmount";
+            // 
+            // OutstandingLoanBalance
+            // 
+            OutstandingLoanBalance.HeaderText = "Outstanding Loan Balance";
+            OutstandingLoanBalance.Name = "OutstandingLoanBalance";
+            // 
+            // RecentActivityDate
+            // 
+            RecentActivityDate.HeaderText = "Recent Activity Date";
+            RecentActivityDate.Name = "RecentActivityDate";
+            // 
+            // TotalPaidtoDate
+            // 
+            TotalPaidtoDate.HeaderText = "Total Paid to Date";
+            TotalPaidtoDate.Name = "TotalPaidtoDate";
+            // 
+            // AssignedOfficer
+            // 
+            AssignedOfficer.HeaderText = "Assigned Officer";
+            AssignedOfficer.Name = "AssignedOfficer";
+            // 
+            // AccountStatus
+            // 
+            AccountStatus.HeaderText = "Account Status";
+            AccountStatus.Name = "AccountStatus";
+            // 
+            // Action
+            // 
+            Action.HeaderText = "Action";
+            Action.Name = "Action";
+            Action.Width = 125;
             // 
             // formCustomer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(1092, 609);
-            Controls.Add(label1);
+            Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "formCustomer";
             Text = "formCustomer";
             Load += formCustomer_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn ClientID;
+        private DataGridViewTextBoxColumn FullName;
+        private DataGridViewTextBoxColumn ContactInformation;
+        private DataGridViewTextBoxColumn LoanAmount;
+        private DataGridViewTextBoxColumn OutstandingLoanBalance;
+        private DataGridViewTextBoxColumn RecentActivityDate;
+        private DataGridViewTextBoxColumn TotalPaidtoDate;
+        private DataGridViewTextBoxColumn AssignedOfficer;
+        private DataGridViewTextBoxColumn AccountStatus;
+        private DataGridViewTextBoxColumn Action;
     }
 }
