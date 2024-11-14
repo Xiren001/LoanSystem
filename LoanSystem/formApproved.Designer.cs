@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             dataGridView1 = new DataGridView();
             ApplicationID = new DataGridViewTextBoxColumn();
             ApplicantName = new DataGridViewTextBoxColumn();
@@ -49,74 +50,88 @@
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ApplicationID, ApplicantName, ApprovalDate, LoanType, LoanAmount, RepaymentTerm, MonthlyPayment, OutstandingBalance, NextPaymentDueDate, RepaymentStatus, Action });
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(255, 255, 192);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.GridColor = Color.Black;
             dataGridView1.Location = new Point(12, 12);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersVisible = false;
             dataGridView1.Size = new Size(1068, 585);
             dataGridView1.TabIndex = 26;
             // 
             // ApplicationID
             // 
+            ApplicationID.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ApplicationID.HeaderText = "Application ID";
             ApplicationID.Name = "ApplicationID";
-            ApplicationID.Width = 90;
             // 
             // ApplicantName
             // 
+            ApplicantName.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             ApplicantName.HeaderText = "Applicant Name";
             ApplicantName.Name = "ApplicantName";
+            ApplicantName.Width = 108;
             // 
             // ApprovalDate
             // 
+            ApprovalDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ApprovalDate.HeaderText = "Approval Date";
             ApprovalDate.Name = "ApprovalDate";
-            ApprovalDate.Width = 90;
             // 
             // LoanType
             // 
+            LoanType.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             LoanType.HeaderText = "Loan Type";
             LoanType.Name = "LoanType";
             // 
             // LoanAmount
             // 
+            LoanAmount.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             LoanAmount.HeaderText = "Loan Amount";
             LoanAmount.Name = "LoanAmount";
-            LoanAmount.Width = 90;
             // 
             // RepaymentTerm
             // 
+            RepaymentTerm.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             RepaymentTerm.HeaderText = "Repayment Term";
             RepaymentTerm.Name = "RepaymentTerm";
-            RepaymentTerm.Width = 90;
             // 
             // MonthlyPayment
             // 
+            MonthlyPayment.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             MonthlyPayment.HeaderText = "Monthly Payment";
             MonthlyPayment.Name = "MonthlyPayment";
-            MonthlyPayment.Width = 90;
             // 
             // OutstandingBalance
             // 
+            OutstandingBalance.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             OutstandingBalance.HeaderText = "Outstanding Balance";
             OutstandingBalance.Name = "OutstandingBalance";
-            OutstandingBalance.Width = 90;
             // 
             // NextPaymentDueDate
             // 
+            NextPaymentDueDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             NextPaymentDueDate.HeaderText = "Next Payment Due Date";
             NextPaymentDueDate.Name = "NextPaymentDueDate";
-            NextPaymentDueDate.Width = 96;
             // 
             // RepaymentStatus
             // 
+            RepaymentStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             RepaymentStatus.HeaderText = "Repayment Status";
             RepaymentStatus.Name = "RepaymentStatus";
-            RepaymentStatus.Width = 90;
             // 
             // Action
             // 
+            Action.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             Action.HeaderText = "Action";
             Action.Name = "Action";
+            Action.Width = 67;
             // 
             // formApproved
             // 

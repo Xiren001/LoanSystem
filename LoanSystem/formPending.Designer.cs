@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             dataGridView1 = new DataGridView();
             ApplicationID = new DataGridViewTextBoxColumn();
             ApplicantName = new DataGridViewTextBoxColumn();
@@ -48,6 +49,14 @@
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ApplicationID, ApplicantName, ApplicationDate, LoanType, LoanAmount, EmploymentStatus, AnnualIncome, VerificationStatus, AssignedOfficer, Action });
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(255, 255, 192);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.GridColor = Color.Black;
             dataGridView1.Location = new Point(12, 12);
             dataGridView1.Name = "dataGridView1";
@@ -56,54 +65,65 @@
             // 
             // ApplicationID
             // 
+            ApplicationID.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ApplicationID.HeaderText = "Application ID";
             ApplicationID.Name = "ApplicationID";
             // 
             // ApplicantName
             // 
+            ApplicantName.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             ApplicantName.HeaderText = "Applicant Name";
             ApplicantName.Name = "ApplicantName";
+            ApplicantName.Width = 108;
             // 
             // ApplicationDate
             // 
+            ApplicationDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ApplicationDate.HeaderText = "Application Date";
             ApplicationDate.Name = "ApplicationDate";
             // 
             // LoanType
             // 
+            LoanType.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             LoanType.HeaderText = "Loan Type";
             LoanType.Name = "LoanType";
             // 
             // LoanAmount
             // 
+            LoanAmount.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             LoanAmount.HeaderText = "Loan Amount";
             LoanAmount.Name = "LoanAmount";
             // 
             // EmploymentStatus
             // 
+            EmploymentStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             EmploymentStatus.HeaderText = "Employment Status";
             EmploymentStatus.Name = "EmploymentStatus";
             // 
             // AnnualIncome
             // 
+            AnnualIncome.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             AnnualIncome.HeaderText = "Annual Income";
             AnnualIncome.Name = "AnnualIncome";
             // 
             // VerificationStatus
             // 
+            VerificationStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             VerificationStatus.HeaderText = "Verification Status";
             VerificationStatus.Name = "VerificationStatus";
             // 
             // AssignedOfficer
             // 
+            AssignedOfficer.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             AssignedOfficer.HeaderText = "Assigned Officer";
             AssignedOfficer.Name = "AssignedOfficer";
             // 
             // Action
             // 
+            Action.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             Action.HeaderText = "Action";
             Action.Name = "Action";
-            Action.Width = 125;
+            Action.Width = 67;
             // 
             // formPending
             // 

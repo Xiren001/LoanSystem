@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignupForm));
             SignUpBtn = new Button();
             panel2 = new Panel();
@@ -193,31 +194,42 @@
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { EmployeeID, FullName, Email, Position });
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(255, 255, 192);
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.Location = new Point(12, 12);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersVisible = false;
             dataGridView1.Size = new Size(684, 585);
             dataGridView1.TabIndex = 12;
             // 
             // EmployeeID
             // 
+            EmployeeID.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             EmployeeID.HeaderText = "Employee ID";
             EmployeeID.Name = "EmployeeID";
-            EmployeeID.Width = 150;
+            EmployeeID.Width = 125;
             // 
             // FullName
             // 
+            FullName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             FullName.HeaderText = "Full Name";
             FullName.Name = "FullName";
-            FullName.Width = 200;
             // 
             // Email
             // 
+            Email.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Email.HeaderText = "Email";
             Email.Name = "Email";
-            Email.Width = 200;
             // 
             // Position
             // 
+            Position.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             Position.HeaderText = "Position";
             Position.Name = "Position";
             Position.Width = 90;
