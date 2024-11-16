@@ -60,6 +60,7 @@
             dataGridView1.GridColor = Color.Black;
             dataGridView1.Location = new Point(12, 12);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersVisible = false;
             dataGridView1.Size = new Size(1068, 585);
             dataGridView1.TabIndex = 26;
             // 
@@ -120,10 +121,9 @@
             // 
             // Action
             // 
-            Action.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Action.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Action.HeaderText = "Action";
             Action.Name = "Action";
-            Action.Width = 67;
             // 
             // formPending
             // 

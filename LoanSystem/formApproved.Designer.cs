@@ -128,10 +128,9 @@
             // 
             // Action
             // 
-            Action.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Action.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Action.HeaderText = "Action";
             Action.Name = "Action";
-            Action.Width = 67;
             // 
             // formApproved
             // 

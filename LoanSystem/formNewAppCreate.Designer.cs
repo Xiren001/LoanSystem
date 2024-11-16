@@ -1,6 +1,6 @@
 ﻿namespace LoanSystem
 {
-    partial class formNewAppCreate
+    partial class amount
     {
         /// <summary>
         /// Required designer variable.
@@ -30,42 +30,67 @@
         {
             button2 = new Button();
             button1 = new Button();
-            textBox14 = new TextBox();
-            comboBox9 = new ComboBox();
-            textBox13 = new TextBox();
-            textBox12 = new TextBox();
-            comboBox10 = new ComboBox();
-            comboBox8 = new ComboBox();
-            label6 = new Label();
-            checkBox3 = new CheckBox();
-            textBox10 = new TextBox();
-            textBox11 = new TextBox();
-            comboBox7 = new ComboBox();
-            textBox9 = new TextBox();
+            estematedValue = new TextBox();
+            repaymentTerm = new ComboBox();
+            collateralDesription = new TextBox();
+            expenses = new TextBox();
+            collateralType = new ComboBox();
+            loanPurpose = new ComboBox();
+            collateralDocument = new CheckBox();
+            amountLoan = new TextBox();
+            monthlyIncome = new TextBox();
+            loanType = new ComboBox();
+            employerContact = new TextBox();
             label3 = new Label();
             label4 = new Label();
-            checkBox2 = new CheckBox();
+            identityProof = new CheckBox();
             label1 = new Label();
-            comboBox6 = new ComboBox();
+            yearEmployment = new ComboBox();
             fileSystemWatcher1 = new FileSystemWatcher();
-            checkBox1 = new CheckBox();
-            label5 = new Label();
-            textBox6 = new TextBox();
-            comboBox5 = new ComboBox();
-            textBox8 = new TextBox();
-            textBox5 = new TextBox();
-            comboBox4 = new ComboBox();
-            textBox7 = new TextBox();
-            textBox4 = new TextBox();
+            incomeProof = new CheckBox();
+            address = new TextBox();
+            annualIncome = new ComboBox();
+            position = new TextBox();
+            email = new TextBox();
+            employerStatus = new ComboBox();
+            employerName = new TextBox();
+            phoneNumber = new TextBox();
             label2 = new Label();
-            textBox3 = new TextBox();
-            comboBox3 = new ComboBox();
-            comboBox2 = new ComboBox();
-            comboBox1 = new ComboBox();
-            lastname = new TextBox();
-            textBox1 = new TextBox();
-            dateTimePicker1 = new DateTimePicker();
-            textBox2 = new TextBox();
+            idNumber = new TextBox();
+            idType = new ComboBox();
+            martialStatus = new ComboBox();
+            gender = new ComboBox();
+            lastName = new TextBox();
+            firstName = new TextBox();
+            birthdate = new DateTimePicker();
+            middleName = new TextBox();
+            label7 = new Label();
+            label8 = new Label();
+            label9 = new Label();
+            label10 = new Label();
+            label11 = new Label();
+            label12 = new Label();
+            label13 = new Label();
+            label14 = new Label();
+            label15 = new Label();
+            label16 = new Label();
+            label17 = new Label();
+            label18 = new Label();
+            label19 = new Label();
+            label20 = new Label();
+            label21 = new Label();
+            label22 = new Label();
+            label23 = new Label();
+            label5 = new Label();
+            label24 = new Label();
+            label25 = new Label();
+            label26 = new Label();
+            label27 = new Label();
+            label28 = new Label();
+            label29 = new Label();
+            label30 = new Label();
+            label31 = new Label();
+            label6 = new Label();
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).BeginInit();
             SuspendLayout();
             // 
@@ -74,7 +99,7 @@
             button2.BackColor = Color.Gray;
             button2.Font = new Font("Tahoma", 12F);
             button2.ForeColor = Color.White;
-            button2.Location = new Point(765, 513);
+            button2.Location = new Point(781, 513);
             button2.Name = "button2";
             button2.Size = new Size(133, 40);
             button2.TabIndex = 53;
@@ -86,441 +111,723 @@
             button1.BackColor = Color.SeaGreen;
             button1.Font = new Font("Tahoma", 12F);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(904, 513);
+            button1.Location = new Point(920, 513);
             button1.Name = "button1";
             button1.Size = new Size(133, 40);
             button1.TabIndex = 52;
             button1.Text = "Save";
             button1.UseVisualStyleBackColor = false;
             // 
-            // textBox14
+            // estematedValue
             // 
-            textBox14.BorderStyle = BorderStyle.FixedSingle;
-            textBox14.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox14.Location = new Point(670, 355);
-            textBox14.Name = "textBox14";
-            textBox14.PlaceholderText = "Estimated Value";
-            textBox14.Size = new Size(123, 27);
-            textBox14.TabIndex = 46;
+            estematedValue.BorderStyle = BorderStyle.FixedSingle;
+            estematedValue.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            estematedValue.Location = new Point(581, 389);
+            estematedValue.Name = "estematedValue";
+            estematedValue.Size = new Size(181, 27);
+            estematedValue.TabIndex = 46;
             // 
-            // comboBox9
+            // repaymentTerm
             // 
-            comboBox9.Font = new Font("Tahoma", 11F);
-            comboBox9.ForeColor = SystemColors.WindowFrame;
-            comboBox9.FormattingEnabled = true;
-            comboBox9.Items.AddRange(new object[] { "12 months", "24 months", "36 months" });
-            comboBox9.Location = new Point(225, 413);
-            comboBox9.Name = "comboBox9";
-            comboBox9.Size = new Size(181, 26);
-            comboBox9.TabIndex = 50;
-            comboBox9.Text = "Repayment Term";
+            repaymentTerm.Font = new Font("Tahoma", 11F);
+            repaymentTerm.ForeColor = SystemColors.WindowFrame;
+            repaymentTerm.FormattingEnabled = true;
+            repaymentTerm.Items.AddRange(new object[] { "12 months", "24 months", "36 months" });
+            repaymentTerm.Location = new Point(210, 460);
+            repaymentTerm.Name = "repaymentTerm";
+            repaymentTerm.Size = new Size(163, 26);
+            repaymentTerm.TabIndex = 50;
             // 
-            // textBox13
+            // collateralDesription
             // 
-            textBox13.BorderStyle = BorderStyle.FixedSingle;
-            textBox13.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox13.Location = new Point(445, 413);
-            textBox13.Name = "textBox13";
-            textBox13.PlaceholderText = " Collateral Description";
-            textBox13.Size = new Size(354, 27);
-            textBox13.TabIndex = 40;
+            collateralDesription.BorderStyle = BorderStyle.FixedSingle;
+            collateralDesription.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            collateralDesription.Location = new Point(407, 459);
+            collateralDesription.Name = "collateralDesription";
+            collateralDesription.Size = new Size(355, 27);
+            collateralDesription.TabIndex = 40;
             // 
-            // textBox12
+            // expenses
             // 
-            textBox12.BorderStyle = BorderStyle.FixedSingle;
-            textBox12.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox12.Location = new Point(849, 412);
-            textBox12.Name = "textBox12";
-            textBox12.PlaceholderText = " Monthly Expenses";
-            textBox12.Size = new Size(204, 27);
-            textBox12.TabIndex = 32;
+            expenses.BorderStyle = BorderStyle.FixedSingle;
+            expenses.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            expenses.Location = new Point(794, 460);
+            expenses.Name = "expenses";
+            expenses.Size = new Size(258, 27);
+            expenses.TabIndex = 32;
             // 
-            // comboBox10
+            // collateralType
             // 
-            comboBox10.Font = new Font("Tahoma", 12F);
-            comboBox10.ForeColor = SystemColors.WindowFrame;
-            comboBox10.FormattingEnabled = true;
-            comboBox10.Items.AddRange(new object[] { "Property", "Vehicle", "Jewelry" });
-            comboBox10.Location = new Point(439, 356);
-            comboBox10.Name = "comboBox10";
-            comboBox10.Size = new Size(215, 27);
-            comboBox10.TabIndex = 36;
-            comboBox10.Text = "Collateral Type";
+            collateralType.Font = new Font("Tahoma", 12F);
+            collateralType.ForeColor = SystemColors.WindowFrame;
+            collateralType.FormattingEnabled = true;
+            collateralType.Items.AddRange(new object[] { "Property", "Vehicle", "Jewelry" });
+            collateralType.Location = new Point(407, 389);
+            collateralType.Name = "collateralType";
+            collateralType.Size = new Size(168, 27);
+            collateralType.TabIndex = 36;
             // 
-            // comboBox8
+            // loanPurpose
             // 
-            comboBox8.Font = new Font("Tahoma", 12F);
-            comboBox8.ForeColor = SystemColors.WindowFrame;
-            comboBox8.FormattingEnabled = true;
-            comboBox8.Items.AddRange(new object[] { "education", "debt consolidation", "home renovation" });
-            comboBox8.Location = new Point(24, 412);
-            comboBox8.Name = "comboBox8";
-            comboBox8.Size = new Size(181, 27);
-            comboBox8.TabIndex = 45;
-            comboBox8.Text = "Purpose of Loan";
+            loanPurpose.Font = new Font("Tahoma", 12F);
+            loanPurpose.ForeColor = SystemColors.WindowFrame;
+            loanPurpose.FormattingEnabled = true;
+            loanPurpose.Items.AddRange(new object[] { "education", "debt consolidation", "home renovation" });
+            loanPurpose.Location = new Point(24, 460);
+            loanPurpose.Name = "loanPurpose";
+            loanPurpose.Size = new Size(181, 27);
+            loanPurpose.TabIndex = 45;
             // 
-            // label6
+            // collateralDocument
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Tahoma", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(439, 314);
-            label6.Name = "label6";
-            label6.Size = new Size(190, 23);
-            label6.TabIndex = 22;
-            label6.Text = "Collateral Information";
+            collateralDocument.AutoSize = true;
+            collateralDocument.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            collateralDocument.Location = new Point(873, 284);
+            collateralDocument.Name = "collateralDocument";
+            collateralDocument.Size = new Size(179, 22);
+            collateralDocument.TabIndex = 33;
+            collateralDocument.Text = "Collateral Document";
+            collateralDocument.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // amountLoan
             // 
-            checkBox3.AutoSize = true;
-            checkBox3.Font = new Font("Tahoma", 12F);
-            checkBox3.Location = new Point(849, 180);
-            checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(178, 23);
-            checkBox3.TabIndex = 33;
-            checkBox3.Text = "Collateral Documents";
-            checkBox3.UseVisualStyleBackColor = true;
+            amountLoan.BorderStyle = BorderStyle.FixedSingle;
+            amountLoan.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            amountLoan.Location = new Point(211, 390);
+            amountLoan.Name = "amountLoan";
+            amountLoan.Size = new Size(162, 27);
+            amountLoan.TabIndex = 39;
             // 
-            // textBox10
+            // monthlyIncome
             // 
-            textBox10.BorderStyle = BorderStyle.FixedSingle;
-            textBox10.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox10.Location = new Point(225, 356);
-            textBox10.Name = "textBox10";
-            textBox10.PlaceholderText = " Loan Amount Requested";
-            textBox10.Size = new Size(181, 27);
-            textBox10.TabIndex = 39;
+            monthlyIncome.BorderStyle = BorderStyle.FixedSingle;
+            monthlyIncome.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            monthlyIncome.Location = new Point(794, 390);
+            monthlyIncome.Name = "monthlyIncome";
+            monthlyIncome.Size = new Size(259, 27);
+            monthlyIncome.TabIndex = 27;
             // 
-            // textBox11
+            // loanType
             // 
-            textBox11.BorderStyle = BorderStyle.FixedSingle;
-            textBox11.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox11.Location = new Point(849, 356);
-            textBox11.Name = "textBox11";
-            textBox11.PlaceholderText = " Monthly Income";
-            textBox11.Size = new Size(203, 27);
-            textBox11.TabIndex = 27;
+            loanType.Font = new Font("Tahoma", 12F);
+            loanType.ForeColor = SystemColors.WindowFrame;
+            loanType.FormattingEnabled = true;
+            loanType.Items.AddRange(new object[] { "Personal Loan", " Auto Loan", "Home Loan", "Business Loan" });
+            loanType.Location = new Point(24, 390);
+            loanType.Name = "loanType";
+            loanType.Size = new Size(181, 27);
+            loanType.TabIndex = 43;
             // 
-            // comboBox7
+            // employerContact
             // 
-            comboBox7.Font = new Font("Tahoma", 12F);
-            comboBox7.ForeColor = SystemColors.WindowFrame;
-            comboBox7.FormattingEnabled = true;
-            comboBox7.Items.AddRange(new object[] { "Personal Loan", " Auto Loan", "Home Loan", "Business Loan" });
-            comboBox7.Location = new Point(24, 355);
-            comboBox7.Name = "comboBox7";
-            comboBox7.Size = new Size(181, 27);
-            comboBox7.TabIndex = 43;
-            comboBox7.Text = "Loan Type";
-            // 
-            // textBox9
-            // 
-            textBox9.BorderStyle = BorderStyle.FixedSingle;
-            textBox9.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox9.Location = new Point(448, 181);
-            textBox9.Name = "textBox9";
-            textBox9.PlaceholderText = " Contact Details";
-            textBox9.Size = new Size(215, 27);
-            textBox9.TabIndex = 49;
+            employerContact.BorderStyle = BorderStyle.FixedSingle;
+            employerContact.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            employerContact.Location = new Point(829, 215);
+            employerContact.Name = "employerContact";
+            employerContact.Size = new Size(224, 27);
+            employerContact.TabIndex = 49;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Tahoma", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(24, 314);
+            label3.Font = new Font("Tahoma", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.Red;
+            label3.Location = new Point(24, 328);
             label3.Name = "label3";
-            label3.Size = new Size(111, 23);
+            label3.Size = new Size(128, 23);
             label3.TabIndex = 19;
             label3.Text = "Loan Details";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Tahoma", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(849, 314);
+            label4.Font = new Font("Tahoma", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.Red;
+            label4.Location = new Point(795, 329);
             label4.Name = "label4";
-            label4.Size = new Size(187, 23);
+            label4.Size = new Size(216, 23);
             label4.TabIndex = 21;
             label4.Text = "Financial Information";
             // 
-            // checkBox2
+            // identityProof
             // 
-            checkBox2.AutoSize = true;
-            checkBox2.Font = new Font("Tahoma", 12F);
-            checkBox2.Location = new Point(850, 127);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(125, 23);
-            checkBox2.TabIndex = 31;
-            checkBox2.Text = "Identity Proof";
-            checkBox2.UseVisualStyleBackColor = true;
+            identityProof.AutoSize = true;
+            identityProof.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            identityProof.Location = new Point(727, 284);
+            identityProof.Name = "identityProof";
+            identityProof.Size = new Size(132, 22);
+            identityProof.TabIndex = 31;
+            identityProof.Text = "Identity Proof";
+            identityProof.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Tahoma", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.Red;
             label1.Location = new Point(24, 18);
             label1.Name = "label1";
-            label1.Size = new Size(160, 23);
+            label1.Size = new Size(187, 23);
             label1.TabIndex = 17;
             label1.Text = "Client Information";
             // 
-            // comboBox6
+            // yearEmployment
             // 
-            comboBox6.Font = new Font("Tahoma", 12F);
-            comboBox6.ForeColor = SystemColors.WindowFrame;
-            comboBox6.FormattingEnabled = true;
-            comboBox6.Items.AddRange(new object[] { "1", "2", "3", "4", "5+" });
-            comboBox6.Location = new Point(679, 180);
-            comboBox6.Name = "comboBox6";
-            comboBox6.Size = new Size(123, 27);
-            comboBox6.TabIndex = 44;
-            comboBox6.Text = "Years of Employment";
+            yearEmployment.Font = new Font("Tahoma", 12F);
+            yearEmployment.ForeColor = SystemColors.WindowFrame;
+            yearEmployment.FormattingEnabled = true;
+            yearEmployment.Items.AddRange(new object[] { "1", "2", "3", "4", "5+" });
+            yearEmployment.Location = new Point(581, 215);
+            yearEmployment.Name = "yearEmployment";
+            yearEmployment.Size = new Size(242, 27);
+            yearEmployment.TabIndex = 44;
             // 
             // fileSystemWatcher1
             // 
             fileSystemWatcher1.EnableRaisingEvents = true;
             fileSystemWatcher1.SynchronizingObject = this;
             // 
-            // checkBox1
+            // incomeProof
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Font = new Font("Tahoma", 12F);
-            checkBox1.Location = new Point(850, 71);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(124, 23);
-            checkBox1.TabIndex = 28;
-            checkBox1.Text = "Income Proof";
-            checkBox1.UseVisualStyleBackColor = true;
+            incomeProof.AutoSize = true;
+            incomeProof.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            incomeProof.Location = new Point(582, 285);
+            incomeProof.Name = "incomeProof";
+            incomeProof.Size = new Size(127, 22);
+            incomeProof.TabIndex = 28;
+            incomeProof.Text = "Income Proof";
+            incomeProof.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // address
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Tahoma", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(849, 18);
-            label5.Name = "label5";
-            label5.Size = new Size(203, 23);
-            label5.TabIndex = 20;
-            label5.Text = "Supporting Documents";
+            address.BorderStyle = BorderStyle.FixedSingle;
+            address.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            address.Location = new Point(279, 284);
+            address.Name = "address";
+            address.Size = new Size(268, 27);
+            address.TabIndex = 51;
             // 
-            // textBox6
+            // annualIncome
             // 
-            textBox6.BorderStyle = BorderStyle.FixedSingle;
-            textBox6.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox6.Location = new Point(225, 239);
-            textBox6.Name = "textBox6";
-            textBox6.PlaceholderText = " Home Address";
-            textBox6.Size = new Size(181, 27);
-            textBox6.TabIndex = 51;
+            annualIncome.Font = new Font("Tahoma", 12F);
+            annualIncome.ForeColor = SystemColors.WindowFrame;
+            annualIncome.FormattingEnabled = true;
+            annualIncome.Items.AddRange(new object[] { "Php 10000 - php 20000", "Php 10000 - php 20000", "Php 10000 - php 20000", "Php 10000 - php 20000" });
+            annualIncome.Location = new Point(829, 146);
+            annualIncome.Name = "annualIncome";
+            annualIncome.Size = new Size(223, 27);
+            annualIncome.TabIndex = 42;
             // 
-            // comboBox5
+            // position
             // 
-            comboBox5.Font = new Font("Tahoma", 12F);
-            comboBox5.ForeColor = SystemColors.WindowFrame;
-            comboBox5.FormattingEnabled = true;
-            comboBox5.Items.AddRange(new object[] { "Php 10000 - php 20000", "Php 10000 - php 20000", "Php 10000 - php 20000", "Php 10000 - php 20000" });
-            comboBox5.Location = new Point(679, 123);
-            comboBox5.Name = "comboBox5";
-            comboBox5.Size = new Size(123, 27);
-            comboBox5.TabIndex = 42;
-            comboBox5.Text = "Annual Income";
+            position.BorderStyle = BorderStyle.FixedSingle;
+            position.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            position.Location = new Point(581, 146);
+            position.Name = "position";
+            position.Size = new Size(242, 27);
+            position.TabIndex = 37;
             // 
-            // textBox8
+            // email
             // 
-            textBox8.BorderStyle = BorderStyle.FixedSingle;
-            textBox8.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox8.Location = new Point(448, 124);
-            textBox8.Name = "textBox8";
-            textBox8.PlaceholderText = " Job Title / Position";
-            textBox8.Size = new Size(215, 27);
-            textBox8.TabIndex = 37;
+            email.BorderStyle = BorderStyle.FixedSingle;
+            email.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            email.Location = new Point(24, 284);
+            email.Name = "email";
+            email.Size = new Size(249, 27);
+            email.TabIndex = 48;
             // 
-            // textBox5
+            // employerStatus
             // 
-            textBox5.BorderStyle = BorderStyle.FixedSingle;
-            textBox5.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox5.Location = new Point(24, 239);
-            textBox5.Name = "textBox5";
-            textBox5.PlaceholderText = " Email Address";
-            textBox5.Size = new Size(181, 27);
-            textBox5.TabIndex = 48;
+            employerStatus.Font = new Font("Tahoma", 12F);
+            employerStatus.ForeColor = SystemColors.WindowFrame;
+            employerStatus.FormattingEnabled = true;
+            employerStatus.Items.AddRange(new object[] { "Full-time", "Part-time", "Self-employed", "Unemployed", "Retired" });
+            employerStatus.Location = new Point(904, 80);
+            employerStatus.Name = "employerStatus";
+            employerStatus.Size = new Size(148, 27);
+            employerStatus.TabIndex = 34;
             // 
-            // comboBox4
+            // employerName
             // 
-            comboBox4.Font = new Font("Tahoma", 12F);
-            comboBox4.ForeColor = SystemColors.WindowFrame;
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Items.AddRange(new object[] { "Full-time", "Part-time", "Self-employed", "Unemployed", "Retired" });
-            comboBox4.Location = new Point(679, 66);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(123, 27);
-            comboBox4.TabIndex = 34;
-            comboBox4.Text = "Status";
+            employerName.BorderStyle = BorderStyle.FixedSingle;
+            employerName.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            employerName.Location = new Point(581, 81);
+            employerName.Name = "employerName";
+            employerName.Size = new Size(317, 27);
+            employerName.TabIndex = 26;
             // 
-            // textBox7
+            // phoneNumber
             // 
-            textBox7.BorderStyle = BorderStyle.FixedSingle;
-            textBox7.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox7.Location = new Point(448, 67);
-            textBox7.Name = "textBox7";
-            textBox7.PlaceholderText = " Employer Name";
-            textBox7.Size = new Size(215, 27);
-            textBox7.TabIndex = 26;
-            // 
-            // textBox4
-            // 
-            textBox4.BorderStyle = BorderStyle.FixedSingle;
-            textBox4.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox4.Location = new Point(294, 180);
-            textBox4.Name = "textBox4";
-            textBox4.PlaceholderText = " Phone Number";
-            textBox4.Size = new Size(112, 27);
-            textBox4.TabIndex = 47;
+            phoneNumber.BorderStyle = BorderStyle.FixedSingle;
+            phoneNumber.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            phoneNumber.Location = new Point(379, 216);
+            phoneNumber.Name = "phoneNumber";
+            phoneNumber.Size = new Size(168, 27);
+            phoneNumber.TabIndex = 47;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Tahoma", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(445, 18);
+            label2.Font = new Font("Tahoma", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.Red;
+            label2.Location = new Point(581, 18);
             label2.Name = "label2";
-            label2.Size = new Size(218, 23);
+            label2.Size = new Size(251, 23);
             label2.TabIndex = 18;
             label2.Text = "Employment Information";
             // 
-            // textBox3
+            // idNumber
             // 
-            textBox3.BorderStyle = BorderStyle.FixedSingle;
-            textBox3.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox3.Location = new Point(160, 180);
-            textBox3.Name = "textBox3";
-            textBox3.PlaceholderText = " ID number";
-            textBox3.Size = new Size(114, 27);
-            textBox3.TabIndex = 41;
+            idNumber.BorderStyle = BorderStyle.FixedSingle;
+            idNumber.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            idNumber.Location = new Point(211, 216);
+            idNumber.Name = "idNumber";
+            idNumber.Size = new Size(162, 27);
+            idNumber.TabIndex = 41;
             // 
-            // comboBox3
+            // idType
             // 
-            comboBox3.Font = new Font("Tahoma", 12F);
-            comboBox3.ForeColor = SystemColors.WindowFrame;
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "National ID", "SSS" });
-            comboBox3.Location = new Point(24, 180);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(117, 27);
-            comboBox3.TabIndex = 38;
-            comboBox3.Text = "ID type";
+            idType.Font = new Font("Tahoma", 12F);
+            idType.ForeColor = SystemColors.WindowFrame;
+            idType.FormattingEnabled = true;
+            idType.Items.AddRange(new object[] { "National ID", "SSS" });
+            idType.Location = new Point(24, 216);
+            idType.Name = "idType";
+            idType.Size = new Size(181, 27);
+            idType.TabIndex = 38;
             // 
-            // comboBox2
+            // martialStatus
             // 
-            comboBox2.Font = new Font("Tahoma", 11F);
-            comboBox2.ForeColor = SystemColors.WindowFrame;
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "Single ", "Married", "Divorced" });
-            comboBox2.Location = new Point(294, 125);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(112, 26);
-            comboBox2.TabIndex = 35;
-            comboBox2.Text = "Marital Status";
+            martialStatus.Font = new Font("Tahoma", 11F);
+            martialStatus.ForeColor = SystemColors.WindowFrame;
+            martialStatus.FormattingEnabled = true;
+            martialStatus.Items.AddRange(new object[] { "Single ", "Married", "Divorced" });
+            martialStatus.Location = new Point(379, 148);
+            martialStatus.Name = "martialStatus";
+            martialStatus.Size = new Size(168, 26);
+            martialStatus.TabIndex = 35;
             // 
-            // comboBox1
+            // gender
             // 
-            comboBox1.Font = new Font("Tahoma", 11F);
-            comboBox1.ForeColor = SystemColors.WindowFrame;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Male", "Female" });
-            comboBox1.Location = new Point(160, 124);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(114, 26);
-            comboBox1.TabIndex = 30;
-            comboBox1.Text = "Gender";
+            gender.Font = new Font("Tahoma", 11F);
+            gender.ForeColor = SystemColors.WindowFrame;
+            gender.FormattingEnabled = true;
+            gender.Items.AddRange(new object[] { "Male", "Female" });
+            gender.Location = new Point(211, 148);
+            gender.Name = "gender";
+            gender.Size = new Size(162, 26);
+            gender.TabIndex = 30;
             // 
-            // lastname
+            // lastName
             // 
-            lastname.BorderStyle = BorderStyle.FixedSingle;
-            lastname.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lastname.Location = new Point(24, 67);
-            lastname.Name = "lastname";
-            lastname.PlaceholderText = " Last Name";
-            lastname.Size = new Size(117, 27);
-            lastname.TabIndex = 23;
+            lastName.BorderStyle = BorderStyle.FixedSingle;
+            lastName.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lastName.Location = new Point(24, 81);
+            lastName.Name = "lastName";
+            lastName.Size = new Size(181, 27);
+            lastName.TabIndex = 23;
             // 
-            // textBox1
+            // firstName
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(160, 67);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = " First Name";
-            textBox1.Size = new Size(114, 27);
-            textBox1.TabIndex = 24;
+            firstName.BorderStyle = BorderStyle.FixedSingle;
+            firstName.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            firstName.Location = new Point(211, 81);
+            firstName.Name = "firstName";
+            firstName.Size = new Size(162, 27);
+            firstName.TabIndex = 24;
             // 
-            // dateTimePicker1
+            // birthdate
             // 
-            dateTimePicker1.CalendarFont = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dateTimePicker1.CalendarForeColor = SystemColors.ControlDark;
-            dateTimePicker1.CalendarTitleBackColor = SystemColors.ControlText;
-            dateTimePicker1.CalendarTitleForeColor = SystemColors.ControlDark;
-            dateTimePicker1.Font = new Font("Tahoma", 11F);
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(24, 125);
-            dateTimePicker1.MaxDate = new DateTime(2004, 12, 31, 0, 0, 0, 0);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(117, 25);
-            dateTimePicker1.TabIndex = 29;
-            dateTimePicker1.Value = new DateTime(2004, 12, 31, 0, 0, 0, 0);
+            birthdate.CalendarFont = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            birthdate.CalendarForeColor = SystemColors.ControlDark;
+            birthdate.CalendarTitleBackColor = SystemColors.ControlText;
+            birthdate.CalendarTitleForeColor = SystemColors.ControlDark;
+            birthdate.Font = new Font("Tahoma", 11F);
+            birthdate.Format = DateTimePickerFormat.Short;
+            birthdate.Location = new Point(24, 149);
+            birthdate.MaxDate = new DateTime(2004, 12, 31, 0, 0, 0, 0);
+            birthdate.Name = "birthdate";
+            birthdate.Size = new Size(181, 25);
+            birthdate.TabIndex = 29;
+            birthdate.Value = new DateTime(2004, 12, 31, 0, 0, 0, 0);
             // 
-            // textBox2
+            // middleName
             // 
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.Location = new Point(294, 67);
-            textBox2.Name = "textBox2";
-            textBox2.PlaceholderText = " Middle Name";
-            textBox2.Size = new Size(112, 27);
-            textBox2.TabIndex = 25;
+            middleName.BorderStyle = BorderStyle.FixedSingle;
+            middleName.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            middleName.Location = new Point(379, 81);
+            middleName.Name = "middleName";
+            middleName.Size = new Size(168, 27);
+            middleName.TabIndex = 25;
             // 
-            // formNewAppCreate
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.ForeColor = SystemColors.ControlText;
+            label7.Location = new Point(24, 60);
+            label7.Name = "label7";
+            label7.Size = new Size(87, 18);
+            label7.TabIndex = 54;
+            label7.Text = "Last Name";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.ForeColor = SystemColors.ControlText;
+            label8.Location = new Point(211, 60);
+            label8.Name = "label8";
+            label8.Size = new Size(90, 18);
+            label8.TabIndex = 55;
+            label8.Text = "First Name";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.ForeColor = SystemColors.ControlText;
+            label9.Location = new Point(379, 60);
+            label9.Name = "label9";
+            label9.Size = new Size(105, 18);
+            label9.TabIndex = 56;
+            label9.Text = "Middle Name";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.ForeColor = SystemColors.ControlText;
+            label10.Location = new Point(24, 128);
+            label10.Name = "label10";
+            label10.Size = new Size(72, 18);
+            label10.TabIndex = 57;
+            label10.Text = "Birthday";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.ForeColor = SystemColors.ControlText;
+            label11.Location = new Point(211, 128);
+            label11.Name = "label11";
+            label11.Size = new Size(62, 18);
+            label11.TabIndex = 58;
+            label11.Text = "Gender";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.ForeColor = SystemColors.ControlText;
+            label12.Location = new Point(379, 128);
+            label12.Name = "label12";
+            label12.Size = new Size(114, 18);
+            label12.TabIndex = 59;
+            label12.Text = "Martial Status";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label13.ForeColor = SystemColors.ControlText;
+            label13.Location = new Point(24, 195);
+            label13.Name = "label13";
+            label13.Size = new Size(66, 18);
+            label13.TabIndex = 60;
+            label13.Text = "ID Type";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label14.ForeColor = SystemColors.ControlText;
+            label14.Location = new Point(211, 195);
+            label14.Name = "label14";
+            label14.Size = new Size(89, 18);
+            label14.TabIndex = 61;
+            label14.Text = "ID Number";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label15.ForeColor = SystemColors.ControlText;
+            label15.Location = new Point(379, 195);
+            label15.Name = "label15";
+            label15.Size = new Size(117, 18);
+            label15.TabIndex = 62;
+            label15.Text = "Phone Number";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label16.ForeColor = SystemColors.ControlText;
+            label16.Location = new Point(24, 263);
+            label16.Name = "label16";
+            label16.Size = new Size(49, 18);
+            label16.TabIndex = 63;
+            label16.Text = "Email";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label17.ForeColor = SystemColors.ControlText;
+            label17.Location = new Point(279, 263);
+            label17.Name = "label17";
+            label17.Size = new Size(68, 18);
+            label17.TabIndex = 64;
+            label17.Text = "Address";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label18.ForeColor = SystemColors.ControlText;
+            label18.Location = new Point(581, 60);
+            label18.Name = "label18";
+            label18.Size = new Size(125, 18);
+            label18.TabIndex = 65;
+            label18.Text = "Employer Name";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label19.ForeColor = SystemColors.ControlText;
+            label19.Location = new Point(904, 60);
+            label19.Name = "label19";
+            label19.Size = new Size(56, 18);
+            label19.TabIndex = 66;
+            label19.Text = "Status";
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label20.ForeColor = SystemColors.ControlText;
+            label20.Location = new Point(581, 125);
+            label20.Name = "label20";
+            label20.Size = new Size(69, 18);
+            label20.TabIndex = 67;
+            label20.Text = "Position";
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label21.ForeColor = SystemColors.ControlText;
+            label21.Location = new Point(829, 128);
+            label21.Name = "label21";
+            label21.Size = new Size(118, 18);
+            label21.TabIndex = 68;
+            label21.Text = "Annual Income";
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label22.ForeColor = SystemColors.ControlText;
+            label22.Location = new Point(581, 195);
+            label22.Name = "label22";
+            label22.Size = new Size(169, 18);
+            label22.TabIndex = 69;
+            label22.Text = "Years Of Employment";
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label23.ForeColor = SystemColors.ControlText;
+            label23.Location = new Point(829, 195);
+            label23.Name = "label23";
+            label23.Size = new Size(122, 18);
+            label23.TabIndex = 70;
+            label23.Text = "Contact Details";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = SystemColors.ControlText;
+            label5.Location = new Point(24, 369);
+            label5.Name = "label5";
+            label5.Size = new Size(84, 18);
+            label5.TabIndex = 71;
+            label5.Text = "Loan Type";
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label24.ForeColor = SystemColors.ControlText;
+            label24.Location = new Point(210, 369);
+            label24.Name = "label24";
+            label24.Size = new Size(64, 18);
+            label24.TabIndex = 72;
+            label24.Text = "Amount";
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label25.ForeColor = SystemColors.ControlText;
+            label25.Location = new Point(24, 439);
+            label25.Name = "label25";
+            label25.Size = new Size(109, 18);
+            label25.TabIndex = 73;
+            label25.Text = "Loan Purpose";
+            // 
+            // label26
+            // 
+            label26.AutoSize = true;
+            label26.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label26.ForeColor = SystemColors.ControlText;
+            label26.Location = new Point(211, 439);
+            label26.Name = "label26";
+            label26.Size = new Size(134, 18);
+            label26.TabIndex = 74;
+            label26.Text = "Repayment Term";
+            // 
+            // label27
+            // 
+            label27.AutoSize = true;
+            label27.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label27.ForeColor = SystemColors.ControlText;
+            label27.Location = new Point(582, 368);
+            label27.Name = "label27";
+            label27.Size = new Size(132, 18);
+            label27.TabIndex = 75;
+            label27.Text = "Estemated Value";
+            // 
+            // label28
+            // 
+            label28.AutoSize = true;
+            label28.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label28.ForeColor = SystemColors.ControlText;
+            label28.Location = new Point(407, 369);
+            label28.Name = "label28";
+            label28.Size = new Size(122, 18);
+            label28.TabIndex = 76;
+            label28.Text = "Collateral Type";
+            // 
+            // label29
+            // 
+            label29.AutoSize = true;
+            label29.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label29.ForeColor = SystemColors.ControlText;
+            label29.Location = new Point(407, 438);
+            label29.Name = "label29";
+            label29.Size = new Size(172, 18);
+            label29.TabIndex = 77;
+            label29.Text = "Collateral Description";
+            // 
+            // label30
+            // 
+            label30.AutoSize = true;
+            label30.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label30.ForeColor = SystemColors.ControlText;
+            label30.Location = new Point(794, 371);
+            label30.Name = "label30";
+            label30.Size = new Size(127, 18);
+            label30.TabIndex = 78;
+            label30.Text = "Monthly Income";
+            // 
+            // label31
+            // 
+            label31.AutoSize = true;
+            label31.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label31.ForeColor = SystemColors.ControlText;
+            label31.Location = new Point(794, 440);
+            label31.Name = "label31";
+            label31.Size = new Size(78, 18);
+            label31.TabIndex = 79;
+            label31.Text = "Expenses";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Tahoma", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.Red;
+            label6.Location = new Point(407, 328);
+            label6.Name = "label6";
+            label6.Size = new Size(223, 23);
+            label6.TabIndex = 80;
+            label6.Text = "Collateral Information";
+            // 
+            // amount
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1076, 570);
+            Controls.Add(label6);
+            Controls.Add(label31);
+            Controls.Add(label30);
+            Controls.Add(label29);
+            Controls.Add(label28);
+            Controls.Add(label27);
+            Controls.Add(label26);
+            Controls.Add(label25);
+            Controls.Add(label24);
+            Controls.Add(label5);
+            Controls.Add(label23);
+            Controls.Add(label22);
+            Controls.Add(label21);
+            Controls.Add(label20);
+            Controls.Add(label19);
+            Controls.Add(label18);
+            Controls.Add(label17);
+            Controls.Add(label16);
+            Controls.Add(label15);
+            Controls.Add(label14);
+            Controls.Add(label13);
+            Controls.Add(label12);
+            Controls.Add(label11);
+            Controls.Add(label10);
+            Controls.Add(label9);
+            Controls.Add(label8);
+            Controls.Add(label7);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(textBox14);
-            Controls.Add(comboBox9);
-            Controls.Add(textBox13);
-            Controls.Add(textBox12);
-            Controls.Add(comboBox10);
-            Controls.Add(comboBox8);
-            Controls.Add(label6);
-            Controls.Add(checkBox3);
-            Controls.Add(textBox10);
-            Controls.Add(textBox11);
-            Controls.Add(comboBox7);
-            Controls.Add(textBox9);
+            Controls.Add(estematedValue);
+            Controls.Add(repaymentTerm);
+            Controls.Add(collateralDesription);
+            Controls.Add(expenses);
+            Controls.Add(collateralType);
+            Controls.Add(loanPurpose);
+            Controls.Add(collateralDocument);
+            Controls.Add(amountLoan);
+            Controls.Add(monthlyIncome);
+            Controls.Add(loanType);
+            Controls.Add(employerContact);
             Controls.Add(label3);
             Controls.Add(label4);
-            Controls.Add(checkBox2);
+            Controls.Add(identityProof);
             Controls.Add(label1);
-            Controls.Add(comboBox6);
-            Controls.Add(checkBox1);
-            Controls.Add(label5);
-            Controls.Add(textBox6);
-            Controls.Add(comboBox5);
-            Controls.Add(textBox8);
-            Controls.Add(textBox5);
-            Controls.Add(comboBox4);
-            Controls.Add(textBox7);
-            Controls.Add(textBox4);
+            Controls.Add(yearEmployment);
+            Controls.Add(incomeProof);
+            Controls.Add(address);
+            Controls.Add(annualIncome);
+            Controls.Add(position);
+            Controls.Add(email);
+            Controls.Add(employerStatus);
+            Controls.Add(employerName);
+            Controls.Add(phoneNumber);
             Controls.Add(label2);
-            Controls.Add(textBox3);
-            Controls.Add(comboBox3);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
-            Controls.Add(lastname);
-            Controls.Add(textBox1);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(textBox2);
+            Controls.Add(idNumber);
+            Controls.Add(idType);
+            Controls.Add(martialStatus);
+            Controls.Add(gender);
+            Controls.Add(lastName);
+            Controls.Add(firstName);
+            Controls.Add(birthdate);
+            Controls.Add(middleName);
+            ForeColor = SystemColors.ControlText;
             FormBorderStyle = FormBorderStyle.None;
-            Name = "formNewAppCreate";
+            Name = "amount";
             Text = "formNewAppCreate";
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).EndInit();
             ResumeLayout(false);
@@ -531,41 +838,66 @@
 
         private Button button2;
         private Button button1;
-        private TextBox textBox14;
-        private ComboBox comboBox9;
-        private TextBox textBox13;
-        private TextBox textBox12;
-        private ComboBox comboBox10;
-        private ComboBox comboBox8;
-        private Label label6;
-        private CheckBox checkBox3;
-        private TextBox textBox10;
-        private TextBox textBox11;
-        private ComboBox comboBox7;
-        private TextBox textBox9;
+        private TextBox estematedValue;
+        private ComboBox repaymentTerm;
+        private TextBox collateralDesription;
+        private TextBox expenses;
+        private ComboBox collateralType;
+        private ComboBox loanPurpose;
+        private CheckBox collateralDocument;
+        private TextBox amountLoan;
+        private TextBox monthlyIncome;
+        private ComboBox loanType;
+        private TextBox employerContact;
         private Label label3;
         private Label label4;
-        private CheckBox checkBox2;
+        private CheckBox identityProof;
         private Label label1;
-        private ComboBox comboBox6;
+        private ComboBox yearEmployment;
         private FileSystemWatcher fileSystemWatcher1;
-        private CheckBox checkBox1;
-        private Label label5;
-        private TextBox textBox6;
-        private ComboBox comboBox5;
-        private TextBox textBox8;
-        private TextBox textBox5;
-        private ComboBox comboBox4;
-        private TextBox textBox7;
-        private TextBox textBox4;
+        private CheckBox incomeProof;
+        private TextBox address;
+        private ComboBox annualIncome;
+        private TextBox position;
+        private TextBox email;
+        private ComboBox employerStatus;
+        private TextBox employerName;
+        private TextBox phoneNumber;
         private Label label2;
-        private TextBox textBox3;
-        private ComboBox comboBox3;
-        private ComboBox comboBox2;
-        private ComboBox comboBox1;
-        private TextBox lastname;
-        private TextBox textBox1;
-        private DateTimePicker dateTimePicker1;
-        private TextBox textBox2;
+        private TextBox idNumber;
+        private ComboBox idType;
+        private ComboBox martialStatus;
+        private ComboBox gender;
+        private TextBox lastName;
+        private TextBox firstName;
+        private DateTimePicker birthdate;
+        private TextBox middleName;
+        private Label label9;
+        private Label label8;
+        private Label label7;
+        private Label label13;
+        private Label label12;
+        private Label label11;
+        private Label label10;
+        private Label label19;
+        private Label label18;
+        private Label label17;
+        private Label label16;
+        private Label label15;
+        private Label label14;
+        private Label label23;
+        private Label label22;
+        private Label label21;
+        private Label label20;
+        private Label label26;
+        private Label label25;
+        private Label label24;
+        private Label label5;
+        private Label label31;
+        private Label label30;
+        private Label label29;
+        private Label label28;
+        private Label label27;
+        private Label label6;
     }
 }

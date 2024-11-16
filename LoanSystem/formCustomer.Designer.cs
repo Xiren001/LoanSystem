@@ -75,7 +75,7 @@
             FullName.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             FullName.HeaderText = "Full Name";
             FullName.Name = "FullName";
-            FullName.Width = 79;
+            FullName.Width = 86;
             // 
             // ContactInformation
             // 
@@ -121,10 +121,9 @@
             // 
             // Action
             // 
-            Action.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Action.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Action.HeaderText = "Action";
             Action.Name = "Action";
-            Action.Width = 67;
             // 
             // formCustomer
             // 

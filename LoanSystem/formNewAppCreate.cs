@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LoanSystem
 {
-    public partial class formNewAppCreate : Form
+    public partial class amount : Form
     {
-        public formNewAppCreate()
+        public amount()
         {
             InitializeComponent();
         }
