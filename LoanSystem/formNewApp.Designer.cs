@@ -56,6 +56,7 @@
             newAppBtn.TabIndex = 24;
             newAppBtn.Text = "Create";
             newAppBtn.UseVisualStyleBackColor = false;
+            newAppBtn.Click += newAppBtn_Click;
             // 
             // dataGridView1
             // 
@@ -83,6 +84,7 @@
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.Size = new Size(1068, 541);
             dataGridView1.TabIndex = 25;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // ApplicationID
             // 

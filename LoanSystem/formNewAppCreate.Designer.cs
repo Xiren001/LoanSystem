@@ -1,6 +1,6 @@
 ﻿namespace LoanSystem
 {
-    partial class amount
+    partial class newAppCreate
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button2 = new Button();
-            button1 = new Button();
+            btnCancelNewApp = new Button();
+            btnCreateNewApp = new Button();
             estematedValue = new TextBox();
             repaymentTerm = new ComboBox();
             collateralDesription = new TextBox();
@@ -52,7 +52,7 @@
             annualIncome = new ComboBox();
             position = new TextBox();
             email = new TextBox();
-            employerStatus = new ComboBox();
+            employmentStatus = new ComboBox();
             employerName = new TextBox();
             phoneNumber = new TextBox();
             label2 = new Label();
@@ -94,29 +94,31 @@
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).BeginInit();
             SuspendLayout();
             // 
-            // button2
+            // btnCancelNewApp
             // 
-            button2.BackColor = Color.Gray;
-            button2.Font = new Font("Tahoma", 12F);
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(781, 513);
-            button2.Name = "button2";
-            button2.Size = new Size(133, 40);
-            button2.TabIndex = 53;
-            button2.Text = "Cancel";
-            button2.UseVisualStyleBackColor = false;
+            btnCancelNewApp.BackColor = Color.Gray;
+            btnCancelNewApp.Font = new Font("Tahoma", 12F);
+            btnCancelNewApp.ForeColor = Color.White;
+            btnCancelNewApp.Location = new Point(781, 513);
+            btnCancelNewApp.Name = "btnCancelNewApp";
+            btnCancelNewApp.Size = new Size(133, 40);
+            btnCancelNewApp.TabIndex = 53;
+            btnCancelNewApp.Text = "Cancel";
+            btnCancelNewApp.UseVisualStyleBackColor = false;
+            btnCancelNewApp.Click += btnCancelNewApp_Click;
             // 
-            // button1
+            // btnCreateNewApp
             // 
-            button1.BackColor = Color.SeaGreen;
-            button1.Font = new Font("Tahoma", 12F);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(920, 513);
-            button1.Name = "button1";
-            button1.Size = new Size(133, 40);
-            button1.TabIndex = 52;
-            button1.Text = "Save";
-            button1.UseVisualStyleBackColor = false;
+            btnCreateNewApp.BackColor = Color.SeaGreen;
+            btnCreateNewApp.Font = new Font("Tahoma", 12F);
+            btnCreateNewApp.ForeColor = Color.White;
+            btnCreateNewApp.Location = new Point(920, 513);
+            btnCreateNewApp.Name = "btnCreateNewApp";
+            btnCreateNewApp.Size = new Size(133, 40);
+            btnCreateNewApp.TabIndex = 52;
+            btnCreateNewApp.Text = "Create";
+            btnCreateNewApp.UseVisualStyleBackColor = false;
+            btnCreateNewApp.Click += btnCreateNewApp_Click;
             // 
             // estematedValue
             // 
@@ -312,7 +314,7 @@
             annualIncome.Font = new Font("Tahoma", 12F);
             annualIncome.ForeColor = SystemColors.WindowFrame;
             annualIncome.FormattingEnabled = true;
-            annualIncome.Items.AddRange(new object[] { "Php 10000 - php 20000", "Php 10000 - php 20000", "Php 10000 - php 20000", "Php 10000 - php 20000" });
+            annualIncome.Items.AddRange(new object[] { "10000 ", "20000", "30000", "40000" });
             annualIncome.Location = new Point(829, 146);
             annualIncome.Name = "annualIncome";
             annualIncome.Size = new Size(223, 27);
@@ -336,16 +338,16 @@
             email.Size = new Size(249, 27);
             email.TabIndex = 48;
             // 
-            // employerStatus
+            // employmentStatus
             // 
-            employerStatus.Font = new Font("Tahoma", 12F);
-            employerStatus.ForeColor = SystemColors.WindowFrame;
-            employerStatus.FormattingEnabled = true;
-            employerStatus.Items.AddRange(new object[] { "Full-time", "Part-time", "Self-employed", "Unemployed", "Retired" });
-            employerStatus.Location = new Point(904, 80);
-            employerStatus.Name = "employerStatus";
-            employerStatus.Size = new Size(148, 27);
-            employerStatus.TabIndex = 34;
+            employmentStatus.Font = new Font("Tahoma", 12F);
+            employmentStatus.ForeColor = SystemColors.WindowFrame;
+            employmentStatus.FormattingEnabled = true;
+            employmentStatus.Items.AddRange(new object[] { "Full-time", "Part-time", "Self-employed", "Unemployed", "Retired" });
+            employmentStatus.Location = new Point(904, 80);
+            employmentStatus.Name = "employmentStatus";
+            employmentStatus.Size = new Size(148, 27);
+            employmentStatus.TabIndex = 34;
             // 
             // employerName
             // 
@@ -500,9 +502,9 @@
             label10.ForeColor = SystemColors.ControlText;
             label10.Location = new Point(24, 128);
             label10.Name = "label10";
-            label10.Size = new Size(72, 18);
+            label10.Size = new Size(84, 18);
             label10.TabIndex = 57;
-            label10.Text = "Birthday";
+            label10.Text = "Birth Date";
             // 
             // label11
             // 
@@ -757,7 +759,7 @@
             label6.TabIndex = 80;
             label6.Text = "Collateral Information";
             // 
-            // amount
+            // newAppCreate
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -790,8 +792,8 @@
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(label7);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnCancelNewApp);
+            Controls.Add(btnCreateNewApp);
             Controls.Add(estematedValue);
             Controls.Add(repaymentTerm);
             Controls.Add(collateralDesription);
@@ -813,7 +815,7 @@
             Controls.Add(annualIncome);
             Controls.Add(position);
             Controls.Add(email);
-            Controls.Add(employerStatus);
+            Controls.Add(employmentStatus);
             Controls.Add(employerName);
             Controls.Add(phoneNumber);
             Controls.Add(label2);
@@ -827,8 +829,9 @@
             Controls.Add(middleName);
             ForeColor = SystemColors.ControlText;
             FormBorderStyle = FormBorderStyle.None;
-            Name = "amount";
+            Name = "newAppCreate";
             Text = "formNewAppCreate";
+            Load += newAppCreate_Load;
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -836,8 +839,8 @@
 
         #endregion
 
-        private Button button2;
-        private Button button1;
+        private Button btnCancelNewApp;
+        private Button btnCreateNewApp;
         private TextBox estematedValue;
         private ComboBox repaymentTerm;
         private TextBox collateralDesription;
@@ -860,7 +863,7 @@
         private ComboBox annualIncome;
         private TextBox position;
         private TextBox email;
-        private ComboBox employerStatus;
+        private ComboBox employmentStatus;
         private TextBox employerName;
         private TextBox phoneNumber;
         private Label label2;

@@ -21,5 +21,19 @@ namespace LoanSystem
         {
             this.ControlBox = false;
         }
+
+        private void newAppBtn_Click(object sender, EventArgs e)
+        {
+            newAppCreate newAppForm = new newAppCreate();
+            newAppForm.MdiParent = this.MdiParent;
+            newAppForm.Dock = DockStyle.Fill;
+            newAppForm.Show();
+            this.Close();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

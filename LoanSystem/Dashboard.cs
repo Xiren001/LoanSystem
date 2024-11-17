@@ -117,7 +117,10 @@ namespace LoanSystem
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-
+            formDashboard initialForm = new formDashboard();
+            initialForm.MdiParent = this;
+            initialForm.Dock = DockStyle.Fill;
+            initialForm.Show();
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
