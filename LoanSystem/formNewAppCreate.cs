@@ -43,14 +43,14 @@ namespace LoanSystem
             phonenumber, email, address, employername, employmentstatus, position, annualincome, 
             yearsemployment, employercontact, incomeproof, identtityproof, collateraldocument, 
             loantype, amount, loanpurpose, repaymentterm, collateraltype, estimatedvalue, 
-            collateraldescription, monthlyincome, expenses
+            collateraldescription, monthlyincome, expenses, applicationdate
         ) 
         VALUES (
             @LastName, @FirstName, @MiddleName, @DOB, @Gender, @MartialStatus, @IdType, @IdNumber, 
             @PhoneNumber, @Email, @Address, @EmployerName, @EmploymentStatus, @Position, @AnnualIncome, 
             @YearsEmployment, @EmployerContact, @IncomeProof, @IdentityProof, @CollateralDocument, 
             @LoanType, @Amount, @LoanPurpose, @RepaymentTerm, @CollateralType, @EstimatedValue, 
-            @CollateralDescription, @MonthlyIncome, @Expenses
+            @CollateralDescription, @MonthlyIncome, @Expenses, @ApplicationDate
         )";
 
             // Connect to the database and execute the query
@@ -91,6 +91,7 @@ namespace LoanSystem
                         command.Parameters.AddWithValue("@CollateralDescription", collateralDesription.Text);
                         command.Parameters.AddWithValue("@MonthlyIncome", monthlyIncome.Text);
                         command.Parameters.AddWithValue("@Expenses", expenses.Text);
+                        command.Parameters.AddWithValue("@ApplicationDate", applicationdate.Value);
 
                         // Execute the query
                         command.ExecuteNonQuery();

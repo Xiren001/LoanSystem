@@ -20,6 +20,12 @@ namespace LoanSystem
             InitializeComponent();
         }
 
+        private void SignupForm_Load(object sender, EventArgs e)
+        {
+            // Load data into DataGridView when the form loads
+            LoadData();
+        }
+
         private void SignUpBtn_Click(object sender, EventArgs e)
         {
             // Check if all required fields are filled
@@ -101,5 +107,90 @@ namespace LoanSystem
                 }
             }
         }
+
+        private void LoadData()
+        {
+            // Connection string - replace placeholders with your database details
+            string connectionString = "Data Source=XIREN\\SQLEXPRESS;Initial Catalog=LoanWise;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;";
+
+            try
+            {
+                // Corrected SQL query to retrieve data from your table
+                string query = "SELECT id, email, username, usertype FROM users_tbl";
+
+                // Establish a connection to the SQL Server
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    // Fetch data using SqlDataAdapter
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    // Bind the data to the DataGridView
+                    dataGridView1.DataSource = dataTable;
+
+                    // Adjust column headers and data mappings
+                    ConfigureDataGridViewColumns();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show error message if something goes wrong
+                MessageBox.Show($"An error occurred while loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void ConfigureDataGridViewColumns()
+        {
+            // Clear existing columns to avoid duplication
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.Columns.Clear();
+
+            // Set DataGridView to fill all columns proportionally
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Add ID column
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Employee ID",
+                DataPropertyName = "id",
+                Name = "idColumn"
+            });
+
+            // Add  Name column
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Full Name",
+                DataPropertyName = "username",
+                Name = "FullNameColumn"
+            });
+
+            // Add EMail column
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Email",
+                DataPropertyName = "email",
+                Name = "EmailColumn"
+            });
+
+            // Add Position column
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Position",
+                DataPropertyName = "usertype",
+                Name = "PositionColumn"
+            });
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        
     }
 }

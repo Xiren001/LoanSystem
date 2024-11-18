@@ -130,6 +130,7 @@ namespace LoanSystem
                 dashb = new formDashboard();
                 dashb.FormClosed += Dashb_FormClosed;
                 dashb.MdiParent = this;
+                dashb.Dock = DockStyle.Fill;
                 dashb.Show();
 
             }

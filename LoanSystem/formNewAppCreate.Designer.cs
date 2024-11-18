@@ -91,6 +91,7 @@
             label30 = new Label();
             label31 = new Label();
             label6 = new Label();
+            applicationdate = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).BeginInit();
             SuspendLayout();
             // 
@@ -759,12 +760,23 @@
             label6.TabIndex = 80;
             label6.Text = "Collateral Information";
             // 
+            // applicationdate
+            // 
+            applicationdate.Enabled = false;
+            applicationdate.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            applicationdate.Location = new Point(24, 535);
+            applicationdate.Name = "applicationdate";
+            applicationdate.Size = new Size(249, 23);
+            applicationdate.TabIndex = 81;
+            applicationdate.Visible = false;
+            // 
             // newAppCreate
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1076, 570);
+            Controls.Add(applicationdate);
             Controls.Add(label6);
             Controls.Add(label31);
             Controls.Add(label30);
@@ -902,5 +914,6 @@
         private Label label28;
         private Label label27;
         private Label label6;
+        private DateTimePicker applicationdate;
     }
 }
