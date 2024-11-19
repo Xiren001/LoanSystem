@@ -97,8 +97,7 @@ namespace LoanSystem
                         command.ExecuteNonQuery();
                         MessageBox.Show("Application created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        // Optionally reset the form or navigate to another screen
-                        this.Close(); // Close the current form
+                        ClearFields();
                     }
                 }
                 catch (Exception ex)
@@ -107,6 +106,41 @@ namespace LoanSystem
                 }
             }
         }
+
+
+        private void ClearFields()
+        {
+            lastName.Clear();
+            firstName.Clear();
+            middleName.Clear();
+            gender.SelectedIndex = -1;
+            martialStatus.SelectedIndex = -1;
+            idType.SelectedIndex = -1;
+            idNumber.Clear();
+            phoneNumber.Clear();
+            email.Clear();
+            address.Clear();
+            employerName.Clear();
+            employmentStatus.SelectedIndex = -1;
+            position.Clear();
+            annualIncome.SelectedIndex = -1;
+            yearEmployment.SelectedIndex = -1;
+            employerContact.Clear();
+            incomeProof.Checked = false;
+            identityProof.Checked = false;
+            collateralDocument.Checked = false;
+            loanType.SelectedIndex = -1;
+            amountLoan.Clear();
+            loanPurpose.SelectedIndex = -1;
+            repaymentTerm.SelectedIndex = -1;
+            collateralType.SelectedIndex = -1;
+            estematedValue.Clear();
+            collateralDesription.Clear();
+            monthlyIncome.Clear();
+            expenses.Clear();
+            applicationdate.Value = DateTime.Now;
+        }
+
 
 
         private void btnCancelNewApp_Click(object sender, EventArgs e)

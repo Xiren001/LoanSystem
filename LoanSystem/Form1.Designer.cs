@@ -38,7 +38,6 @@
             panel2 = new Panel();
             SigninPassword = new TextBox();
             SignInBtn = new Button();
-            forgotpass = new LinkLabel();
             SigninShowpass = new CheckBox();
             closeSignin = new Label();
             panelSign.SuspendLayout();
@@ -53,9 +52,9 @@
             lblSign.Font = new Font("Tahoma", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSign.Location = new Point(486, 59);
             lblSign.Name = "lblSign";
-            lblSign.Size = new Size(136, 35);
+            lblSign.Size = new Size(112, 35);
             lblSign.TabIndex = 1;
-            lblSign.Text = "SIGN IN";
+            lblSign.Text = "LOGIN";
             // 
             // panelSign
             // 
@@ -66,6 +65,7 @@
             panelSign.Name = "panelSign";
             panelSign.Size = new Size(363, 450);
             panelSign.TabIndex = 2;
+            panelSign.Paint += panelSign_Paint;
             // 
             // label1
             // 
@@ -73,11 +73,11 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(79, 226);
+            label1.Location = new Point(91, 215);
             label1.Name = "label1";
-            label1.Size = new Size(198, 19);
+            label1.Size = new Size(186, 19);
             label1.TabIndex = 3;
-            label1.Text = "Enter you details to sign in";
+            label1.Text = "Enter you details to login";
             // 
             // SigninHello
             // 
@@ -85,7 +85,7 @@
             SigninHello.BackColor = Color.Transparent;
             SigninHello.Font = new Font("Tahoma", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SigninHello.ForeColor = Color.White;
-            SigninHello.Location = new Point(112, 158);
+            SigninHello.Location = new Point(131, 158);
             SigninHello.Name = "SigninHello";
             SigninHello.Size = new Size(100, 35);
             SigninHello.TabIndex = 2;
@@ -153,20 +153,6 @@
             SignInBtn.UseVisualStyleBackColor = false;
             SignInBtn.Click += SignInBtn_Click;
             // 
-            // forgotpass
-            // 
-            forgotpass.ActiveLinkColor = Color.WhiteSmoke;
-            forgotpass.AutoSize = true;
-            forgotpass.Font = new Font("Tahoma", 10F);
-            forgotpass.LinkColor = Color.Black;
-            forgotpass.Location = new Point(396, 342);
-            forgotpass.Name = "forgotpass";
-            forgotpass.Size = new Size(151, 17);
-            forgotpass.TabIndex = 5;
-            forgotpass.TabStop = true;
-            forgotpass.Text = "Forgot your password?";
-            forgotpass.VisitedLinkColor = Color.Gray;
-            // 
             // SigninShowpass
             // 
             SigninShowpass.AutoSize = true;
@@ -199,7 +185,6 @@
             ClientSize = new Size(755, 450);
             Controls.Add(closeSignin);
             Controls.Add(SigninShowpass);
-            Controls.Add(forgotpass);
             Controls.Add(SignInBtn);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -235,7 +220,6 @@
         private Panel panel2;
         private TextBox SigninPassword;
         private Button SignInBtn;
-        private LinkLabel forgotpass;
         private CheckBox SigninShowpass;
         private Label closeSignin;
     }

@@ -448,7 +448,7 @@
             birthdate.Font = new Font("Tahoma", 11F);
             birthdate.Format = DateTimePickerFormat.Short;
             birthdate.Location = new Point(24, 149);
-            birthdate.MaxDate = new DateTime(2004, 12, 31, 0, 0, 0, 0);
+            birthdate.MaxDate = new DateTime(2024, 11, 19, 0, 0, 0, 0);
             birthdate.Name = "birthdate";
             birthdate.Size = new Size(181, 25);
             birthdate.TabIndex = 29;

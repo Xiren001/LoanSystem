@@ -329,7 +329,7 @@
             btnReport.Padding = new Padding(25, 0, 0, 0);
             btnReport.Size = new Size(251, 68);
             btnReport.TabIndex = 2;
-            btnReport.Text = "         Reports and Analytics";
+            btnReport.Text = "Reports";
             btnReport.UseVisualStyleBackColor = false;
             btnReport.Click += btnReport_Click;
             // 
@@ -353,7 +353,7 @@
             btnEmplo.Padding = new Padding(25, 0, 0, 0);
             btnEmplo.Size = new Size(251, 74);
             btnEmplo.TabIndex = 2;
-            btnEmplo.Text = "         Employees";
+            btnEmplo.Text = "Employees";
             btnEmplo.UseVisualStyleBackColor = false;
             btnEmplo.Click += btnEmplo_Click;
             // 

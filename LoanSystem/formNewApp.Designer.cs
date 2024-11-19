@@ -61,6 +61,8 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
             dataGridViewCellStyle1.Font = new Font("Tahoma", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
@@ -90,6 +92,7 @@
             dataGridView1.GridColor = Color.Black;
             dataGridView1.Location = new Point(12, 56);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.Size = new Size(1068, 541);
             dataGridView1.TabIndex = 25;
@@ -100,12 +103,14 @@
             ApplicationID.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ApplicationID.HeaderText = "Application ID";
             ApplicationID.Name = "ApplicationID";
+            ApplicationID.ReadOnly = true;
             // 
             // ApplicantName
             // 
             ApplicantName.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             ApplicantName.HeaderText = "Applicant Name";
             ApplicantName.Name = "ApplicantName";
+            ApplicantName.ReadOnly = true;
             ApplicantName.Width = 116;
             // 
             // ApplicationDate
@@ -113,48 +118,56 @@
             ApplicationDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ApplicationDate.HeaderText = "Application Date";
             ApplicationDate.Name = "ApplicationDate";
+            ApplicationDate.ReadOnly = true;
             // 
             // LoanType
             // 
             LoanType.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             LoanType.HeaderText = "Loan Type";
             LoanType.Name = "LoanType";
+            LoanType.ReadOnly = true;
             // 
             // LoanAmount
             // 
             LoanAmount.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             LoanAmount.HeaderText = "Loan Amount";
             LoanAmount.Name = "LoanAmount";
+            LoanAmount.ReadOnly = true;
             // 
             // EmploymentStatus
             // 
             EmploymentStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             EmploymentStatus.HeaderText = "Employment Status";
             EmploymentStatus.Name = "EmploymentStatus";
+            EmploymentStatus.ReadOnly = true;
             // 
             // AnnualIncome
             // 
             AnnualIncome.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             AnnualIncome.HeaderText = "Annual Income";
             AnnualIncome.Name = "AnnualIncome";
+            AnnualIncome.ReadOnly = true;
             // 
             // Status
             // 
             Status.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Status.HeaderText = "Status";
             Status.Name = "Status";
+            Status.ReadOnly = true;
             // 
             // AssignedOfficer
             // 
             AssignedOfficer.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             AssignedOfficer.HeaderText = "Assigned Officer";
             AssignedOfficer.Name = "AssignedOfficer";
+            AssignedOfficer.ReadOnly = true;
             // 
             // Action
             // 
             Action.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Action.HeaderText = "Action";
             Action.Name = "Action";
+            Action.ReadOnly = true;
             // 
             // formNewApp
             // 

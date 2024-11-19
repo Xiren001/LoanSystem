@@ -28,31 +28,27 @@ namespace LoanSystem
 
         private void SignUpBtn_Click(object sender, EventArgs e)
         {
-            // Check if all required fields are filled
             if (string.IsNullOrWhiteSpace(signupEmail.Text) ||
                 string.IsNullOrWhiteSpace(signupName.Text) ||
                 string.IsNullOrWhiteSpace(signupPass.Text) ||
                 string.IsNullOrWhiteSpace(signupConpass.Text))
             {
                 MessageBox.Show("All fields are required. Please fill in all fields.", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; // Exit the method if any field is empty
+                return;
             }
 
-            // Check if the passwords match
             if (signupPass.Text.Trim() != signupConpass.Text.Trim())
             {
                 MessageBox.Show("Passwords do not match. Please re-enter your password.", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; // Exit the method if passwords don't match
+                return;
             }
 
-            // Ensure connection is not null and set correctly
             if (connect.State != ConnectionState.Open)
             {
                 try
                 {
                     connect.Open();
 
-                    // Parameterized query to check for existing username
                     string checkUserName = "SELECT * FROM users_tbl WHERE username = @username";
 
                     using (SqlCommand checkUser = new SqlCommand(checkUserName, connect))
@@ -62,37 +58,41 @@ namespace LoanSystem
                         SqlDataAdapter adapter = new SqlDataAdapter(checkUser);
                         DataTable table = new DataTable();
 
-                        // Fill the table with results from the query
                         adapter.Fill(table);
 
-                        if (table.Rows.Count > 0) // Check if any rows were returned
+                        if (table.Rows.Count > 0)
                         {
                             MessageBox.Show(signupName.Text + " already exists", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
-                            // Parameterized query to insert new user data
-                            string insertData = "INSERT INTO users_tbl (email, username, password, date_created) " +
-                                                "VALUES (@Email, @Username, @Password, @DateCreated)";
-
-                            DateTime date = DateTime.Today;
+                            string insertData = "INSERT INTO users_tbl (email, username, password, usertype, date_created, contact, homeaddress, emergencycontact, dob) " +
+                                                "VALUES (@Email, @Username, @Password, @Position, @DateCreated, @Contact, @HomeAddress, @EmergencyContact, @Dob)";
 
                             using (SqlCommand cmd = new SqlCommand(insertData, connect))
                             {
                                 cmd.Parameters.AddWithValue("@Email", signupEmail.Text.Trim());
                                 cmd.Parameters.AddWithValue("@Username", signupName.Text.Trim());
                                 cmd.Parameters.AddWithValue("@Password", signupPass.Text.Trim());
-                                cmd.Parameters.AddWithValue("@DateCreated", date);
+                                cmd.Parameters.AddWithValue("@Position", signupPosition.Text.Trim());
+                                cmd.Parameters.AddWithValue("@DateCreated", DateTime.Now);
+                                cmd.Parameters.AddWithValue("@Contact", signupContact.Text.Trim());
+                                cmd.Parameters.AddWithValue("@HomeAddress", signupHome.Text.Trim());
+                                cmd.Parameters.AddWithValue("@EmergencyContact", signupEmergency.Text.Trim());
+                                cmd.Parameters.AddWithValue("@Dob", signupDob.Value);
 
                                 cmd.ExecuteNonQuery();
 
-                                MessageBox.Show("Registered successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Added successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                // Clear the text fields
+                                // Clear text fields
                                 signupEmail.Text = "";
                                 signupName.Text = "";
                                 signupPass.Text = "";
                                 signupConpass.Text = "";
+
+                                // Refresh DataGridView
+                                LoadData();
                             }
                         }
                     }
@@ -107,6 +107,7 @@ namespace LoanSystem
                 }
             }
         }
+
 
         private void LoadData()
         {

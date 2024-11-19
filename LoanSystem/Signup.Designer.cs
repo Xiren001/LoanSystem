@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignupForm));
             signupPass = new TextBox();
             signupEmail = new TextBox();
@@ -48,16 +48,16 @@
             label3 = new Label();
             label4 = new Label();
             button1 = new Button();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            dateTimePicker1 = new DateTimePicker();
+            signupContact = new TextBox();
+            signupHome = new TextBox();
+            signupEmergency = new TextBox();
+            signupDob = new DateTimePicker();
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
             label9 = new Label();
             label10 = new Label();
-            comboBox1 = new ComboBox();
+            signupPosition = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -121,24 +121,24 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.BorderStyle = BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Tahoma", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(255, 255, 192);
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Tahoma", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(255, 255, 192);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { EmployeeID, FullName, Email, Position });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.White;
-            dataGridViewCellStyle2.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(255, 255, 192);
-            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(255, 255, 192);
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
             dataGridView1.Location = new Point(460, 78);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
@@ -274,59 +274,59 @@
             button1.Text = "Update";
             button1.UseVisualStyleBackColor = false;
             // 
-            // textBox2
+            // signupContact
             // 
-            textBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox2.BackColor = Color.White;
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Font = new Font("Tahoma", 12F);
-            textBox2.ForeColor = Color.Black;
-            textBox2.ImeMode = ImeMode.NoControl;
-            textBox2.Location = new Point(24, 174);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(198, 27);
-            textBox2.TabIndex = 63;
+            signupContact.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            signupContact.BackColor = Color.White;
+            signupContact.BorderStyle = BorderStyle.FixedSingle;
+            signupContact.Font = new Font("Tahoma", 12F);
+            signupContact.ForeColor = Color.Black;
+            signupContact.ImeMode = ImeMode.NoControl;
+            signupContact.Location = new Point(24, 174);
+            signupContact.Name = "signupContact";
+            signupContact.Size = new Size(198, 27);
+            signupContact.TabIndex = 63;
             // 
-            // textBox3
+            // signupHome
             // 
-            textBox3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox3.BackColor = Color.White;
-            textBox3.BorderStyle = BorderStyle.FixedSingle;
-            textBox3.Font = new Font("Tahoma", 12F);
-            textBox3.ForeColor = Color.Black;
-            textBox3.ImeMode = ImeMode.NoControl;
-            textBox3.Location = new Point(228, 174);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(198, 27);
-            textBox3.TabIndex = 64;
+            signupHome.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            signupHome.BackColor = Color.White;
+            signupHome.BorderStyle = BorderStyle.FixedSingle;
+            signupHome.Font = new Font("Tahoma", 12F);
+            signupHome.ForeColor = Color.Black;
+            signupHome.ImeMode = ImeMode.NoControl;
+            signupHome.Location = new Point(228, 174);
+            signupHome.Name = "signupHome";
+            signupHome.Size = new Size(198, 27);
+            signupHome.TabIndex = 64;
             // 
-            // textBox4
+            // signupEmergency
             // 
-            textBox4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox4.BackColor = Color.White;
-            textBox4.BorderStyle = BorderStyle.FixedSingle;
-            textBox4.Font = new Font("Tahoma", 12F);
-            textBox4.ForeColor = Color.Black;
-            textBox4.ImeMode = ImeMode.NoControl;
-            textBox4.Location = new Point(24, 248);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(198, 27);
-            textBox4.TabIndex = 65;
+            signupEmergency.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            signupEmergency.BackColor = Color.White;
+            signupEmergency.BorderStyle = BorderStyle.FixedSingle;
+            signupEmergency.Font = new Font("Tahoma", 12F);
+            signupEmergency.ForeColor = Color.Black;
+            signupEmergency.ImeMode = ImeMode.NoControl;
+            signupEmergency.Location = new Point(24, 248);
+            signupEmergency.Name = "signupEmergency";
+            signupEmergency.Size = new Size(198, 27);
+            signupEmergency.TabIndex = 65;
             // 
-            // dateTimePicker1
+            // signupDob
             // 
-            dateTimePicker1.CalendarFont = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dateTimePicker1.CalendarForeColor = SystemColors.ControlDark;
-            dateTimePicker1.CalendarTitleBackColor = SystemColors.ControlText;
-            dateTimePicker1.CalendarTitleForeColor = SystemColors.ControlDark;
-            dateTimePicker1.Font = new Font("Tahoma", 11F);
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(228, 250);
-            dateTimePicker1.MaxDate = new DateTime(2004, 12, 31, 0, 0, 0, 0);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(198, 25);
-            dateTimePicker1.TabIndex = 67;
-            dateTimePicker1.Value = new DateTime(2004, 12, 31, 0, 0, 0, 0);
+            signupDob.CalendarFont = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            signupDob.CalendarForeColor = SystemColors.ControlDark;
+            signupDob.CalendarTitleBackColor = SystemColors.ControlText;
+            signupDob.CalendarTitleForeColor = SystemColors.ControlDark;
+            signupDob.Font = new Font("Tahoma", 11F);
+            signupDob.Format = DateTimePickerFormat.Short;
+            signupDob.Location = new Point(228, 250);
+            signupDob.MaxDate = new DateTime(2004, 12, 31, 0, 0, 0, 0);
+            signupDob.Name = "signupDob";
+            signupDob.Size = new Size(198, 25);
+            signupDob.TabIndex = 67;
+            signupDob.Value = new DateTime(2004, 12, 31, 0, 0, 0, 0);
             // 
             // label5
             // 
@@ -383,14 +383,14 @@
             label10.TabIndex = 72;
             label10.Text = "Position";
             // 
-            // comboBox1
+            // signupPosition
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Loan Officer", " Accountant", "Branch Manager" });
-            comboBox1.Location = new Point(24, 402);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(198, 27);
-            comboBox1.TabIndex = 73;
+            signupPosition.FormattingEnabled = true;
+            signupPosition.Items.AddRange(new object[] { "Loan Officer", " Accountant", "Branch Manager" });
+            signupPosition.Location = new Point(24, 402);
+            signupPosition.Name = "signupPosition";
+            signupPosition.Size = new Size(198, 27);
+            signupPosition.TabIndex = 73;
             // 
             // SignupForm
             // 
@@ -398,16 +398,16 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1092, 609);
-            Controls.Add(comboBox1);
+            Controls.Add(signupPosition);
             Controls.Add(label10);
             Controls.Add(label9);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
+            Controls.Add(signupDob);
+            Controls.Add(signupEmergency);
+            Controls.Add(signupHome);
+            Controls.Add(signupContact);
             Controls.Add(button1);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -453,15 +453,15 @@
         private Label label3;
         private Label label4;
         private Button button1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private DateTimePicker dateTimePicker1;
+        private TextBox signupContact;
+        private TextBox signupHome;
+        private TextBox signupEmergency;
+        private DateTimePicker signupDob;
         private Label label5;
         private Label label6;
         private Label label7;
         private Label label9;
         private Label label10;
-        private ComboBox comboBox1;
+        private ComboBox signupPosition;
     }
 }
