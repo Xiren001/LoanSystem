@@ -75,7 +75,7 @@ namespace LoanSystem
                             {
                                 cmd.Parameters.AddWithValue("@Email", signupEmail.Text.Trim());
                                 cmd.Parameters.AddWithValue("@Username", signupName.Text.Trim());
-                                cmd.Parameters.AddWithValue("@Password", GeneratePassword(0, signupName.Text.Trim())); // Password will be generated automatically based on ID and username
+                                cmd.Parameters.AddWithValue("@Password", GeneratePassword(0, signupName.Text.Trim()));
                                 cmd.Parameters.AddWithValue("@Position", signupPosition.Text.Trim());
                                 cmd.Parameters.AddWithValue("@DateCreated", DateTime.Now);
                                 cmd.Parameters.AddWithValue("@Contact", signupContact.Text.Trim());
