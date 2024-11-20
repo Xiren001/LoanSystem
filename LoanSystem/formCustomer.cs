@@ -21,5 +21,10 @@ namespace LoanSystem
         {
             this.ControlBox = false;
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

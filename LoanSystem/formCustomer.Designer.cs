@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             dataGridView1 = new DataGridView();
             ClientID = new DataGridViewTextBoxColumn();
             FullName = new DataGridViewTextBoxColumn();
@@ -37,7 +38,6 @@
             OutstandingLoanBalance = new DataGridViewTextBoxColumn();
             RecentActivityDate = new DataGridViewTextBoxColumn();
             TotalPaidtoDate = new DataGridViewTextBoxColumn();
-            AssignedOfficer = new DataGridViewTextBoxColumn();
             AccountStatus = new DataGridViewTextBoxColumn();
             Action = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -47,22 +47,31 @@
             // 
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ClientID, FullName, ContactInformation, LoanAmount, OutstandingLoanBalance, RecentActivityDate, TotalPaidtoDate, AssignedOfficer, AccountStatus, Action });
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Tahoma", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(255, 255, 192);
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ClientID, FullName, ContactInformation, LoanAmount, OutstandingLoanBalance, RecentActivityDate, TotalPaidtoDate, AccountStatus, Action });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Tahoma", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(255, 255, 192);
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.GridColor = Color.Black;
             dataGridView1.Location = new Point(12, 12);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.Size = new Size(1068, 585);
             dataGridView1.TabIndex = 26;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // ClientID
             // 
@@ -75,7 +84,7 @@
             FullName.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             FullName.HeaderText = "Full Name";
             FullName.Name = "FullName";
-            FullName.Width = 86;
+            FullName.Width = 89;
             // 
             // ContactInformation
             // 
@@ -106,12 +115,6 @@
             TotalPaidtoDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             TotalPaidtoDate.HeaderText = "Total Paid to Date";
             TotalPaidtoDate.Name = "TotalPaidtoDate";
-            // 
-            // AssignedOfficer
-            // 
-            AssignedOfficer.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            AssignedOfficer.HeaderText = "Assigned Officer";
-            AssignedOfficer.Name = "AssignedOfficer";
             // 
             // AccountStatus
             // 
@@ -150,7 +153,6 @@
         private DataGridViewTextBoxColumn OutstandingLoanBalance;
         private DataGridViewTextBoxColumn RecentActivityDate;
         private DataGridViewTextBoxColumn TotalPaidtoDate;
-        private DataGridViewTextBoxColumn AssignedOfficer;
         private DataGridViewTextBoxColumn AccountStatus;
         private DataGridViewTextBoxColumn Action;
     }

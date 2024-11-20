@@ -28,32 +28,32 @@ namespace LoanSystem
 
         private void SignUpBtn_Click(object sender, EventArgs e)
         {
+            // Check if all necessary fields are filled
             if (string.IsNullOrWhiteSpace(signupEmail.Text) ||
                 string.IsNullOrWhiteSpace(signupName.Text) ||
-                string.IsNullOrWhiteSpace(signupPass.Text) ||
-                string.IsNullOrWhiteSpace(signupConpass.Text))
+                string.IsNullOrWhiteSpace(signupPosition.Text) ||
+                string.IsNullOrWhiteSpace(signupContact.Text) ||
+                string.IsNullOrWhiteSpace(signupHome.Text) ||
+                string.IsNullOrWhiteSpace(signupEmergency.Text))
+               
             {
                 MessageBox.Show("All fields are required. Please fill in all fields.", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (signupPass.Text.Trim() != signupConpass.Text.Trim())
-            {
-                MessageBox.Show("Passwords do not match. Please re-enter your password.", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
+            // Connect to database if it's not open
             if (connect.State != ConnectionState.Open)
             {
                 try
                 {
                     connect.Open();
 
-                    string checkUserName = "SELECT * FROM users_tbl WHERE username = @username";
+                    // Check if username already exists in the database
+                    string checkUserName = "SELECT * FROM users_tbl WHERE email = @Email";
 
                     using (SqlCommand checkUser = new SqlCommand(checkUserName, connect))
                     {
-                        checkUser.Parameters.AddWithValue("@username", signupName.Text.Trim());
+                        checkUser.Parameters.AddWithValue("@email", signupEmail.Text.Trim());
 
                         SqlDataAdapter adapter = new SqlDataAdapter(checkUser);
                         DataTable table = new DataTable();
@@ -62,18 +62,20 @@ namespace LoanSystem
 
                         if (table.Rows.Count > 0)
                         {
-                            MessageBox.Show(signupName.Text + " already exists", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(signupEmail.Text + " already exists", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
+                            // Insert new user into the database
                             string insertData = "INSERT INTO users_tbl (email, username, password, usertype, date_created, contact, homeaddress, emergencycontact, dob) " +
-                                                "VALUES (@Email, @Username, @Password, @Position, @DateCreated, @Contact, @HomeAddress, @EmergencyContact, @Dob)";
+                                                "VALUES (@Email, @Username, @Password, @Position, @DateCreated, @Contact, @HomeAddress, @EmergencyContact, @Dob); " +
+                                                "SELECT SCOPE_IDENTITY();"; // Get the auto-generated user ID
 
                             using (SqlCommand cmd = new SqlCommand(insertData, connect))
                             {
                                 cmd.Parameters.AddWithValue("@Email", signupEmail.Text.Trim());
                                 cmd.Parameters.AddWithValue("@Username", signupName.Text.Trim());
-                                cmd.Parameters.AddWithValue("@Password", signupPass.Text.Trim());
+                                cmd.Parameters.AddWithValue("@Password", GeneratePassword(0, signupName.Text.Trim())); // Password will be generated automatically based on ID and username
                                 cmd.Parameters.AddWithValue("@Position", signupPosition.Text.Trim());
                                 cmd.Parameters.AddWithValue("@DateCreated", DateTime.Now);
                                 cmd.Parameters.AddWithValue("@Contact", signupContact.Text.Trim());
@@ -81,15 +83,31 @@ namespace LoanSystem
                                 cmd.Parameters.AddWithValue("@EmergencyContact", signupEmergency.Text.Trim());
                                 cmd.Parameters.AddWithValue("@Dob", signupDob.Value);
 
-                                cmd.ExecuteNonQuery();
+                                // Execute the query and retrieve the new user ID
+                                int userId = Convert.ToInt32(cmd.ExecuteScalar()); // Get the newly inserted user's ID
+
+                                // Now generate the password using the correct userId and username
+                                string generatedPassword = GeneratePassword(userId, signupName.Text.Trim());
+
+                                // Update the user password with the generated password
+                                string updatePasswordQuery = "UPDATE users_tbl SET password = @Password WHERE id = @UserId";
+
+                                using (SqlCommand updateCmd = new SqlCommand(updatePasswordQuery, connect))
+                                {
+                                    updateCmd.Parameters.AddWithValue("@Password", generatedPassword);
+                                    updateCmd.Parameters.AddWithValue("@UserId", userId);
+                                    updateCmd.ExecuteNonQuery();
+                                }
 
                                 MessageBox.Show("Added successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                // Clear text fields
+                                // Clear the fields after successful insertion
                                 signupEmail.Text = "";
                                 signupName.Text = "";
-                                signupPass.Text = "";
-                                signupConpass.Text = "";
+                                signupPosition.Text = "";
+                                signupContact.Text = "";
+                                signupHome.Text = "";
+                                signupEmergency.Text = "";
 
                                 // Refresh DataGridView
                                 LoadData();
@@ -108,18 +126,24 @@ namespace LoanSystem
             }
         }
 
+        private string GeneratePassword(int userId, string userName)
+        {
+            // Combine userId and userName to generate the password as a string
+            return userId.ToString() + userName; // For example, "8myko"
+        }
+
+
 
         private void LoadData()
         {
-            // Connection string - replace placeholders with your database details
+            // Connection string for database
             string connectionString = "Data Source=XIREN\\SQLEXPRESS;Initial Catalog=LoanWise;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;";
 
             try
             {
-                // Corrected SQL query to retrieve data from your table
+                // Query to fetch data from the users_tbl
                 string query = "SELECT id, email, username, usertype FROM users_tbl";
 
-                // Establish a connection to the SQL Server
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
@@ -129,24 +153,23 @@ namespace LoanSystem
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
 
-                    // Bind the data to the DataGridView
+                    // Bind the data to DataGridView
                     dataGridView1.DataSource = dataTable;
 
-                    // Adjust column headers and data mappings
+                    // Adjust the DataGridView columns
                     ConfigureDataGridViewColumns();
                 }
             }
             catch (Exception ex)
             {
-                // Show error message if something goes wrong
+                // Show error message if data loading fails
                 MessageBox.Show($"An error occurred while loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-
         private void ConfigureDataGridViewColumns()
         {
-            // Clear existing columns to avoid duplication
+            // Clear any existing columns to avoid duplication
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.Columns.Clear();
 
@@ -161,7 +184,7 @@ namespace LoanSystem
                 Name = "idColumn"
             });
 
-            // Add  Name column
+            // Add Full Name column
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
                 HeaderText = "Full Name",
@@ -169,7 +192,7 @@ namespace LoanSystem
                 Name = "FullNameColumn"
             });
 
-            // Add EMail column
+            // Add Email column
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
                 HeaderText = "Email",
@@ -184,14 +207,6 @@ namespace LoanSystem
                 DataPropertyName = "usertype",
                 Name = "PositionColumn"
             });
-
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        
     }
 }

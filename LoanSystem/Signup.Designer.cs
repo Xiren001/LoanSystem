@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignupForm));
-            signupPass = new TextBox();
             signupEmail = new TextBox();
-            signupConpass = new TextBox();
             signupName = new TextBox();
             dataGridView1 = new DataGridView();
             EmployeeID = new DataGridViewTextBoxColumn();
@@ -45,8 +43,6 @@
             label1 = new Label();
             textBox1 = new TextBox();
             label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
             button1 = new Button();
             signupContact = new TextBox();
             signupHome = new TextBox();
@@ -61,20 +57,6 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // signupPass
-            // 
-            signupPass.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            signupPass.BackColor = Color.White;
-            signupPass.BorderStyle = BorderStyle.FixedSingle;
-            signupPass.Font = new Font("Tahoma", 12F);
-            signupPass.ForeColor = Color.Black;
-            signupPass.ImeMode = ImeMode.NoControl;
-            signupPass.Location = new Point(24, 468);
-            signupPass.Name = "signupPass";
-            signupPass.PasswordChar = '*';
-            signupPass.Size = new Size(198, 27);
-            signupPass.TabIndex = 4;
-            // 
             // signupEmail
             // 
             signupEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -87,20 +69,6 @@
             signupEmail.Name = "signupEmail";
             signupEmail.Size = new Size(198, 27);
             signupEmail.TabIndex = 4;
-            // 
-            // signupConpass
-            // 
-            signupConpass.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            signupConpass.BackColor = Color.White;
-            signupConpass.BorderStyle = BorderStyle.FixedSingle;
-            signupConpass.Font = new Font("Tahoma", 12F);
-            signupConpass.ForeColor = Color.Black;
-            signupConpass.ImeMode = ImeMode.NoControl;
-            signupConpass.Location = new Point(228, 468);
-            signupConpass.Name = "signupConpass";
-            signupConpass.PasswordChar = '*';
-            signupConpass.Size = new Size(198, 27);
-            signupConpass.TabIndex = 4;
             // 
             // signupName
             // 
@@ -121,31 +89,30 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.BorderStyle = BorderStyle.Fixed3D;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Tahoma", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(255, 255, 192);
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(255, 255, 192);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { EmployeeID, FullName, Email, Position });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.White;
-            dataGridViewCellStyle4.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(255, 255, 192);
-            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(255, 255, 192);
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.Location = new Point(460, 78);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.Size = new Size(625, 519);
             dataGridView1.TabIndex = 12;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // EmployeeID
             // 
@@ -184,7 +151,7 @@
             SignUpBtn.FlatAppearance.BorderSize = 2;
             SignUpBtn.FlatStyle = FlatStyle.Flat;
             SignUpBtn.ForeColor = Color.White;
-            SignUpBtn.Location = new Point(12, 554);
+            SignUpBtn.Location = new Point(74, 554);
             SignUpBtn.Name = "SignUpBtn";
             SignUpBtn.Size = new Size(148, 43);
             SignUpBtn.TabIndex = 10;
@@ -238,28 +205,6 @@
             label2.TabIndex = 59;
             label2.Text = "Search";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.ControlText;
-            label3.Location = new Point(24, 447);
-            label3.Name = "label3";
-            label3.Size = new Size(81, 18);
-            label3.TabIndex = 60;
-            label3.Text = "Password";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = SystemColors.ControlText;
-            label4.Location = new Point(228, 447);
-            label4.Name = "label4";
-            label4.Size = new Size(144, 18);
-            label4.TabIndex = 61;
-            label4.Text = "Confirm Password";
-            // 
             // button1
             // 
             button1.BackColor = Color.Khaki;
@@ -267,7 +212,7 @@
             button1.FlatAppearance.BorderSize = 2;
             button1.FlatStyle = FlatStyle.Flat;
             button1.ForeColor = Color.Black;
-            button1.Location = new Point(166, 554);
+            button1.Location = new Point(228, 554);
             button1.Name = "button1";
             button1.Size = new Size(148, 43);
             button1.TabIndex = 62;
@@ -377,7 +322,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.ForeColor = SystemColors.ControlText;
-            label10.Location = new Point(24, 381);
+            label10.Location = new Point(24, 305);
             label10.Name = "label10";
             label10.Size = new Size(69, 18);
             label10.TabIndex = 72;
@@ -387,7 +332,7 @@
             // 
             signupPosition.FormattingEnabled = true;
             signupPosition.Items.AddRange(new object[] { "Loan Officer", " Accountant", "Branch Manager" });
-            signupPosition.Location = new Point(24, 402);
+            signupPosition.Location = new Point(24, 326);
             signupPosition.Name = "signupPosition";
             signupPosition.Size = new Size(198, 27);
             signupPosition.TabIndex = 73;
@@ -409,16 +354,12 @@
             Controls.Add(signupHome);
             Controls.Add(signupContact);
             Controls.Add(button1);
-            Controls.Add(label4);
-            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(textBox1);
             Controls.Add(label1);
             Controls.Add(label8);
             Controls.Add(SignUpBtn);
-            Controls.Add(signupConpass);
             Controls.Add(dataGridView1);
-            Controls.Add(signupPass);
             Controls.Add(signupEmail);
             Controls.Add(signupName);
             Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -436,9 +377,7 @@
         }
 
         #endregion
-        private TextBox signupPass;
         private TextBox signupEmail;
-        private TextBox signupConpass;
         private TextBox signupName;
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn EmployeeID;
@@ -450,8 +389,6 @@
         private Label label1;
         private TextBox textBox1;
         private Label label2;
-        private Label label3;
-        private Label label4;
         private Button button1;
         private TextBox signupContact;
         private TextBox signupHome;
