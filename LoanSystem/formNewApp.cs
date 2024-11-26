@@ -145,9 +145,6 @@ namespace LoanSystem
             });
         }
 
-
-
-
         private void newAppBtn_Click(object sender, EventArgs e)
         {
             // Open the form for creating a new application
@@ -166,6 +163,31 @@ namespace LoanSystem
                 // Use the correct column name defined in ConfigureDataGridViewColumns
                 string applicantName = dataGridView1.Rows[e.RowIndex].Cells["applicantNameColumn"].Value.ToString();
                 MessageBox.Show($"You clicked on: {applicantName}", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            int selectedId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["id"].Value);
+            newAppCreate updateForm = new newAppCreate(selectedId);
+            updateForm.Show();
+        }
+
+        private void newAppUpdate_Click(object sender, EventArgs e)
+        {
+            // Ensure a row is selected
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                // Get the Application ID from the selected row
+                int selectedId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["idColumn"].Value);
+
+                // Pass the selected ID to the update form
+                newAppCreate updateForm = new newAppCreate(selectedId);
+                updateForm.MdiParent = this.MdiParent;  // Set the parent form
+                updateForm.Dock = DockStyle.Fill;       // Dock the form to fill the parent form
+                updateForm.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Please select a row to update.", "No Row Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

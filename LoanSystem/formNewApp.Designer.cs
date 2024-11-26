@@ -43,6 +43,7 @@
             Status = new DataGridViewTextBoxColumn();
             AssignedOfficer = new DataGridViewTextBoxColumn();
             Action = new DataGridViewTextBoxColumn();
+            newAppUpdate = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             newAppBtn.BackColor = Color.SeaGreen;
             newAppBtn.FlatStyle = FlatStyle.Flat;
             newAppBtn.ForeColor = Color.Transparent;
-            newAppBtn.Location = new Point(937, 12);
+            newAppBtn.Location = new Point(788, 12);
             newAppBtn.Name = "newAppBtn";
             newAppBtn.Size = new Size(143, 38);
             newAppBtn.TabIndex = 24;
@@ -94,6 +95,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(1068, 541);
             dataGridView1.TabIndex = 25;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
@@ -169,12 +171,26 @@
             Action.Name = "Action";
             Action.ReadOnly = true;
             // 
+            // newAppUpdate
+            // 
+            newAppUpdate.BackColor = Color.Khaki;
+            newAppUpdate.FlatStyle = FlatStyle.Flat;
+            newAppUpdate.ForeColor = Color.Black;
+            newAppUpdate.Location = new Point(937, 12);
+            newAppUpdate.Name = "newAppUpdate";
+            newAppUpdate.Size = new Size(143, 38);
+            newAppUpdate.TabIndex = 26;
+            newAppUpdate.Text = "Create";
+            newAppUpdate.UseVisualStyleBackColor = false;
+            newAppUpdate.Click += newAppUpdate_Click;
+            // 
             // formNewApp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1092, 609);
+            Controls.Add(newAppUpdate);
             Controls.Add(dataGridView1);
             Controls.Add(newAppBtn);
             FormBorderStyle = FormBorderStyle.None;
@@ -198,5 +214,6 @@
         private DataGridViewTextBoxColumn Status;
         private DataGridViewTextBoxColumn AssignedOfficer;
         private DataGridViewTextBoxColumn Action;
+        private Button newAppUpdate;
     }
 }

@@ -24,7 +24,30 @@ namespace LoanSystem
         {
             // Load data into DataGridView when the form loads
             LoadData();
+
+            // Initialize the DateTimePicker with no value
+            signupDob.Format = DateTimePickerFormat.Custom;
+            signupDob.CustomFormat = " "; // Display as blank initially
+
+            // Attach the ValueChanged event
+            signupDob.ValueChanged += dateTimePicker1_ValueChanged;
+
         }
+
+
+        private void ClearDateButton_Click(object sender, EventArgs e)
+        {
+            // Clear the DateTimePicker
+            signupDob.Format = DateTimePickerFormat.Custom;
+            signupDob.CustomFormat = " "; // Display as blank
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            // Set the format to display the date when a date is selected
+            signupDob.Format = DateTimePickerFormat.Short;
+        }
+
 
         private void SignUpBtn_Click(object sender, EventArgs e)
         {
@@ -35,7 +58,7 @@ namespace LoanSystem
                 string.IsNullOrWhiteSpace(signupContact.Text) ||
                 string.IsNullOrWhiteSpace(signupHome.Text) ||
                 string.IsNullOrWhiteSpace(signupEmergency.Text))
-               
+
             {
                 MessageBox.Show("All fields are required. Please fill in all fields.", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -99,7 +122,11 @@ namespace LoanSystem
                                     updateCmd.ExecuteNonQuery();
                                 }
 
-                                MessageBox.Show("Added successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                // Show the generated password to the user
+                                MessageBox.Show($"Account created successfully!\n\nEmployee Password: {generatedPassword}",
+                                                "Account Created",
+                                                MessageBoxButtons.OK,
+                                                MessageBoxIcon.Information);
 
                                 // Clear the fields after successful insertion
                                 signupEmail.Text = "";
@@ -108,6 +135,8 @@ namespace LoanSystem
                                 signupContact.Text = "";
                                 signupHome.Text = "";
                                 signupEmergency.Text = "";
+                                signupDob.Format = DateTimePickerFormat.Custom;
+                                signupDob.CustomFormat = " "; // Display as blank initially
 
                                 // Refresh DataGridView
                                 LoadData();
@@ -207,6 +236,116 @@ namespace LoanSystem
                 DataPropertyName = "usertype",
                 Name = "PositionColumn"
             });
+        }
+
+        private void signupBtnUpdate_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(signupEmail.Text) ||
+                string.IsNullOrWhiteSpace(signupName.Text) ||
+                string.IsNullOrWhiteSpace(signupPosition.Text) ||
+                string.IsNullOrWhiteSpace(signupContact.Text) ||
+                string.IsNullOrWhiteSpace(signupHome.Text) ||
+                string.IsNullOrWhiteSpace(signupEmergency.Text))
+            {
+                MessageBox.Show("Please fill in all fields.", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                if (connect.State != ConnectionState.Open)
+                {
+                    connect.Open();
+                }
+
+                // Get the selected user's ID from the DataGridView
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    int userId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["idColumn"].Value);
+
+                    // Update query
+                    string updateQuery = "UPDATE users_tbl SET email = @Email, username = @Username, usertype = @Position, " +
+                                         "contact = @Contact, homeaddress = @HomeAddress, emergencycontact = @EmergencyContact, dob = @Dob " +
+                                         "WHERE id = @UserId";
+
+                    using (SqlCommand cmd = new SqlCommand(updateQuery, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", signupEmail.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Username", signupName.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Position", signupPosition.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Contact", signupContact.Text.Trim());
+                        cmd.Parameters.AddWithValue("@HomeAddress", signupHome.Text.Trim());
+                        cmd.Parameters.AddWithValue("@EmergencyContact", signupEmergency.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Dob", signupDob.Value);
+                        cmd.Parameters.AddWithValue("@UserId", userId);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Employee information updated successfully!", "Update Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            // Refresh the DataGridView
+                            LoadData();
+
+                            // Clear the form fields
+                            ClearFormFields();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No changes were made.", "Update Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a row to update.", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error updating the employee: " + ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (connect.State == ConnectionState.Open)
+                {
+                    connect.Close();
+                }
+            }
+        }
+
+        private void ClearFormFields()
+        {
+            signupEmail.Text = "";
+            signupName.Text = "";
+            signupPosition.Text = "";
+            signupContact.Text = "";
+            signupHome.Text = "";
+            signupEmergency.Text = "";
+            signupDob.Format = DateTimePickerFormat.Custom;
+            signupDob.CustomFormat = " "; // Display as blank initially
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Ensure a valid row is clicked
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                signupEmail.Text = row.Cells["EmailColumn"].Value.ToString();
+                signupName.Text = row.Cells["FullNameColumn"].Value.ToString();
+                signupPosition.Text = row.Cells["PositionColumn"].Value.ToString();
+                // Assuming Contact, HomeAddress, and EmergencyContact columns are present
+                signupContact.Text = row.Cells["ContactColumn"].Value.ToString();
+                signupHome.Text = row.Cells["HomeAddressColumn"].Value.ToString();
+                signupEmergency.Text = row.Cells["EmergencyContactColumn"].Value.ToString();
+                signupDob.Value = Convert.ToDateTime(row.Cells["DobColumn"].Value);
+            }
+        }
+
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

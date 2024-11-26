@@ -43,7 +43,7 @@
             label1 = new Label();
             textBox1 = new TextBox();
             label2 = new Label();
-            button1 = new Button();
+            signupBtnUpdate = new Button();
             signupContact = new TextBox();
             signupHome = new TextBox();
             signupEmergency = new TextBox();
@@ -111,8 +111,10 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(625, 519);
             dataGridView1.TabIndex = 12;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // EmployeeID
             // 
@@ -205,19 +207,20 @@
             label2.TabIndex = 59;
             label2.Text = "Search";
             // 
-            // button1
+            // signupBtnUpdate
             // 
-            button1.BackColor = Color.Khaki;
-            button1.FlatAppearance.BorderColor = Color.White;
-            button1.FlatAppearance.BorderSize = 2;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.Black;
-            button1.Location = new Point(228, 554);
-            button1.Name = "button1";
-            button1.Size = new Size(148, 43);
-            button1.TabIndex = 62;
-            button1.Text = "Update";
-            button1.UseVisualStyleBackColor = false;
+            signupBtnUpdate.BackColor = Color.Khaki;
+            signupBtnUpdate.FlatAppearance.BorderColor = Color.White;
+            signupBtnUpdate.FlatAppearance.BorderSize = 2;
+            signupBtnUpdate.FlatStyle = FlatStyle.Flat;
+            signupBtnUpdate.ForeColor = Color.Black;
+            signupBtnUpdate.Location = new Point(228, 554);
+            signupBtnUpdate.Name = "signupBtnUpdate";
+            signupBtnUpdate.Size = new Size(148, 43);
+            signupBtnUpdate.TabIndex = 62;
+            signupBtnUpdate.Text = "Update";
+            signupBtnUpdate.UseVisualStyleBackColor = false;
+            signupBtnUpdate.Click += signupBtnUpdate_Click;
             // 
             // signupContact
             // 
@@ -264,6 +267,7 @@
             signupDob.CalendarForeColor = SystemColors.ControlDark;
             signupDob.CalendarTitleBackColor = SystemColors.ControlText;
             signupDob.CalendarTitleForeColor = SystemColors.ControlDark;
+            signupDob.Checked = false;
             signupDob.Font = new Font("Tahoma", 11F);
             signupDob.Format = DateTimePickerFormat.Short;
             signupDob.Location = new Point(228, 250);
@@ -353,7 +357,7 @@
             Controls.Add(signupEmergency);
             Controls.Add(signupHome);
             Controls.Add(signupContact);
-            Controls.Add(button1);
+            Controls.Add(signupBtnUpdate);
             Controls.Add(label2);
             Controls.Add(textBox1);
             Controls.Add(label1);
@@ -389,7 +393,7 @@
         private Label label1;
         private TextBox textBox1;
         private Label label2;
-        private Button button1;
+        private Button signupBtnUpdate;
         private TextBox signupContact;
         private TextBox signupHome;
         private TextBox signupEmergency;
