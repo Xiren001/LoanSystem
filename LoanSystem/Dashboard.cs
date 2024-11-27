@@ -29,6 +29,7 @@ namespace LoanSystem
         }
 
         bool menuExpand = false;
+
         private void mdiProp()
         {
             this.SetBevel(false);

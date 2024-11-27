@@ -180,7 +180,7 @@
             newAppUpdate.Name = "newAppUpdate";
             newAppUpdate.Size = new Size(143, 38);
             newAppUpdate.TabIndex = 26;
-            newAppUpdate.Text = "Create";
+            newAppUpdate.Text = "Update";
             newAppUpdate.UseVisualStyleBackColor = false;
             newAppUpdate.Click += newAppUpdate_Click;
             // 

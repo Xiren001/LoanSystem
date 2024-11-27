@@ -157,17 +157,14 @@ namespace LoanSystem
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Ensure the click is on a valid row
-            if (e.RowIndex >= 0)
+
+            if (e.RowIndex >= 0) // Ensure it's a valid row
             {
-                // Use the correct column name defined in ConfigureDataGridViewColumns
+                int selectedId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["idColumn"].Value);
+                newAppCreate updateForm = new newAppCreate(selectedId);
                 string applicantName = dataGridView1.Rows[e.RowIndex].Cells["applicantNameColumn"].Value.ToString();
                 MessageBox.Show($"You clicked on: {applicantName}", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-            int selectedId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["id"].Value);
-            newAppCreate updateForm = new newAppCreate(selectedId);
-            updateForm.Show();
         }
 
         private void newAppUpdate_Click(object sender, EventArgs e)

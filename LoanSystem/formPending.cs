@@ -34,8 +34,8 @@ namespace LoanSystem
             try
             {
                 // SQL query to retrieve data from your table
-                string query = "SELECT id, lastname, applicationdate, loantype, amount, " +
-                               "employmentstatus, annualincome, status, assignedofficer " +
+                string query = "SELECT id, lastname, amount, " +
+                               "status, repaymentterm " +
                                "FROM newapplication";
 
                 // Establish a connection to the SQL Server
@@ -87,44 +87,12 @@ namespace LoanSystem
                 Name = "applicantNameColumn"
             });
 
-            // Add Application Date column
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Application Date",
-                DataPropertyName = "applicationdate",
-                Name = "applicationDateColumn"
-            });
-
-            // Add Loan Type column
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Loan Type",
-                DataPropertyName = "loantype",
-                Name = "loanTypeColumn"
-            });
-
             // Add Amount column
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
                 HeaderText = "Amount",
                 DataPropertyName = "amount",
                 Name = "amountColumn"
-            });
-
-            // Add Employment Status column
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Employment Status",
-                DataPropertyName = "employmentstatus",
-                Name = "employmentStatusColumn"
-            });
-
-            // Add Annual Income column
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Annual Income",
-                DataPropertyName = "annualincome",
-                Name = "annualIncomeColumn"
             });
 
             // Add Status column
@@ -138,11 +106,15 @@ namespace LoanSystem
             // Add Assigned Officer column
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
-                HeaderText = "Assigned Officer",
-                DataPropertyName = "assignedofficer",
-                Name = "assignedOfficerColumn"
+                HeaderText = "Repayment Term",
+                DataPropertyName = "repaymentterm",
+                Name = "repaymenttermColumn"
             });
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

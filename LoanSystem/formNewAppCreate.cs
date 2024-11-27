@@ -100,8 +100,20 @@ namespace LoanSystem
 
         private void newAppCreate_Load(object sender, EventArgs e)
         {
+            // Initialize the DateTimePicker with no value
+            birthdate.Format = DateTimePickerFormat.Custom;
+            birthdate.CustomFormat = " "; // Display as blank initially
 
+            // Attach the ValueChanged event
+            birthdate.ValueChanged += dateTimePicker1_ValueChanged;
         }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            // Set the format to display the date when a date is selected
+            birthdate.Format = DateTimePickerFormat.Short;
+        }
+
 
 
         private void btnCreateNewApp_Click(object sender, EventArgs e)
@@ -122,59 +134,33 @@ namespace LoanSystem
                 if (applicationId == 0) // Create new application
                 {
                     string insertQuery = @"
-        INSERT INTO newapplication (
-            lastname, firstname, middlename, dob, gender, martialstatus, idtype, idnumber, 
-            phonenumber, email, address, employername, employmentstatus, position, annualincome, 
-            yearsemployment, employercontact, incomeproof, identtityproof, collateraldocument, 
-            loantype, amount, loanpurpose, repaymentterm, collateraltype, estimatedvalue, 
-            collateraldescription, monthlyincome, expenses, applicationdate
-        ) 
-        VALUES (
-            @LastName, @FirstName, @MiddleName, @DOB, @Gender, @MartialStatus, @IdType, @IdNumber, 
-            @PhoneNumber, @Email, @Address, @EmployerName, @EmploymentStatus, @Position, @AnnualIncome, 
-            @YearsEmployment, @EmployerContact, @IncomeProof, @IdentityProof, @CollateralDocument, 
-            @LoanType, @Amount, @LoanPurpose, @RepaymentTerm, @CollateralType, @EstimatedValue, 
-            @CollateralDescription, @MonthlyIncome, @Expenses, @ApplicationDate
-        )";
-
+            INSERT INTO newapplication (
+                lastname, firstname, middlename, dob, gender, martialstatus, idtype, idnumber, 
+                phonenumber, email, address, employername, employmentstatus, position, annualincome, 
+                yearsemployment, employercontact, incomeproof, identtityproof, collateraldocument, 
+                loantype, amount, loanpurpose, repaymentterm, collateraltype, estimatedvalue, 
+                collateraldescription, monthlyincome, expenses, applicationdate
+            ) 
+            VALUES (
+                @LastName, @FirstName, @MiddleName, @DOB, @Gender, @MartialStatus, @IdType, @IdNumber, 
+                @PhoneNumber, @Email, @Address, @EmployerName, @EmploymentStatus, @Position, @AnnualIncome, 
+                @YearsEmployment, @EmployerContact, @IncomeProof, @IdentityProof, @CollateralDocument, 
+                @LoanType, @Amount, @LoanPurpose, @RepaymentTerm, @CollateralType, @EstimatedValue, 
+                @CollateralDescription, @MonthlyIncome, @Expenses, @ApplicationDate
+            )";
 
                     using (SqlCommand command = new SqlCommand(insertQuery, connection))
                     {
-                        command.Parameters.AddWithValue("@LastName", lastName.Text);
-                        command.Parameters.AddWithValue("@FirstName", firstName.Text);
-                        command.Parameters.AddWithValue("@MiddleName", middleName.Text);
-                        command.Parameters.AddWithValue("@DOB", birthdate.Value);
-                        command.Parameters.AddWithValue("@Gender", gender.SelectedItem?.ToString());
-                        command.Parameters.AddWithValue("@MartialStatus", martialStatus.SelectedItem?.ToString());
-                        command.Parameters.AddWithValue("@IdType", idType.SelectedItem?.ToString());
-                        command.Parameters.AddWithValue("@IdNumber", idNumber.Text);
-                        command.Parameters.AddWithValue("@PhoneNumber", phoneNumber.Text);
-                        command.Parameters.AddWithValue("@Email", email.Text);
-                        command.Parameters.AddWithValue("@Address", address.Text);
-                        command.Parameters.AddWithValue("@EmployerName", employerName.Text);
-                        command.Parameters.AddWithValue("@EmploymentStatus", employmentStatus.SelectedItem?.ToString());
-                        command.Parameters.AddWithValue("@Position", position.Text);
-                        command.Parameters.AddWithValue("@AnnualIncome", annualIncome.SelectedItem?.ToString());
-                        command.Parameters.AddWithValue("@YearsEmployment", yearEmployment.SelectedItem?.ToString());
-                        command.Parameters.AddWithValue("@EmployerContact", employerContact.Text);
-                        command.Parameters.AddWithValue("@IncomeProof", incomeProof.Checked ? 1 : 0);
-                        command.Parameters.AddWithValue("@IdentityProof", identityProof.Checked ? 1 : 0);
-                        command.Parameters.AddWithValue("@CollateralDocument", collateralDocument.Checked ? 1 : 0);
-                        command.Parameters.AddWithValue("@LoanType", loanType.SelectedItem?.ToString());
-                        command.Parameters.AddWithValue("@Amount", amountLoan.Text);
-                        command.Parameters.AddWithValue("@LoanPurpose", loanPurpose.SelectedItem?.ToString());
-                        command.Parameters.AddWithValue("@RepaymentTerm", repaymentTerm.SelectedItem?.ToString());
-                        command.Parameters.AddWithValue("@CollateralType", collateralType.SelectedItem?.ToString());
-                        command.Parameters.AddWithValue("@EstimatedValue", estematedValue.Text);
-                        command.Parameters.AddWithValue("@CollateralDescription", collateralDesription.Text);
-                        command.Parameters.AddWithValue("@MonthlyIncome", monthlyIncome.Text);
-                        command.Parameters.AddWithValue("@Expenses", expenses.Text);
-                        command.Parameters.AddWithValue("@ApplicationDate", applicationdate.Value);
+                        // Add parameters
+                        AddParametersToCommand(command);
 
                         try
                         {
                             command.ExecuteNonQuery();
                             MessageBox.Show("New application created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            // Clear all fields after successful creation
+                            ClearFields();
                         }
                         catch (Exception ex)
                         {
@@ -185,78 +171,56 @@ namespace LoanSystem
                 else // Update existing application
                 {
                     string updateQuery = @"
-    UPDATE newapplication 
-    SET 
-        lastname = @LastName, 
-        firstname = @FirstName, 
-        middlename = @MiddleName, 
-        dob = @DOB, 
-        gender = @Gender, 
-        martialstatus = @MartialStatus, 
-        idtype = @IdType, 
-        idnumber = @IdNumber, 
-        phonenumber = @PhoneNumber, 
-        email = @Email, 
-        address = @Address, 
-        employername = @EmployerName, 
-        employmentstatus = @EmploymentStatus, 
-        position = @Position, 
-        annualincome = @AnnualIncome, 
-        yearsemployment = @YearsEmployment, 
-        employercontact = @EmployerContact, 
-        incomeproof = @IncomeProof, 
-        identtityproof = @IdentityProof, 
-        collateraldocument = @CollateralDocument, 
-        loantype = @LoanType, 
-        amount = @Amount, 
-        loanpurpose = @LoanPurpose, 
-        repaymentterm = @RepaymentTerm, 
-        collateraltype = @CollateralType, 
-        estimatedvalue = @EstimatedValue, 
-        collateraldescription = @CollateralDescription, 
-        monthlyincome = @MonthlyIncome, 
-        expenses = @Expenses, 
-        applicationdate = @ApplicationDate
-    WHERE id = @Id";
+            UPDATE newapplication 
+            SET 
+                lastname = @LastName, 
+                firstname = @FirstName, 
+                middlename = @MiddleName, 
+                dob = @DOB, 
+                gender = @Gender, 
+                martialstatus = @MartialStatus, 
+                idtype = @IdType, 
+                idnumber = @IdNumber, 
+                phonenumber = @PhoneNumber, 
+                email = @Email, 
+                address = @Address, 
+                employername = @EmployerName, 
+                employmentstatus = @EmploymentStatus, 
+                position = @Position, 
+                annualincome = @AnnualIncome, 
+                yearsemployment = @YearsEmployment, 
+                employercontact = @EmployerContact, 
+                incomeproof = @IncomeProof, 
+                identtityproof = @IdentityProof, 
+                collateraldocument = @CollateralDocument, 
+                loantype = @LoanType, 
+                amount = @Amount, 
+                loanpurpose = @LoanPurpose, 
+                repaymentterm = @RepaymentTerm, 
+                collateraltype = @CollateralType, 
+                estimatedvalue = @EstimatedValue, 
+                collateraldescription = @CollateralDescription, 
+                monthlyincome = @MonthlyIncome, 
+                expenses = @Expenses, 
+                applicationdate = @ApplicationDate
+            WHERE id = @Id";
 
                     using (SqlCommand command = new SqlCommand(updateQuery, connection))
                     {
-                        command.Parameters.AddWithValue("@LastName", lastName.Text);
-                        command.Parameters.AddWithValue("@FirstName", firstName.Text);
-                        command.Parameters.AddWithValue("@MiddleName", middleName.Text);
-                        command.Parameters.AddWithValue("@DOB", birthdate.Value);
-                        command.Parameters.AddWithValue("@Gender", gender.SelectedItem?.ToString());
-                        command.Parameters.AddWithValue("@MartialStatus", martialStatus.SelectedItem?.ToString());
-                        command.Parameters.AddWithValue("@IdType", idType.SelectedItem?.ToString());
-                        command.Parameters.AddWithValue("@IdNumber", idNumber.Text);
-                        command.Parameters.AddWithValue("@PhoneNumber", phoneNumber.Text);
-                        command.Parameters.AddWithValue("@Email", email.Text);
-                        command.Parameters.AddWithValue("@Address", address.Text);
-                        command.Parameters.AddWithValue("@EmployerName", employerName.Text);
-                        command.Parameters.AddWithValue("@EmploymentStatus", employmentStatus.SelectedItem?.ToString());
-                        command.Parameters.AddWithValue("@Position", position.Text);
-                        command.Parameters.AddWithValue("@AnnualIncome", annualIncome.SelectedItem?.ToString());
-                        command.Parameters.AddWithValue("@YearsEmployment", yearEmployment.SelectedItem?.ToString());
-                        command.Parameters.AddWithValue("@EmployerContact", employerContact.Text);
-                        command.Parameters.AddWithValue("@IncomeProof", incomeProof.Checked ? 1 : 0);
-                        command.Parameters.AddWithValue("@IdentityProof", identityProof.Checked ? 1 : 0);
-                        command.Parameters.AddWithValue("@CollateralDocument", collateralDocument.Checked ? 1 : 0);
-                        command.Parameters.AddWithValue("@LoanType", loanType.SelectedItem?.ToString());
-                        command.Parameters.AddWithValue("@Amount", amountLoan.Text);
-                        command.Parameters.AddWithValue("@LoanPurpose", loanPurpose.SelectedItem?.ToString());
-                        command.Parameters.AddWithValue("@RepaymentTerm", repaymentTerm.SelectedItem?.ToString());
-                        command.Parameters.AddWithValue("@CollateralType", collateralType.SelectedItem?.ToString());
-                        command.Parameters.AddWithValue("@EstimatedValue", estematedValue.Text);
-                        command.Parameters.AddWithValue("@CollateralDescription", collateralDesription.Text);
-                        command.Parameters.AddWithValue("@MonthlyIncome", monthlyIncome.Text);
-                        command.Parameters.AddWithValue("@Expenses", expenses.Text);
-                        command.Parameters.AddWithValue("@ApplicationDate", applicationdate.Value);
+                        // Add parameters
+                        AddParametersToCommand(command);
                         command.Parameters.AddWithValue("@Id", applicationId);
 
                         try
                         {
                             command.ExecuteNonQuery();
                             MessageBox.Show("Application updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            formNewApp newAppForm = new formNewApp();
+                            newAppForm.MdiParent = this.MdiParent;
+                            newAppForm.Dock = DockStyle.Fill;
+                            newAppForm.Show();
+                            this.Close();
                         }
                         catch (Exception ex)
                         {
@@ -267,13 +231,13 @@ namespace LoanSystem
             }
         }
 
-
-
+        // Method to clear all fields
         private void ClearFields()
         {
             lastName.Clear();
             firstName.Clear();
             middleName.Clear();
+            birthdate.Format = DateTimePickerFormat.Custom;
             gender.SelectedIndex = -1;
             martialStatus.SelectedIndex = -1;
             idType.SelectedIndex = -1;
@@ -301,6 +265,42 @@ namespace LoanSystem
             expenses.Clear();
             applicationdate.Value = DateTime.Now;
         }
+
+        // Method to add parameters to the command
+        private void AddParametersToCommand(SqlCommand command)
+        {
+            command.Parameters.AddWithValue("@LastName", lastName.Text);
+            command.Parameters.AddWithValue("@FirstName", firstName.Text);
+            command.Parameters.AddWithValue("@MiddleName", middleName.Text);
+            command.Parameters.AddWithValue("@DOB", birthdate.Value);
+            command.Parameters.AddWithValue("@Gender", gender.SelectedItem?.ToString());
+            command.Parameters.AddWithValue("@MartialStatus", martialStatus.SelectedItem?.ToString());
+            command.Parameters.AddWithValue("@IdType", idType.SelectedItem?.ToString());
+            command.Parameters.AddWithValue("@IdNumber", idNumber.Text);
+            command.Parameters.AddWithValue("@PhoneNumber", phoneNumber.Text);
+            command.Parameters.AddWithValue("@Email", email.Text);
+            command.Parameters.AddWithValue("@Address", address.Text);
+            command.Parameters.AddWithValue("@EmployerName", employerName.Text);
+            command.Parameters.AddWithValue("@EmploymentStatus", employmentStatus.SelectedItem?.ToString());
+            command.Parameters.AddWithValue("@Position", position.Text);
+            command.Parameters.AddWithValue("@AnnualIncome", annualIncome.SelectedItem?.ToString());
+            command.Parameters.AddWithValue("@YearsEmployment", yearEmployment.SelectedItem?.ToString());
+            command.Parameters.AddWithValue("@EmployerContact", employerContact.Text);
+            command.Parameters.AddWithValue("@IncomeProof", incomeProof.Checked ? 1 : 0);
+            command.Parameters.AddWithValue("@IdentityProof", identityProof.Checked ? 1 : 0);
+            command.Parameters.AddWithValue("@CollateralDocument", collateralDocument.Checked ? 1 : 0);
+            command.Parameters.AddWithValue("@LoanType", loanType.SelectedItem?.ToString());
+            command.Parameters.AddWithValue("@Amount", amountLoan.Text);
+            command.Parameters.AddWithValue("@LoanPurpose", loanPurpose.SelectedItem?.ToString());
+            command.Parameters.AddWithValue("@RepaymentTerm", repaymentTerm.SelectedItem?.ToString());
+            command.Parameters.AddWithValue("@CollateralType", collateralType.SelectedItem?.ToString());
+            command.Parameters.AddWithValue("@EstimatedValue", estematedValue.Text);
+            command.Parameters.AddWithValue("@CollateralDescription", collateralDesription.Text);
+            command.Parameters.AddWithValue("@MonthlyIncome", monthlyIncome.Text);
+            command.Parameters.AddWithValue("@Expenses", expenses.Text);
+            command.Parameters.AddWithValue("@ApplicationDate", applicationdate.Value);
+        }
+
 
 
 

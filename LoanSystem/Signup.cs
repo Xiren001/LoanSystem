@@ -35,13 +35,6 @@ namespace LoanSystem
         }
 
 
-        private void ClearDateButton_Click(object sender, EventArgs e)
-        {
-            // Clear the DateTimePicker
-            signupDob.Format = DateTimePickerFormat.Custom;
-            signupDob.CustomFormat = " "; // Display as blank
-        }
-
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             // Set the format to display the date when a date is selected
