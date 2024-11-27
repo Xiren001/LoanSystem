@@ -25,7 +25,41 @@ namespace LoanSystem
 
             // Load data into DataGridView when the form loads
             LoadData();
+
+            dataGridView1.CellFormatting += DataGridView1_CellFormatting;
         }
+
+
+        private void DataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Check if the current column is the status column
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "statusColumn" && e.Value != null)
+            {
+                string status = e.Value.ToString();
+
+                if (status == "Pending")
+                {
+                    e.CellStyle.BackColor = Color.Khaki;  // Set the background color to yellow
+                    e.CellStyle.ForeColor = Color.Black;  // Ensure the text is readable
+                }
+                else if (status == "On KYC")
+                {
+                    e.CellStyle.BackColor = Color.LightGray; // Set the background color to light gray
+                    e.CellStyle.ForeColor = Color.Black;    // Ensure the text is readable
+                }
+                else if (status == "Approved")
+                {
+                    e.CellStyle.BackColor = Color.SeaGreen; // Set the background color to light gray
+                    e.CellStyle.ForeColor = Color.Black;    // Ensure the text is readable
+                }
+                else if (status == "Rejected")
+                {
+                    e.CellStyle.BackColor = Color.IndianRed; // Set the background color to light gray
+                    e.CellStyle.ForeColor = Color.Black;    // Ensure the text is readable
+                }
+            }
+        }
+
 
         private void LoadData()
         {
