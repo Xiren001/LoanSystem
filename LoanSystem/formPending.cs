@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -162,7 +163,7 @@ namespace LoanSystem
                     MessageBox.Show($"Application status updated to '{selectedStatus}'.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Reset the combo box to show its default text
-                  
+
                     pendingUpdateStatus.Text = "Operation"; // Set default text
 
                 }
@@ -174,7 +175,7 @@ namespace LoanSystem
             else
             {
                 // Automatically reset the combo box to default if an invalid selection is made
-                
+
                 pendingUpdateStatus.Text = "Operation"; // Reset text
             }
         }
@@ -196,6 +197,16 @@ namespace LoanSystem
                     e.CellStyle.BackColor = Color.LightGray; // Set the background color to light gray
                     e.CellStyle.ForeColor = Color.Black;    // Ensure the text is readable
                 }
+                else if (status == "Approved")
+                {
+                    e.CellStyle.BackColor = Color.SeaGreen; // Set the background color to light gray
+                    e.CellStyle.ForeColor = Color.White;    // Ensure the text is readable
+                }
+                else if (status == "Rejected")
+                {
+                    e.CellStyle.BackColor = Color.IndianRed; // Set the background color to light gray
+                    e.CellStyle.ForeColor = Color.White;    // Ensure the text is readable
+                }
             }
         }
 
@@ -213,54 +224,46 @@ namespace LoanSystem
 
         private void LoadFullDetailsById(int selectedId)
         {
-            // Connection string - replace with your database details
             string connectionString = "Data Source=XIREN\\SQLEXPRESS;Initial Catalog=LoanWise;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;";
 
             try
             {
-                // SQL query to fetch the full row data based on the selected id
                 string query = "SELECT * FROM newapplication WHERE id = @Id";
 
-                // Establish a connection to the SQL Server
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
 
-                    // Prepare the SQL command
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        // Add parameter to prevent SQL injection
                         cmd.Parameters.AddWithValue("@Id", selectedId);
 
-                        // Execute the query
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
                             {
-
-                                // Concatenate firstname, middlename, and lastname
+                                // Basic Information
                                 string firstname = reader["firstname"].ToString();
                                 string middlename = reader["middlename"].ToString();
                                 string lastname = reader["lastname"].ToString();
                                 string number = reader["phonenumber"].ToString();
-                                string amount = reader["amount"].ToString();
+                                decimal loanAmount = reader["amount"] != DBNull.Value ? Convert.ToDecimal(reader["amount"]) : 0;
 
-                                // Populate the labels with the data retrieved
+                                // Populate Labels
                                 pendingApplicationId.Text = reader["id"].ToString();
                                 pendingApplicantName.Text = $"{firstname} {middlename} {lastname}".Trim();
                                 pendingPhoneNumber.Text = $"+63{number}".Trim();
-                                pendingLastName.Text = reader["lastname"].ToString();
-                                pendingFirstName.Text = reader["firstname"].ToString();
-                                pendingMiddleName.Text = reader["middlename"].ToString();
+                                pendingLastName.Text = lastname;
+                                pendingFirstName.Text = firstname;
+                                pendingMiddleName.Text = middlename;
                                 pendingId.Text = reader["idtype"].ToString();
                                 pendingGender.Text = reader["gender"].ToString();
                                 pendingAddress.Text = reader["address"].ToString();
                                 pendingEmail.Text = reader["email"].ToString();
-
-                                // Add additional fields if required
-                                pendingLoanAmount.Text = $"₱{amount}".Trim();
+                                pendingLoanAmount.Text = $"₱{loanAmount:N2}";
                                 pendingStatus.Text = reader["status"].ToString();
                                 pendingRepaymentTerm.Text = reader["repaymentterm"].ToString();
+                                pendingRepaymentTerm2.Text = reader["repaymentterm"].ToString();
 
                                 // Employment Details
                                 pendingEmployeName.Text = reader["employername"].ToString();
@@ -269,10 +272,95 @@ namespace LoanSystem
                                 pendingIncome.Text = reader["annualincome"].ToString();
                                 pendingYear.Text = reader["yearsemployment"].ToString();
 
+                                // Credit Scoring Fields
+                                decimal annualIncome = reader["annualincome"] != DBNull.Value ? Convert.ToDecimal(reader["annualincome"]) : 0;
+                                decimal monthlyIncome = reader["monthlyincome"] != DBNull.Value ? Convert.ToDecimal(reader["monthlyincome"]) : 0;
+                                decimal expenses = reader["expenses"] != DBNull.Value ? Convert.ToDecimal(reader["expenses"]) : 0;
+                                decimal estimatedValue = reader["estimatedvalue"] != DBNull.Value ? Convert.ToDecimal(reader["estimatedvalue"]) : 0;
+                                string employmentStatus = reader["employmentstatus"].ToString();
+                                int yearsEmployment = reader["yearsemployment"] != DBNull.Value ? Convert.ToInt32(reader["yearsemployment"]) : 0;
+                                string loanPurpose = reader["loanpurpose"].ToString();
+
+                                string repaymentTermString = reader["repaymentterm"].ToString(); // Read the value from the database
+                                decimal repaymentTerm = 0;
+
+                                if (!string.IsNullOrWhiteSpace(repaymentTermString))
+                                {
+                                    // Use Regex to extract numeric values from the string
+                                    string numericPart = Regex.Match(repaymentTermString, @"\d+").Value;
+
+                                    if (!string.IsNullOrWhiteSpace(numericPart))
+                                    {
+                                        // Convert months to years by dividing by 12
+                                        repaymentTerm = Convert.ToDecimal(numericPart) / 12;
+                                    }
+                                }
+
+
+
+                                // Step 1: Assess Financial Capacity
+                                decimal mdi = monthlyIncome - expenses; // Monthly Disposable Income
+                                decimal repaymentPercentage = 0.4M; // Example: 40% of MDI
+                                decimal repaymentCapacity = mdi * repaymentPercentage;
+                                decimal creditLimitIncomeBased = repaymentCapacity * repaymentTerm;
+
+                                // Step 2: Evaluate Collateral
+                                decimal ltvRatio = 0.8M; // Example: 80% Loan-to-Value ratio
+                                decimal creditLimitCollateralBased = estimatedValue * ltvRatio;
+
+                                // Final Credit Limit
+                                decimal finalCreditLimit = Math.Max(creditLimitIncomeBased, creditLimitCollateralBased);
+
+                                // Display Final Credit Limit
+                                pendingCreditLimit.Text = $"₱{finalCreditLimit:N2}";
+
+                                // Step 3: Debt-to-Income Ratio (DTI)
+                                decimal dti = monthlyIncome > 0 ? (expenses / monthlyIncome) * 100 : 0;
+
+                                // Step 4: Credit Score Calculation
+                                int creditScore = 0;
+
+                                // Financial Capacity and Stability
+                                creditScore += annualIncome >= 500000 ? 25 : 15;
+                                creditScore += dti <= 30 ? 20 : (dti <= 50 ? 10 : 0);
+                                creditScore += employmentStatus == "Stable" && yearsEmployment >= 3 ? 15 : 5;
+
+                                // Loan Purpose and Collateral
+                                creditScore += loanPurpose.ToLower() == "essential" ? 10 : 5;
+                                creditScore += estimatedValue > loanAmount ? 10 : 0;
+
+                                // Determine Credit Color Zone, RBP, and Recommended Loan Amount
+                                string creditColor = "Red Zone";
+                                string rbp = "High Risk";
+                                decimal recommendedAmount = loanAmount * 0.25M;
+
+                                if (creditScore >= 80)
+                                {
+                                    creditColor = "Green Zone";
+                                    rbp = "Low Risk";
+                                    recommendedAmount = loanAmount;
+                                }
+                                else if (creditScore >= 50)
+                                {
+                                    creditColor = "Yellow Zone";
+                                    rbp = "Medium Risk";
+                                    recommendedAmount = loanAmount * 0.75M;
+                                }
+
+                                rbp += $" - ₱{recommendedAmount:N2}";
+
+                                // Update UI with Credit Scoring Details
+                                pendingCreditScore.Text = creditScore.ToString();
+                                pendingRBP.Text = rbp;
+                                pendingCreditColor.Text = creditColor;
+
+                                // Change Panel Color
+                                pendingCreditPanel.BackColor = creditColor == "Green Zone" ? Color.SeaGreen :
+                                                                creditColor == "Yellow Zone" ? Color.Khaki :
+                                                                Color.IndianRed;
                             }
                             else
                             {
-                                // If no data is found, clear the labels
                                 ClearPanelLabels();
                                 MessageBox.Show("No details found for the selected ID.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
@@ -282,10 +370,12 @@ namespace LoanSystem
             }
             catch (Exception ex)
             {
-                // Handle any errors during database connection or query execution
                 MessageBox.Show($"An error occurred while retrieving details: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+
 
         private void FormPending_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -320,6 +410,8 @@ namespace LoanSystem
                 MessageBox.Show($"An error occurred while reverting statuses: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
         private void LoadData()
         {
@@ -413,7 +505,5 @@ namespace LoanSystem
         {
 
         }
-
-       
     }
 }

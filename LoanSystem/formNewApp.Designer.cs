@@ -31,6 +31,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formNewApp));
             newAppBtn = new Button();
             dataGridView1 = new DataGridView();
             ApplicationID = new DataGridViewTextBoxColumn();
@@ -44,6 +45,7 @@
             AssignedOfficer = new DataGridViewTextBoxColumn();
             Action = new DataGridViewTextBoxColumn();
             newAppUpdate = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -184,12 +186,26 @@
             newAppUpdate.UseVisualStyleBackColor = false;
             newAppUpdate.Click += newAppUpdate_Click;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Transparent;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.BackgroundImageLayout = ImageLayout.None;
+            button1.ForeColor = Color.Transparent;
+            button1.Location = new Point(12, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(32, 31);
+            button1.TabIndex = 27;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // formNewApp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1092, 609);
+            Controls.Add(button1);
             Controls.Add(newAppUpdate);
             Controls.Add(dataGridView1);
             Controls.Add(newAppBtn);
@@ -215,5 +231,6 @@
         private DataGridViewTextBoxColumn AssignedOfficer;
         private DataGridViewTextBoxColumn Action;
         private Button newAppUpdate;
+        private Button button1;
     }
 }
