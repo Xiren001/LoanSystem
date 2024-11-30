@@ -287,23 +287,34 @@ namespace LoanSystem
 
                                 if (!string.IsNullOrWhiteSpace(repaymentTermString))
                                 {
-                                    // Use Regex to extract numeric values from the string
                                     string numericPart = Regex.Match(repaymentTermString, @"\d+").Value;
 
                                     if (!string.IsNullOrWhiteSpace(numericPart))
                                     {
-                                        // Convert months to years by dividing by 12
-                                        repaymentTerm = Convert.ToDecimal(numericPart) / 12;
+                                        repaymentTerm = Convert.ToDecimal(numericPart); // Months
                                     }
                                 }
 
+                                // Calculate Interest Rate, Monthly Payment, Total Repayment, and Interest Percentage
+                                decimal annualInterestRate = 10; // Example: 10% annual interest rate
+                                decimal monthlyInterestRate = annualInterestRate / 100 / 12;
+                                decimal denominator = (decimal)(Math.Pow((double)(1 + monthlyInterestRate), (double)repaymentTerm) - 1);
+                                decimal monthlyPayment = loanAmount * (monthlyInterestRate + (monthlyInterestRate / denominator));
+                                decimal totalRepayment = monthlyPayment * repaymentTerm;
+                                decimal totalInterest = totalRepayment - loanAmount;
+                                decimal interestPercentage = totalInterest / loanAmount * 100;
 
+                                // Populate the new fields
+                                pendingMonthlyPayment.Text = $"₱{monthlyPayment:N2}";
+                                pendingTotalRepayment.Text = $"₱{totalRepayment:N2}";
+                                pendingInterest.Text = $"₱{totalInterest:N2}";
+                                pendingPercent.Text = $"{interestPercentage:N2}%";
 
                                 // Step 1: Assess Financial Capacity
                                 decimal mdi = monthlyIncome - expenses; // Monthly Disposable Income
                                 decimal repaymentPercentage = 0.4M; // Example: 40% of MDI
                                 decimal repaymentCapacity = mdi * repaymentPercentage;
-                                decimal creditLimitIncomeBased = repaymentCapacity * repaymentTerm;
+                                decimal creditLimitIncomeBased = repaymentCapacity * (repaymentTerm / 12);
 
                                 // Step 2: Evaluate Collateral
                                 decimal ltvRatio = 0.8M; // Example: 80% Loan-to-Value ratio
@@ -320,70 +331,57 @@ namespace LoanSystem
 
                                 // Step 4: Credit Score Calculation
                                 int creditScore = 0;
-                                // Financial Capacity and Stability
                                 creditScore += annualIncome >= 500000 ? 20 : 10; // Maximum: 20
                                 creditScore += dti <= 30 ? 15 : (dti <= 50 ? 10 : 5); // Maximum: 15
                                 creditScore += employmentStatus == "Full-time" && yearsEmployment >= 3 ? 10 : 5; // Maximum: 10
 
-                                // Loan Purpose and Collateral
                                 creditScore += loanPurpose.ToLower() == "home renovation" || loanPurpose.ToLower() == "essential" ? 10 : 5; // Maximum: 10
                                 creditScore += estimatedValue > loanAmount ? 10 : 0; // Maximum: 10
 
-                                // Loan Type Factor
                                 switch (loanType.ToLower())
                                 {
-                                    case "personal loan":
-                                        creditScore += 5; // Maximum: 5
-                                        break;
-                                    case "home loan":
-                                        creditScore += 10; // Maximum: 10
-                                        break;
-                                    case "car loan":
-                                        creditScore += 8; // Maximum: 8
-                                        break;
-                                    case "business loan":
-                                        creditScore += 15; // Maximum: 15
-                                        break;
-                                    case "educational loan":
-                                        creditScore += 7; // Maximum: 7
-                                        break;
+                                    case "personal loan": creditScore += 5; break; // Maximum: 5
+                                    case "home loan": creditScore += 10; break; // Maximum: 10
+                                    case "car loan": creditScore += 8; break; // Maximum: 8
+                                    case "business loan": creditScore += 15; break; // Maximum: 15
+                                    case "educational loan": creditScore += 7; break; // Maximum: 7
                                 }
 
-                                // Repayment Term Factor
-                                creditScore += repaymentTerm <= 12 ? 10 :
-                                               repaymentTerm <= 36 ? 8 :
-                                               repaymentTerm <= 60 ? 5 : 3; // Maximum: 10
+                                creditScore += repaymentTerm <= 12 ? 10 : repaymentTerm <= 36 ? 8 : repaymentTerm <= 60 ? 5 : 3; // Maximum: 10
 
-                                // Total Maximum Score: 100
+                                string creditColor = creditScore >= 80 ? "Green Zone" :
+                                                     creditScore >= 50 ? "Yellow Zone" :
+                                                     creditScore >= 30 ? "Orange Zone" : "Red Zone";
 
-                                // Determine Credit Color Zone, RBP, and Recommended Loan Amount
-                                string creditColor = "Red Zone";
-                                string rbp = "High Risk";
-                                decimal recommendedAmount = loanAmount * 0.25M;
+                                string rbp = creditColor == "Green Zone" ? "Low Risk" :
+                                             creditColor == "Yellow Zone" ? "Medium Risk" :
+                                             creditColor == "Orange Zone" ? "Moderate Risk" : "High Risk";
 
-                                if (creditScore >= 80)
-                                {
-                                    creditColor = "Green Zone";
-                                    rbp = "Low Risk";
-                                    recommendedAmount = loanAmount;
-                                }
-                                else if (creditScore >= 50)
-                                {
-                                    creditColor = "Yellow Zone";
-                                    rbp = "Medium Risk";
-                                    recommendedAmount = loanAmount * 0.75M;
-                                }
+                                decimal recommendedAmount = creditScore >= 80 ? loanAmount :
+                                                            creditScore >= 50 ? loanAmount * 0.75M :
+                                                            creditScore >= 30 ? loanAmount * 0.50M : loanAmount * 0.25M;
 
                                 rbp += $" - ₱{recommendedAmount:N2}";
 
-                                // Update UI with Credit Scoring Details
+                                // Calculate RBP Values
+                                decimal rbpMonthlyPayment = recommendedAmount * (monthlyInterestRate + (monthlyInterestRate / denominator));
+                                decimal rbpTotalRepayment = rbpMonthlyPayment * repaymentTerm;
+                                decimal rbpTotalInterest = rbpTotalRepayment - recommendedAmount;
+                                decimal rbpInterestPercentage = rbpTotalInterest / recommendedAmount * 100;
+
+                                // Update RBP Labels
+                                repaymentRBP.Text = $"₱{rbpTotalRepayment:N2}";
+                                monthlyRBP.Text = $"₱{rbpMonthlyPayment:N2}";
+                                interestRBP.Text = $"₱{rbpTotalInterest:N2}";
+                                percentRBP.Text = $"{rbpInterestPercentage:N2}%";
+
                                 pendingCreditScore.Text = creditScore.ToString();
                                 pendingRBP.Text = rbp;
                                 pendingCreditColor.Text = creditColor;
 
-                                // Change Panel Color
                                 pendingCreditPanel.BackColor = creditColor == "Green Zone" ? Color.SeaGreen :
                                                                 creditColor == "Yellow Zone" ? Color.Khaki :
+                                                                creditColor == "Orange Zone" ? Color.Orange :
                                                                 Color.IndianRed;
                             }
                             else
@@ -400,6 +398,7 @@ namespace LoanSystem
                 MessageBox.Show($"An error occurred while retrieving details: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
 
