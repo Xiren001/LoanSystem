@@ -133,6 +133,149 @@ namespace LoanSystem
             }
         }
 
+        //private void pendingUpdateStatus_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (currentSelectedId == null)
+        //    {
+        //        MessageBox.Show("Please select an application first.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        return;
+        //    }
+
+        //    // Get the selected status from the dropdown
+        //    string selectedStatus = pendingUpdateStatus.SelectedItem?.ToString();
+
+        //    if (selectedStatus == "Approved" || selectedStatus == "Rejected")
+        //    {
+        //        try
+        //        {
+        //            string targetTable = selectedStatus == "Approved" ? "approvedApplications" : "rejectedApplications";
+
+        //            // Connection string
+        //            string connectionString = "Data Source=XIREN\\SQLEXPRESS;Initial Catalog=LoanWise;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;";
+
+        //            // Fetch row data
+        //            string fetchQuery = "SELECT * FROM newapplication WHERE id = @Id";
+        //            string insertQuery = $@"
+        //        INSERT INTO {targetTable} (
+        //            lastname, firstname, middlename, dob, gender, martialstatus, idtype, idnumber,
+        //            phonenumber, email, address, employername, employmentstatus, position, annualincome,
+        //            yearsemployment, employercontact, incomeproof, identtityproof, collateraldocument,
+        //            loantype, amount, loanpurpose, repaymentterm, collateraltype, estimatedvalue, 
+        //            collateraldescription, monthlyincome, expenses, applicationdate, 
+        //            CreditScore, RBP, Interest, [Percent], CreditLimit, 
+        //            MonthlyPayment, TotalRepayment, RBP_Interest, RBP_Percent, 
+        //            RBP_MonthlyPayment, RBP_TotalRepayment
+        //        )
+        //        VALUES (
+        //            @Lastname, @Firstname, @Middlename, @DOB, @Gender, @MaritalStatus, @IdType, @IdNumber,
+        //            @PhoneNumber, @Email, @Address, @EmployerName, @EmploymentStatus, @Position, @AnnualIncome,
+        //            @YearsEmployment, @EmployerContact, @IncomeProof, @IdentityProof, @CollateralDocument,
+        //            @LoanType, @Amount, @LoanPurpose, @RepaymentTerm, @CollateralType, @EstimatedValue, 
+        //            @CollateralDescription, @MonthlyIncome, @Expenses, @ApplicationDate, 
+        //            @CreditScore, @RBP, @Interest, @Percent, @CreditLimit, 
+        //            @MonthlyPayment, @TotalRepayment, @RBP_Interest, @RBP_Percent, 
+        //            @RBP_MonthlyPayment, @RBP_TotalRepayment
+        //        )";
+        //            string deleteQuery = "DELETE FROM newapplication WHERE id = @Id";
+
+        //            using (SqlConnection conn = new SqlConnection(connectionString))
+        //            {
+        //                conn.Open();
+
+        //                using (SqlCommand fetchCmd = new SqlCommand(fetchQuery, conn))
+        //                {
+        //                    fetchCmd.Parameters.AddWithValue("@Id", currentSelectedId.Value);
+        //                    using (SqlDataReader reader = fetchCmd.ExecuteReader())
+        //                    {
+        //                        if (reader.Read())
+        //                        {
+        //                            // Collect data for insertion
+        //                            var parameters = new Dictionary<string, object>
+        //                            {
+        //                                ["@Lastname"] = reader["lastname"],
+        //                                ["@Firstname"] = reader["firstname"],
+        //                                ["@Middlename"] = reader["middlename"],
+        //                                ["@DOB"] = reader["dob"],
+        //                                ["@Gender"] = reader["gender"],
+        //                                ["@MaritalStatus"] = reader["martialstatus"],
+        //                                ["@IdType"] = reader["idtype"],
+        //                                ["@IdNumber"] = reader["idnumber"],
+        //                                ["@PhoneNumber"] = reader["phonenumber"],
+        //                                ["@Email"] = reader["email"],
+        //                                ["@Address"] = reader["address"],
+        //                                ["@EmployerName"] = reader["employername"],
+        //                                ["@EmploymentStatus"] = reader["employmentstatus"],
+        //                                ["@Position"] = reader["position"],
+        //                                ["@AnnualIncome"] = reader["annualincome"],
+        //                                ["@YearsEmployment"] = reader["yearsemployment"],
+        //                                ["@EmployerContact"] = reader["employercontact"],
+        //                                ["@IncomeProof"] = reader["incomeproof"],
+        //                                ["@IdentityProof"] = reader["identtityproof"],
+        //                                ["@CollateralDocument"] = reader["collateraldocument"],
+        //                                ["@LoanType"] = reader["loantype"],
+        //                                ["@Amount"] = reader["amount"],
+        //                                ["@LoanPurpose"] = reader["loanpurpose"],
+        //                                ["@RepaymentTerm"] = reader["repaymentterm"],
+        //                                ["@CollateralType"] = reader["collateraltype"],
+        //                                ["@EstimatedValue"] = reader["estimatedvalue"],
+        //                                ["@CollateralDescription"] = reader["collateraldescription"],
+        //                                ["@MonthlyIncome"] = reader["monthlyincome"],
+        //                                ["@Expenses"] = reader["expenses"],
+        //                                ["@ApplicationDate"] = reader["applicationdate"],
+        //                                ["@CreditScore"] = pendingCreditScore.Text,
+        //                                ["@RBP"] = pendingRBP.Text,
+        //                                ["@Interest"] = pendingInterest.Text,
+        //                                ["@Percent"] = pendingPercent.Text,
+        //                                ["@CreditLimit"] = pendingCreditLimit.Text,
+        //                                ["@MonthlyPayment"] = pendingMonthlyPayment.Text,
+        //                                ["@TotalRepayment"] = pendingTotalRepayment.Text,
+        //                                ["@RBP_Interest"] = interestRBP.Text,
+        //                                ["@RBP_Percent"] = percentRBP.Text,
+        //                                ["@RBP_MonthlyPayment"] = monthlyRBP.Text,
+        //                                ["@RBP_TotalRepayment"] = repaymentRBP.Text
+        //                            };
+
+        //                            // Close the reader before proceeding
+        //                            reader.Close();
+
+        //                            // Insert data
+        //                            using (SqlCommand insertCmd = new SqlCommand(insertQuery, conn))
+        //                            {
+        //                                foreach (var param in parameters)
+        //                                    insertCmd.Parameters.AddWithValue(param.Key, param.Value);
+
+        //                                insertCmd.ExecuteNonQuery();
+        //                            }
+        //                        }
+        //                    }
+        //                }
+
+        //                // Delete original data
+        //                using (SqlCommand deleteCmd = new SqlCommand(deleteQuery, conn))
+        //                {
+        //                    deleteCmd.Parameters.AddWithValue("@Id", currentSelectedId.Value);
+        //                    deleteCmd.ExecuteNonQuery();
+        //                }
+        //            }
+
+        //            // Notify success
+        //            MessageBox.Show($"Application successfully moved to '{targetTable}'.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        //            // Refresh DataGridView
+        //            LoadData();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        pendingUpdateStatus.Text = "Operation"; // Reset text if invalid selection
+        //    }
+        //}
+
+
         private void pendingUpdateStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (currentSelectedId == null)
@@ -141,44 +284,156 @@ namespace LoanSystem
                 return;
             }
 
-            // Get the selected status from the dropdown
             string selectedStatus = pendingUpdateStatus.SelectedItem?.ToString();
-
-            // Ensure the status is either "Approved" or "Rejected"
-            if (selectedStatus == "Approved" || selectedStatus == "Rejected")
+            if (string.IsNullOrWhiteSpace(selectedStatus) || (selectedStatus != "Approved" && selectedStatus != "Rejected"))
             {
-                try
-                {
-                    // Update the status in the database
-                    UpdateRowStatus(currentSelectedId.Value, selectedStatus);
-
-                    // Find the row in the DataGridView and update its status
-                    var row = dataGridView1.Rows.Cast<DataGridViewRow>()
-                                                .FirstOrDefault(r => r.Cells["idColumn"].Value.ToString() == currentSelectedId.ToString());
-                    if (row != null)
-                    {
-                        row.Cells["statusColumn"].Value = selectedStatus;
-                    }
-
-                    MessageBox.Show($"Application status updated to '{selectedStatus}'.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // Reset the combo box to show its default text
-
-                    pendingUpdateStatus.Text = "Operation"; // Set default text
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"An error occurred while updating the status: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                pendingUpdateStatus.Text = "Operation"; // Reset dropdown
+                MessageBox.Show("Invalid status selected. Please choose Approved or Rejected.", "Invalid Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
-            {
-                // Automatically reset the combo box to default if an invalid selection is made
 
-                pendingUpdateStatus.Text = "Operation"; // Reset text
+            try
+            {
+                string targetTable = selectedStatus == "Approved" ? "approvedApplications" : "rejectedApplications";
+                string connectionString = "Data Source=XIREN\\SQLEXPRESS;Initial Catalog=LoanWise;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;";
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (SqlTransaction transaction = conn.BeginTransaction())
+                    {
+                        try
+                        {
+                            // Fetch data
+                            string fetchQuery = "SELECT * FROM newapplication WHERE id = @Id";
+                             string insertQuery = $@"
+                INSERT INTO {targetTable} (
+                    lastname, firstname, middlename, dob, gender, martialstatus, idtype, idnumber,
+                    phonenumber, email, address, employername, employmentstatus, position, annualincome,
+                    yearsemployment, employercontact, incomeproof, identtityproof, collateraldocument,
+                    loantype, amount, loanpurpose, repaymentterm, collateraltype, estimatedvalue, 
+                    collateraldescription, monthlyincome, expenses, applicationdate, 
+                    CreditScore, RBP, Interest, [Percent], CreditLimit, 
+                    MonthlyPayment, TotalRepayment, RBP_Interest, RBP_Percent, 
+                    RBP_MonthlyPayment, RBP_TotalRepayment
+                )
+                VALUES (
+                    @Lastname, @Firstname, @Middlename, @DOB, @Gender, @MaritalStatus, @IdType, @IdNumber,
+                    @PhoneNumber, @Email, @Address, @EmployerName, @EmploymentStatus, @Position, @AnnualIncome,
+                    @YearsEmployment, @EmployerContact, @IncomeProof, @IdentityProof, @CollateralDocument,
+                    @LoanType, @Amount, @LoanPurpose, @RepaymentTerm, @CollateralType, @EstimatedValue, 
+                    @CollateralDescription, @MonthlyIncome, @Expenses, @ApplicationDate, 
+                    @CreditScore, @RBP, @Interest, @Percent, @CreditLimit, 
+                    @MonthlyPayment, @TotalRepayment, @RBP_Interest, @RBP_Percent, 
+                    @RBP_MonthlyPayment, @RBP_TotalRepayment
+                )";
+                            string deleteQuery = "DELETE FROM newapplication WHERE id = @Id";
+
+                            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+                            using (SqlCommand fetchCmd = new SqlCommand(fetchQuery, conn, transaction))
+                            {
+                                fetchCmd.Parameters.AddWithValue("@Id", currentSelectedId.Value);
+                                using (SqlDataReader reader = fetchCmd.ExecuteReader())
+                                {
+                                    if (reader.Read())
+                                    {
+                                        // Map columns to parameters
+                                        // Use reader.IsDBNull() to handle NULL values safely
+                                        parameters["@Lastname"] = reader["lastname"];
+                                        parameters["@Firstname"] = reader["firstname"];
+                                        parameters["@Middlename"] = reader["middlename"];
+                                        parameters["@DOB"] = reader["dob"];
+                                        parameters["@Gender"] = reader["gender"];
+                                        parameters["@MaritalStatus"] = reader["martialstatus"];
+                                        parameters["@IdType"] = reader["idtype"];
+                                        parameters["@IdNumber"] = reader["idnumber"];
+                                        parameters["@PhoneNumber"] = reader["phonenumber"];
+                                        parameters["@Email"] = reader["email"];
+                                        parameters["@Address"] = reader["address"];
+                                        parameters["@EmployerName"] = reader["employername"];
+                                        parameters["@EmploymentStatus"] = reader["employmentstatus"];
+                                        parameters["@Position"] = reader["position"];
+                                        parameters["@AnnualIncome"] = reader["annualincome"];
+                                        parameters["@YearsEmployment"] = reader["yearsemployment"];
+                                        parameters["@EmployerContact"] = reader["employercontact"];
+                                        parameters["@IncomeProof"] = reader["incomeproof"];
+                                        parameters["@IdentityProof"] = reader["identtityproof"];
+                                        parameters["@CollateralDocument"] = reader["collateraldocument"];
+                                        parameters["@LoanType"] = reader["loantype"];
+                                        parameters["@Amount"] = reader["amount"];
+                                        parameters["@LoanPurpose"] = reader["loanpurpose"];
+                                        parameters["@RepaymentTerm"] = reader["repaymentterm"];
+                                        parameters["@CollateralType"] = reader["collateraltype"];
+                                        parameters["@EstimatedValue"] = reader["estimatedvalue"];
+                                        parameters["@CollateralDescription"] = reader["collateraldescription"];
+                                        parameters["@MonthlyIncome"] = reader["monthlyincome"];
+                                        parameters["@Expenses"] = reader["expenses"];
+                                        parameters["@ApplicationDate"] = reader["applicationdate"];
+                                        parameters["@CreditScore"] = pendingCreditScore.Text;
+                                        parameters["@RBP"] = pendingRBP.Text;
+                                        parameters["@Interest"] = pendingInterest.Text;
+                                        parameters["@Percent"] = pendingPercent.Text;
+                                        parameters["@CreditLimit"] = pendingCreditLimit.Text;
+                                        parameters["@MonthlyPayment"] = pendingMonthlyPayment.Text;
+                                        parameters["@TotalRepayment"] = pendingTotalRepayment.Text;
+                                        parameters["@RBP_Interest"] = interestRBP.Text;
+                                        parameters["@RBP_Percent"] = percentRBP.Text;
+                                        parameters["@RBP_MonthlyPayment"] = monthlyRBP.Text;
+                                        parameters["@RBP_TotalRepayment"] = repaymentRBP.Text;
+                                        //parameters["@RBP"] = recommendedAmount;
+                                        //parameters["@Interest"] = totalInterest;
+                                        //parameters["@Percent"] = interestPercentage;
+                                        //parameters["@CreditLimit"] = finalCreditLimit;
+                                        //parameters["@MonthlyPayment"] = monthlyPayment;
+                                        //parameters["@TotalRepayment"] = totalRepayment;
+                                        //parameters["@RBP_Interest"] = rbpTotalInterest;
+                                        //parameters["@RBP_Percent"] = rbpInterestPercentage;
+                                        //parameters["@RBP_MonthlyPayment"] = rbpMonthlyPayment;
+                                        //parameters["@RBP_TotalRepayment"] = rbpTotalRepayment;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception("Application not found.");
+                                    }
+                                }
+                            }
+
+                            // Insert data
+                            using (SqlCommand insertCmd = new SqlCommand(insertQuery, conn, transaction))
+                            {
+                                foreach (var param in parameters)
+                                    insertCmd.Parameters.AddWithValue(param.Key, param.Value);
+                                insertCmd.ExecuteNonQuery();
+                            }
+
+                            // Delete old record
+                            using (SqlCommand deleteCmd = new SqlCommand(deleteQuery, conn, transaction))
+                            {
+                                deleteCmd.Parameters.AddWithValue("@Id", currentSelectedId.Value);
+                                deleteCmd.ExecuteNonQuery();
+                            }
+
+                            transaction.Commit();
+                        }
+                        catch
+                        {
+                            transaction.Rollback();
+                            throw;
+                        }
+                    }
+                }
+
+                MessageBox.Show($"Application successfully moved to '{targetTable}'.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadData(); // Refresh UI
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
         private void DataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -398,10 +653,6 @@ namespace LoanSystem
                 MessageBox.Show($"An error occurred while retrieving details: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
-
 
         private void FormPending_FormClosing(object sender, FormClosingEventArgs e)
         {
