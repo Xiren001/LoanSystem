@@ -639,7 +639,7 @@
             // 
             pendingCreditColor.AutoSize = true;
             pendingCreditColor.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            pendingCreditColor.Location = new Point(159, 15);
+            pendingCreditColor.Location = new Point(157, 15);
             pendingCreditColor.Name = "pendingCreditColor";
             pendingCreditColor.Size = new Size(69, 16);
             pendingCreditColor.TabIndex = 17;
@@ -669,7 +669,7 @@
             // 
             pendingRBP.AutoSize = true;
             pendingRBP.Font = new Font("Tahoma", 9.75F);
-            pendingRBP.Location = new Point(416, 15);
+            pendingRBP.Location = new Point(405, 15);
             pendingRBP.Name = "pendingRBP";
             pendingRBP.Size = new Size(49, 16);
             pendingRBP.TabIndex = 14;
@@ -679,7 +679,7 @@
             // 
             label22.AutoSize = true;
             label22.Font = new Font("Tahoma", 12F, FontStyle.Bold);
-            label22.Location = new Point(243, 12);
+            label22.Location = new Point(232, 12);
             label22.Name = "label22";
             label22.Size = new Size(167, 19);
             label22.TabIndex = 13;

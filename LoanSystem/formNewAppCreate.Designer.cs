@@ -135,7 +135,7 @@
             repaymentTerm.Font = new Font("Tahoma", 11F);
             repaymentTerm.ForeColor = SystemColors.WindowFrame;
             repaymentTerm.FormattingEnabled = true;
-            repaymentTerm.Items.AddRange(new object[] { "12 months", "24 months", "36 months" });
+            repaymentTerm.Items.AddRange(new object[] { "1 month", "3 months", "", "6 months", "", "9 months", "", "12 months", "18 months", "", "24 months", "", "36 months", "48 months", "", "60 months", "72 months ", "", "84 months", "", "96 months", "120 months", "", "180 months", "", "240 months", "300 months", "", "360 months" });
             repaymentTerm.Location = new Point(210, 460);
             repaymentTerm.Name = "repaymentTerm";
             repaymentTerm.Size = new Size(163, 26);
@@ -175,7 +175,7 @@
             loanPurpose.Font = new Font("Tahoma", 12F);
             loanPurpose.ForeColor = SystemColors.WindowFrame;
             loanPurpose.FormattingEnabled = true;
-            loanPurpose.Items.AddRange(new object[] { "education", "debt consolidation", "home renovation" });
+            loanPurpose.Items.AddRange(new object[] { "Flexible", "Housing", "Vehicle", "Capital", "Tuition" });
             loanPurpose.Location = new Point(24, 460);
             loanPurpose.Name = "loanPurpose";
             loanPurpose.Size = new Size(181, 27);
@@ -215,7 +215,7 @@
             loanType.Font = new Font("Tahoma", 12F);
             loanType.ForeColor = SystemColors.WindowFrame;
             loanType.FormattingEnabled = true;
-            loanType.Items.AddRange(new object[] { "Personal Loan", " Auto Loan", "Home Loan", "Business Loan" });
+            loanType.Items.AddRange(new object[] { "Personal Loan", "Home Loan (Housing Loan)", "Car Loan (Auto Loan)", "Business Loan", "Educational Loan" });
             loanType.Location = new Point(24, 390);
             loanType.Name = "loanType";
             loanType.Size = new Size(181, 27);
@@ -279,7 +279,7 @@
             yearEmployment.Font = new Font("Tahoma", 12F);
             yearEmployment.ForeColor = SystemColors.WindowFrame;
             yearEmployment.FormattingEnabled = true;
-            yearEmployment.Items.AddRange(new object[] { "1", "2", "3", "4", "5+" });
+            yearEmployment.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "7", "8", "9", "10", "11", "12", "13", "14", "15" });
             yearEmployment.Location = new Point(581, 215);
             yearEmployment.Name = "yearEmployment";
             yearEmployment.Size = new Size(242, 27);
@@ -315,7 +315,7 @@
             annualIncome.Font = new Font("Tahoma", 12F);
             annualIncome.ForeColor = SystemColors.WindowFrame;
             annualIncome.FormattingEnabled = true;
-            annualIncome.Items.AddRange(new object[] { "10000 ", "20000", "30000", "40000" });
+            annualIncome.Items.AddRange(new object[] { "100000 ", "200000", "300000", "400000", "500000", "600000", "700000", "800000", "900000", "1000000" });
             annualIncome.Location = new Point(829, 146);
             annualIncome.Name = "annualIncome";
             annualIncome.Size = new Size(223, 27);
@@ -344,7 +344,7 @@
             employmentStatus.Font = new Font("Tahoma", 12F);
             employmentStatus.ForeColor = SystemColors.WindowFrame;
             employmentStatus.FormattingEnabled = true;
-            employmentStatus.Items.AddRange(new object[] { "Full-time", "Part-time", "Self-employed", "Unemployed", "Retired" });
+            employmentStatus.Items.AddRange(new object[] { "Full-time", "Part-time", "Self-employed", "Unemployed" });
             employmentStatus.Location = new Point(904, 80);
             employmentStatus.Name = "employmentStatus";
             employmentStatus.Size = new Size(148, 27);

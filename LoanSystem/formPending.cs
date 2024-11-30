@@ -280,6 +280,7 @@ namespace LoanSystem
                                 string employmentStatus = reader["employmentstatus"].ToString();
                                 int yearsEmployment = reader["yearsemployment"] != DBNull.Value ? Convert.ToInt32(reader["yearsemployment"]) : 0;
                                 string loanPurpose = reader["loanpurpose"].ToString();
+                                string loanType = reader["loantype"].ToString();
 
                                 string repaymentTermString = reader["repaymentterm"].ToString(); // Read the value from the database
                                 decimal repaymentTerm = 0;
@@ -319,15 +320,41 @@ namespace LoanSystem
 
                                 // Step 4: Credit Score Calculation
                                 int creditScore = 0;
-
                                 // Financial Capacity and Stability
-                                creditScore += annualIncome >= 500000 ? 25 : 15;
-                                creditScore += dti <= 30 ? 20 : (dti <= 50 ? 10 : 0);
-                                creditScore += employmentStatus == "Stable" && yearsEmployment >= 3 ? 15 : 5;
+                                creditScore += annualIncome >= 500000 ? 20 : 10; // Maximum: 20
+                                creditScore += dti <= 30 ? 15 : (dti <= 50 ? 10 : 5); // Maximum: 15
+                                creditScore += employmentStatus == "Full-time" && yearsEmployment >= 3 ? 10 : 5; // Maximum: 10
 
                                 // Loan Purpose and Collateral
-                                creditScore += loanPurpose.ToLower() == "essential" ? 10 : 5;
-                                creditScore += estimatedValue > loanAmount ? 10 : 0;
+                                creditScore += loanPurpose.ToLower() == "home renovation" || loanPurpose.ToLower() == "essential" ? 10 : 5; // Maximum: 10
+                                creditScore += estimatedValue > loanAmount ? 10 : 0; // Maximum: 10
+
+                                // Loan Type Factor
+                                switch (loanType.ToLower())
+                                {
+                                    case "personal loan":
+                                        creditScore += 5; // Maximum: 5
+                                        break;
+                                    case "home loan":
+                                        creditScore += 10; // Maximum: 10
+                                        break;
+                                    case "car loan":
+                                        creditScore += 8; // Maximum: 8
+                                        break;
+                                    case "business loan":
+                                        creditScore += 15; // Maximum: 15
+                                        break;
+                                    case "educational loan":
+                                        creditScore += 7; // Maximum: 7
+                                        break;
+                                }
+
+                                // Repayment Term Factor
+                                creditScore += repaymentTerm <= 12 ? 10 :
+                                               repaymentTerm <= 36 ? 8 :
+                                               repaymentTerm <= 60 ? 5 : 3; // Maximum: 10
+
+                                // Total Maximum Score: 100
 
                                 // Determine Credit Color Zone, RBP, and Recommended Loan Amount
                                 string creditColor = "Red Zone";
