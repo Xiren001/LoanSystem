@@ -306,7 +306,7 @@ namespace LoanSystem
                         {
                             // Fetch data
                             string fetchQuery = "SELECT * FROM newapplication WHERE id = @Id";
-                             string insertQuery = $@"
+                            string insertQuery = $@"
                 INSERT INTO {targetTable} (
                     lastname, firstname, middlename, dob, gender, martialstatus, idtype, idnumber,
                     phonenumber, email, address, employername, employmentstatus, position, annualincome,
@@ -327,6 +327,24 @@ namespace LoanSystem
                     @MonthlyPayment, @TotalRepayment, @RBP_Interest, @RBP_Percent, 
                     @RBP_MonthlyPayment, @RBP_TotalRepayment
                 )";
+
+                            string clientInsertQuery = @"
+                        INSERT INTO client (
+                            lastname, firstname, middlename, dob, gender, martialstatus, idtype, idnumber,
+                            phonenumber, email, address, employername, employmentstatus, position, annualincome,
+                    yearsemployment, employercontact, loantype, amount, loanpurpose, repaymentterm, collateraltype, estimatedvalue, 
+                    collateraldescription, monthlyincome, expenses, applicationdate, 
+                    CreditScore,CreditLimit, MonthlyPayment, TotalRepayment
+                        )
+                        VALUES (
+                            @Lastname, @Firstname, @Middlename, @DOB, @Gender, @MaritalStatus, @IdType, @IdNumber,
+                            @PhoneNumber, @Email, @Address, @EmployerName, @EmploymentStatus, @Position, @AnnualIncome,
+                    @YearsEmployment, @EmployerContact, @LoanType, @Amount, @LoanPurpose, @RepaymentTerm, @CollateralType, @EstimatedValue, 
+                    @CollateralDescription, @MonthlyIncome, @Expenses, @ApplicationDate, 
+                    @CreditScore,@CreditLimit, @MonthlyPayment, @TotalRepayment
+                        )";
+
+
                             string deleteQuery = "DELETE FROM newapplication WHERE id = @Id";
 
                             Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -370,6 +388,7 @@ namespace LoanSystem
                                         parameters["@MonthlyIncome"] = reader["monthlyincome"];
                                         parameters["@Expenses"] = reader["expenses"];
                                         parameters["@ApplicationDate"] = reader["applicationdate"];
+
                                         parameters["@CreditScore"] = pendingCreditScore.Text;
                                         parameters["@RBP"] = pendingRBP.Text;
                                         parameters["@Interest"] = pendingInterest.Text;
@@ -381,6 +400,8 @@ namespace LoanSystem
                                         parameters["@RBP_Percent"] = percentRBP.Text;
                                         parameters["@RBP_MonthlyPayment"] = monthlyRBP.Text;
                                         parameters["@RBP_TotalRepayment"] = repaymentRBP.Text;
+
+                                        //parameters["@CreditScore"] = creditScore;
                                         //parameters["@RBP"] = recommendedAmount;
                                         //parameters["@Interest"] = totalInterest;
                                         //parameters["@Percent"] = interestPercentage;
@@ -405,6 +426,48 @@ namespace LoanSystem
                                 foreach (var param in parameters)
                                     insertCmd.Parameters.AddWithValue(param.Key, param.Value);
                                 insertCmd.ExecuteNonQuery();
+                            }
+
+
+                            // Insert data into client table (only if Approved)
+                            if (selectedStatus == "Approved")
+                            {
+                                using (SqlCommand clientInsertCmd = new SqlCommand(clientInsertQuery, conn, transaction))
+                                {
+                                    clientInsertCmd.Parameters.AddWithValue("@Lastname", parameters["@Lastname"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@Firstname", parameters["@Firstname"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@Middlename", parameters["@Middlename"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@DOB", parameters["@DOB"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@Gender", parameters["@Gender"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@MaritalStatus", parameters["@MaritalStatus"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@IdType", parameters["@IdType"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@IdNumber", parameters["@IdNumber"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@PhoneNumber", parameters["@PhoneNumber"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@Email", parameters["@Email"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@Address", parameters["@Address"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@EmployerName", parameters["@EmployerName"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@EmploymentStatus", parameters["@EmploymentStatus"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@Position", parameters["@Position"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@AnnualIncome", parameters["@AnnualIncome"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@YearsEmployment", parameters["@YearsEmployment"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@EmployerContact", parameters["@EmployerContact"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@LoanType", parameters["@LoanType"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@Amount", parameters["@Amount"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@LoanPurpose", parameters["@LoanPurpose"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@RepaymentTerm", parameters["@RepaymentTerm"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@CollateralType", parameters["@CollateralType"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@EstimatedValue", parameters["@EstimatedValue"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@CollateralDescription", parameters["@CollateralDescription"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@MonthlyIncome", parameters["@MonthlyIncome"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@Expenses", parameters["@Expenses"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@ApplicationDate", parameters["@ApplicationDate"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@CreditScore", parameters["@CreditScore"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@CreditLimit", parameters["@CreditLimit"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@MonthlyPayment", parameters["@MonthlyPayment"]);
+                                    clientInsertCmd.Parameters.AddWithValue("@TotalRepayment", parameters["@TotalRepayment"]);
+
+                                    clientInsertCmd.ExecuteNonQuery();
+                                }
                             }
 
                             // Delete old record
