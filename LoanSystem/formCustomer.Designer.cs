@@ -45,6 +45,9 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -84,7 +87,7 @@
             FullName.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             FullName.HeaderText = "Full Name";
             FullName.Name = "FullName";
-            FullName.Width = 89;
+            FullName.Width = 82;
             // 
             // ContactInformation
             // 
