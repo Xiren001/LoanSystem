@@ -26,6 +26,81 @@ namespace LoanSystem
         {
             InitializeComponent();
             mdiProp();
+            SetRolePermissions();
+        }
+
+        private void SetRolePermissions()
+        {
+            switch (CurrentUser.Usertype)
+            {
+                case UserType.LoanOfficer:
+                    EnableLoanOfficerFeatures();
+                    break;
+                case UserType.BranchManager:
+                    EnableBranchManagerFeatures();
+                    break;
+                case UserType.Accountant:
+                    EnableAccountantFeatures();
+                    break;
+                case UserType.SystemAdministrator:
+                    EnableSystemAdministratorFeatures();
+                    break;
+                default:
+                    MessageBox.Show("Unauthorized access. Contact administrator.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Application.Exit();
+                    break;
+            }
+        }
+
+        private void EnableLoanOfficerFeatures()
+        {
+            btnNewApp.Enabled = true;
+            btnPending.Enabled = true;
+            btnAppRej.Enabled = true;
+            btnRepayment.Enabled = true;
+            btnCustomer.Enabled = true;
+
+            // Disable unnecessary features
+            btnEmplo.Enabled = false;
+            btnReport.Enabled = false;
+        }
+
+        private void EnableBranchManagerFeatures()
+        {
+            btnNewApp.Enabled = true;
+            btnPending.Enabled = true;
+            btnAppRej.Enabled = true;
+            btnCustomer.Enabled = true;
+            btnReport.Enabled = true;
+
+            // Disable unnecessary features
+            btnRepayment.Enabled = false;
+            btnEmplo.Enabled = false;
+        }
+
+        private void EnableAccountantFeatures()
+        {
+            btnRepayment.Enabled = true;
+            btnReport.Enabled = true;
+
+            // Disable unnecessary features
+            btnNewApp.Enabled = false;
+            btnPending.Enabled = false;
+            btnAppRej.Enabled = false;
+            btnCustomer.Enabled = false;
+            btnEmplo.Enabled = false;
+        }
+
+        private void EnableSystemAdministratorFeatures()
+        {
+            // Full access
+            btnNewApp.Enabled = true;
+            btnPending.Enabled = true;
+            btnAppRej.Enabled = true;
+            btnRepayment.Enabled = true;
+            btnCustomer.Enabled = true;
+            btnReport.Enabled = true;
+            btnEmplo.Enabled = true;
         }
 
         bool menuExpand = false;
@@ -181,8 +256,6 @@ namespace LoanSystem
                 newApplication.MdiParent = this;
                 newApplication.Dock = DockStyle.Fill;
                 newApplication.Show();
-
-
 
 
             }

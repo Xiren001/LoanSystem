@@ -65,7 +65,6 @@
             panelSign.Name = "panelSign";
             panelSign.Size = new Size(363, 450);
             panelSign.TabIndex = 2;
-            panelSign.Paint += panelSign_Paint;
             // 
             // label1
             // 
