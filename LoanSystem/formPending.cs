@@ -658,11 +658,11 @@ namespace LoanSystem
 
                                 switch (loanType.ToLower())
                                 {
-                                    case "personal loan": creditScore += 5; break; // Maximum: 5
-                                    case "home loan": creditScore += 10; break; // Maximum: 10
-                                    case "car loan": creditScore += 8; break; // Maximum: 8
-                                    case "business loan": creditScore += 15; break; // Maximum: 15
-                                    case "educational loan": creditScore += 7; break; // Maximum: 7
+                                    case "Personal loan": creditScore += 5; break; // Maximum: 5
+                                    case "Home loan": creditScore += 10; break; // Maximum: 10
+                                    case "Car loan": creditScore += 8; break; // Maximum: 8
+                                    case "Business loan": creditScore += 15; break; // Maximum: 15
+                                    case "Educational loan": creditScore += 7; break; // Maximum: 7
                                 }
 
                                 creditScore += repaymentTerm <= 12 ? 10 : repaymentTerm <= 36 ? 8 : repaymentTerm <= 60 ? 5 : 3; // Maximum: 10
@@ -752,6 +752,7 @@ namespace LoanSystem
         }
 
 
+        private bool isColumnsConfigured = false; // Track whether columns are already configured
 
         private void LoadData()
         {
@@ -760,11 +761,8 @@ namespace LoanSystem
 
             try
             {
-                // SQL query to retrieve data from your table with a WHERE clause for filtering
-                string query = "SELECT id, lastname, amount, " +
-                               "status, repaymentterm " +
-                               "FROM newapplication " +
-                               "WHERE status IN ('Pending', 'On KYC')";
+                // SQL query to retrieve data
+                string query = "SELECT id, lastname, status FROM newapplication WHERE status IN ('Pending', 'On KYC')";
 
                 // Establish a connection to the SQL Server
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -779,71 +777,66 @@ namespace LoanSystem
                     // Bind the data to the DataGridView
                     dataGridView1.DataSource = dataTable;
 
-                    // Adjust column headers and data mappings
-                    ConfigureDataGridViewColumns();
+                    // Configure columns only once
+                    if (!isColumnsConfigured)
+                    {
+                        ConfigureDataGridViewColumns();
+                        isColumnsConfigured = true; // Mark columns as configured
+                    }
                 }
             }
             catch (Exception ex)
             {
-                // Show error message if something goes wrong
+                // Show error message
                 MessageBox.Show($"An error occurred while loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-
         private void ConfigureDataGridViewColumns()
         {
-            // Clear existing columns to avoid duplication
+            // Ensure DataGridView does not auto-generate columns
             dataGridView1.AutoGenerateColumns = false;
+
             dataGridView1.Columns.Clear();
 
             // Set DataGridView to fill all columns proportionally
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            // Add Application ID column
+
+            // Configure columns with proper DataPropertyName
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
                 HeaderText = "Application ID",
-                DataPropertyName = "id",
+                DataPropertyName = "id", // Match database column
                 Name = "idColumn"
             });
 
-            // Add Applicant Name column
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
                 HeaderText = "Applicant Name",
-                DataPropertyName = "lastname",
+                DataPropertyName = "lastname", // Match database column
                 Name = "applicantNameColumn"
             });
 
-            // Add Amount column
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Amount",
-                DataPropertyName = "amount",
-                Name = "amountColumn"
-            });
-
-            // Add Status column
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
                 HeaderText = "Verification Status",
-                DataPropertyName = "status",
+                DataPropertyName = "status", // Match database column
                 Name = "statusColumn"
             });
-
-            // Add Assigned Officer column
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Repayment Term",
-                DataPropertyName = "repaymentterm",
-                Name = "repaymenttermColumn"
-            });
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
+
     }
 }

@@ -31,11 +31,10 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formPending));
             dataGridView1 = new DataGridView();
-            ApplicationID = new DataGridViewTextBoxColumn();
-            ApplicantName = new DataGridViewTextBoxColumn();
-            VerificationStatus = new DataGridViewTextBoxColumn();
             pendingPanel = new Panel();
+            button1 = new Button();
             panel2 = new Panel();
             repaymentRBP = new Label();
             label29 = new Label();
@@ -124,7 +123,6 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ApplicationID, ApplicantName, VerificationStatus });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.White;
             dataGridViewCellStyle2.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -134,7 +132,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.GridColor = Color.Black;
-            dataGridView1.Location = new Point(12, 12);
+            dataGridView1.Location = new Point(12, 47);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
@@ -142,36 +140,15 @@
             dataGridViewCellStyle3.Padding = new Padding(0, 5, 0, 5);
             dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(366, 585);
+            dataGridView1.Size = new Size(366, 550);
             dataGridView1.TabIndex = 26;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // ApplicationID
-            // 
-            ApplicationID.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            ApplicationID.HeaderText = "Application ID";
-            ApplicationID.Name = "ApplicationID";
-            ApplicationID.ReadOnly = true;
-            // 
-            // ApplicantName
-            // 
-            ApplicantName.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            ApplicantName.HeaderText = "Applicant Name";
-            ApplicantName.Name = "ApplicantName";
-            ApplicantName.ReadOnly = true;
-            ApplicantName.Width = 116;
-            // 
-            // VerificationStatus
-            // 
-            VerificationStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            VerificationStatus.HeaderText = "Verification Status";
-            VerificationStatus.Name = "VerificationStatus";
-            VerificationStatus.ReadOnly = true;
             // 
             // pendingPanel
             // 
             pendingPanel.BackColor = Color.White;
             pendingPanel.BorderStyle = BorderStyle.Fixed3D;
+            pendingPanel.Controls.Add(button1);
             pendingPanel.Controls.Add(panel2);
             pendingPanel.Controls.Add(pendingYear);
             pendingPanel.Controls.Add(pendingIncome);
@@ -209,6 +186,19 @@
             pendingPanel.Name = "pendingPanel";
             pendingPanel.Size = new Size(715, 624);
             pendingPanel.TabIndex = 27;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Transparent;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.BackgroundImageLayout = ImageLayout.None;
+            button1.ForeColor = Color.Transparent;
+            button1.Location = new Point(662, 25);
+            button1.Name = "button1";
+            button1.Size = new Size(32, 31);
+            button1.TabIndex = 28;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // panel2
             // 
@@ -856,7 +846,7 @@
             pendingUpdateStatus.Font = new Font("Tahoma", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             pendingUpdateStatus.FormattingEnabled = true;
             pendingUpdateStatus.Items.AddRange(new object[] { "Approved", "Rejected" });
-            pendingUpdateStatus.Location = new Point(546, 28);
+            pendingUpdateStatus.Location = new Point(536, 34);
             pendingUpdateStatus.Name = "pendingUpdateStatus";
             pendingUpdateStatus.Size = new Size(104, 22);
             pendingUpdateStatus.TabIndex = 36;
@@ -1000,13 +990,11 @@
         private Label monthlyRBP;
         private Label percentRBP;
         private Label interestRBP;
-        private DataGridViewTextBoxColumn ApplicationID;
-        private DataGridViewTextBoxColumn ApplicantName;
-        private DataGridViewTextBoxColumn VerificationStatus;
         private Label label29;
         private Label label28;
         private Label label27;
         private Label label26;
         private Label label25;
+        private Button button1;
     }
 }
