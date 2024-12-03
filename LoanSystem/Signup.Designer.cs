@@ -335,7 +335,7 @@
             // signupPosition
             // 
             signupPosition.FormattingEnabled = true;
-            signupPosition.Items.AddRange(new object[] { "Loan Officer", " Accountant", "Branch Manager" });
+            signupPosition.Items.AddRange(new object[] { "LoanOfficer", "Accountant", "BranchManager" });
             signupPosition.Location = new Point(24, 326);
             signupPosition.Name = "signupPosition";
             signupPosition.Size = new Size(198, 27);
