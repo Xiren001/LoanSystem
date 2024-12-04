@@ -1,5 +1,7 @@
 using System.Data;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace LoanSystem
 {
@@ -40,11 +42,10 @@ namespace LoanSystem
                 {
                     connect.Open();
 
-                    String query = "SELECT email, usertype FROM users_tbl WHERE email = @Email AND password = @Pass";
+                    string query = "SELECT email, usertype, password FROM users_tbl WHERE email = @Email";
                     using (SqlCommand cmd = new SqlCommand(query, connect))
                     {
                         cmd.Parameters.AddWithValue("@Email", SigninEmail.Text);
-                        cmd.Parameters.AddWithValue("@Pass", SigninPassword.Text);
 
                         SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                         DataTable table = new DataTable();
@@ -52,21 +53,47 @@ namespace LoanSystem
 
                         if (table.Rows.Count >= 1)
                         {
+                            // Get the stored password
+                            string storedPassword = table.Rows[0]["password"].ToString();
                             string userTypeString = table.Rows[0]["usertype"].ToString();
-                            CurrentUser.Email = table.Rows[0]["email"].ToString();
-                            CurrentUser.Usertype = GetUserType(userTypeString);
+                            string inputPassword = SigninPassword.Text;
 
-                            if (CurrentUser.Usertype == UserType.Unknown)
+                            bool isValidPassword = false;
+
+                            // Check if the stored password is hashed
+                            if (storedPassword.Length == 64) // Assuming SHA-256 hash
                             {
-                                MessageBox.Show("Invalid user type detected. Contact administrator.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                                // Hash the input password and compare
+                                string hashedInputPassword = ComputeSHA256Hash(inputPassword);
+                                isValidPassword = storedPassword.Equals(hashedInputPassword, StringComparison.OrdinalIgnoreCase);
+                            }
+                            else
+                            {
+                                // Compare directly for unhashed passwords
+                                isValidPassword = storedPassword.Equals(inputPassword);
                             }
 
-                            MessageBox.Show("Logged in successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (isValidPassword)
+                            {
+                                CurrentUser.Email = table.Rows[0]["email"].ToString();
+                                CurrentUser.Usertype = GetUserType(userTypeString);
 
-                            Dashboard dashboard = new Dashboard();
-                            dashboard.Show();
-                            this.Hide();
+                                if (CurrentUser.Usertype == UserType.Unknown)
+                                {
+                                    MessageBox.Show("Invalid user type detected. Contact administrator.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+
+                                MessageBox.Show("Logged in successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                Dashboard dashboard = new Dashboard();
+                                dashboard.Show();
+                                this.Hide();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Incorrect Username/Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                         else
                         {
@@ -84,6 +111,22 @@ namespace LoanSystem
                 }
             }
         }
+
+        private string ComputeSHA256Hash(string rawData)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
+
 
         private UserType GetUserType(string userTypeString)
         {

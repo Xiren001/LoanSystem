@@ -403,7 +403,7 @@ namespace LoanSystem
                             }
                             else
                             {
-                                profileImage.Image = Image.FromFile("default-profile.png");
+                                profileImage.Image = Image.FromFile("head.jpg");
                             }
                         }
                         else
