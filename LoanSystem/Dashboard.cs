@@ -31,19 +31,26 @@ namespace LoanSystem
 
         private void SetRolePermissions()
         {
+            // Set default text for btnEmplo
+            btnEmplo.Text = "Employee";
+
             switch (CurrentUser.Usertype)
             {
                 case UserType.LoanOfficer:
                     EnableLoanOfficerFeatures();
+                    btnEmplo.Text = "Profile"; // Update text for LoanOfficer
                     break;
                 case UserType.BranchManager:
                     EnableBranchManagerFeatures();
+                    btnEmplo.Text = "Profile"; // Update text for BranchManager
                     break;
                 case UserType.Accountant:
                     EnableAccountantFeatures();
+                    btnEmplo.Text = "Profile"; // Update text for Accountant
                     break;
                 case UserType.SystemAdministrator:
                     EnableSystemAdministratorFeatures();
+                    // No change for System Administrator
                     break;
                 default:
                     MessageBox.Show("Unauthorized access. Contact administrator.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -51,6 +58,7 @@ namespace LoanSystem
                     break;
             }
         }
+
 
         private void EnableLoanOfficerFeatures()
         {
@@ -61,7 +69,7 @@ namespace LoanSystem
             btnCustomer.Enabled = true;
 
             // Disable unnecessary features
-            btnEmplo.Enabled = false;
+            btnEmplo.Enabled = true;
             btnReport.Enabled = false;
         }
 
@@ -75,7 +83,7 @@ namespace LoanSystem
 
             // Disable unnecessary features
             btnRepayment.Enabled = false;
-            btnEmplo.Enabled = false;
+            btnEmplo.Enabled = true;
         }
 
         private void EnableAccountantFeatures()
@@ -87,13 +95,13 @@ namespace LoanSystem
             btnNewApp.Enabled = false;
             btnPending.Enabled = false;
             btnAppRej.Enabled = false;
-            btnCustomer.Enabled = false;
-            btnEmplo.Enabled = false;
+            btnEmplo.Enabled = true;
         }
 
         private void EnableSystemAdministratorFeatures()
         {
             // Full access
+            btnCustomer.Enabled = false;
             btnNewApp.Enabled = true;
             btnPending.Enabled = true;
             btnAppRej.Enabled = true;

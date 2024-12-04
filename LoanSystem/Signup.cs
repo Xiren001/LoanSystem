@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace LoanSystem
 {
@@ -32,6 +33,30 @@ namespace LoanSystem
             // Attach the ValueChanged event
             signupDob.ValueChanged += dateTimePicker1_ValueChanged;
 
+            // Check the user type and show/hide the profilePanel
+            ShowProfilePanelBasedOnUserType();
+
+            // Load the profile of the current user
+            if (CurrentUser.Email != null)
+            {
+                LoadUserProfile(CurrentUser.Email);
+            }
+        }
+
+
+        private void ShowProfilePanelBasedOnUserType()
+        {
+            // Check if the current user type is one of the allowed types
+            if (CurrentUser.Usertype == UserType.LoanOfficer ||
+                CurrentUser.Usertype == UserType.Accountant ||
+                CurrentUser.Usertype == UserType.BranchManager)
+            {
+                profilePanel.Visible = true; // Show the profilePanel
+            }
+            else
+            {
+                profilePanel.Visible = false; // Hide the profilePanel
+            }
         }
 
 
@@ -147,6 +172,8 @@ namespace LoanSystem
                 }
             }
         }
+
+
 
         private string GeneratePassword(int userId, string userName)
         {
@@ -307,6 +334,8 @@ namespace LoanSystem
             }
         }
 
+
+
         private void ClearFormFields()
         {
             signupEmail.Text = "";
@@ -336,7 +365,193 @@ namespace LoanSystem
         }
 
 
+        private void LoadUserProfile(string email)
+        {
+            string query = "SELECT username, usertype, contact, homeaddress, emergencycontact, dob, email, profile_image " +
+                           "FROM users_tbl WHERE email = @Email";
+
+            try
+            {
+                if (connect.State != ConnectionState.Open)
+                {
+                    connect.Open();
+                }
+
+                using (SqlCommand cmd = new SqlCommand(query, connect))
+                {
+                    cmd.Parameters.AddWithValue("@Email", email);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            profileName.Text = reader["username"].ToString();
+                            profilePosition.Text = reader["usertype"].ToString();
+                            profileNumber.Text = reader["contact"].ToString();
+                            profileAddress.Text = reader["homeaddress"].ToString();
+                            profileEmergencyContact.Text = reader["emergencycontact"].ToString();
+                            profileBirthday.Text = Convert.ToDateTime(reader["dob"]).ToString("MMMM dd, yyyy");
+                            profileEmail.Text = reader["email"].ToString();
+
+                            if (reader["profile_image"] != DBNull.Value)
+                            {
+                                byte[] imageBytes = (byte[])reader["profile_image"];
+                                using (MemoryStream ms = new MemoryStream(imageBytes))
+                                {
+                                    profileImage.Image = Image.FromStream(ms);
+                                }
+                            }
+                            else
+                            {
+                                profileImage.Image = Image.FromFile("default-profile.png");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("User data not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while fetching user data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (connect.State == ConnectionState.Open)
+                {
+                    connect.Close();
+                }
+            }
+        }
+
+
+
+        private void UploadButton_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+
+                    // Convert the image to byte array
+                    byte[] imageBytes = File.ReadAllBytes(filePath);
+
+                    try
+                    {
+                        // Update the database with the new image
+                        UpdateProfileImage(imageBytes);
+
+                        // Refresh the display
+                        profileImage.Image = Image.FromFile(filePath);
+                        MessageBox.Show("Profile picture updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error updating profile picture: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void UpdateProfileImage(byte[] imageBytes)
+        {
+            string query = "UPDATE users_tbl SET profile_image = @ProfileImage WHERE email = @Email";
+
+            using (SqlConnection conn = new SqlConnection("Data Source=XIREN\\SQLEXPRESS;Initial Catalog=LoanWise;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;"))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ProfileImage", imageBytes);
+                    cmd.Parameters.AddWithValue("@Email", CurrentUser.Email);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private void profileUpdate_Click(object sender, EventArgs e)
+        {
+            string newPassword = profileNewPassword.Text;
+            string confirmPassword = profileConfirmPassword.Text;
+
+            // Check if the new password and confirm password match
+            if (string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(confirmPassword))
+            {
+                MessageBox.Show("Please fill in both password fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (newPassword != confirmPassword)
+            {
+                MessageBox.Show("Passwords do not match. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                // Call method to update password in the database
+                UpdateUserPassword(CurrentUser.Email, newPassword);
+                MessageBox.Show("Password changed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Clear the password fields after successful update
+                profileNewPassword.Text = string.Empty;
+                profileConfirmPassword.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void UpdateUserPassword(string email, string newPassword)
+        {
+            // Hash the password before storing it (recommended for security)
+            string hashedPassword = HashPassword(newPassword);
+
+            string query = "UPDATE users_tbl SET password = @Password WHERE email = @Email";
+
+            using (SqlConnection conn = new SqlConnection("Data Source=XIREN\\SQLEXPRESS;Initial Catalog=LoanWise;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;"))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Password", hashedPassword);
+                    cmd.Parameters.AddWithValue("@Email", email);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    builder.Append(b.ToString("x2")); // Convert byte to hexadecimal
+                }
+                return builder.ToString();
+            }
+        }
+
+
+
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void profilePanel_Paint(object sender, PaintEventArgs e)
         {
 
         }
