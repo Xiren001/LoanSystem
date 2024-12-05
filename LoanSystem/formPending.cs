@@ -590,6 +590,8 @@ namespace LoanSystem
                                 pendingIncome.Text = reader["annualincome"].ToString();
                                 pendingYear.Text = reader["yearsemployment"].ToString();
 
+
+
                                 // Credit Scoring Fields
                                 decimal annualIncome = reader["annualincome"] != DBNull.Value ? Convert.ToDecimal(reader["annualincome"]) : 0;
                                 decimal monthlyIncome = reader["monthlyincome"] != DBNull.Value ? Convert.ToDecimal(reader["monthlyincome"]) : 0;

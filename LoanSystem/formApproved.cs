@@ -58,6 +58,21 @@ namespace LoanSystem
                     e.CellStyle.BackColor = Color.White; // Reset to default for other rows
                 }
             }
+
+            // List of column names that require numeric formatting
+            var numericColumns = new[] { "amountColumn", "monthlyPaymentColumn", "totalRepaymentColumn" };
+
+            // Check if the column is numeric and if the cell value is not null or DBNull
+            if (numericColumns.Contains(dataGridView1.Columns[e.ColumnIndex].Name) &&
+                e.Value != null && e.Value != DBNull.Value)
+            {
+                string numericString = System.Text.RegularExpressions.Regex.Replace(e.Value.ToString(), @"[^\d.]", "");
+                if (decimal.TryParse(numericString, out decimal value))
+                {
+                    e.Value = $"₱{value:N2}"; // Format as currency
+                    e.FormattingApplied = true;
+                }
+            }
         }
 
         private void LoadApprovedData()
@@ -209,6 +224,7 @@ namespace LoanSystem
                 Name = "applicationDateColumn"
             });
 
+            // Status Column
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
                 HeaderText = "Status",
@@ -216,8 +232,12 @@ namespace LoanSystem
                 Name = "statusColumn"
             });
 
+            // Attach the CellFormatting event for custom formatting
             dataGridView1.CellFormatting += DataGridView1_CellFormatting;
         }
+
+     
+
 
 
         private void TransferToRepayment(int id)

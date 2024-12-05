@@ -76,6 +76,8 @@
             label5 = new Label();
             repaymentStat = new Label();
             repaymentApplicationId = new Label();
+            label12 = new Label();
+            repaymentInterestrate = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             pendingPanel.SuspendLayout();
             panel2.SuspendLayout();
@@ -157,6 +159,8 @@
             // 
             pendingPanel.BackColor = Color.White;
             pendingPanel.BorderStyle = BorderStyle.Fixed3D;
+            pendingPanel.Controls.Add(repaymentInterestrate);
+            pendingPanel.Controls.Add(label12);
             pendingPanel.Controls.Add(repaymentOutstandingLtv);
             pendingPanel.Controls.Add(repaymentMaturityDate);
             pendingPanel.Controls.Add(repaymentIssueDate);
@@ -237,7 +241,7 @@
             repaymentOverdueInterest.AutoSize = true;
             repaymentOverdueInterest.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             repaymentOverdueInterest.ForeColor = SystemColors.ControlDarkDark;
-            repaymentOverdueInterest.Location = new Point(167, 434);
+            repaymentOverdueInterest.Location = new Point(167, 464);
             repaymentOverdueInterest.Name = "repaymentOverdueInterest";
             repaymentOverdueInterest.Size = new Size(102, 14);
             repaymentOverdueInterest.TabIndex = 54;
@@ -248,7 +252,7 @@
             repaymentInterestBalance.AutoSize = true;
             repaymentInterestBalance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             repaymentInterestBalance.ForeColor = SystemColors.ControlDarkDark;
-            repaymentInterestBalance.Location = new Point(167, 375);
+            repaymentInterestBalance.Location = new Point(167, 405);
             repaymentInterestBalance.Name = "repaymentInterestBalance";
             repaymentInterestBalance.Size = new Size(96, 14);
             repaymentInterestBalance.TabIndex = 53;
@@ -259,7 +263,7 @@
             repaymentPrincipalDept.AutoSize = true;
             repaymentPrincipalDept.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             repaymentPrincipalDept.ForeColor = SystemColors.ControlDarkDark;
-            repaymentPrincipalDept.Location = new Point(167, 347);
+            repaymentPrincipalDept.Location = new Point(167, 377);
             repaymentPrincipalDept.Name = "repaymentPrincipalDept";
             repaymentPrincipalDept.Size = new Size(81, 14);
             repaymentPrincipalDept.TabIndex = 52;
@@ -281,7 +285,7 @@
             repaymentOverduePrincipalDept.AutoSize = true;
             repaymentOverduePrincipalDept.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             repaymentOverduePrincipalDept.ForeColor = SystemColors.ControlDarkDark;
-            repaymentOverduePrincipalDept.Location = new Point(165, 404);
+            repaymentOverduePrincipalDept.Location = new Point(165, 434);
             repaymentOverduePrincipalDept.Name = "repaymentOverduePrincipalDept";
             repaymentOverduePrincipalDept.Size = new Size(132, 14);
             repaymentOverduePrincipalDept.TabIndex = 50;
@@ -504,7 +508,7 @@
             label11.AutoSize = true;
             label11.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label11.ForeColor = SystemColors.ControlDarkDark;
-            label11.Location = new Point(21, 434);
+            label11.Location = new Point(21, 464);
             label11.Name = "label11";
             label11.Size = new Size(102, 14);
             label11.TabIndex = 41;
@@ -515,7 +519,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label9.ForeColor = SystemColors.ControlDarkDark;
-            label9.Location = new Point(21, 375);
+            label9.Location = new Point(21, 405);
             label9.Name = "label9";
             label9.Size = new Size(96, 14);
             label9.TabIndex = 40;
@@ -526,7 +530,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label8.ForeColor = SystemColors.ControlDarkDark;
-            label8.Location = new Point(21, 347);
+            label8.Location = new Point(21, 377);
             label8.Name = "label8";
             label8.Size = new Size(81, 14);
             label8.TabIndex = 39;
@@ -560,7 +564,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label10.ForeColor = SystemColors.ControlDarkDark;
-            label10.Location = new Point(21, 404);
+            label10.Location = new Point(21, 434);
             label10.Name = "label10";
             label10.Size = new Size(132, 14);
             label10.TabIndex = 16;
@@ -606,6 +610,28 @@
             repaymentApplicationId.Size = new Size(161, 25);
             repaymentApplicationId.TabIndex = 0;
             repaymentApplicationId.Text = "Application ID";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label12.ForeColor = SystemColors.ControlDarkDark;
+            label12.Location = new Point(21, 347);
+            label12.Name = "label12";
+            label12.Size = new Size(77, 14);
+            label12.TabIndex = 59;
+            label12.Text = "Interest rate";
+            // 
+            // repaymentInterestrate
+            // 
+            repaymentInterestrate.AutoSize = true;
+            repaymentInterestrate.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            repaymentInterestrate.ForeColor = SystemColors.ControlDarkDark;
+            repaymentInterestrate.Location = new Point(167, 347);
+            repaymentInterestrate.Name = "repaymentInterestrate";
+            repaymentInterestrate.Size = new Size(51, 14);
+            repaymentInterestrate.TabIndex = 60;
+            repaymentInterestrate.Text = "Interest";
             // 
             // formRepayment
             // 
@@ -673,5 +699,7 @@
         private Label repaymentInterest;
         private Label repaymentOverduePrincipalDept;
         private Label repaymentOriginalLoanAmount;
+        private Label repaymentInterestrate;
+        private Label label12;
     }
 }
