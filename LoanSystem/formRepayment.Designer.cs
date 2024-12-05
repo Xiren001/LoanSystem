@@ -38,6 +38,9 @@
             LoanType = new DataGridViewTextBoxColumn();
             RepaymentStatus = new DataGridViewTextBoxColumn();
             pendingPanel = new Panel();
+            repaymentbtn = new Button();
+            repaymentInterestrate = new Label();
+            label12 = new Label();
             repaymentOutstandingLtv = new Label();
             repaymentMaturityDate = new Label();
             repaymentIssueDate = new Label();
@@ -70,14 +73,11 @@
             label9 = new Label();
             label8 = new Label();
             label7 = new Label();
-            repaymentUpdateStatus = new ComboBox();
             label10 = new Label();
             label6 = new Label();
             label5 = new Label();
             repaymentStat = new Label();
             repaymentApplicationId = new Label();
-            label12 = new Label();
-            repaymentInterestrate = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             pendingPanel.SuspendLayout();
             panel2.SuspendLayout();
@@ -159,6 +159,7 @@
             // 
             pendingPanel.BackColor = Color.White;
             pendingPanel.BorderStyle = BorderStyle.Fixed3D;
+            pendingPanel.Controls.Add(repaymentbtn);
             pendingPanel.Controls.Add(repaymentInterestrate);
             pendingPanel.Controls.Add(label12);
             pendingPanel.Controls.Add(repaymentOutstandingLtv);
@@ -181,7 +182,6 @@
             pendingPanel.Controls.Add(label9);
             pendingPanel.Controls.Add(label8);
             pendingPanel.Controls.Add(label7);
-            pendingPanel.Controls.Add(repaymentUpdateStatus);
             pendingPanel.Controls.Add(label10);
             pendingPanel.Controls.Add(label6);
             pendingPanel.Controls.Add(label5);
@@ -191,6 +191,41 @@
             pendingPanel.Name = "pendingPanel";
             pendingPanel.Size = new Size(715, 638);
             pendingPanel.TabIndex = 28;
+            // 
+            // repaymentbtn
+            // 
+            repaymentbtn.BackColor = Color.SeaGreen;
+            repaymentbtn.FlatStyle = FlatStyle.Flat;
+            repaymentbtn.ForeColor = Color.Transparent;
+            repaymentbtn.Location = new Point(528, 31);
+            repaymentbtn.Name = "repaymentbtn";
+            repaymentbtn.Size = new Size(109, 29);
+            repaymentbtn.TabIndex = 61;
+            repaymentbtn.Text = "Repay";
+            repaymentbtn.UseVisualStyleBackColor = false;
+            repaymentbtn.Click += repaymentbtn_Click;
+            // 
+            // repaymentInterestrate
+            // 
+            repaymentInterestrate.AutoSize = true;
+            repaymentInterestrate.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            repaymentInterestrate.ForeColor = SystemColors.ControlDarkDark;
+            repaymentInterestrate.Location = new Point(167, 347);
+            repaymentInterestrate.Name = "repaymentInterestrate";
+            repaymentInterestrate.Size = new Size(51, 14);
+            repaymentInterestrate.TabIndex = 60;
+            repaymentInterestrate.Text = "Interest";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label12.ForeColor = SystemColors.ControlDarkDark;
+            label12.Location = new Point(21, 347);
+            label12.Name = "label12";
+            label12.Size = new Size(77, 14);
+            label12.TabIndex = 59;
+            label12.Text = "Interest rate";
             // 
             // repaymentOutstandingLtv
             // 
@@ -313,6 +348,7 @@
             button1.Size = new Size(32, 31);
             button1.TabIndex = 28;
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // panel2
             // 
@@ -547,18 +583,6 @@
             label7.TabIndex = 38;
             label7.Text = "Interest";
             // 
-            // repaymentUpdateStatus
-            // 
-            repaymentUpdateStatus.FlatStyle = FlatStyle.Flat;
-            repaymentUpdateStatus.Font = new Font("Tahoma", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            repaymentUpdateStatus.FormattingEnabled = true;
-            repaymentUpdateStatus.Items.AddRange(new object[] { "Approved", "Rejected" });
-            repaymentUpdateStatus.Location = new Point(515, 34);
-            repaymentUpdateStatus.Name = "repaymentUpdateStatus";
-            repaymentUpdateStatus.Size = new Size(104, 22);
-            repaymentUpdateStatus.TabIndex = 36;
-            repaymentUpdateStatus.Text = "Operation";
-            // 
             // label10
             // 
             label10.AutoSize = true;
@@ -594,10 +618,11 @@
             // repaymentStat
             // 
             repaymentStat.AutoSize = true;
-            repaymentStat.Font = new Font("Tahoma", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            repaymentStat.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             repaymentStat.Location = new Point(229, 33);
             repaymentStat.Name = "repaymentStat";
-            repaymentStat.Size = new Size(62, 23);
+            repaymentStat.Padding = new Padding(3);
+            repaymentStat.Size = new Size(67, 25);
             repaymentStat.TabIndex = 1;
             repaymentStat.Text = "Status";
             // 
@@ -610,28 +635,6 @@
             repaymentApplicationId.Size = new Size(161, 25);
             repaymentApplicationId.TabIndex = 0;
             repaymentApplicationId.Text = "Application ID";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label12.ForeColor = SystemColors.ControlDarkDark;
-            label12.Location = new Point(21, 347);
-            label12.Name = "label12";
-            label12.Size = new Size(77, 14);
-            label12.TabIndex = 59;
-            label12.Text = "Interest rate";
-            // 
-            // repaymentInterestrate
-            // 
-            repaymentInterestrate.AutoSize = true;
-            repaymentInterestrate.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            repaymentInterestrate.ForeColor = SystemColors.ControlDarkDark;
-            repaymentInterestrate.Location = new Point(167, 347);
-            repaymentInterestrate.Name = "repaymentInterestrate";
-            repaymentInterestrate.Size = new Size(51, 14);
-            repaymentInterestrate.TabIndex = 60;
-            repaymentInterestrate.Text = "Interest";
             // 
             // formRepayment
             // 
@@ -683,7 +686,6 @@
         private Label label9;
         private Label label8;
         private Label label7;
-        private ComboBox repaymentUpdateStatus;
         private Label label10;
         private Label label6;
         private Label label5;
@@ -701,5 +703,6 @@
         private Label repaymentOriginalLoanAmount;
         private Label repaymentInterestrate;
         private Label label12;
+        private Button repaymentbtn;
     }
 }

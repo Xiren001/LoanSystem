@@ -27,7 +27,7 @@ namespace LoanSystem
         {
             try
             {
-                string query = "SELECT Id, CONCAT(firstname, ' ', lastname) AS Name, loantype AS LoanType FROM repaymenttable";
+                string query = "SELECT Id, CONCAT(firstname, ' ', lastname) AS Name, loantype AS LoanType, TransferDate, repaymentterm FROM repaymenttable";
 
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
@@ -36,8 +36,22 @@ namespace LoanSystem
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
 
-                    dataGridView1.DataSource = dataTable;
+                    // Add a Status column to the DataTable
+                    dataTable.Columns.Add("Status", typeof(string));
 
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        DateTime transferDate = Convert.ToDateTime(row["TransferDate"]);
+                        int repaymentTermMonths = ExtractNumericValue(row["repaymentterm"].ToString());
+
+                        // Calculate Next Payment Date
+                        DateTime nextPaymentDate = transferDate.AddMonths(1);
+
+                        // Determine status
+                        row["Status"] = DateTime.Now > nextPaymentDate ? "Overdue" : "Active";
+                    }
+
+                    dataGridView1.DataSource = dataTable;
                     ConfigureDataGridView();
                 }
             }
@@ -46,6 +60,7 @@ namespace LoanSystem
                 MessageBox.Show($"An error occurred while loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void ConfigureDataGridView()
         {
@@ -78,7 +93,43 @@ namespace LoanSystem
                 Name = "loanTypeColumn",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             });
+
+            // Status Column
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Status",
+                DataPropertyName = "Status",  // Bind to the Status column in DataTable
+                Name = "statusColumn",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            });
+
+            // Set default values and format
+            dataGridView1.CellFormatting += DataGridView1_CellFormatting;
         }
+
+
+        private void DataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "statusColumn")
+            {
+                string status = e.Value?.ToString();
+                if (status == "Overdue")
+                {
+                    e.CellStyle.BackColor = Color.Red;
+                    e.CellStyle.ForeColor = Color.White;
+                }
+                else if (status == "Active")
+                {
+                    e.CellStyle.BackColor = Color.Green;
+                    e.CellStyle.ForeColor = Color.White;
+                }
+                else
+                {
+                    e.CellStyle.BackColor = Color.Gray; // Optional: Set default color for unknown status
+                }
+            }
+        }
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -125,6 +176,7 @@ namespace LoanSystem
                                 repaymentLoantermm.Text = reader["repaymentterm"].ToString();
                                 repaymentIssueDate.Text = Convert.ToDateTime(reader["TransferDate"]).ToString("yyyy-MM-dd");
                                 repaymentInterestrate.Text = reader["Percent"].ToString();
+                                repaymentBalance.Text = FormatAsNumber(reader["outstandingbalance"].ToString());
 
                                 // Extract and parse loan term
                                 DateTime issueDate = Convert.ToDateTime(reader["TransferDate"]);
@@ -139,9 +191,22 @@ namespace LoanSystem
                                 DateTime maturityDate = issueDate.AddMonths(repaymentTermMonths);
                                 repaymentMaturityDate.Text = maturityDate.ToString("yyyy-MM-dd");
 
-                                repaymentStat.Text = ""; // Replace with status data if available
+                                string status = DateTime.Now > nextPaymentDate ? "Overdue" : "Active";
+                                repaymentStat.Text = status;
+
+                                // Apply color based on status
+                                if (status == "Overdue")
+                                {
+                                    repaymentStat.BackColor = Color.IndianRed; // Set text color to Red for Overdue
+                                    repaymentStat.ForeColor = Color.White;
+                                }
+                                else if (status == "Active")
+                                {
+                                    repaymentStat.BackColor = Color.SeaGreen; // Set text color to Green for Active
+                                    repaymentStat.ForeColor = Color.White;
+                                }
+
                                 repaymentPrincipalDept.Text = ""; // Replace with appropriate data if available
-                                repaymentBalance.Text = ""; // Replace with balance data if available
 
                                 repaymentOutstandingLtv.Text = ""; // Replace with appropriate data if available
                                 repaymentOverdueInterest.Text = ""; // Replace with overdue interest data if available
@@ -180,8 +245,54 @@ namespace LoanSystem
             return "₱0.00"; // Return default if parsing fails
         }
 
+        private void repaymentbtn_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int selectedId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["idColumn"].Value);
 
+                // Fetch loan amount for the selected ID
+                string query = "SELECT outstandingbalance FROM repaymenttable WHERE Id = @Id";
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+                        conn.Open();
+                        using (SqlCommand cmd = new SqlCommand(query, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@Id", selectedId);
+                            object result = cmd.ExecuteScalar();
 
+                            if (result != null && decimal.TryParse(result.ToString(), out decimal loanAmount))
+                            {
+                                // Open Repayment Form
+                                RepaymentForm repaymentForm = new RepaymentForm(selectedId, connectionString, loanAmount);
+                                repaymentForm.ShowDialog();
 
+                                // Reload data after repayment
+                                LoadRepaymentData();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Failed to fetch loan amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a record first.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LoadRepaymentData();
+        }
     }
 }
