@@ -31,23 +31,60 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formRepayment));
             dataGridView1 = new DataGridView();
             LoanID = new DataGridViewTextBoxColumn();
             ApplicantName = new DataGridViewTextBoxColumn();
             LoanType = new DataGridViewTextBoxColumn();
-            OriginalLoanAmount = new DataGridViewTextBoxColumn();
-            MonthlyPaymentAmount = new DataGridViewTextBoxColumn();
-            LastPaymentDate = new DataGridViewTextBoxColumn();
-            NextPaymentDueDate = new DataGridViewTextBoxColumn();
-            OutstandingBalance = new DataGridViewTextBoxColumn();
             RepaymentStatus = new DataGridViewTextBoxColumn();
-            LoanTermRemaining = new DataGridViewTextBoxColumn();
-            Action = new DataGridViewTextBoxColumn();
+            pendingPanel = new Panel();
+            repaymentOutstandingLtv = new Label();
+            repaymentMaturityDate = new Label();
+            repaymentIssueDate = new Label();
+            repaymentLoanTerm = new Label();
+            repaymentOverdueInterest = new Label();
+            repaymentInterestBalance = new Label();
+            repaymentPrincipalDept = new Label();
+            repaymentInterest = new Label();
+            repaymentOverduePrincipalDept = new Label();
+            repaymentOriginalLoanAmount = new Label();
+            button1 = new Button();
+            panel2 = new Panel();
+            repaymentNextPayment = new Label();
+            repaymentMonthlyPayment = new Label();
+            label23 = new Label();
+            label4 = new Label();
+            label21 = new Label();
+            repaymentLoantermm = new Label();
+            repaymentApplicantName = new Label();
+            repaymentLoanAmount = new Label();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            repaymentBalance = new Label();
+            label18 = new Label();
+            label17 = new Label();
+            label16 = new Label();
+            label15 = new Label();
+            label11 = new Label();
+            label9 = new Label();
+            label8 = new Label();
+            label7 = new Label();
+            repaymentUpdateStatus = new ComboBox();
+            label10 = new Label();
+            label6 = new Label();
+            label5 = new Label();
+            repaymentStat = new Label();
+            repaymentApplicationId = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            pendingPanel.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
             dataGridViewCellStyle1.Font = new Font("Tahoma", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.Black;
@@ -65,88 +102,510 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { LoanID, ApplicantName, LoanType, OriginalLoanAmount, MonthlyPaymentAmount, LastPaymentDate, NextPaymentDueDate, OutstandingBalance, RepaymentStatus, LoanTermRemaining, Action });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { LoanID, ApplicantName, LoanType, RepaymentStatus });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Window;
             dataGridViewCellStyle3.Font = new Font("Tahoma", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(255, 255, 192);
-            dataGridViewCellStyle3.SelectionForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.GridColor = Color.Black;
             dataGridView1.Location = new Point(12, 12);
+            dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
-            dataGridView1.Size = new Size(1068, 585);
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(368, 585);
             dataGridView1.TabIndex = 27;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // LoanID
             // 
-            LoanID.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            LoanID.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             LoanID.HeaderText = "Loan ID";
             LoanID.Name = "LoanID";
+            LoanID.ReadOnly = true;
+            LoanID.Width = 74;
             // 
             // ApplicantName
             // 
-            ApplicantName.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            ApplicantName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ApplicantName.HeaderText = "Applicant Name";
             ApplicantName.Name = "ApplicantName";
-            ApplicantName.Width = 116;
+            ApplicantName.ReadOnly = true;
             // 
             // LoanType
             // 
-            LoanType.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            LoanType.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             LoanType.HeaderText = "Loan Type";
             LoanType.Name = "LoanType";
-            // 
-            // OriginalLoanAmount
-            // 
-            OriginalLoanAmount.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            OriginalLoanAmount.HeaderText = "Original Loan Amount";
-            OriginalLoanAmount.Name = "OriginalLoanAmount";
-            // 
-            // MonthlyPaymentAmount
-            // 
-            MonthlyPaymentAmount.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            MonthlyPaymentAmount.HeaderText = "Monthly Payment Amount";
-            MonthlyPaymentAmount.Name = "MonthlyPaymentAmount";
-            // 
-            // LastPaymentDate
-            // 
-            LastPaymentDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            LastPaymentDate.HeaderText = "Last Payment Date";
-            LastPaymentDate.Name = "LastPaymentDate";
-            // 
-            // NextPaymentDueDate
-            // 
-            NextPaymentDueDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            NextPaymentDueDate.HeaderText = "Next Payment Due Date";
-            NextPaymentDueDate.Name = "NextPaymentDueDate";
-            // 
-            // OutstandingBalance
-            // 
-            OutstandingBalance.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            OutstandingBalance.HeaderText = "Outstanding Balance";
-            OutstandingBalance.Name = "OutstandingBalance";
+            LoanType.ReadOnly = true;
+            LoanType.Width = 88;
             // 
             // RepaymentStatus
             // 
-            RepaymentStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            RepaymentStatus.HeaderText = "Repayment Status";
+            RepaymentStatus.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            RepaymentStatus.HeaderText = " Status";
             RepaymentStatus.Name = "RepaymentStatus";
+            RepaymentStatus.ReadOnly = true;
+            RepaymentStatus.Width = 77;
             // 
-            // LoanTermRemaining
+            // pendingPanel
             // 
-            LoanTermRemaining.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            LoanTermRemaining.HeaderText = "Loan Term Remaining";
-            LoanTermRemaining.Name = "LoanTermRemaining";
+            pendingPanel.BackColor = Color.White;
+            pendingPanel.BorderStyle = BorderStyle.Fixed3D;
+            pendingPanel.Controls.Add(repaymentOutstandingLtv);
+            pendingPanel.Controls.Add(repaymentMaturityDate);
+            pendingPanel.Controls.Add(repaymentIssueDate);
+            pendingPanel.Controls.Add(repaymentLoanTerm);
+            pendingPanel.Controls.Add(repaymentOverdueInterest);
+            pendingPanel.Controls.Add(repaymentInterestBalance);
+            pendingPanel.Controls.Add(repaymentPrincipalDept);
+            pendingPanel.Controls.Add(repaymentInterest);
+            pendingPanel.Controls.Add(repaymentOverduePrincipalDept);
+            pendingPanel.Controls.Add(repaymentOriginalLoanAmount);
+            pendingPanel.Controls.Add(button1);
+            pendingPanel.Controls.Add(panel2);
+            pendingPanel.Controls.Add(label18);
+            pendingPanel.Controls.Add(label17);
+            pendingPanel.Controls.Add(label16);
+            pendingPanel.Controls.Add(label15);
+            pendingPanel.Controls.Add(label11);
+            pendingPanel.Controls.Add(label9);
+            pendingPanel.Controls.Add(label8);
+            pendingPanel.Controls.Add(label7);
+            pendingPanel.Controls.Add(repaymentUpdateStatus);
+            pendingPanel.Controls.Add(label10);
+            pendingPanel.Controls.Add(label6);
+            pendingPanel.Controls.Add(label5);
+            pendingPanel.Controls.Add(repaymentStat);
+            pendingPanel.Controls.Add(repaymentApplicationId);
+            pendingPanel.Location = new Point(386, -14);
+            pendingPanel.Name = "pendingPanel";
+            pendingPanel.Size = new Size(715, 638);
+            pendingPanel.TabIndex = 28;
             // 
-            // Action
+            // repaymentOutstandingLtv
             // 
-            Action.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Action.HeaderText = "Action";
-            Action.Name = "Action";
+            repaymentOutstandingLtv.AutoSize = true;
+            repaymentOutstandingLtv.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            repaymentOutstandingLtv.ForeColor = SystemColors.ControlDarkDark;
+            repaymentOutstandingLtv.Location = new Point(506, 404);
+            repaymentOutstandingLtv.Name = "repaymentOutstandingLtv";
+            repaymentOutstandingLtv.Size = new Size(112, 14);
+            repaymentOutstandingLtv.TabIndex = 58;
+            repaymentOutstandingLtv.Text = "Outstanding LTV%";
+            // 
+            // repaymentMaturityDate
+            // 
+            repaymentMaturityDate.AutoSize = true;
+            repaymentMaturityDate.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            repaymentMaturityDate.ForeColor = SystemColors.ControlDarkDark;
+            repaymentMaturityDate.Location = new Point(506, 347);
+            repaymentMaturityDate.Name = "repaymentMaturityDate";
+            repaymentMaturityDate.Size = new Size(81, 14);
+            repaymentMaturityDate.TabIndex = 57;
+            repaymentMaturityDate.Text = "Maturity Date";
+            // 
+            // repaymentIssueDate
+            // 
+            repaymentIssueDate.AutoSize = true;
+            repaymentIssueDate.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            repaymentIssueDate.ForeColor = SystemColors.ControlDarkDark;
+            repaymentIssueDate.Location = new Point(506, 318);
+            repaymentIssueDate.Name = "repaymentIssueDate";
+            repaymentIssueDate.Size = new Size(65, 14);
+            repaymentIssueDate.TabIndex = 56;
+            repaymentIssueDate.Text = "Issue Date";
+            // 
+            // repaymentLoanTerm
+            // 
+            repaymentLoanTerm.AutoSize = true;
+            repaymentLoanTerm.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            repaymentLoanTerm.ForeColor = SystemColors.ControlDarkDark;
+            repaymentLoanTerm.Location = new Point(506, 288);
+            repaymentLoanTerm.Name = "repaymentLoanTerm";
+            repaymentLoanTerm.Size = new Size(66, 14);
+            repaymentLoanTerm.TabIndex = 55;
+            repaymentLoanTerm.Text = "Loan Term";
+            // 
+            // repaymentOverdueInterest
+            // 
+            repaymentOverdueInterest.AutoSize = true;
+            repaymentOverdueInterest.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            repaymentOverdueInterest.ForeColor = SystemColors.ControlDarkDark;
+            repaymentOverdueInterest.Location = new Point(167, 434);
+            repaymentOverdueInterest.Name = "repaymentOverdueInterest";
+            repaymentOverdueInterest.Size = new Size(102, 14);
+            repaymentOverdueInterest.TabIndex = 54;
+            repaymentOverdueInterest.Text = "Overdue Interest";
+            // 
+            // repaymentInterestBalance
+            // 
+            repaymentInterestBalance.AutoSize = true;
+            repaymentInterestBalance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            repaymentInterestBalance.ForeColor = SystemColors.ControlDarkDark;
+            repaymentInterestBalance.Location = new Point(167, 375);
+            repaymentInterestBalance.Name = "repaymentInterestBalance";
+            repaymentInterestBalance.Size = new Size(96, 14);
+            repaymentInterestBalance.TabIndex = 53;
+            repaymentInterestBalance.Text = "Interest Balance";
+            // 
+            // repaymentPrincipalDept
+            // 
+            repaymentPrincipalDept.AutoSize = true;
+            repaymentPrincipalDept.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            repaymentPrincipalDept.ForeColor = SystemColors.ControlDarkDark;
+            repaymentPrincipalDept.Location = new Point(167, 347);
+            repaymentPrincipalDept.Name = "repaymentPrincipalDept";
+            repaymentPrincipalDept.Size = new Size(81, 14);
+            repaymentPrincipalDept.TabIndex = 52;
+            repaymentPrincipalDept.Text = "Principal Dept";
+            // 
+            // repaymentInterest
+            // 
+            repaymentInterest.AutoSize = true;
+            repaymentInterest.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            repaymentInterest.ForeColor = SystemColors.ControlDarkDark;
+            repaymentInterest.Location = new Point(167, 318);
+            repaymentInterest.Name = "repaymentInterest";
+            repaymentInterest.Size = new Size(51, 14);
+            repaymentInterest.TabIndex = 51;
+            repaymentInterest.Text = "Interest";
+            // 
+            // repaymentOverduePrincipalDept
+            // 
+            repaymentOverduePrincipalDept.AutoSize = true;
+            repaymentOverduePrincipalDept.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            repaymentOverduePrincipalDept.ForeColor = SystemColors.ControlDarkDark;
+            repaymentOverduePrincipalDept.Location = new Point(165, 404);
+            repaymentOverduePrincipalDept.Name = "repaymentOverduePrincipalDept";
+            repaymentOverduePrincipalDept.Size = new Size(132, 14);
+            repaymentOverduePrincipalDept.TabIndex = 50;
+            repaymentOverduePrincipalDept.Text = "Overdue Principal Dept";
+            // 
+            // repaymentOriginalLoanAmount
+            // 
+            repaymentOriginalLoanAmount.AutoSize = true;
+            repaymentOriginalLoanAmount.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            repaymentOriginalLoanAmount.ForeColor = SystemColors.ControlDarkDark;
+            repaymentOriginalLoanAmount.Location = new Point(167, 288);
+            repaymentOriginalLoanAmount.Name = "repaymentOriginalLoanAmount";
+            repaymentOriginalLoanAmount.Size = new Size(124, 14);
+            repaymentOriginalLoanAmount.TabIndex = 49;
+            repaymentOriginalLoanAmount.Text = "Original Loan Amount";
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Transparent;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.BackgroundImageLayout = ImageLayout.None;
+            button1.ForeColor = Color.Transparent;
+            button1.Location = new Point(660, 29);
+            button1.Name = "button1";
+            button1.Size = new Size(32, 31);
+            button1.TabIndex = 28;
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.Gainsboro;
+            panel2.Controls.Add(repaymentNextPayment);
+            panel2.Controls.Add(repaymentMonthlyPayment);
+            panel2.Controls.Add(label23);
+            panel2.Controls.Add(label4);
+            panel2.Controls.Add(label21);
+            panel2.Controls.Add(repaymentLoantermm);
+            panel2.Controls.Add(repaymentApplicantName);
+            panel2.Controls.Add(repaymentLoanAmount);
+            panel2.Controls.Add(label1);
+            panel2.Controls.Add(label2);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(repaymentBalance);
+            panel2.Location = new Point(8, 82);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(684, 146);
+            panel2.TabIndex = 38;
+            // 
+            // repaymentNextPayment
+            // 
+            repaymentNextPayment.AutoSize = true;
+            repaymentNextPayment.Font = new Font("Tahoma", 9.75F);
+            repaymentNextPayment.Location = new Point(587, 97);
+            repaymentNextPayment.Name = "repaymentNextPayment";
+            repaymentNextPayment.Size = new Size(42, 16);
+            repaymentNextPayment.TabIndex = 25;
+            repaymentNextPayment.Text = "20000";
+            // 
+            // repaymentMonthlyPayment
+            // 
+            repaymentMonthlyPayment.AutoSize = true;
+            repaymentMonthlyPayment.Font = new Font("Tahoma", 9.75F);
+            repaymentMonthlyPayment.Location = new Point(360, 97);
+            repaymentMonthlyPayment.Name = "repaymentMonthlyPayment";
+            repaymentMonthlyPayment.Size = new Size(42, 16);
+            repaymentMonthlyPayment.TabIndex = 24;
+            repaymentMonthlyPayment.Text = "20000";
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Font = new Font("Tahoma", 12F, FontStyle.Bold);
+            label23.Location = new Point(456, 94);
+            label23.Name = "label23";
+            label23.Size = new Size(125, 19);
+            label23.TabIndex = 23;
+            label23.Text = "Next Payment";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Tahoma", 12F, FontStyle.Bold);
+            label4.Location = new Point(203, 94);
+            label4.Name = "label4";
+            label4.Size = new Size(151, 19);
+            label4.TabIndex = 22;
+            label4.Text = "Monthly Payment";
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Font = new Font("Tahoma", 12F, FontStyle.Bold);
+            label21.Location = new Point(10, 94);
+            label21.Name = "label21";
+            label21.Size = new Size(96, 19);
+            label21.TabIndex = 21;
+            label21.Text = "Loan Term";
+            // 
+            // repaymentLoantermm
+            // 
+            repaymentLoantermm.AutoSize = true;
+            repaymentLoantermm.Font = new Font("Tahoma", 9.75F);
+            repaymentLoantermm.Location = new Point(112, 97);
+            repaymentLoantermm.Name = "repaymentLoantermm";
+            repaymentLoantermm.Size = new Size(42, 16);
+            repaymentLoantermm.TabIndex = 19;
+            repaymentLoantermm.Text = "20000";
+            // 
+            // repaymentApplicantName
+            // 
+            repaymentApplicantName.AutoSize = true;
+            repaymentApplicantName.Font = new Font("Tahoma", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            repaymentApplicantName.Location = new Point(13, 24);
+            repaymentApplicantName.Name = "repaymentApplicantName";
+            repaymentApplicantName.Size = new Size(177, 25);
+            repaymentApplicantName.TabIndex = 2;
+            repaymentApplicantName.Text = "Applicant Name";
+            // 
+            // repaymentLoanAmount
+            // 
+            repaymentLoanAmount.AutoSize = true;
+            repaymentLoanAmount.BackColor = Color.Transparent;
+            repaymentLoanAmount.Font = new Font("Tahoma", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            repaymentLoanAmount.Location = new Point(293, 24);
+            repaymentLoanAmount.Margin = new Padding(0);
+            repaymentLoanAmount.Name = "repaymentLoanAmount";
+            repaymentLoanAmount.Size = new Size(94, 25);
+            repaymentLoanAmount.TabIndex = 3;
+            repaymentLoanAmount.Text = "Amount";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.ControlDarkDark;
+            label1.Location = new Point(13, 10);
+            label1.Name = "label1";
+            label1.Size = new Size(57, 14);
+            label1.TabIndex = 4;
+            label1.Text = "Borrower";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = SystemColors.ControlDarkDark;
+            label2.Location = new Point(293, 10);
+            label2.Name = "label2";
+            label2.Size = new Size(124, 14);
+            label2.TabIndex = 6;
+            label2.Text = "Original Loan Amount";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ControlDarkDark;
+            label3.Location = new Point(498, 10);
+            label3.Name = "label3";
+            label3.Size = new Size(119, 14);
+            label3.TabIndex = 8;
+            label3.Text = "Outstanding Balance";
+            // 
+            // repaymentBalance
+            // 
+            repaymentBalance.AutoSize = true;
+            repaymentBalance.Font = new Font("Tahoma", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            repaymentBalance.Location = new Point(499, 24);
+            repaymentBalance.Name = "repaymentBalance";
+            repaymentBalance.Size = new Size(94, 25);
+            repaymentBalance.TabIndex = 9;
+            repaymentBalance.Text = "Balance";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label18.ForeColor = SystemColors.ControlDarkDark;
+            label18.Location = new Point(388, 404);
+            label18.Name = "label18";
+            label18.Size = new Size(112, 14);
+            label18.TabIndex = 48;
+            label18.Text = "Outstanding LTV%";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label17.ForeColor = SystemColors.ControlDarkDark;
+            label17.Location = new Point(388, 347);
+            label17.Name = "label17";
+            label17.Size = new Size(81, 14);
+            label17.TabIndex = 47;
+            label17.Text = "Maturity Date";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label16.ForeColor = SystemColors.ControlDarkDark;
+            label16.Location = new Point(388, 318);
+            label16.Name = "label16";
+            label16.Size = new Size(65, 14);
+            label16.TabIndex = 46;
+            label16.Text = "Issue Date";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label15.ForeColor = SystemColors.ControlDarkDark;
+            label15.Location = new Point(387, 288);
+            label15.Name = "label15";
+            label15.Size = new Size(66, 14);
+            label15.TabIndex = 45;
+            label15.Text = "Loan Term";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.ForeColor = SystemColors.ControlDarkDark;
+            label11.Location = new Point(21, 434);
+            label11.Name = "label11";
+            label11.Size = new Size(102, 14);
+            label11.TabIndex = 41;
+            label11.Text = "Overdue Interest";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.ForeColor = SystemColors.ControlDarkDark;
+            label9.Location = new Point(21, 375);
+            label9.Name = "label9";
+            label9.Size = new Size(96, 14);
+            label9.TabIndex = 40;
+            label9.Text = "Interest Balance";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.ForeColor = SystemColors.ControlDarkDark;
+            label8.Location = new Point(21, 347);
+            label8.Name = "label8";
+            label8.Size = new Size(81, 14);
+            label8.TabIndex = 39;
+            label8.Text = "Principal Dept";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.ForeColor = SystemColors.ControlDarkDark;
+            label7.Location = new Point(21, 318);
+            label7.Name = "label7";
+            label7.Size = new Size(51, 14);
+            label7.TabIndex = 38;
+            label7.Text = "Interest";
+            // 
+            // repaymentUpdateStatus
+            // 
+            repaymentUpdateStatus.FlatStyle = FlatStyle.Flat;
+            repaymentUpdateStatus.Font = new Font("Tahoma", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            repaymentUpdateStatus.FormattingEnabled = true;
+            repaymentUpdateStatus.Items.AddRange(new object[] { "Approved", "Rejected" });
+            repaymentUpdateStatus.Location = new Point(515, 34);
+            repaymentUpdateStatus.Name = "repaymentUpdateStatus";
+            repaymentUpdateStatus.Size = new Size(104, 22);
+            repaymentUpdateStatus.TabIndex = 36;
+            repaymentUpdateStatus.Text = "Operation";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.ForeColor = SystemColors.ControlDarkDark;
+            label10.Location = new Point(21, 404);
+            label10.Name = "label10";
+            label10.Size = new Size(132, 14);
+            label10.TabIndex = 16;
+            label10.Text = "Overdue Principal Dept";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.ForeColor = SystemColors.ControlDarkDark;
+            label6.Location = new Point(21, 288);
+            label6.Name = "label6";
+            label6.Size = new Size(124, 14);
+            label6.TabIndex = 12;
+            label6.Text = "Original Loan Amount";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(18, 248);
+            label5.Name = "label5";
+            label5.Size = new Size(110, 19);
+            label5.TabIndex = 11;
+            label5.Text = "Loan Details";
+            // 
+            // repaymentStat
+            // 
+            repaymentStat.AutoSize = true;
+            repaymentStat.Font = new Font("Tahoma", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            repaymentStat.Location = new Point(229, 33);
+            repaymentStat.Name = "repaymentStat";
+            repaymentStat.Size = new Size(62, 23);
+            repaymentStat.TabIndex = 1;
+            repaymentStat.Text = "Status";
+            // 
+            // repaymentApplicationId
+            // 
+            repaymentApplicationId.AutoSize = true;
+            repaymentApplicationId.Font = new Font("Tahoma", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            repaymentApplicationId.Location = new Point(20, 31);
+            repaymentApplicationId.Name = "repaymentApplicationId";
+            repaymentApplicationId.Size = new Size(161, 25);
+            repaymentApplicationId.TabIndex = 0;
+            repaymentApplicationId.Text = "Application ID";
             // 
             // formRepayment
             // 
@@ -154,12 +613,17 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1092, 609);
+            Controls.Add(pendingPanel);
             Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "formRepayment";
             Text = "formRepayment";
             Load += formRepayment_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            pendingPanel.ResumeLayout(false);
+            pendingPanel.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -169,13 +633,45 @@
         private DataGridViewTextBoxColumn LoanID;
         private DataGridViewTextBoxColumn ApplicantName;
         private DataGridViewTextBoxColumn LoanType;
-        private DataGridViewTextBoxColumn OriginalLoanAmount;
-        private DataGridViewTextBoxColumn MonthlyPaymentAmount;
-        private DataGridViewTextBoxColumn LastPaymentDate;
-        private DataGridViewTextBoxColumn NextPaymentDueDate;
-        private DataGridViewTextBoxColumn OutstandingBalance;
         private DataGridViewTextBoxColumn RepaymentStatus;
-        private DataGridViewTextBoxColumn LoanTermRemaining;
-        private DataGridViewTextBoxColumn Action;
+        private Panel pendingPanel;
+        private Button button1;
+        private Panel panel2;
+        private Label repaymentNextPayment;
+        private Label repaymentMonthlyPayment;
+        private Label label23;
+        private Label label4;
+        private Label label21;
+        private Label repaymentLoantermm;
+        private Label repaymentApplicantName;
+        private Label repaymentLoanAmount;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label repaymentBalance;
+        private Label label18;
+        private Label label17;
+        private Label label16;
+        private Label label15;
+        private Label label11;
+        private Label label9;
+        private Label label8;
+        private Label label7;
+        private ComboBox repaymentUpdateStatus;
+        private Label label10;
+        private Label label6;
+        private Label label5;
+        private Label repaymentStat;
+        private Label repaymentApplicationId;
+        private Label repaymentOutstandingLtv;
+        private Label repaymentMaturityDate;
+        private Label repaymentIssueDate;
+        private Label repaymentLoanTerm;
+        private Label repaymentOverdueInterest;
+        private Label repaymentInterestBalance;
+        private Label repaymentPrincipalDept;
+        private Label repaymentInterest;
+        private Label repaymentOverduePrincipalDept;
+        private Label repaymentOriginalLoanAmount;
     }
 }

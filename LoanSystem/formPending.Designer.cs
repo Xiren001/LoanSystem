@@ -486,7 +486,7 @@
             pendingYear.AutoSize = true;
             pendingYear.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             pendingYear.ForeColor = SystemColors.ControlDarkDark;
-            pendingYear.Location = new Point(495, 497);
+            pendingYear.Location = new Point(516, 497);
             pendingYear.Name = "pendingYear";
             pendingYear.Size = new Size(124, 14);
             pendingYear.TabIndex = 62;
@@ -497,7 +497,7 @@
             pendingIncome.AutoSize = true;
             pendingIncome.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             pendingIncome.ForeColor = SystemColors.ControlDarkDark;
-            pendingIncome.Location = new Point(495, 468);
+            pendingIncome.Location = new Point(551, 468);
             pendingIncome.Name = "pendingIncome";
             pendingIncome.Size = new Size(89, 14);
             pendingIncome.TabIndex = 61;
@@ -508,7 +508,7 @@
             pendingPosition.AutoSize = true;
             pendingPosition.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             pendingPosition.ForeColor = SystemColors.ControlDarkDark;
-            pendingPosition.Location = new Point(495, 440);
+            pendingPosition.Location = new Point(591, 440);
             pendingPosition.Name = "pendingPosition";
             pendingPosition.Size = new Size(49, 14);
             pendingPosition.TabIndex = 60;
@@ -519,7 +519,7 @@
             pendingEmployementStatus.AutoSize = true;
             pendingEmployementStatus.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             pendingEmployementStatus.ForeColor = SystemColors.ControlDarkDark;
-            pendingEmployementStatus.Location = new Point(495, 411);
+            pendingEmployementStatus.Location = new Point(526, 411);
             pendingEmployementStatus.Name = "pendingEmployementStatus";
             pendingEmployementStatus.Size = new Size(114, 14);
             pendingEmployementStatus.TabIndex = 59;
@@ -530,7 +530,7 @@
             pendingEmployeName.AutoSize = true;
             pendingEmployeName.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             pendingEmployeName.ForeColor = SystemColors.ControlDarkDark;
-            pendingEmployeName.Location = new Point(495, 381);
+            pendingEmployeName.Location = new Point(548, 381);
             pendingEmployeName.Name = "pendingEmployeName";
             pendingEmployeName.Size = new Size(92, 14);
             pendingEmployeName.TabIndex = 58;
@@ -541,7 +541,7 @@
             pendingId.AutoSize = true;
             pendingId.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             pendingId.ForeColor = SystemColors.ControlDarkDark;
-            pendingId.Location = new Point(139, 586);
+            pendingId.Location = new Point(180, 586);
             pendingId.Name = "pendingId";
             pendingId.Size = new Size(51, 14);
             pendingId.TabIndex = 57;
@@ -552,7 +552,7 @@
             pendingGender.AutoSize = true;
             pendingGender.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             pendingGender.ForeColor = SystemColors.ControlDarkDark;
-            pendingGender.Location = new Point(139, 557);
+            pendingGender.Location = new Point(184, 557);
             pendingGender.Name = "pendingGender";
             pendingGender.Size = new Size(47, 14);
             pendingGender.TabIndex = 56;
@@ -563,7 +563,7 @@
             pendingAddress.AutoSize = true;
             pendingAddress.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             pendingAddress.ForeColor = SystemColors.ControlDarkDark;
-            pendingAddress.Location = new Point(139, 527);
+            pendingAddress.Location = new Point(181, 527);
             pendingAddress.Name = "pendingAddress";
             pendingAddress.Size = new Size(50, 14);
             pendingAddress.TabIndex = 55;
@@ -574,7 +574,7 @@
             pendingEmail.AutoSize = true;
             pendingEmail.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             pendingEmail.ForeColor = SystemColors.ControlDarkDark;
-            pendingEmail.Location = new Point(139, 468);
+            pendingEmail.Location = new Point(197, 468);
             pendingEmail.Name = "pendingEmail";
             pendingEmail.Size = new Size(34, 14);
             pendingEmail.TabIndex = 54;
@@ -585,7 +585,7 @@
             pendingMiddleName.AutoSize = true;
             pendingMiddleName.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             pendingMiddleName.ForeColor = SystemColors.ControlDarkDark;
-            pendingMiddleName.Location = new Point(139, 440);
+            pendingMiddleName.Location = new Point(155, 440);
             pendingMiddleName.Name = "pendingMiddleName";
             pendingMiddleName.Size = new Size(76, 14);
             pendingMiddleName.TabIndex = 53;
@@ -596,7 +596,7 @@
             pendingFirstName.AutoSize = true;
             pendingFirstName.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             pendingFirstName.ForeColor = SystemColors.ControlDarkDark;
-            pendingFirstName.Location = new Point(139, 411);
+            pendingFirstName.Location = new Point(167, 411);
             pendingFirstName.Name = "pendingFirstName";
             pendingFirstName.Size = new Size(64, 14);
             pendingFirstName.TabIndex = 52;
@@ -607,7 +607,7 @@
             pendingPhone.AutoSize = true;
             pendingPhone.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             pendingPhone.ForeColor = SystemColors.ControlDarkDark;
-            pendingPhone.Location = new Point(139, 497);
+            pendingPhone.Location = new Point(189, 497);
             pendingPhone.Name = "pendingPhone";
             pendingPhone.Size = new Size(42, 14);
             pendingPhone.TabIndex = 51;
@@ -618,7 +618,7 @@
             pendingLastName.AutoSize = true;
             pendingLastName.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             pendingLastName.ForeColor = SystemColors.ControlDarkDark;
-            pendingLastName.Location = new Point(139, 381);
+            pendingLastName.Location = new Point(167, 381);
             pendingLastName.Name = "pendingLastName";
             pendingLastName.Size = new Size(64, 14);
             pendingLastName.TabIndex = 50;

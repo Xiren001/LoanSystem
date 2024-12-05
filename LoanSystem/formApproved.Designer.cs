@@ -42,6 +42,7 @@
             NextPaymentDueDate = new DataGridViewTextBoxColumn();
             RepaymentStatus = new DataGridViewTextBoxColumn();
             Action = new DataGridViewTextBoxColumn();
+            btnTransfer = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -71,10 +72,12 @@
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.GridColor = Color.Black;
             dataGridView1.Location = new Point(12, 12);
+            dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
-            dataGridView1.Size = new Size(1068, 585);
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(1068, 541);
             dataGridView1.TabIndex = 26;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -156,12 +159,26 @@
             Action.Name = "Action";
             Action.ReadOnly = true;
             // 
+            // btnTransfer
+            // 
+            btnTransfer.BackColor = Color.SeaGreen;
+            btnTransfer.FlatStyle = FlatStyle.Flat;
+            btnTransfer.ForeColor = Color.Transparent;
+            btnTransfer.Location = new Point(937, 559);
+            btnTransfer.Name = "btnTransfer";
+            btnTransfer.Size = new Size(143, 38);
+            btnTransfer.TabIndex = 27;
+            btnTransfer.Text = "Proceed to Repayment";
+            btnTransfer.UseVisualStyleBackColor = false;
+            btnTransfer.Click += btnTransfer_Click_1;
+            // 
             // formApproved
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1092, 609);
+            Controls.Add(btnTransfer);
             Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "formApproved";
@@ -185,5 +202,6 @@
         private DataGridViewTextBoxColumn NextPaymentDueDate;
         private DataGridViewTextBoxColumn RepaymentStatus;
         private DataGridViewTextBoxColumn Action;
+        private Button btnTransfer;
     }
 }
