@@ -96,23 +96,44 @@ namespace LoanSystem
                 }
 
                 decimal newBalance = outstandingbalance - repaymentAmount;
+                decimal newTotalPrincipalPaid = 0; // Declare outside the try block
 
                 try
                 {
-                    string updateQuery = "UPDATE repaymenttable SET outstandingbalance = @NewBalance WHERE Id = @Id";
+                    string fetchQuery = "SELECT totalPrincipalPaid FROM repaymenttable WHERE Id = @Id";
+                    string updateQuery = "UPDATE repaymenttable SET outstandingbalance = @NewBalance, totalPrincipalPaid = @NewTotalPrincipalPaid WHERE Id = @Id";
 
                     using (SqlConnection conn = new SqlConnection(connectionString))
                     {
                         conn.Open();
-                        using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
+
+                        // Fetch current totalPrincipalPaid
+                        decimal currentPrincipalPaid = 0;
+                        using (SqlCommand fetchCmd = new SqlCommand(fetchQuery, conn))
                         {
-                            cmd.Parameters.AddWithValue("@NewBalance", newBalance);
-                            cmd.Parameters.AddWithValue("@Id", applicationId);
-                            cmd.ExecuteNonQuery();
+                            fetchCmd.Parameters.AddWithValue("@Id", applicationId);
+                            object result = fetchCmd.ExecuteScalar();
+                            if (result != null && result != DBNull.Value)
+                            {
+                                currentPrincipalPaid = Convert.ToDecimal(result);
+                            }
+                        }
+
+                        // Calculate the new totalPrincipalPaid
+                        newTotalPrincipalPaid = currentPrincipalPaid + repaymentAmount;
+
+                        // Update the database
+                        using (SqlCommand updateCmd = new SqlCommand(updateQuery, conn))
+                        {
+                            updateCmd.Parameters.AddWithValue("@NewBalance", newBalance);
+                            updateCmd.Parameters.AddWithValue("@NewTotalPrincipalPaid", newTotalPrincipalPaid);
+                            updateCmd.Parameters.AddWithValue("@Id", applicationId);
+                            updateCmd.ExecuteNonQuery();
                         }
                     }
 
-                    MessageBox.Show($"Repayment successful! New balance: ₱{newBalance:N2}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Repayment successful!\nNew Balance: ₱{newBalance:N2}\nTotal Principal Paid: ₱{newTotalPrincipalPaid:N2}",
+                        "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 catch (Exception ex)
@@ -125,5 +146,7 @@ namespace LoanSystem
                 MessageBox.Show("Please enter a valid repayment amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
     }
 }

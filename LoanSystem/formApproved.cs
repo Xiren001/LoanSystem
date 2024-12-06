@@ -328,7 +328,7 @@ namespace LoanSystem
                         insertCommand.Parameters.AddWithValue("@RBP_MonthlyPayment", reader["RBP_MonthlyPayment"]);
                         insertCommand.Parameters.AddWithValue("@RBP_TotalRepayment", reader["RBP_TotalRepayment"]);
                         insertCommand.Parameters.AddWithValue("@TransferDate", DateTime.Now);
-                        insertCommand.Parameters.AddWithValue("@OutstandingBalance", reader["amount"]);
+                        insertCommand.Parameters.AddWithValue("@OutstandingBalance", reader["TotalRepayment"]);
 
                         reader.Close();
                         insertCommand.ExecuteNonQuery();

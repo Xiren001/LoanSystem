@@ -167,6 +167,11 @@ namespace LoanSystem
                                 repaymentApplicationId.Text = reader["Id"].ToString();
                                 repaymentApplicantName.Text = $"{reader["firstname"]} {reader["lastname"]}";
 
+                                // Extract and format numeric data
+                                decimal originalLoanAmount = Convert.ToDecimal(reader["amount"]);
+                                decimal totalPrincipalPaid = Convert.ToDecimal(reader["totalPrincipalPaid"]); // Ensure this column exists
+                                decimal principalDebt = originalLoanAmount - totalPrincipalPaid;
+
                                 // Extract numbers, format as decimal with commas, and remove special characters
                                 repaymentLoanAmount.Text = FormatAsNumber(reader["amount"].ToString());
                                 repaymentInterest.Text = FormatAsNumber(reader["Interest"].ToString());
@@ -183,9 +188,19 @@ namespace LoanSystem
                                 string loanTermText = reader["repaymentterm"].ToString(); // e.g., "12 months"
                                 int repaymentTermMonths = ExtractNumericValue(loanTermText);
 
-                                // Calculate Next Payment Date (1 month after issue date)
+
+                                // Calculate the initial next payment date (1 month after issue date)
                                 DateTime nextPaymentDate = issueDate.AddMonths(1);
+                                // Check if today's date matches the next payment date
+                                if (DateTime.Today == nextPaymentDate.Date)
+                                {
+                                    // Add 1 month to the next payment date
+                                    nextPaymentDate = nextPaymentDate.AddMonths(1);
+                                }
+                                // Display the updated next payment date
                                 repaymentNextPayment.Text = nextPaymentDate.ToString("yyyy-MM-dd");
+
+
 
                                 // Calculate Maturity Date
                                 DateTime maturityDate = issueDate.AddMonths(repaymentTermMonths);
@@ -207,11 +222,13 @@ namespace LoanSystem
                                 }
 
                                 repaymentPrincipalDept.Text = ""; // Replace with appropriate data if available
+                                                                  // Principal Debt Calculation and Display
+                                repaymentPrincipalDept.Text = FormatAsNumber(principalDebt.ToString());
 
                                 repaymentOutstandingLtv.Text = ""; // Replace with appropriate data if available
                                 repaymentOverdueInterest.Text = ""; // Replace with overdue interest data if available
                                 repaymentOverduePrincipalDept.Text = ""; // Replace with overdue principal debt if available
-                                repaymentInterestBalance.Text = ""; // Replace with interest balance if available
+                           
                             }
                         }
                     }

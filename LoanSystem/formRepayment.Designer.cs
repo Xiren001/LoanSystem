@@ -46,7 +46,6 @@
             repaymentIssueDate = new Label();
             repaymentLoanTerm = new Label();
             repaymentOverdueInterest = new Label();
-            repaymentInterestBalance = new Label();
             repaymentPrincipalDept = new Label();
             repaymentInterest = new Label();
             repaymentOverduePrincipalDept = new Label();
@@ -70,7 +69,6 @@
             label16 = new Label();
             label15 = new Label();
             label11 = new Label();
-            label9 = new Label();
             label8 = new Label();
             label7 = new Label();
             label10 = new Label();
@@ -167,7 +165,6 @@
             pendingPanel.Controls.Add(repaymentIssueDate);
             pendingPanel.Controls.Add(repaymentLoanTerm);
             pendingPanel.Controls.Add(repaymentOverdueInterest);
-            pendingPanel.Controls.Add(repaymentInterestBalance);
             pendingPanel.Controls.Add(repaymentPrincipalDept);
             pendingPanel.Controls.Add(repaymentInterest);
             pendingPanel.Controls.Add(repaymentOverduePrincipalDept);
@@ -179,7 +176,6 @@
             pendingPanel.Controls.Add(label16);
             pendingPanel.Controls.Add(label15);
             pendingPanel.Controls.Add(label11);
-            pendingPanel.Controls.Add(label9);
             pendingPanel.Controls.Add(label8);
             pendingPanel.Controls.Add(label7);
             pendingPanel.Controls.Add(label10);
@@ -276,22 +272,11 @@
             repaymentOverdueInterest.AutoSize = true;
             repaymentOverdueInterest.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             repaymentOverdueInterest.ForeColor = SystemColors.ControlDarkDark;
-            repaymentOverdueInterest.Location = new Point(167, 464);
+            repaymentOverdueInterest.Location = new Point(167, 434);
             repaymentOverdueInterest.Name = "repaymentOverdueInterest";
             repaymentOverdueInterest.Size = new Size(102, 14);
             repaymentOverdueInterest.TabIndex = 54;
             repaymentOverdueInterest.Text = "Overdue Interest";
-            // 
-            // repaymentInterestBalance
-            // 
-            repaymentInterestBalance.AutoSize = true;
-            repaymentInterestBalance.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            repaymentInterestBalance.ForeColor = SystemColors.ControlDarkDark;
-            repaymentInterestBalance.Location = new Point(167, 405);
-            repaymentInterestBalance.Name = "repaymentInterestBalance";
-            repaymentInterestBalance.Size = new Size(96, 14);
-            repaymentInterestBalance.TabIndex = 53;
-            repaymentInterestBalance.Text = "Interest Balance";
             // 
             // repaymentPrincipalDept
             // 
@@ -320,7 +305,7 @@
             repaymentOverduePrincipalDept.AutoSize = true;
             repaymentOverduePrincipalDept.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             repaymentOverduePrincipalDept.ForeColor = SystemColors.ControlDarkDark;
-            repaymentOverduePrincipalDept.Location = new Point(165, 434);
+            repaymentOverduePrincipalDept.Location = new Point(164, 404);
             repaymentOverduePrincipalDept.Name = "repaymentOverduePrincipalDept";
             repaymentOverduePrincipalDept.Size = new Size(132, 14);
             repaymentOverduePrincipalDept.TabIndex = 50;
@@ -544,22 +529,11 @@
             label11.AutoSize = true;
             label11.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label11.ForeColor = SystemColors.ControlDarkDark;
-            label11.Location = new Point(21, 464);
+            label11.Location = new Point(21, 434);
             label11.Name = "label11";
             label11.Size = new Size(102, 14);
             label11.TabIndex = 41;
             label11.Text = "Overdue Interest";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.ForeColor = SystemColors.ControlDarkDark;
-            label9.Location = new Point(21, 405);
-            label9.Name = "label9";
-            label9.Size = new Size(96, 14);
-            label9.TabIndex = 40;
-            label9.Text = "Interest Balance";
             // 
             // label8
             // 
@@ -588,7 +562,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label10.ForeColor = SystemColors.ControlDarkDark;
-            label10.Location = new Point(21, 434);
+            label10.Location = new Point(21, 404);
             label10.Name = "label10";
             label10.Size = new Size(132, 14);
             label10.TabIndex = 16;
@@ -683,7 +657,6 @@
         private Label label16;
         private Label label15;
         private Label label11;
-        private Label label9;
         private Label label8;
         private Label label7;
         private Label label10;
@@ -696,7 +669,6 @@
         private Label repaymentIssueDate;
         private Label repaymentLoanTerm;
         private Label repaymentOverdueInterest;
-        private Label repaymentInterestBalance;
         private Label repaymentPrincipalDept;
         private Label repaymentInterest;
         private Label repaymentOverduePrincipalDept;
