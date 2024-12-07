@@ -170,7 +170,9 @@ namespace LoanSystem
                                 // Extract and format numeric data
                                 decimal originalLoanAmount = Convert.ToDecimal(reader["amount"]);
                                 decimal totalPrincipalPaid = Convert.ToDecimal(reader["totalPrincipalPaid"]); // Ensure this column exists
+                                decimal outstandingBalance = Convert.ToDecimal(reader["outstandingbalance"]);
                                 decimal principalDebt = originalLoanAmount - totalPrincipalPaid;
+                                decimal outstandingLTV = (outstandingBalance / originalLoanAmount) * 100;
 
                                 // Extract numbers, format as decimal with commas, and remove special characters
                                 repaymentLoanAmount.Text = FormatAsNumber(reader["amount"].ToString());
@@ -188,45 +190,64 @@ namespace LoanSystem
                                 string loanTermText = reader["repaymentterm"].ToString(); // e.g., "12 months"
                                 int repaymentTermMonths = ExtractNumericValue(loanTermText);
 
-
-                                // Calculate the initial next payment date (1 month after issue date)
-                                DateTime nextPaymentDate = issueDate.AddMonths(1);
-                                // Check if today's date matches the next payment date
-                                if (DateTime.Today == nextPaymentDate.Date)
-                                {
-                                    // Add 1 month to the next payment date
-                                    nextPaymentDate = nextPaymentDate.AddMonths(1);
-                                }
-                                // Display the updated next payment date
-                                repaymentNextPayment.Text = nextPaymentDate.ToString("yyyy-MM-dd");
-
-
-
                                 // Calculate Maturity Date
                                 DateTime maturityDate = issueDate.AddMonths(repaymentTermMonths);
                                 repaymentMaturityDate.Text = maturityDate.ToString("yyyy-MM-dd");
 
+                                // Calculate the next payment date
+                                DateTime nextPaymentDate = issueDate.AddMonths(1);
+
+                                // Determine the loan status
                                 string status = DateTime.Now > nextPaymentDate ? "Overdue" : "Active";
                                 repaymentStat.Text = status;
 
-                                // Apply color based on status
+                                // Parse the interest rate
+                                string percentString = reader["Percent"].ToString(); // Example: "10.75%"
+                                decimal annualInterestRate = 0;
+
+                                if (!string.IsNullOrEmpty(percentString) && percentString.Contains("%"))
+                                {
+                                    // Remove the '%' symbol and convert to decimal
+                                    percentString = percentString.Replace("%", "").Trim(); // "10.75"
+                                    annualInterestRate = Convert.ToDecimal(percentString) / 100; // 0.1075
+                                }
+
+                                // Calculate daily interest rate
+                                decimal dailyInterestRate = annualInterestRate / 365;
+
+                                // Calculate overdue interest if status is "Overdue"
                                 if (status == "Overdue")
                                 {
-                                    repaymentStat.BackColor = Color.IndianRed; // Set text color to Red for Overdue
-                                    repaymentStat.ForeColor = Color.White;
+                                    int overdueDays = (DateTime.Now - nextPaymentDate).Days;
+
+                                    if (overdueDays > 0)
+                                    {
+                                        decimal overdueInterest = outstandingBalance * dailyInterestRate * overdueDays;
+                                        repaymentOverdueInterest.Text = FormatAsNumber(overdueInterest.ToString());
+
+                                    }
+                                    else
+                                    {
+                                        repaymentOverdueInterest.Text = "₱0.00";
+                                    }
+
+                                    // Ensure nextPaymentDate is updated to the proper next month
+                                    while (DateTime.Now > nextPaymentDate)
+                                    {
+                                        nextPaymentDate = nextPaymentDate.AddMonths(1);
+                                    }
                                 }
-                                else if (status == "Active")
+                                else
                                 {
-                                    repaymentStat.BackColor = Color.SeaGreen; // Set text color to Green for Active
-                                    repaymentStat.ForeColor = Color.White;
+                                    repaymentOverdueInterest.Text = "₱0.00";
                                 }
 
-                                repaymentPrincipalDept.Text = ""; // Replace with appropriate data if available
-                                                                  // Principal Debt Calculation and Display
-                                repaymentPrincipalDept.Text = FormatAsNumber(principalDebt.ToString());
+                                // Display the updated next payment date
+                                repaymentNextPayment.Text = nextPaymentDate.ToString("yyyy-MM-dd");
 
-                                repaymentOutstandingLtv.Text = ""; // Replace with appropriate data if available
-                                repaymentOverdueInterest.Text = ""; // Replace with overdue interest data if available
+                                repaymentPrincipalDept.Text = FormatAsNumber(principalDebt.ToString());
+                                repaymentOutstandingLtv.Text = $"{outstandingLTV:N2}%";
+
                                 repaymentOverduePrincipalDept.Text = ""; // Replace with overdue principal debt if available
                            
                             }
