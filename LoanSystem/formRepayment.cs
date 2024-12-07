@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySqlX.XDevAPI.Relational;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -115,12 +116,12 @@ namespace LoanSystem
                 string status = e.Value?.ToString();
                 if (status == "Overdue")
                 {
-                    e.CellStyle.BackColor = Color.Red;
+                    e.CellStyle.BackColor = Color.IndianRed;
                     e.CellStyle.ForeColor = Color.White;
                 }
                 else if (status == "Active")
                 {
-                    e.CellStyle.BackColor = Color.Green;
+                    e.CellStyle.BackColor = Color.SeaGreen;
                     e.CellStyle.ForeColor = Color.White;
                 }
                 else
@@ -169,53 +170,78 @@ namespace LoanSystem
 
                                 // Extract and format numeric data
                                 decimal originalLoanAmount = Convert.ToDecimal(reader["amount"]);
-                                decimal totalPrincipalPaid = Convert.ToDecimal(reader["totalPrincipalPaid"]); // Ensure this column exists
-                                decimal outstandingBalance = Convert.ToDecimal(reader["outstandingbalance"]);
+                                decimal totalPrincipalPaid = Convert.ToDecimal(reader["totalPrincipalPaid"]);
+
+                                // Retrieve the outstanding balance as a string
+                                string rawOutstandingBalance = reader["outstandingbalance"].ToString();
+                                string cleanedBalance = rawOutstandingBalance.Replace("?", "").Replace(",", "");
+
+                                decimal outstandingBalance = 0;
+
+                                if (decimal.TryParse(cleanedBalance, out outstandingBalance))
+                                {
+                                    // Successfully parsed the balance
+                                    Console.WriteLine($"Parsed outstanding balance: {outstandingBalance}");
+                                }
+                                else
+                                {
+                                    // Handle conversion failure
+                                    Console.WriteLine("Failed to parse the outstanding balance.");
+                                }
+
                                 decimal principalDebt = originalLoanAmount - totalPrincipalPaid;
                                 decimal outstandingLTV = (outstandingBalance / originalLoanAmount) * 100;
 
-                                // Extract numbers, format as decimal with commas, and remove special characters
                                 repaymentLoanAmount.Text = FormatAsNumber(reader["amount"].ToString());
                                 repaymentInterest.Text = FormatAsNumber(reader["Interest"].ToString());
                                 repaymentOriginalLoanAmount.Text = FormatAsNumber(reader["amount"].ToString());
-                                repaymentMonthlyPayment.Text = FormatAsNumber(reader["MonthlyPayment"].ToString());
+
+                                // Handle and parse MonthlyPayment
+                                string monthlyPaymentString = reader["MonthlyPayment"].ToString();
+                                monthlyPaymentString = monthlyPaymentString.Replace("?", "").Replace(",", "").Trim();
+                                decimal monthlyPayment = 0;
+                                if (!decimal.TryParse(monthlyPaymentString, out monthlyPayment))
+                                {
+                                    monthlyPayment = 0;
+                                    MessageBox.Show("Monthly Payment data is invalid and could not be processed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                                repaymentMonthlyPayment.Text = FormatAsNumber(monthlyPayment.ToString());
+
                                 repaymentLoanTerm.Text = reader["repaymentterm"].ToString();
                                 repaymentLoantermm.Text = reader["repaymentterm"].ToString();
                                 repaymentIssueDate.Text = Convert.ToDateTime(reader["TransferDate"]).ToString("yyyy-MM-dd");
                                 repaymentInterestrate.Text = reader["Percent"].ToString();
                                 repaymentBalance.Text = FormatAsNumber(reader["outstandingbalance"].ToString());
 
-                                // Extract and parse loan term
+                                // Parse dates and calculate maturity date
                                 DateTime issueDate = Convert.ToDateTime(reader["TransferDate"]);
-                                string loanTermText = reader["repaymentterm"].ToString(); // e.g., "12 months"
+                                string loanTermText = reader["repaymentterm"].ToString();
                                 int repaymentTermMonths = ExtractNumericValue(loanTermText);
 
-                                // Calculate Maturity Date
                                 DateTime maturityDate = issueDate.AddMonths(repaymentTermMonths);
                                 repaymentMaturityDate.Text = maturityDate.ToString("yyyy-MM-dd");
 
-                                // Calculate the next payment date
-                                DateTime nextPaymentDate = issueDate.AddMonths(1);
 
-                                // Determine the loan status
-                                string status = DateTime.Now > nextPaymentDate ? "Overdue" : "Active";
-                                repaymentStat.Text = status;
+                                // Calculate next payment date
+                                DateTime nextPaymentDate = Convert.ToDateTime(reader["nextPaymentDate"]);
+                                repaymentNextPayment.Text = nextPaymentDate.ToString("yyyy-MM-dd");
 
-                                // Parse the interest rate
-                                string percentString = reader["Percent"].ToString(); // Example: "10.75%"
+                                // Parse interest rate
+                                string percentString = reader["Percent"].ToString();
                                 decimal annualInterestRate = 0;
 
                                 if (!string.IsNullOrEmpty(percentString) && percentString.Contains("%"))
                                 {
-                                    // Remove the '%' symbol and convert to decimal
-                                    percentString = percentString.Replace("%", "").Trim(); // "10.75"
-                                    annualInterestRate = Convert.ToDecimal(percentString) / 100; // 0.1075
+                                    percentString = percentString.Replace("%", "").Trim();
+                                    annualInterestRate = Convert.ToDecimal(percentString) / 100;
                                 }
-
-                                // Calculate daily interest rate
                                 decimal dailyInterestRate = annualInterestRate / 365;
 
-                                // Calculate overdue interest if status is "Overdue"
+                                // Determine loan status
+                                string status = DateTime.Now > nextPaymentDate ? "Overdue" : "Active";
+                                repaymentStat.Text = status;
+
+
                                 if (status == "Overdue")
                                 {
                                     int overdueDays = (DateTime.Now - nextPaymentDate).Days;
@@ -225,31 +251,44 @@ namespace LoanSystem
                                         decimal overdueInterest = outstandingBalance * dailyInterestRate * overdueDays;
                                         repaymentOverdueInterest.Text = FormatAsNumber(overdueInterest.ToString());
 
-                                    }
-                                    else
-                                    {
-                                        repaymentOverdueInterest.Text = "₱0.00";
-                                    }
+                                        // Add overdue interest to monthly payment
+                                        monthlyPayment += overdueInterest;
+                                        repaymentMonthlyPayment.Text = $"{FormatAsNumber(monthlyPayment.ToString())} (+{FormatAsNumber(overdueInterest.ToString())})";
 
-                                    // Ensure nextPaymentDate is updated to the proper next month
-                                    while (DateTime.Now > nextPaymentDate)
-                                    {
-                                        nextPaymentDate = nextPaymentDate.AddMonths(1);
+                                        outstandingBalance += overdueInterest;
+                                        repaymentBalance.Text = $"{FormatAsNumber(outstandingBalance.ToString())} (+{FormatAsNumber(overdueInterest.ToString())})";
+
+                                        // Set the text color to red for overdue payments
+                                        repaymentMonthlyPayment.ForeColor = Color.IndianRed;
+                                        repaymentBalance.ForeColor = Color.IndianRed;
+
+                                        // Calculate overdue principal debt
+                                        decimal overduePrincipalDebt = principalDebt * (overdueDays / (decimal)repaymentTermMonths);
+                                        repaymentOverduePrincipalDept.Text = FormatAsNumber(overduePrincipalDebt.ToString());
                                     }
                                 }
                                 else
                                 {
+                                    // Revert overdue indicators and restore active state visuals
                                     repaymentOverdueInterest.Text = "₱0.00";
+                                    repaymentMonthlyPayment.Text = FormatAsNumber(monthlyPayment.ToString());
+                                    repaymentBalance.Text = FormatAsNumber(outstandingBalance.ToString());
+                                    repaymentOverduePrincipalDept.Text = "₱0.00";
+
+                                    // Reset text colors to default
+                                    repaymentMonthlyPayment.ForeColor = SystemColors.ControlText;
+                                    repaymentBalance.ForeColor = SystemColors.ControlText;
+
+
+                                  
+
                                 }
 
-                                // Display the updated next payment date
-                                repaymentNextPayment.Text = nextPaymentDate.ToString("yyyy-MM-dd");
 
+                                //UpdateNextPaymentDate(applicationId, nextPaymentDate);
+                                // Display the updated next payment date
                                 repaymentPrincipalDept.Text = FormatAsNumber(principalDebt.ToString());
                                 repaymentOutstandingLtv.Text = $"{outstandingLTV:N2}%";
-
-                                repaymentOverduePrincipalDept.Text = ""; // Replace with overdue principal debt if available
-                           
                             }
                         }
                     }
@@ -260,6 +299,7 @@ namespace LoanSystem
                 MessageBox.Show($"An error occurred while fetching details: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         // Helper method to extract numeric value from a string
         private int ExtractNumericValue(string input)
@@ -282,7 +322,6 @@ namespace LoanSystem
             }
             return "₱0.00"; // Return default if parsing fails
         }
-
         private void repaymentbtn_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -291,6 +330,7 @@ namespace LoanSystem
 
                 // Fetch loan amount for the selected ID
                 string query = "SELECT outstandingbalance FROM repaymenttable WHERE Id = @Id";
+
                 try
                 {
                     using (SqlConnection conn = new SqlConnection(connectionString))
@@ -301,32 +341,61 @@ namespace LoanSystem
                             cmd.Parameters.AddWithValue("@Id", selectedId);
                             object result = cmd.ExecuteScalar();
 
-                            if (result != null && decimal.TryParse(result.ToString(), out decimal loanAmount))
+                            decimal loanAmount = ParseOutstandingBalance(result);
+
+                            if (loanAmount > 0)
                             {
                                 // Open Repayment Form
                                 RepaymentForm repaymentForm = new RepaymentForm(selectedId, connectionString, loanAmount);
-                                repaymentForm.ShowDialog();
+                                DialogResult dialogResult = repaymentForm.ShowDialog();
+                                if (dialogResult == DialogResult.OK)
+                                {
+                                    LoadRepaymentData();
+                                }
+                                else
+                                {
+                                    LoadRepaymentData();
+                                }
 
-                                // Reload data after repayment
-                                LoadRepaymentData();
                             }
                             else
                             {
-                                MessageBox.Show("Failed to fetch loan amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Invalid loan amount. Please check the data.",
+                                                "Error",
+                                                MessageBoxButtons.OK,
+                                                MessageBoxIcon.Error);
                             }
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"An error occurred while processing the repayment: {ex.Message}",
+                                    "Error",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Please select a record first.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please select a record first.",
+                                "Info",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
             }
         }
+
+
+        private decimal ParseOutstandingBalance(object balance)
+        {
+            if (balance == null) return 0;
+
+            string rawBalance = balance.ToString();
+            string cleanedBalance = rawBalance.Replace("?", "").Replace(",", "");
+
+            return decimal.TryParse(cleanedBalance, out decimal result) ? result : 0;
+        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {

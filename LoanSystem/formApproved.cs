@@ -274,13 +274,13 @@ namespace LoanSystem
                                              "phonenumber, email, address, employername, employmentstatus, position, annualincome, yearsemployment, employercontact, " +
                                              "incomeproof, identtityproof, collateraldocument, loantype, amount, loanpurpose, repaymentterm, collateraltype, " +
                                              "estimatedvalue, collateraldescription, monthlyincome, expenses, applicationdate, CreditScore, RBP, Interest, [Percent], " +
-                                             "CreditLimit, MonthlyPayment, TotalRepayment, RBP_Interest, RBP_Percent, RBP_MonthlyPayment, RBP_TotalRepayment, TransferDate, outstandingbalance) " +
+                                             "CreditLimit, MonthlyPayment, TotalRepayment, RBP_Interest, RBP_Percent, RBP_MonthlyPayment, RBP_TotalRepayment, TransferDate, outstandingbalance, nextPaymentDate) " +
                                              "VALUES (@Id, @LastName, @FirstName, @MiddleName, @Dob, @Gender, @MartialStatus, @IdType, @IdNumber, " +
                                              "@PhoneNumber, @Email, @Address, @EmployerName, @EmploymentStatus, @Position, @AnnualIncome, @YearsEmployment, " +
                                              "@EmployerContact, @IncomeProof, @IdentityProof, @CollateralDocument, @LoanType, @Amount, @LoanPurpose, " +
                                              "@RepaymentTerm, @CollateralType, @EstimatedValue, @CollateralDescription, @MonthlyIncome, @Expenses, @ApplicationDate, " +
                                              "@CreditScore, @RBP, @Interest, @Percent, @CreditLimit, @MonthlyPayment, @TotalRepayment, @RBP_Interest, @RBP_Percent, " +
-                                             "@RBP_MonthlyPayment, @RBP_TotalRepayment, @TransferDate, @Outstandingbalance)";
+                                             "@RBP_MonthlyPayment, @RBP_TotalRepayment, @TransferDate, @Outstandingbalance, @NextPaymentDate)";
 
                         SqlCommand insertCommand = new SqlCommand(insertQuery, conn);
 
@@ -329,6 +329,8 @@ namespace LoanSystem
                         insertCommand.Parameters.AddWithValue("@RBP_TotalRepayment", reader["RBP_TotalRepayment"]);
                         insertCommand.Parameters.AddWithValue("@TransferDate", DateTime.Now);
                         insertCommand.Parameters.AddWithValue("@OutstandingBalance", reader["TotalRepayment"]);
+                        insertCommand.Parameters.AddWithValue("@NextPaymentDate", DateTime.Now.AddMonths(1));
+
 
                         reader.Close();
                         insertCommand.ExecuteNonQuery();

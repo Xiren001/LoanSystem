@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
@@ -84,11 +85,50 @@ namespace LoanSystem
         }
 
 
-
         private void btnConfirmRepayment_Click_2(object sender, EventArgs e)
         {
+            decimal monthlyPayment = 0;
+
+            try
+            {
+                // Fetch and clean the monthly payment from the database
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT monthlyPayment FROM repaymenttable WHERE Id = @Id";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Id", applicationId);
+                        string rawMonthlyPayment = Convert.ToString(cmd.ExecuteScalar());
+
+                        // Clean and parse the string to a valid decimal
+                        string cleanedMonthlyPaymentString = Regex.Replace(rawMonthlyPayment, @"[^\d.\-]", "");
+
+                        if (!decimal.TryParse(cleanedMonthlyPaymentString, out monthlyPayment))
+                        {
+                            MessageBox.Show("Error: Could not parse the monthly payment value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error fetching or parsing monthly payment: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (decimal.TryParse(txtRepaymentAmount.Text, out decimal repaymentAmount))
             {
+                // Ensure the repayment amount is valid
+                if (repaymentAmount < monthlyPayment)
+                {
+                    MessageBox.Show($"Payment amount must be at least the monthly payment amount of ₱{monthlyPayment:N2}.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 if (repaymentAmount > outstandingbalance)
                 {
                     MessageBox.Show("Repayment amount exceeds the outstanding balance.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -96,43 +136,61 @@ namespace LoanSystem
                 }
 
                 decimal newBalance = outstandingbalance - repaymentAmount;
-                decimal newTotalPrincipalPaid = 0; // Declare outside the try block
+                decimal newTotalPrincipalPaid = 0;
+                DateTime newNextPaymentDate = DateTime.Now; // Declare outside for proper scope
 
                 try
                 {
-                    string fetchQuery = "SELECT totalPrincipalPaid FROM repaymenttable WHERE Id = @Id";
-                    string updateQuery = "UPDATE repaymenttable SET outstandingbalance = @NewBalance, totalPrincipalPaid = @NewTotalPrincipalPaid WHERE Id = @Id";
+                    string fetchQuery = "SELECT totalPrincipalPaid, nextPaymentDate FROM repaymenttable WHERE Id = @Id";
+                    string updateQuery = "UPDATE repaymenttable SET outstandingbalance = @NewBalance, totalPrincipalPaid = @NewTotalPrincipalPaid, nextPaymentDate = @NewNextPaymentDate WHERE Id = @Id";
+                    string incrementPaymentTrackQuery = "UPDATE repaymenttable SET paymentTrack = paymentTrack + 1 WHERE Id = @Id";
 
                     using (SqlConnection conn = new SqlConnection(connectionString))
                     {
                         conn.Open();
 
-                        // Fetch current totalPrincipalPaid
+                        // Fetch current totalPrincipalPaid and nextPaymentDate
                         decimal currentPrincipalPaid = 0;
+                        DateTime currentNextPaymentDate = DateTime.Now; // Default fallback value
+
                         using (SqlCommand fetchCmd = new SqlCommand(fetchQuery, conn))
                         {
                             fetchCmd.Parameters.AddWithValue("@Id", applicationId);
-                            object result = fetchCmd.ExecuteScalar();
-                            if (result != null && result != DBNull.Value)
+                            using (SqlDataReader reader = fetchCmd.ExecuteReader())
                             {
-                                currentPrincipalPaid = Convert.ToDecimal(result);
+                                if (reader.Read())
+                                {
+                                    currentPrincipalPaid = Convert.ToDecimal(reader["totalPrincipalPaid"]);
+                                    currentNextPaymentDate = reader["nextPaymentDate"] != DBNull.Value
+                                        ? Convert.ToDateTime(reader["nextPaymentDate"])
+                                        : DateTime.Now; // Default to now if null
+                                }
                             }
                         }
 
-                        // Calculate the new totalPrincipalPaid
+                        // Calculate the new totalPrincipalPaid and nextPaymentDate
                         newTotalPrincipalPaid = currentPrincipalPaid + repaymentAmount;
+                        newNextPaymentDate = currentNextPaymentDate.AddMonths(1); // Add 1 month
 
-                        // Update the database
+                        // Update the outstanding balance, total principal paid, and next payment date
                         using (SqlCommand updateCmd = new SqlCommand(updateQuery, conn))
                         {
                             updateCmd.Parameters.AddWithValue("@NewBalance", newBalance);
                             updateCmd.Parameters.AddWithValue("@NewTotalPrincipalPaid", newTotalPrincipalPaid);
+                            updateCmd.Parameters.AddWithValue("@NewNextPaymentDate", newNextPaymentDate);
                             updateCmd.Parameters.AddWithValue("@Id", applicationId);
                             updateCmd.ExecuteNonQuery();
                         }
+
+                        // Increment the paymentTrack column
+                        using (SqlCommand incrementCmd = new SqlCommand(incrementPaymentTrackQuery, conn))
+                        {
+                            incrementCmd.Parameters.AddWithValue("@Id", applicationId);
+                            incrementCmd.ExecuteNonQuery();
+                        }
                     }
 
-                    MessageBox.Show($"Repayment successful!\nNew Balance: ₱{newBalance:N2}\nTotal Principal Paid: ₱{newTotalPrincipalPaid:N2}",
+                    MessageBox.Show($"Repayment successful!\nNew Balance: ₱{newBalance:N2}\nTotal Principal Paid: ₱{newTotalPrincipalPaid:N2}\nNext Payment Date: {newNextPaymentDate:yyyy-MM-dd}",
                         "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
@@ -146,6 +204,8 @@ namespace LoanSystem
                 MessageBox.Show("Please enter a valid repayment amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
 
     }
