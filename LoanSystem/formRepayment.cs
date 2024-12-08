@@ -401,7 +401,7 @@ namespace LoanSystem
                                 else
                                 {
                                     LoadRepaymentData();
-                                    CheckAndMovePaidLoans();
+                                    
                                 }
 
                             }
@@ -447,6 +447,7 @@ namespace LoanSystem
         private void button1_Click(object sender, EventArgs e)
         {
             LoadRepaymentData();
+            CheckAndMovePaidLoans();
         }
 
         private void CheckAndMovePaidLoans()

@@ -447,7 +447,7 @@
             martialStatus.ForeColor = SystemColors.WindowFrame;
             martialStatus.FormattingEnabled = true;
             martialStatus.Items.AddRange(new object[] { "Single ", "Married", "Divorced" });
-            martialStatus.Location = new Point(474, 191);
+            martialStatus.Location = new Point(474, 185);
             martialStatus.Margin = new Padding(3, 5, 3, 3);
             martialStatus.Name = "martialStatus";
             martialStatus.Size = new Size(168, 31);
@@ -569,7 +569,7 @@
             label12.AutoSize = true;
             label12.Font = new Font("Tahoma", 14.25F);
             label12.ForeColor = SystemColors.ControlText;
-            label12.Location = new Point(474, 168);
+            label12.Location = new Point(473, 168);
             label12.Name = "label12";
             label12.Size = new Size(124, 23);
             label12.TabIndex = 59;
@@ -747,9 +747,9 @@
             label27.ForeColor = SystemColors.ControlText;
             label27.Location = new Point(416, 403);
             label27.Name = "label27";
-            label27.Size = new Size(150, 23);
+            label27.Size = new Size(144, 23);
             label27.TabIndex = 75;
-            label27.Text = "Estemated Value";
+            label27.Text = "Estimated Value";
             // 
             // label28
             // 

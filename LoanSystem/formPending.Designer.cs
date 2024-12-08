@@ -33,6 +33,9 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formPending));
             dataGridView1 = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            name = new DataGridViewTextBoxColumn();
+            status = new DataGridViewTextBoxColumn();
             pendingPanel = new Panel();
             button1 = new Button();
             panel2 = new Panel();
@@ -98,9 +101,6 @@
             label5 = new Label();
             pendingStatus = new Label();
             pendingApplicationId = new Label();
-            ID = new DataGridViewTextBoxColumn();
-            name = new DataGridViewTextBoxColumn();
-            status = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             pendingPanel.SuspendLayout();
             panel2.SuspendLayout();
@@ -145,6 +145,28 @@
             dataGridView1.Size = new Size(366, 796);
             dataGridView1.TabIndex = 26;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // ID
+            // 
+            ID.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            ID.HeaderText = "Column1";
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Width = 105;
+            // 
+            // name
+            // 
+            name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            name.HeaderText = "Column1";
+            name.Name = "name";
+            name.ReadOnly = true;
+            // 
+            // status
+            // 
+            status.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            status.HeaderText = "Column1";
+            status.Name = "status";
+            status.ReadOnly = true;
             // 
             // pendingPanel
             // 
@@ -195,7 +217,7 @@
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.BackgroundImageLayout = ImageLayout.None;
             button1.ForeColor = Color.Transparent;
-            button1.Location = new Point(972, 783);
+            button1.Location = new Point(777, 25);
             button1.Name = "button1";
             button1.Size = new Size(32, 31);
             button1.TabIndex = 28;
@@ -895,28 +917,6 @@
             pendingApplicationId.Size = new Size(184, 29);
             pendingApplicationId.TabIndex = 0;
             pendingApplicationId.Text = "Application ID";
-            // 
-            // ID
-            // 
-            ID.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            ID.HeaderText = "Column1";
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Width = 105;
-            // 
-            // name
-            // 
-            name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            name.HeaderText = "Column1";
-            name.Name = "name";
-            name.ReadOnly = true;
-            // 
-            // status
-            // 
-            status.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            status.HeaderText = "Column1";
-            status.Name = "status";
-            status.ReadOnly = true;
             // 
             // formPending
             // 

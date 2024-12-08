@@ -70,7 +70,6 @@ namespace LoanSystem
 
             // Disable unnecessary features
             btnEmplo.Enabled = true;
-            btnReport.Enabled = false;
         }
 
         private void EnableBranchManagerFeatures()
@@ -79,7 +78,6 @@ namespace LoanSystem
             btnPending.Enabled = true;
             btnAppRej.Enabled = true;
             btnCustomer.Enabled = true;
-            btnReport.Enabled = true;
 
             // Disable unnecessary features
             btnRepayment.Enabled = false;
@@ -89,7 +87,6 @@ namespace LoanSystem
         private void EnableAccountantFeatures()
         {
             btnRepayment.Enabled = true;
-            btnReport.Enabled = true;
 
             // Disable unnecessary features
             btnNewApp.Enabled = false;
@@ -107,7 +104,6 @@ namespace LoanSystem
             btnAppRej.Enabled = true;
             btnRepayment.Enabled = true;
             btnCustomer.Enabled = true;
-            btnReport.Enabled = true;
             btnEmplo.Enabled = true;
         }
 
@@ -163,7 +159,6 @@ namespace LoanSystem
                     pnDashboard.Width = sidebar.Width;
                     pnCustomer.Width = sidebar.Width;
                     pnRepayment.Width = sidebar.Width;
-                    pnReport.Width = sidebar.Width;
                     pnEmplo.Width = sidebar.Width;
                     menuContainer.Width = sidebar.Width;
 
@@ -181,7 +176,6 @@ namespace LoanSystem
                     pnDashboard.Width = sidebar.Width;
                     pnCustomer.Width = sidebar.Width;
                     pnRepayment.Width = sidebar.Width;
-                    pnReport.Width = sidebar.Width;
                     pnEmplo.Width = sidebar.Width;
                     menuContainer.Width = sidebar.Width;
                 }
@@ -412,6 +406,37 @@ namespace LoanSystem
                 }
             }
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            // Show the custom logout confirmation dialog
+            using (LogoutConfirmationForm logoutDialog = new LogoutConfirmationForm())
+            {
+                logoutDialog.ShowDialog();
+
+                // Handle the user's choice
+                switch (logoutDialog.UserChoice)
+                {
+                    case LogoutConfirmationForm.LogoutAction.LogoutAndClose:
+                        Application.Exit();
+                        break;
+
+                    case LogoutConfirmationForm.LogoutAction.Logout:
+                        // Show the login form
+                        SignInForm loginForm = new SignInForm();
+                        loginForm.Show();
+
+                        // Close the current dashboard
+                        this.Close();
+                        break;
+
+                    case LogoutConfirmationForm.LogoutAction.Cancel:
+                    default:
+                        // Do nothing, stay on the current form
+                        break;
+                }
+            }
         }
     }
 }

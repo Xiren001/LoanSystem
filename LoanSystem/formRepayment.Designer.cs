@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formRepayment));
             dataGridView1 = new DataGridView();
             LoanID = new DataGridViewTextBoxColumn();
@@ -85,32 +85,32 @@
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Tahoma", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(255, 255, 192);
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Tahoma", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(255, 255, 192);
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.White;
-            dataGridViewCellStyle2.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(255, 255, 192);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.Desktop;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.White;
+            dataGridViewCellStyle5.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(255, 255, 192);
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.Desktop;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { LoanID, ApplicantName, LoanType, RepaymentStatus });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Tahoma", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(255, 255, 192);
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Window;
+            dataGridViewCellStyle6.Font = new Font("Tahoma", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(255, 255, 192);
+            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             dataGridView1.GridColor = Color.Black;
             dataGridView1.Location = new Point(12, 12);
             dataGridView1.MultiSelect = false;
@@ -328,7 +328,7 @@
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.BackgroundImageLayout = ImageLayout.None;
             button1.ForeColor = Color.Transparent;
-            button1.Location = new Point(952, 789);
+            button1.Location = new Point(773, 28);
             button1.Name = "button1";
             button1.Size = new Size(32, 31);
             button1.TabIndex = 28;
@@ -359,7 +359,7 @@
             // 
             repaymentNextPayment.AutoSize = true;
             repaymentNextPayment.Font = new Font("Tahoma", 12F);
-            repaymentNextPayment.Location = new Point(768, 154);
+            repaymentNextPayment.Location = new Point(704, 154);
             repaymentNextPayment.Name = "repaymentNextPayment";
             repaymentNextPayment.Size = new Size(54, 19);
             repaymentNextPayment.TabIndex = 25;
@@ -369,7 +369,7 @@
             // 
             repaymentMonthlyPayment.AutoSize = true;
             repaymentMonthlyPayment.Font = new Font("Tahoma", 12F);
-            repaymentMonthlyPayment.Location = new Point(400, 154);
+            repaymentMonthlyPayment.Location = new Point(371, 154);
             repaymentMonthlyPayment.Name = "repaymentMonthlyPayment";
             repaymentMonthlyPayment.Size = new Size(54, 19);
             repaymentMonthlyPayment.TabIndex = 24;
@@ -379,7 +379,7 @@
             // 
             label23.AutoSize = true;
             label23.Font = new Font("Tahoma", 15.75F, FontStyle.Bold);
-            label23.Location = new Point(768, 123);
+            label23.Location = new Point(704, 123);
             label23.Name = "label23";
             label23.Size = new Size(161, 25);
             label23.TabIndex = 23;
@@ -389,7 +389,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Tahoma", 15.75F, FontStyle.Bold);
-            label4.Location = new Point(400, 123);
+            label4.Location = new Point(371, 123);
             label4.Name = "label4";
             label4.Size = new Size(196, 25);
             label4.TabIndex = 22;
@@ -430,7 +430,7 @@
             repaymentLoanAmount.AutoSize = true;
             repaymentLoanAmount.BackColor = Color.Transparent;
             repaymentLoanAmount.Font = new Font("Tahoma", 18F, FontStyle.Bold);
-            repaymentLoanAmount.Location = new Point(400, 48);
+            repaymentLoanAmount.Location = new Point(371, 48);
             repaymentLoanAmount.Margin = new Padding(0);
             repaymentLoanAmount.Name = "repaymentLoanAmount";
             repaymentLoanAmount.Size = new Size(107, 29);
@@ -453,7 +453,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Tahoma", 12F);
             label2.ForeColor = SystemColors.ControlDarkDark;
-            label2.Location = new Point(400, 20);
+            label2.Location = new Point(371, 20);
             label2.Name = "label2";
             label2.Size = new Size(166, 19);
             label2.TabIndex = 6;
@@ -464,7 +464,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Tahoma", 12F);
             label3.ForeColor = SystemColors.ControlDarkDark;
-            label3.Location = new Point(768, 20);
+            label3.Location = new Point(704, 20);
             label3.Name = "label3";
             label3.Size = new Size(153, 19);
             label3.TabIndex = 8;
@@ -474,7 +474,7 @@
             // 
             repaymentBalance.AutoSize = true;
             repaymentBalance.Font = new Font("Tahoma", 18F, FontStyle.Bold);
-            repaymentBalance.Location = new Point(765, 48);
+            repaymentBalance.Location = new Point(704, 48);
             repaymentBalance.Name = "repaymentBalance";
             repaymentBalance.Size = new Size(106, 29);
             repaymentBalance.TabIndex = 9;

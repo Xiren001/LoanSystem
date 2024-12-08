@@ -48,12 +48,11 @@
             btnCustomer = new Button();
             pnRepayment = new Panel();
             btnRepayment = new Button();
-            pnReport = new Panel();
-            btnReport = new Button();
             pnEmplo = new Panel();
             btnEmplo = new Button();
             panel2 = new Panel();
             panel4 = new Panel();
+            pictureBox1 = new PictureBox();
             label2 = new Label();
             menuTransition = new System.Windows.Forms.Timer(components);
             sidebarTransition = new System.Windows.Forms.Timer(components);
@@ -68,10 +67,10 @@
             panel10.SuspendLayout();
             pnCustomer.SuspendLayout();
             pnRepayment.SuspendLayout();
-            pnReport.SuspendLayout();
             pnEmplo.SuspendLayout();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // menu
@@ -94,7 +93,6 @@
             sidebar.Controls.Add(menuContainer);
             sidebar.Controls.Add(pnCustomer);
             sidebar.Controls.Add(pnRepayment);
-            sidebar.Controls.Add(pnReport);
             sidebar.Controls.Add(pnEmplo);
             sidebar.Controls.Add(panel2);
             sidebar.Location = new Point(0, 0);
@@ -289,34 +287,10 @@
             btnRepayment.UseVisualStyleBackColor = false;
             btnRepayment.Click += btnRepayment_Click;
             // 
-            // pnReport
-            // 
-            pnReport.Controls.Add(btnReport);
-            pnReport.Location = new Point(3, 278);
-            pnReport.Name = "pnReport";
-            pnReport.Size = new Size(230, 48);
-            pnReport.TabIndex = 4;
-            // 
-            // btnReport
-            // 
-            btnReport.BackColor = Color.SeaGreen;
-            btnReport.FlatStyle = FlatStyle.Flat;
-            btnReport.ForeColor = Color.Transparent;
-            btnReport.Image = (Image)resources.GetObject("btnReport.Image");
-            btnReport.ImageAlign = ContentAlignment.MiddleLeft;
-            btnReport.Location = new Point(-9, -11);
-            btnReport.Name = "btnReport";
-            btnReport.Padding = new Padding(25, 0, 0, 0);
-            btnReport.Size = new Size(251, 68);
-            btnReport.TabIndex = 2;
-            btnReport.Text = "Reports";
-            btnReport.UseVisualStyleBackColor = false;
-            btnReport.Click += btnReport_Click;
-            // 
             // pnEmplo
             // 
             pnEmplo.Controls.Add(btnEmplo);
-            pnEmplo.Location = new Point(3, 332);
+            pnEmplo.Location = new Point(3, 278);
             pnEmplo.Name = "pnEmplo";
             pnEmplo.Size = new Size(230, 48);
             pnEmplo.TabIndex = 5;
@@ -340,7 +314,7 @@
             // panel2
             // 
             panel2.Controls.Add(panel4);
-            panel2.Location = new Point(3, 386);
+            panel2.Location = new Point(3, 332);
             panel2.Name = "panel2";
             panel2.Size = new Size(230, 55);
             panel2.TabIndex = 6;
@@ -349,10 +323,21 @@
             // 
             panel4.BackColor = Color.Transparent;
             panel4.Controls.Add(label2);
+            panel4.Controls.Add(pictureBox1);
             panel4.Location = new Point(3, 3);
             panel4.Name = "panel4";
             panel4.Size = new Size(224, 48);
             panel4.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(19, 9);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(38, 32);
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // label2
             // 
@@ -360,7 +345,7 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(79, 16);
+            label2.Location = new Point(85, 15);
             label2.Name = "label2";
             label2.Size = new Size(65, 19);
             label2.TabIndex = 3;
@@ -406,11 +391,11 @@
             panel10.ResumeLayout(false);
             pnCustomer.ResumeLayout(false);
             pnRepayment.ResumeLayout(false);
-            pnReport.ResumeLayout(false);
             pnEmplo.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -425,8 +410,6 @@
         private Button btnCustomer;
         private Panel pnRepayment;
         private Button btnRepayment;
-        private Panel pnReport;
-        private Button btnReport;
         private Panel panel8;
         private Button btnNewApp;
         private Panel panel9;
@@ -442,5 +425,6 @@
         private Label label2;
         private Panel panel2;
         private Panel panel4;
+        private PictureBox pictureBox1;
     }
 }

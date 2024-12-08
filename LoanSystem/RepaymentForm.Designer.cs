@@ -35,7 +35,7 @@
             // 
             // txtRepaymentAmount
             // 
-            txtRepaymentAmount.BackColor = Color.LightGray;
+            txtRepaymentAmount.BackColor = Color.White;
             txtRepaymentAmount.BorderStyle = BorderStyle.FixedSingle;
             txtRepaymentAmount.Font = new Font("Tahoma", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtRepaymentAmount.Location = new Point(12, 43);
@@ -72,7 +72,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.LightGray;
+            BackColor = Color.White;
             ClientSize = new Size(334, 158);
             Controls.Add(btnConfirmRepayment);
             Controls.Add(label1);
