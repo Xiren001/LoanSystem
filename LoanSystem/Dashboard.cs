@@ -21,6 +21,8 @@ namespace LoanSystem
         formRepayment? rePayment;
         formReport? report;
         SignupForm? signup;
+        formCompleted? comp;
+        formRejected? rej;
 
         public Dashboard()
         {
@@ -160,6 +162,8 @@ namespace LoanSystem
                     pnCustomer.Width = sidebar.Width;
                     pnRepayment.Width = sidebar.Width;
                     pnEmplo.Width = sidebar.Width;
+                    pnReject.Width = sidebar.Width;
+                    pnComp.Width = sidebar.Width;
                     menuContainer.Width = sidebar.Width;
 
 
@@ -177,6 +181,8 @@ namespace LoanSystem
                     pnCustomer.Width = sidebar.Width;
                     pnRepayment.Width = sidebar.Width;
                     pnEmplo.Width = sidebar.Width;
+                    pnReject.Width = sidebar.Width;
+                    pnComp.Width = sidebar.Width;
                     menuContainer.Width = sidebar.Width;
                 }
             }
@@ -375,6 +381,52 @@ namespace LoanSystem
             signup = null;
         }
 
+        private void btnComp_Click(object sender, EventArgs e)
+        {
+            if (comp == null)
+            {
+                comp = new formCompleted();
+                comp.FormClosed += comp_FormClosed;
+                comp.MdiParent = this;
+                comp.Dock = DockStyle.Fill;
+                comp.Show();
+
+            }
+            else
+            {
+                comp.Activate();
+            }
+
+        }
+
+        private void comp_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            comp = null;
+        }
+
+        private void btnReject_Click(object sender, EventArgs e)
+        {
+
+            if (rej == null)
+            {
+                rej = new formRejected();
+                rej.FormClosed += rej_FormClosed;
+                rej.MdiParent = this;
+                rej.Dock = DockStyle.Fill;
+                rej.Show();
+
+            }
+            else
+            {
+                rej.Activate();
+            }
+        }
+
+        private void rej_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            rej = null;
+        }
+
         private void label2_Click_1(object sender, EventArgs e)
         {
 
@@ -438,5 +490,7 @@ namespace LoanSystem
                 }
             }
         }
+
+       
     }
 }

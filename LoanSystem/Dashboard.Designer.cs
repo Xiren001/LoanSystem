@@ -48,12 +48,16 @@
             btnCustomer = new Button();
             pnRepayment = new Panel();
             btnRepayment = new Button();
+            pnComp = new Panel();
+            btnComp = new Button();
+            pnReject = new Panel();
+            btnReject = new Button();
             pnEmplo = new Panel();
             btnEmplo = new Button();
             panel2 = new Panel();
             panel4 = new Panel();
-            pictureBox1 = new PictureBox();
             label2 = new Label();
+            pictureBox1 = new PictureBox();
             menuTransition = new System.Windows.Forms.Timer(components);
             sidebarTransition = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)menu).BeginInit();
@@ -67,6 +71,8 @@
             panel10.SuspendLayout();
             pnCustomer.SuspendLayout();
             pnRepayment.SuspendLayout();
+            pnComp.SuspendLayout();
+            pnReject.SuspendLayout();
             pnEmplo.SuspendLayout();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
@@ -93,6 +99,8 @@
             sidebar.Controls.Add(menuContainer);
             sidebar.Controls.Add(pnCustomer);
             sidebar.Controls.Add(pnRepayment);
+            sidebar.Controls.Add(pnComp);
+            sidebar.Controls.Add(pnReject);
             sidebar.Controls.Add(pnEmplo);
             sidebar.Controls.Add(panel2);
             sidebar.Location = new Point(0, 0);
@@ -235,7 +243,7 @@
             btnAppRej.Padding = new Padding(35, 0, 0, 0);
             btnAppRej.Size = new Size(263, 68);
             btnAppRej.TabIndex = 2;
-            btnAppRej.Text = "      Approved/Rejected Applications";
+            btnAppRej.Text = "      Approved";
             btnAppRej.UseVisualStyleBackColor = false;
             btnAppRej.Click += btnAppRej_Click;
             // 
@@ -287,10 +295,58 @@
             btnRepayment.UseVisualStyleBackColor = false;
             btnRepayment.Click += btnRepayment_Click;
             // 
+            // pnComp
+            // 
+            pnComp.Controls.Add(btnComp);
+            pnComp.Location = new Point(3, 278);
+            pnComp.Name = "pnComp";
+            pnComp.Size = new Size(230, 48);
+            pnComp.TabIndex = 6;
+            // 
+            // btnComp
+            // 
+            btnComp.BackColor = Color.SeaGreen;
+            btnComp.FlatStyle = FlatStyle.Flat;
+            btnComp.ForeColor = Color.Transparent;
+            btnComp.Image = (Image)resources.GetObject("btnComp.Image");
+            btnComp.ImageAlign = ContentAlignment.MiddleLeft;
+            btnComp.Location = new Point(-11, -9);
+            btnComp.Name = "btnComp";
+            btnComp.Padding = new Padding(25, 0, 0, 0);
+            btnComp.Size = new Size(251, 68);
+            btnComp.TabIndex = 2;
+            btnComp.Text = "Completed Loan";
+            btnComp.UseVisualStyleBackColor = false;
+            btnComp.Click += btnComp_Click;
+            // 
+            // pnReject
+            // 
+            pnReject.Controls.Add(btnReject);
+            pnReject.Location = new Point(3, 332);
+            pnReject.Name = "pnReject";
+            pnReject.Size = new Size(230, 48);
+            pnReject.TabIndex = 7;
+            // 
+            // btnReject
+            // 
+            btnReject.BackColor = Color.SeaGreen;
+            btnReject.FlatStyle = FlatStyle.Flat;
+            btnReject.ForeColor = Color.Transparent;
+            btnReject.Image = (Image)resources.GetObject("btnReject.Image");
+            btnReject.ImageAlign = ContentAlignment.MiddleLeft;
+            btnReject.Location = new Point(-11, -9);
+            btnReject.Name = "btnReject";
+            btnReject.Padding = new Padding(25, 0, 0, 0);
+            btnReject.Size = new Size(251, 68);
+            btnReject.TabIndex = 2;
+            btnReject.Text = "Rejected ";
+            btnReject.UseVisualStyleBackColor = false;
+            btnReject.Click += btnReject_Click;
+            // 
             // pnEmplo
             // 
             pnEmplo.Controls.Add(btnEmplo);
-            pnEmplo.Location = new Point(3, 278);
+            pnEmplo.Location = new Point(3, 386);
             pnEmplo.Name = "pnEmplo";
             pnEmplo.Size = new Size(230, 48);
             pnEmplo.TabIndex = 5;
@@ -314,7 +370,7 @@
             // panel2
             // 
             panel2.Controls.Add(panel4);
-            panel2.Location = new Point(3, 332);
+            panel2.Location = new Point(3, 440);
             panel2.Name = "panel2";
             panel2.Size = new Size(230, 55);
             panel2.TabIndex = 6;
@@ -329,16 +385,6 @@
             panel4.Size = new Size(224, 48);
             panel4.TabIndex = 0;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(19, 9);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(38, 32);
-            pictureBox1.TabIndex = 4;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -352,6 +398,16 @@
             label2.Text = "Logout";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             label2.Click += label2_Click_1;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(19, 9);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(38, 32);
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // menuTransition
             // 
@@ -375,6 +431,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             IsMdiContainer = true;
             Margin = new Padding(4);
+            MaximizeBox = false;
             Name = "Dashboard";
             Padding = new Padding(68, 0, 0, 0);
             StartPosition = FormStartPosition.CenterScreen;
@@ -391,6 +448,8 @@
             panel10.ResumeLayout(false);
             pnCustomer.ResumeLayout(false);
             pnRepayment.ResumeLayout(false);
+            pnComp.ResumeLayout(false);
+            pnReject.ResumeLayout(false);
             pnEmplo.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel4.ResumeLayout(false);
@@ -426,5 +485,9 @@
         private Panel panel2;
         private Panel panel4;
         private PictureBox pictureBox1;
+        private Panel pnComp;
+        private Button btnComp;
+        private Panel pnReject;
+        private Button btnReject;
     }
 }

@@ -165,11 +165,11 @@
             btnTransfer.FlatAppearance.BorderSize = 0;
             btnTransfer.FlatStyle = FlatStyle.Flat;
             btnTransfer.ForeColor = Color.Transparent;
-            btnTransfer.Location = new Point(1164, 770);
+            btnTransfer.Location = new Point(1217, 770);
             btnTransfer.Name = "btnTransfer";
-            btnTransfer.Size = new Size(231, 38);
+            btnTransfer.Size = new Size(178, 38);
             btnTransfer.TabIndex = 27;
-            btnTransfer.Text = "Proceed to Repayment";
+            btnTransfer.Text = "Disbursed";
             btnTransfer.UseVisualStyleBackColor = false;
             btnTransfer.Click += btnTransfer_Click_1;
             // 
