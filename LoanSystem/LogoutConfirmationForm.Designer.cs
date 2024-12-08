@@ -40,19 +40,20 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(136, 68);
+            label1.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(123, 82);
             label1.Name = "label1";
-            label1.Size = new Size(196, 16);
+            label1.Size = new Size(247, 19);
             label1.TabIndex = 0;
             label1.Text = "Are you sure you want to logout?";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Tahoma", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(189, 26);
+            label2.Font = new Font("Tahoma", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(204, 34);
             label2.Name = "label2";
-            label2.Size = new Size(85, 25);
+            label2.Size = new Size(97, 29);
             label2.TabIndex = 1;
             label2.Text = "Logout";
             // 
@@ -60,11 +61,11 @@
             // 
             btnLogoutAndClose.BackColor = Color.IndianRed;
             btnLogoutAndClose.FlatStyle = FlatStyle.Flat;
-            btnLogoutAndClose.Font = new Font("Tahoma", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogoutAndClose.Font = new Font("Tahoma", 12F, FontStyle.Bold);
             btnLogoutAndClose.ForeColor = Color.White;
             btnLogoutAndClose.Location = new Point(19, 123);
             btnLogoutAndClose.Name = "btnLogoutAndClose";
-            btnLogoutAndClose.Size = new Size(130, 25);
+            btnLogoutAndClose.Size = new Size(175, 42);
             btnLogoutAndClose.TabIndex = 2;
             btnLogoutAndClose.Text = "Logout and Close";
             btnLogoutAndClose.UseVisualStyleBackColor = false;
@@ -74,11 +75,11 @@
             // 
             btnLogout.BackColor = Color.Khaki;
             btnLogout.FlatStyle = FlatStyle.Flat;
-            btnLogout.Font = new Font("Tahoma", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogout.Font = new Font("Tahoma", 12F, FontStyle.Bold);
             btnLogout.ForeColor = Color.Black;
-            btnLogout.Location = new Point(180, 123);
+            btnLogout.Location = new Point(213, 123);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(108, 25);
+            btnLogout.Size = new Size(129, 42);
             btnLogout.TabIndex = 3;
             btnLogout.Text = "Logout";
             btnLogout.UseVisualStyleBackColor = false;
@@ -88,10 +89,10 @@
             // 
             btnCancel.BackColor = SystemColors.ActiveBorder;
             btnCancel.FlatStyle = FlatStyle.Flat;
-            btnCancel.Font = new Font("Tahoma", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCancel.Location = new Point(321, 123);
+            btnCancel.Font = new Font("Tahoma", 12F, FontStyle.Bold);
+            btnCancel.Location = new Point(360, 123);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(108, 25);
+            btnCancel.Size = new Size(118, 42);
             btnCancel.TabIndex = 4;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = false;
@@ -107,7 +108,7 @@
             panel1.Controls.Add(btnLogoutAndClose);
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(443, 180);
+            panel1.Size = new Size(498, 219);
             panel1.TabIndex = 5;
             // 
             // LogoutConfirmationForm
@@ -115,7 +116,7 @@
             AutoScaleDimensions = new SizeF(7F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SeaGreen;
-            ClientSize = new Size(449, 186);
+            ClientSize = new Size(506, 225);
             Controls.Add(panel1);
             Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;

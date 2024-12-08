@@ -52,7 +52,7 @@
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Tahoma", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(255, 255, 192);
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
@@ -62,7 +62,7 @@
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ClientID, FullName, ContactInformation, LoanAmount, OutstandingLoanBalance, RecentActivityDate, TotalPaidtoDate, AccountStatus, Action });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.White;
-            dataGridViewCellStyle2.Font = new Font("Tahoma", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.Font = new Font("Tahoma", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(255, 255, 192);
             dataGridViewCellStyle2.SelectionForeColor = Color.Black;
@@ -72,7 +72,7 @@
             dataGridView1.Location = new Point(12, 12);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersVisible = false;
-            dataGridView1.Size = new Size(1068, 585);
+            dataGridView1.Size = new Size(1383, 796);
             dataGridView1.TabIndex = 26;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -87,7 +87,7 @@
             FullName.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             FullName.HeaderText = "Full Name";
             FullName.Name = "FullName";
-            FullName.Width = 82;
+            FullName.Width = 106;
             // 
             // ContactInformation
             // 
@@ -136,7 +136,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1092, 609);
+            ClientSize = new Size(1407, 820);
             Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "formCustomer";

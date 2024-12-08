@@ -88,7 +88,6 @@
             pendingCreditPanel = new Panel();
             pendingCreditColor = new Label();
             pendingRepaymentTerm2 = new Label();
-            label24 = new Label();
             pendingRBP = new Label();
             label22 = new Label();
             pendingCreditScore = new Label();
@@ -99,6 +98,9 @@
             label5 = new Label();
             pendingStatus = new Label();
             pendingApplicationId = new Label();
+            ID = new DataGridViewTextBoxColumn();
+            name = new DataGridViewTextBoxColumn();
+            status = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             pendingPanel.SuspendLayout();
             panel2.SuspendLayout();
@@ -113,26 +115,26 @@
             dataGridView1.AllowUserToResizeRows = false;
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Tahoma", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(255, 255, 192);
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ID, name, status });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.White;
-            dataGridViewCellStyle2.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.Font = new Font("Tahoma", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(255, 255, 192);
             dataGridViewCellStyle2.SelectionForeColor = Color.Black;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.GridColor = Color.Black;
-            dataGridView1.Location = new Point(12, 47);
+            dataGridView1.Location = new Point(12, 12);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
@@ -140,7 +142,7 @@
             dataGridViewCellStyle3.Padding = new Padding(0, 5, 0, 5);
             dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(366, 550);
+            dataGridView1.Size = new Size(366, 796);
             dataGridView1.TabIndex = 26;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -184,7 +186,7 @@
             pendingPanel.Controls.Add(pendingApplicationId);
             pendingPanel.Location = new Point(384, -8);
             pendingPanel.Name = "pendingPanel";
-            pendingPanel.Size = new Size(715, 624);
+            pendingPanel.Size = new Size(1033, 838);
             pendingPanel.TabIndex = 27;
             // 
             // button1
@@ -193,7 +195,7 @@
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.BackgroundImageLayout = ImageLayout.None;
             button1.ForeColor = Color.Transparent;
-            button1.Location = new Point(662, 25);
+            button1.Location = new Point(972, 783);
             button1.Name = "button1";
             button1.Size = new Size(32, 31);
             button1.TabIndex = 28;
@@ -227,16 +229,16 @@
             panel2.Controls.Add(label3);
             panel2.Controls.Add(pendingInterest);
             panel2.Controls.Add(pendingPercent);
-            panel2.Location = new Point(10, 135);
+            panel2.Location = new Point(10, 148);
             panel2.Name = "panel2";
-            panel2.Size = new Size(684, 193);
+            panel2.Size = new Size(994, 254);
             panel2.TabIndex = 38;
             // 
             // repaymentRBP
             // 
             repaymentRBP.AutoSize = true;
             repaymentRBP.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            repaymentRBP.Location = new Point(548, 161);
+            repaymentRBP.Location = new Point(791, 220);
             repaymentRBP.Name = "repaymentRBP";
             repaymentRBP.Size = new Size(47, 16);
             repaymentRBP.TabIndex = 66;
@@ -247,7 +249,7 @@
             label29.AutoSize = true;
             label29.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label29.ForeColor = SystemColors.ControlDarkDark;
-            label29.Location = new Point(548, 138);
+            label29.Location = new Point(791, 203);
             label29.Name = "label29";
             label29.Size = new Size(101, 14);
             label29.TabIndex = 29;
@@ -257,7 +259,7 @@
             // 
             monthlyRBP.AutoSize = true;
             monthlyRBP.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            monthlyRBP.Location = new Point(412, 161);
+            monthlyRBP.Location = new Point(582, 220);
             monthlyRBP.Name = "monthlyRBP";
             monthlyRBP.Size = new Size(47, 16);
             monthlyRBP.TabIndex = 65;
@@ -268,7 +270,7 @@
             label28.AutoSize = true;
             label28.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label28.ForeColor = SystemColors.ControlDarkDark;
-            label28.Location = new Point(412, 138);
+            label28.Location = new Point(582, 203);
             label28.Name = "label28";
             label28.Size = new Size(102, 14);
             label28.TabIndex = 28;
@@ -278,7 +280,7 @@
             // 
             percentRBP.AutoSize = true;
             percentRBP.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            percentRBP.Location = new Point(300, 161);
+            percentRBP.Location = new Point(391, 220);
             percentRBP.Name = "percentRBP";
             percentRBP.Size = new Size(47, 16);
             percentRBP.TabIndex = 64;
@@ -289,7 +291,7 @@
             label27.AutoSize = true;
             label27.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label27.ForeColor = SystemColors.ControlDarkDark;
-            label27.Location = new Point(300, 138);
+            label27.Location = new Point(391, 203);
             label27.Name = "label27";
             label27.Size = new Size(70, 14);
             label27.TabIndex = 27;
@@ -299,7 +301,7 @@
             // 
             interestRBP.AutoSize = true;
             interestRBP.Font = new Font("Tahoma", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            interestRBP.Location = new Point(203, 161);
+            interestRBP.Location = new Point(229, 220);
             interestRBP.Name = "interestRBP";
             interestRBP.Size = new Size(47, 16);
             interestRBP.TabIndex = 63;
@@ -310,7 +312,7 @@
             label26.AutoSize = true;
             label26.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label26.ForeColor = SystemColors.ControlDarkDark;
-            label26.Location = new Point(203, 138);
+            label26.Location = new Point(229, 203);
             label26.Name = "label26";
             label26.Size = new Size(51, 14);
             label26.TabIndex = 26;
@@ -319,80 +321,80 @@
             // label25
             // 
             label25.AutoSize = true;
-            label25.Font = new Font("Tahoma", 12F, FontStyle.Bold);
-            label25.Location = new Point(10, 158);
+            label25.Font = new Font("Tahoma", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label25.Location = new Point(10, 213);
             label25.Name = "label25";
-            label25.Size = new Size(167, 19);
+            label25.Size = new Size(196, 23);
             label25.TabIndex = 18;
             label25.Text = "Recomended (RBP)";
             // 
             // pendingTotalRepayment
             // 
             pendingTotalRepayment.AutoSize = true;
-            pendingTotalRepayment.Font = new Font("Tahoma", 9.75F);
-            pendingTotalRepayment.Location = new Point(605, 97);
+            pendingTotalRepayment.Font = new Font("Tahoma", 12F);
+            pendingTotalRepayment.Location = new Point(791, 150);
             pendingTotalRepayment.Name = "pendingTotalRepayment";
-            pendingTotalRepayment.Size = new Size(42, 16);
+            pendingTotalRepayment.Size = new Size(54, 19);
             pendingTotalRepayment.TabIndex = 25;
             pendingTotalRepayment.Text = "20000";
             // 
             // pendingMonthlyPayment
             // 
             pendingMonthlyPayment.AutoSize = true;
-            pendingMonthlyPayment.Font = new Font("Tahoma", 9.75F);
-            pendingMonthlyPayment.Location = new Point(371, 97);
+            pendingMonthlyPayment.Font = new Font("Tahoma", 12F);
+            pendingMonthlyPayment.Location = new Point(430, 149);
             pendingMonthlyPayment.Name = "pendingMonthlyPayment";
-            pendingMonthlyPayment.Size = new Size(42, 16);
+            pendingMonthlyPayment.Size = new Size(54, 19);
             pendingMonthlyPayment.TabIndex = 24;
             pendingMonthlyPayment.Text = "20000";
             // 
             // label23
             // 
             label23.AutoSize = true;
-            label23.Font = new Font("Tahoma", 12F, FontStyle.Bold);
-            label23.Location = new Point(456, 94);
+            label23.Font = new Font("Tahoma", 14.25F, FontStyle.Bold);
+            label23.Location = new Point(791, 126);
             label23.Name = "label23";
-            label23.Size = new Size(150, 19);
+            label23.Size = new Size(173, 23);
             label23.TabIndex = 23;
             label23.Text = "Total Repayment";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Tahoma", 12F, FontStyle.Bold);
-            label4.Location = new Point(214, 94);
+            label4.Font = new Font("Tahoma", 14.25F, FontStyle.Bold);
+            label4.Location = new Point(430, 126);
             label4.Name = "label4";
-            label4.Size = new Size(151, 19);
+            label4.Size = new Size(177, 23);
             label4.TabIndex = 22;
             label4.Text = "Monthly Payment";
             // 
             // label21
             // 
             label21.AutoSize = true;
-            label21.Font = new Font("Tahoma", 12F, FontStyle.Bold);
-            label21.Location = new Point(10, 94);
+            label21.Font = new Font("Tahoma", 14.25F, FontStyle.Bold);
+            label21.Location = new Point(10, 126);
             label21.Name = "label21";
-            label21.Size = new Size(105, 19);
+            label21.Size = new Size(123, 23);
             label21.TabIndex = 21;
             label21.Text = "Credit Limit";
             // 
             // pendingCreditLimit
             // 
             pendingCreditLimit.AutoSize = true;
-            pendingCreditLimit.Font = new Font("Tahoma", 9.75F);
-            pendingCreditLimit.Location = new Point(121, 97);
+            pendingCreditLimit.Font = new Font("Tahoma", 12F);
+            pendingCreditLimit.Location = new Point(10, 149);
             pendingCreditLimit.Name = "pendingCreditLimit";
-            pendingCreditLimit.Size = new Size(42, 16);
+            pendingCreditLimit.Size = new Size(54, 19);
             pendingCreditLimit.TabIndex = 19;
             pendingCreditLimit.Text = "20000";
             // 
             // pendingApplicantName
             // 
             pendingApplicantName.AutoSize = true;
-            pendingApplicantName.Font = new Font("Tahoma", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            pendingApplicantName.Location = new Point(13, 24);
+            pendingApplicantName.Font = new Font("Tahoma", 18F, FontStyle.Bold);
+            pendingApplicantName.Location = new Point(10, 39);
             pendingApplicantName.Name = "pendingApplicantName";
-            pendingApplicantName.Size = new Size(177, 25);
+            pendingApplicantName.Size = new Size(202, 29);
             pendingApplicantName.TabIndex = 2;
             pendingApplicantName.Text = "Applicant Name";
             // 
@@ -400,358 +402,358 @@
             // 
             pendingLoanAmount.AutoSize = true;
             pendingLoanAmount.BackColor = Color.Transparent;
-            pendingLoanAmount.Font = new Font("Tahoma", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            pendingLoanAmount.Location = new Point(293, 24);
+            pendingLoanAmount.Font = new Font("Tahoma", 18F, FontStyle.Bold);
+            pendingLoanAmount.Location = new Point(430, 39);
             pendingLoanAmount.Margin = new Padding(0);
             pendingLoanAmount.Name = "pendingLoanAmount";
-            pendingLoanAmount.Size = new Size(94, 25);
+            pendingLoanAmount.Size = new Size(107, 29);
             pendingLoanAmount.TabIndex = 3;
             pendingLoanAmount.Text = "Amount";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Tahoma", 11.25F);
             label1.ForeColor = SystemColors.ControlDarkDark;
-            label1.Location = new Point(13, 10);
+            label1.Location = new Point(10, 10);
             label1.Name = "label1";
-            label1.Size = new Size(57, 14);
+            label1.Size = new Size(66, 18);
             label1.TabIndex = 4;
             label1.Text = "Borrower";
             // 
             // pendingPhoneNumber
             // 
             pendingPhoneNumber.AutoSize = true;
-            pendingPhoneNumber.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            pendingPhoneNumber.Location = new Point(14, 49);
+            pendingPhoneNumber.Font = new Font("Tahoma", 12F);
+            pendingPhoneNumber.Location = new Point(10, 80);
             pendingPhoneNumber.Name = "pendingPhoneNumber";
-            pendingPhoneNumber.Size = new Size(52, 16);
+            pendingPhoneNumber.Size = new Size(66, 19);
             pendingPhoneNumber.TabIndex = 5;
             pendingPhoneNumber.Text = "Number";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Tahoma", 11.25F);
             label2.ForeColor = SystemColors.ControlDarkDark;
-            label2.Location = new Point(293, 10);
+            label2.Location = new Point(430, 10);
             label2.Name = "label2";
-            label2.Size = new Size(66, 14);
+            label2.Size = new Size(77, 18);
             label2.TabIndex = 6;
             label2.Text = "Requested";
             // 
             // pendingRepaymentTerm
             // 
             pendingRepaymentTerm.AutoSize = true;
-            pendingRepaymentTerm.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            pendingRepaymentTerm.Location = new Point(293, 49);
+            pendingRepaymentTerm.Font = new Font("Tahoma", 12F);
+            pendingRepaymentTerm.Location = new Point(430, 80);
             pendingRepaymentTerm.Name = "pendingRepaymentTerm";
-            pendingRepaymentTerm.Size = new Size(106, 16);
+            pendingRepaymentTerm.Size = new Size(131, 19);
             pendingRepaymentTerm.TabIndex = 7;
             pendingRepaymentTerm.Text = "Repayment Term";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Tahoma", 11.25F);
             label3.ForeColor = SystemColors.ControlDarkDark;
-            label3.Location = new Point(498, 10);
+            label3.Location = new Point(791, 10);
             label3.Name = "label3";
-            label3.Size = new Size(83, 14);
+            label3.Size = new Size(98, 18);
             label3.TabIndex = 8;
             label3.Text = "Total Interest";
             // 
             // pendingInterest
             // 
             pendingInterest.AutoSize = true;
-            pendingInterest.Font = new Font("Tahoma", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            pendingInterest.Location = new Point(499, 24);
+            pendingInterest.Font = new Font("Tahoma", 18F, FontStyle.Bold);
+            pendingInterest.Location = new Point(791, 39);
             pendingInterest.Name = "pendingInterest";
-            pendingInterest.Size = new Size(97, 25);
+            pendingInterest.Size = new Size(110, 29);
             pendingInterest.TabIndex = 9;
             pendingInterest.Text = "Interest";
             // 
             // pendingPercent
             // 
             pendingPercent.AutoSize = true;
-            pendingPercent.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            pendingPercent.Location = new Point(503, 49);
+            pendingPercent.Font = new Font("Tahoma", 12F);
+            pendingPercent.Location = new Point(791, 80);
             pendingPercent.Name = "pendingPercent";
-            pendingPercent.Size = new Size(50, 16);
+            pendingPercent.Size = new Size(61, 19);
             pendingPercent.TabIndex = 10;
             pendingPercent.Text = "Percent";
             // 
             // pendingYear
             // 
             pendingYear.AutoSize = true;
-            pendingYear.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            pendingYear.Font = new Font("Tahoma", 12F);
             pendingYear.ForeColor = SystemColors.ControlDarkDark;
-            pendingYear.Location = new Point(516, 497);
+            pendingYear.Location = new Point(731, 640);
             pendingYear.Name = "pendingYear";
-            pendingYear.Size = new Size(124, 14);
+            pendingYear.Size = new Size(161, 19);
             pendingYear.TabIndex = 62;
             pendingYear.Text = "Years of Employment";
             // 
             // pendingIncome
             // 
             pendingIncome.AutoSize = true;
-            pendingIncome.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            pendingIncome.Font = new Font("Tahoma", 12F);
             pendingIncome.ForeColor = SystemColors.ControlDarkDark;
-            pendingIncome.Location = new Point(551, 468);
+            pendingIncome.Location = new Point(731, 596);
             pendingIncome.Name = "pendingIncome";
-            pendingIncome.Size = new Size(89, 14);
+            pendingIncome.Size = new Size(117, 19);
             pendingIncome.TabIndex = 61;
             pendingIncome.Text = "Annual Income";
             // 
             // pendingPosition
             // 
             pendingPosition.AutoSize = true;
-            pendingPosition.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            pendingPosition.Font = new Font("Tahoma", 12F);
             pendingPosition.ForeColor = SystemColors.ControlDarkDark;
-            pendingPosition.Location = new Point(591, 440);
+            pendingPosition.Location = new Point(731, 553);
             pendingPosition.Name = "pendingPosition";
-            pendingPosition.Size = new Size(49, 14);
+            pendingPosition.Size = new Size(65, 19);
             pendingPosition.TabIndex = 60;
             pendingPosition.Text = "Position";
             // 
             // pendingEmployementStatus
             // 
             pendingEmployementStatus.AutoSize = true;
-            pendingEmployementStatus.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            pendingEmployementStatus.Font = new Font("Tahoma", 12F);
             pendingEmployementStatus.ForeColor = SystemColors.ControlDarkDark;
-            pendingEmployementStatus.Location = new Point(526, 411);
+            pendingEmployementStatus.Location = new Point(731, 512);
             pendingEmployementStatus.Name = "pendingEmployementStatus";
-            pendingEmployementStatus.Size = new Size(114, 14);
+            pendingEmployementStatus.Size = new Size(146, 19);
             pendingEmployementStatus.TabIndex = 59;
             pendingEmployementStatus.Text = "Employment Status";
             // 
             // pendingEmployeName
             // 
             pendingEmployeName.AutoSize = true;
-            pendingEmployeName.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            pendingEmployeName.Font = new Font("Tahoma", 12F);
             pendingEmployeName.ForeColor = SystemColors.ControlDarkDark;
-            pendingEmployeName.Location = new Point(548, 381);
+            pendingEmployeName.Location = new Point(731, 466);
             pendingEmployeName.Name = "pendingEmployeName";
-            pendingEmployeName.Size = new Size(92, 14);
+            pendingEmployeName.Size = new Size(122, 19);
             pendingEmployeName.TabIndex = 58;
             pendingEmployeName.Text = "Employer Name";
             // 
             // pendingId
             // 
             pendingId.AutoSize = true;
-            pendingId.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            pendingId.Font = new Font("Tahoma", 12F);
             pendingId.ForeColor = SystemColors.ControlDarkDark;
-            pendingId.Location = new Point(180, 586);
+            pendingId.Location = new Point(220, 770);
             pendingId.Name = "pendingId";
-            pendingId.Size = new Size(51, 14);
+            pendingId.Size = new Size(66, 19);
             pendingId.TabIndex = 57;
             pendingId.Text = "ID Type";
             // 
             // pendingGender
             // 
             pendingGender.AutoSize = true;
-            pendingGender.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            pendingGender.Font = new Font("Tahoma", 12F);
             pendingGender.ForeColor = SystemColors.ControlDarkDark;
-            pendingGender.Location = new Point(184, 557);
+            pendingGender.Location = new Point(220, 726);
             pendingGender.Name = "pendingGender";
-            pendingGender.Size = new Size(47, 14);
+            pendingGender.Size = new Size(60, 19);
             pendingGender.TabIndex = 56;
             pendingGender.Text = "Gender";
             // 
             // pendingAddress
             // 
             pendingAddress.AutoSize = true;
-            pendingAddress.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            pendingAddress.Font = new Font("Tahoma", 12F);
             pendingAddress.ForeColor = SystemColors.ControlDarkDark;
-            pendingAddress.Location = new Point(181, 527);
+            pendingAddress.Location = new Point(218, 682);
             pendingAddress.Name = "pendingAddress";
-            pendingAddress.Size = new Size(50, 14);
+            pendingAddress.Size = new Size(66, 19);
             pendingAddress.TabIndex = 55;
             pendingAddress.Text = "Address";
             // 
             // pendingEmail
             // 
             pendingEmail.AutoSize = true;
-            pendingEmail.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            pendingEmail.Font = new Font("Tahoma", 12F);
             pendingEmail.ForeColor = SystemColors.ControlDarkDark;
-            pendingEmail.Location = new Point(197, 468);
+            pendingEmail.Location = new Point(220, 596);
             pendingEmail.Name = "pendingEmail";
-            pendingEmail.Size = new Size(34, 14);
+            pendingEmail.Size = new Size(48, 19);
             pendingEmail.TabIndex = 54;
             pendingEmail.Text = "Email";
             // 
             // pendingMiddleName
             // 
             pendingMiddleName.AutoSize = true;
-            pendingMiddleName.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            pendingMiddleName.Font = new Font("Tahoma", 12F);
             pendingMiddleName.ForeColor = SystemColors.ControlDarkDark;
-            pendingMiddleName.Location = new Point(155, 440);
+            pendingMiddleName.Location = new Point(218, 553);
             pendingMiddleName.Name = "pendingMiddleName";
-            pendingMiddleName.Size = new Size(76, 14);
+            pendingMiddleName.Size = new Size(101, 19);
             pendingMiddleName.TabIndex = 53;
             pendingMiddleName.Text = "Middle Name";
             // 
             // pendingFirstName
             // 
             pendingFirstName.AutoSize = true;
-            pendingFirstName.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            pendingFirstName.Font = new Font("Tahoma", 12F);
             pendingFirstName.ForeColor = SystemColors.ControlDarkDark;
-            pendingFirstName.Location = new Point(167, 411);
+            pendingFirstName.Location = new Point(218, 512);
             pendingFirstName.Name = "pendingFirstName";
-            pendingFirstName.Size = new Size(64, 14);
+            pendingFirstName.Size = new Size(85, 19);
             pendingFirstName.TabIndex = 52;
             pendingFirstName.Text = "First Name";
             // 
             // pendingPhone
             // 
             pendingPhone.AutoSize = true;
-            pendingPhone.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            pendingPhone.Font = new Font("Tahoma", 12F);
             pendingPhone.ForeColor = SystemColors.ControlDarkDark;
-            pendingPhone.Location = new Point(189, 497);
+            pendingPhone.Location = new Point(220, 640);
             pendingPhone.Name = "pendingPhone";
-            pendingPhone.Size = new Size(42, 14);
+            pendingPhone.Size = new Size(53, 19);
             pendingPhone.TabIndex = 51;
             pendingPhone.Text = "Phone";
             // 
             // pendingLastName
             // 
             pendingLastName.AutoSize = true;
-            pendingLastName.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            pendingLastName.Font = new Font("Tahoma", 12F);
             pendingLastName.ForeColor = SystemColors.ControlDarkDark;
-            pendingLastName.Location = new Point(167, 381);
+            pendingLastName.Location = new Point(218, 466);
             pendingLastName.Name = "pendingLastName";
-            pendingLastName.Size = new Size(64, 14);
+            pendingLastName.Size = new Size(83, 19);
             pendingLastName.TabIndex = 50;
             pendingLastName.Text = "Last Name";
             // 
             // label19
             // 
             label19.AutoSize = true;
-            label19.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label19.Font = new Font("Tahoma", 12F);
             label19.ForeColor = SystemColors.ControlDarkDark;
-            label19.Location = new Point(324, 497);
+            label19.Location = new Point(521, 640);
             label19.Name = "label19";
-            label19.Size = new Size(124, 14);
+            label19.Size = new Size(161, 19);
             label19.TabIndex = 49;
             label19.Text = "Years of Employment";
             // 
             // label18
             // 
             label18.AutoSize = true;
-            label18.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label18.Font = new Font("Tahoma", 12F);
             label18.ForeColor = SystemColors.ControlDarkDark;
-            label18.Location = new Point(324, 468);
+            label18.Location = new Point(521, 596);
             label18.Name = "label18";
-            label18.Size = new Size(89, 14);
+            label18.Size = new Size(117, 19);
             label18.TabIndex = 48;
             label18.Text = "Annual Income";
             // 
             // label17
             // 
             label17.AutoSize = true;
-            label17.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label17.Font = new Font("Tahoma", 12F);
             label17.ForeColor = SystemColors.ControlDarkDark;
-            label17.Location = new Point(324, 440);
+            label17.Location = new Point(521, 553);
             label17.Name = "label17";
-            label17.Size = new Size(49, 14);
+            label17.Size = new Size(65, 19);
             label17.TabIndex = 47;
             label17.Text = "Position";
             // 
             // label16
             // 
             label16.AutoSize = true;
-            label16.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label16.Font = new Font("Tahoma", 12F);
             label16.ForeColor = SystemColors.ControlDarkDark;
-            label16.Location = new Point(324, 411);
+            label16.Location = new Point(521, 512);
             label16.Name = "label16";
-            label16.Size = new Size(114, 14);
+            label16.Size = new Size(146, 19);
             label16.TabIndex = 46;
             label16.Text = "Employment Status";
             // 
             // label15
             // 
             label15.AutoSize = true;
-            label15.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label15.Font = new Font("Tahoma", 12F);
             label15.ForeColor = SystemColors.ControlDarkDark;
-            label15.Location = new Point(324, 381);
+            label15.Location = new Point(521, 466);
             label15.Name = "label15";
-            label15.Size = new Size(92, 14);
+            label15.Size = new Size(122, 19);
             label15.TabIndex = 45;
             label15.Text = "Employer Name";
             // 
             // label14
             // 
             label14.AutoSize = true;
-            label14.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label14.Location = new Point(324, 347);
+            label14.Font = new Font("Tahoma", 15.75F, FontStyle.Bold);
+            label14.Location = new Point(521, 415);
             label14.Name = "label14";
-            label14.Size = new Size(148, 19);
+            label14.Size = new Size(193, 25);
             label14.TabIndex = 44;
             label14.Text = "Employment Info";
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label13.Font = new Font("Tahoma", 12F);
             label13.ForeColor = SystemColors.ControlDarkDark;
-            label13.Location = new Point(13, 586);
+            label13.Location = new Point(20, 770);
             label13.Name = "label13";
-            label13.Size = new Size(51, 14);
+            label13.Size = new Size(66, 19);
             label13.TabIndex = 43;
             label13.Text = "ID Type";
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label12.Font = new Font("Tahoma", 12F);
             label12.ForeColor = SystemColors.ControlDarkDark;
-            label12.Location = new Point(13, 557);
+            label12.Location = new Point(20, 726);
             label12.Name = "label12";
-            label12.Size = new Size(47, 14);
+            label12.Size = new Size(60, 19);
             label12.TabIndex = 42;
             label12.Text = "Gender";
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.Font = new Font("Tahoma", 12F);
             label11.ForeColor = SystemColors.ControlDarkDark;
-            label11.Location = new Point(13, 527);
+            label11.Location = new Point(20, 682);
             label11.Name = "label11";
-            label11.Size = new Size(50, 14);
+            label11.Size = new Size(66, 19);
             label11.TabIndex = 41;
             label11.Text = "Address";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.Font = new Font("Tahoma", 12F);
             label9.ForeColor = SystemColors.ControlDarkDark;
-            label9.Location = new Point(13, 468);
+            label9.Location = new Point(20, 596);
             label9.Name = "label9";
-            label9.Size = new Size(34, 14);
+            label9.Size = new Size(48, 19);
             label9.TabIndex = 40;
             label9.Text = "Email";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.Font = new Font("Tahoma", 12F);
             label8.ForeColor = SystemColors.ControlDarkDark;
-            label8.Location = new Point(13, 440);
+            label8.Location = new Point(20, 553);
             label8.Name = "label8";
-            label8.Size = new Size(76, 14);
+            label8.Size = new Size(101, 19);
             label8.TabIndex = 39;
             label8.Text = "Middle Name";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.Font = new Font("Tahoma", 12F);
             label7.ForeColor = SystemColors.ControlDarkDark;
-            label7.Location = new Point(13, 411);
+            label7.Location = new Point(20, 512);
             label7.Name = "label7";
-            label7.Size = new Size(64, 14);
+            label7.Size = new Size(85, 19);
             label7.TabIndex = 38;
             label7.Text = "First Name";
             // 
@@ -760,95 +762,84 @@
             pendingCreditPanel.BackColor = Color.Yellow;
             pendingCreditPanel.Controls.Add(pendingCreditColor);
             pendingCreditPanel.Controls.Add(pendingRepaymentTerm2);
-            pendingCreditPanel.Controls.Add(label24);
             pendingCreditPanel.Controls.Add(pendingRBP);
             pendingCreditPanel.Controls.Add(label22);
             pendingCreditPanel.Controls.Add(pendingCreditScore);
             pendingCreditPanel.Controls.Add(label20);
             pendingCreditPanel.Location = new Point(10, 72);
             pendingCreditPanel.Name = "pendingCreditPanel";
-            pendingCreditPanel.Size = new Size(684, 46);
+            pendingCreditPanel.Size = new Size(994, 83);
             pendingCreditPanel.TabIndex = 37;
             // 
             // pendingCreditColor
             // 
             pendingCreditColor.AutoSize = true;
-            pendingCreditColor.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            pendingCreditColor.Location = new Point(172, 16);
+            pendingCreditColor.Font = new Font("Tahoma", 12F);
+            pendingCreditColor.Location = new Point(229, 31);
             pendingCreditColor.Name = "pendingCreditColor";
-            pendingCreditColor.Size = new Size(69, 16);
+            pendingCreditColor.Size = new Size(87, 19);
             pendingCreditColor.TabIndex = 17;
             pendingCreditColor.Text = "Color Zone";
             // 
             // pendingRepaymentTerm2
             // 
             pendingRepaymentTerm2.AutoSize = true;
-            pendingRepaymentTerm2.Font = new Font("Tahoma", 9.75F);
-            pendingRepaymentTerm2.Location = new Point(618, 15);
+            pendingRepaymentTerm2.Font = new Font("Tahoma", 12F);
+            pendingRepaymentTerm2.Location = new Point(879, 29);
             pendingRepaymentTerm2.Name = "pendingRepaymentTerm2";
-            pendingRepaymentTerm2.Size = new Size(34, 16);
+            pendingRepaymentTerm2.Size = new Size(42, 19);
             pendingRepaymentTerm2.TabIndex = 16;
             pendingRepaymentTerm2.Text = "term";
-            // 
-            // label24
-            // 
-            label24.AutoSize = true;
-            label24.Font = new Font("Tahoma", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label24.Location = new Point(605, 13);
-            label24.Name = "label24";
-            label24.Size = new Size(14, 18);
-            label24.TabIndex = 15;
-            label24.Text = "-";
             // 
             // pendingRBP
             // 
             pendingRBP.AutoSize = true;
-            pendingRBP.Font = new Font("Tahoma", 9.75F);
-            pendingRBP.Location = new Point(454, 15);
+            pendingRBP.Font = new Font("Tahoma", 12F);
+            pendingRBP.Location = new Point(621, 29);
             pendingRBP.Name = "pendingRBP";
-            pendingRBP.Size = new Size(49, 16);
+            pendingRBP.Size = new Size(63, 19);
             pendingRBP.TabIndex = 14;
             pendingRBP.Text = "200000";
             // 
             // label22
             // 
             label22.AutoSize = true;
-            label22.Font = new Font("Tahoma", 12F, FontStyle.Bold);
-            label22.Location = new Point(281, 12);
+            label22.Font = new Font("Tahoma", 15.75F, FontStyle.Bold);
+            label22.Location = new Point(391, 24);
             label22.Name = "label22";
-            label22.Size = new Size(167, 19);
+            label22.Size = new Size(215, 25);
             label22.TabIndex = 13;
             label22.Text = "Recomended (RBP)";
             // 
             // pendingCreditScore
             // 
             pendingCreditScore.AutoSize = true;
-            pendingCreditScore.Font = new Font("Tahoma", 9.75F);
-            pendingCreditScore.Location = new Point(125, 15);
+            pendingCreditScore.Font = new Font("Tahoma", 12F);
+            pendingCreditScore.Location = new Point(167, 30);
             pendingCreditScore.Name = "pendingCreditScore";
-            pendingCreditScore.Size = new Size(26, 16);
+            pendingCreditScore.Size = new Size(32, 19);
             pendingCreditScore.TabIndex = 12;
             pendingCreditScore.Text = "sco";
             // 
             // label20
             // 
             label20.AutoSize = true;
-            label20.Font = new Font("Tahoma", 12F, FontStyle.Bold);
-            label20.Location = new Point(10, 12);
+            label20.Font = new Font("Tahoma", 15.75F, FontStyle.Bold);
+            label20.Location = new Point(10, 25);
             label20.Name = "label20";
-            label20.Size = new Size(109, 19);
+            label20.Size = new Size(139, 25);
             label20.TabIndex = 11;
             label20.Text = "Credit Score";
             // 
             // pendingUpdateStatus
             // 
             pendingUpdateStatus.FlatStyle = FlatStyle.Flat;
-            pendingUpdateStatus.Font = new Font("Tahoma", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            pendingUpdateStatus.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             pendingUpdateStatus.FormattingEnabled = true;
             pendingUpdateStatus.Items.AddRange(new object[] { "Approved", "Rejected" });
-            pendingUpdateStatus.Location = new Point(536, 34);
+            pendingUpdateStatus.Location = new Point(827, 29);
             pendingUpdateStatus.Name = "pendingUpdateStatus";
-            pendingUpdateStatus.Size = new Size(104, 22);
+            pendingUpdateStatus.Size = new Size(177, 27);
             pendingUpdateStatus.TabIndex = 36;
             pendingUpdateStatus.Text = "Operation";
             pendingUpdateStatus.SelectedIndexChanged += pendingUpdateStatus_SelectedIndexChanged;
@@ -856,32 +847,32 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.Font = new Font("Tahoma", 12F);
             label10.ForeColor = SystemColors.ControlDarkDark;
-            label10.Location = new Point(13, 497);
+            label10.Location = new Point(20, 640);
             label10.Name = "label10";
-            label10.Size = new Size(42, 14);
+            label10.Size = new Size(53, 19);
             label10.TabIndex = 16;
             label10.Text = "Phone";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Font = new Font("Tahoma", 12F);
             label6.ForeColor = SystemColors.ControlDarkDark;
-            label6.Location = new Point(13, 381);
+            label6.Location = new Point(20, 466);
             label6.Name = "label6";
-            label6.Size = new Size(64, 14);
+            label6.Size = new Size(83, 19);
             label6.TabIndex = 12;
             label6.Text = "Last Name";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(13, 347);
+            label5.Font = new Font("Tahoma", 15.75F, FontStyle.Bold);
+            label5.Location = new Point(20, 415);
             label5.Name = "label5";
-            label5.Size = new Size(123, 19);
+            label5.Size = new Size(160, 25);
             label5.TabIndex = 11;
             label5.Text = "Borrower Info";
             // 
@@ -889,7 +880,7 @@
             // 
             pendingStatus.AutoSize = true;
             pendingStatus.Font = new Font("Tahoma", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            pendingStatus.Location = new Point(232, 28);
+            pendingStatus.Location = new Point(264, 32);
             pendingStatus.Name = "pendingStatus";
             pendingStatus.Size = new Size(62, 23);
             pendingStatus.TabIndex = 1;
@@ -898,19 +889,41 @@
             // pendingApplicationId
             // 
             pendingApplicationId.AutoSize = true;
-            pendingApplicationId.Font = new Font("Tahoma", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            pendingApplicationId.Font = new Font("Tahoma", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             pendingApplicationId.Location = new Point(20, 27);
             pendingApplicationId.Name = "pendingApplicationId";
-            pendingApplicationId.Size = new Size(161, 25);
+            pendingApplicationId.Size = new Size(184, 29);
             pendingApplicationId.TabIndex = 0;
             pendingApplicationId.Text = "Application ID";
+            // 
+            // ID
+            // 
+            ID.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            ID.HeaderText = "Column1";
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Width = 105;
+            // 
+            // name
+            // 
+            name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            name.HeaderText = "Column1";
+            name.Name = "name";
+            name.ReadOnly = true;
+            // 
+            // status
+            // 
+            status.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            status.HeaderText = "Column1";
+            status.Name = "status";
+            status.ReadOnly = true;
             // 
             // formPending
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1092, 609);
+            ClientSize = new Size(1407, 820);
             Controls.Add(pendingPanel);
             Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.None;
@@ -977,7 +990,6 @@
         private Label label22;
         private Label pendingCreditScore;
         private Label pendingCreditColor;
-        private Label label24;
         private Label pendingCreditLimit;
         private Label label21;
         private Label pendingTotalRepayment;
@@ -996,5 +1008,8 @@
         private Label label26;
         private Label label25;
         private Button button1;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn name;
+        private DataGridViewTextBoxColumn status;
     }
 }

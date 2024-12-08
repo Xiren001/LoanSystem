@@ -194,37 +194,6 @@ namespace LoanSystem
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-            // Show the custom logout confirmation dialog
-            using (LogoutConfirmationForm logoutDialog = new LogoutConfirmationForm())
-            {
-                logoutDialog.ShowDialog();
-
-                // Handle the user's choice
-                switch (logoutDialog.UserChoice)
-                {
-                    case LogoutConfirmationForm.LogoutAction.LogoutAndClose:
-                        Application.Exit();
-                        break;
-
-                    case LogoutConfirmationForm.LogoutAction.Logout:
-                        // Show the login form
-                        SignInForm loginForm = new SignInForm();
-                        loginForm.Show();
-
-                        // Close the current dashboard
-                        this.Close();
-                        break;
-
-                    case LogoutConfirmationForm.LogoutAction.Cancel:
-                    default:
-                        // Do nothing, stay on the current form
-                        break;
-                }
-            }
-        }
-
         private void Dashboard_Load(object sender, EventArgs e)
         {
             formDashboard initialForm = new formDashboard();
@@ -410,6 +379,39 @@ namespace LoanSystem
         private void signup_FormClosed(object? sender, FormClosedEventArgs e)
         {
             signup = null;
+        }
+
+        private void label2_Click_1(object sender, EventArgs e)
+        {
+
+            // Show the custom logout confirmation dialog
+            using (LogoutConfirmationForm logoutDialog = new LogoutConfirmationForm())
+            {
+                logoutDialog.ShowDialog();
+
+                // Handle the user's choice
+                switch (logoutDialog.UserChoice)
+                {
+                    case LogoutConfirmationForm.LogoutAction.LogoutAndClose:
+                        Application.Exit();
+                        break;
+
+                    case LogoutConfirmationForm.LogoutAction.Logout:
+                        // Show the login form
+                        SignInForm loginForm = new SignInForm();
+                        loginForm.Show();
+
+                        // Close the current dashboard
+                        this.Close();
+                        break;
+
+                    case LogoutConfirmationForm.LogoutAction.Cancel:
+                    default:
+                        // Do nothing, stay on the current form
+                        break;
+                }
+            }
+
         }
     }
 }

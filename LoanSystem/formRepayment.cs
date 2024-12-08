@@ -9,7 +9,7 @@ namespace LoanSystem
 {
     public partial class formRepayment : Form
     {
-        private string connectionString = "Data Source=XIREN\\SQLEXPRESS;Initial Catalog=LoanWise;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;";
+        private string connectionString = "Data Source=XIREN\\SQLEXPRESS;Initial Catalog=LoanWise;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;MultipleActiveResultSets=True;";
 
         public formRepayment()
         {
@@ -54,6 +54,7 @@ namespace LoanSystem
 
                     dataGridView1.DataSource = dataTable;
                     ConfigureDataGridView();
+                    UpdateStatusInDataGridView();
                 }
             }
             catch (Exception ex)
@@ -126,10 +127,56 @@ namespace LoanSystem
                 }
                 else
                 {
-                    e.CellStyle.BackColor = Color.Gray; // Optional: Set default color for unknown status
+                    e.CellStyle.BackColor = Color.Gray;
                 }
             }
         }
+
+
+        private void UpdateStatusInDataGridView()
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.Cells["idColumn"].Value != null)
+                {
+                    int applicationId = Convert.ToInt32(row.Cells["idColumn"].Value);
+
+                    // Fetch nextPaymentDate from database
+                    string query = "SELECT nextPaymentDate FROM repaymenttable WHERE Id = @Id";
+                    try
+                    {
+                        using (SqlConnection conn = new SqlConnection(connectionString))
+                        {
+                            conn.Open();
+                            using (SqlCommand cmd = new SqlCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("@Id", applicationId);
+                                object result = cmd.ExecuteScalar();
+
+                                if (result != null && DateTime.TryParse(result.ToString(), out DateTime nextPaymentDate))
+                                {
+                                    // Determine status
+                                    string status = DateTime.Now > nextPaymentDate ? "Overdue" : "Active";
+
+                                    // Update the status column in the DataGridView
+                                    row.Cells["statusColumn"].Value = status;
+                                }
+                                else
+                                {
+                                    // Handle cases where nextPaymentDate is null or invalid
+                                    row.Cells["statusColumn"].Value = "Unknown";
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error fetching nextPaymentDate: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
 
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -280,8 +327,6 @@ namespace LoanSystem
                                     repaymentBalance.ForeColor = SystemColors.ControlText;
 
 
-                                  
-
                                 }
 
 
@@ -351,10 +396,12 @@ namespace LoanSystem
                                 if (dialogResult == DialogResult.OK)
                                 {
                                     LoadRepaymentData();
+                                    CheckAndMovePaidLoans();
                                 }
                                 else
                                 {
                                     LoadRepaymentData();
+                                    CheckAndMovePaidLoans();
                                 }
 
                             }
@@ -401,5 +448,130 @@ namespace LoanSystem
         {
             LoadRepaymentData();
         }
+
+        private void CheckAndMovePaidLoans()
+        {
+            try
+            {
+                string selectQuery = "SELECT * FROM repaymenttable WHERE CAST(outstandingbalance AS DECIMAL) = 0";
+                string insertQuery = @"INSERT INTO paidtable (
+                                    Id, lastname, firstname, middlename, dob, gender, martialstatus, idtype, idnumber, 
+                                    phonenumber, email, address, employername, employmentstatus, position, annualincome, 
+                                    yearsemployment, employercontact, incomeproof, identtityproof, collateraldocument, 
+                                    loantype, amount, loanpurpose, repaymentterm, collateraltype, estimatedvalue, 
+                                    collateraldescription, monthlyincome, expenses, applicationdate, CreditScore, 
+                                    RBP, Interest, [Percent], CreditLimit, MonthlyPayment, TotalRepayment, 
+                                    RBP_Interest, RBP_Percent, RBP_MonthlyPayment, RBP_TotalRepayment, TransferDate, 
+                                    outstandingbalance, totalPrincipalPaid, paymentTrack, nextPaymentDate
+                                ) 
+                                VALUES (
+                                    @Id, @lastname, @firstname, @middlename, @dob, @gender, @martialstatus, @idtype, @idnumber, 
+                                    @phonenumber, @email, @address, @employername, @employmentstatus, @position, @annualincome, 
+                                    @yearsemployment, @employercontact, @incomeproof, @identtityproof, @collateraldocument, 
+                                    @loantype, @amount, @loanpurpose, @repaymentterm, @collateraltype, @estimatedvalue, 
+                                    @collateraldescription, @monthlyincome, @expenses, @applicationdate, @CreditScore, 
+                                    @RBP, @Interest, @Percent, @CreditLimit, @MonthlyPayment, @TotalRepayment, 
+                                    @RBP_Interest, @RBP_Percent, @RBP_MonthlyPayment, @RBP_TotalRepayment, @TransferDate, 
+                                    @outstandingbalance, @totalPrincipalPaid, @paymentTrack, @nextPaymentDate)";
+
+                string deleteQuery = "DELETE FROM repaymenttable WHERE Id = @Id";
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand selectCmd = new SqlCommand(selectQuery, conn))
+                    {
+                        using (SqlDataReader reader = selectCmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string fullName = $"{reader["firstname"]} {reader["lastname"]}";
+                                string message = $"The loan record for {fullName} (ID: {reader["Id"]}) has been fully repaid. Do you want to move this record to the paid table?";
+                                DialogResult dialogResult = MessageBox.Show(message, "Confirm Move", MessageBoxButtons.OK, MessageBoxIcon.Question);
+
+                                if (dialogResult == DialogResult.OK)
+                                {
+                                    try
+                                    {
+                                        using (SqlCommand insertCmd = new SqlCommand(insertQuery, conn))
+                                        {
+                                            insertCmd.Parameters.AddWithValue("@Id", reader["Id"]);
+                                            insertCmd.Parameters.AddWithValue("@lastname", reader["lastname"]);
+                                            insertCmd.Parameters.AddWithValue("@firstname", reader["firstname"]);
+                                            insertCmd.Parameters.AddWithValue("@middlename", reader["middlename"]);
+                                            insertCmd.Parameters.AddWithValue("@dob", reader["dob"]);
+                                            insertCmd.Parameters.AddWithValue("@gender", reader["gender"]);
+                                            insertCmd.Parameters.AddWithValue("@martialstatus", reader["martialstatus"]);
+                                            insertCmd.Parameters.AddWithValue("@idtype", reader["idtype"]);
+                                            insertCmd.Parameters.AddWithValue("@idnumber", reader["idnumber"]);
+                                            insertCmd.Parameters.AddWithValue("@phonenumber", reader["phonenumber"]);
+                                            insertCmd.Parameters.AddWithValue("@email", reader["email"]);
+                                            insertCmd.Parameters.AddWithValue("@address", reader["address"]);
+                                            insertCmd.Parameters.AddWithValue("@employername", reader["employername"]);
+                                            insertCmd.Parameters.AddWithValue("@employmentstatus", reader["employmentstatus"]);
+                                            insertCmd.Parameters.AddWithValue("@position", reader["position"]);
+                                            insertCmd.Parameters.AddWithValue("@annualincome", reader["annualincome"]);
+                                            insertCmd.Parameters.AddWithValue("@yearsemployment", reader["yearsemployment"]);
+                                            insertCmd.Parameters.AddWithValue("@employercontact", reader["employercontact"]);
+                                            insertCmd.Parameters.AddWithValue("@incomeproof", reader["incomeproof"]);
+                                            insertCmd.Parameters.AddWithValue("@identtityproof", reader["identtityproof"]);
+                                            insertCmd.Parameters.AddWithValue("@collateraldocument", reader["collateraldocument"]);
+                                            insertCmd.Parameters.AddWithValue("@loantype", reader["loantype"]);
+                                            insertCmd.Parameters.AddWithValue("@amount", reader["amount"]);
+                                            insertCmd.Parameters.AddWithValue("@loanpurpose", reader["loanpurpose"]);
+                                            insertCmd.Parameters.AddWithValue("@repaymentterm", reader["repaymentterm"]);
+                                            insertCmd.Parameters.AddWithValue("@collateraltype", reader["collateraltype"]);
+                                            insertCmd.Parameters.AddWithValue("@estimatedvalue", reader["estimatedvalue"]);
+                                            insertCmd.Parameters.AddWithValue("@collateraldescription", reader["collateraldescription"]);
+                                            insertCmd.Parameters.AddWithValue("@monthlyincome", reader["monthlyincome"]);
+                                            insertCmd.Parameters.AddWithValue("@expenses", reader["expenses"]);
+                                            insertCmd.Parameters.AddWithValue("@applicationdate", reader["applicationdate"]);
+                                            insertCmd.Parameters.AddWithValue("@CreditScore", reader["CreditScore"]);
+                                            insertCmd.Parameters.AddWithValue("@RBP", reader["RBP"]);
+                                            insertCmd.Parameters.AddWithValue("@Interest", reader["Interest"]);
+                                            insertCmd.Parameters.AddWithValue("@Percent", reader["Percent"]);
+                                            insertCmd.Parameters.AddWithValue("@CreditLimit", reader["CreditLimit"]);
+                                            insertCmd.Parameters.AddWithValue("@MonthlyPayment", reader["MonthlyPayment"]);
+                                            insertCmd.Parameters.AddWithValue("@TotalRepayment", reader["TotalRepayment"]); 
+                                            insertCmd.Parameters.AddWithValue("@RBP_Interest", reader["RBP_Interest"]);
+                                            insertCmd.Parameters.AddWithValue("@RBP_Percent", reader["RBP_Percent"]);
+                                            insertCmd.Parameters.AddWithValue("@RBP_MonthlyPayment", reader["RBP_MonthlyPayment"]);
+                                            insertCmd.Parameters.AddWithValue("@RBP_TotalRepayment", reader["RBP_TotalRepayment"]);
+                                            insertCmd.Parameters.AddWithValue("@OutstandingBalance", reader["OutstandingBalance"]);
+                                            insertCmd.Parameters.AddWithValue("@totalPrincipalPaid", reader["totalPrincipalPaid"]);
+                                            insertCmd.Parameters.AddWithValue("@paymentTrack", reader["paymentTrack"]);
+                                            insertCmd.Parameters.AddWithValue("@TransferDate", reader["TransferDate"]);
+                                            insertCmd.Parameters.AddWithValue("@nextPaymentDate", reader["nextPaymentDate"]);     
+
+                                            insertCmd.ExecuteNonQuery();
+                                        }
+
+                                        using (SqlCommand deleteCmd = new SqlCommand(deleteQuery, conn))
+                                        {
+                                            deleteCmd.Parameters.AddWithValue("@Id", reader["Id"]);
+                                            deleteCmd.ExecuteNonQuery();
+                                        }
+
+                                        MessageBox.Show($"Record for {fullName} moved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        LoadRepaymentData();
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show($"Error moving record: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Database operation failed: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
     }
 }

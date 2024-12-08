@@ -10,6 +10,9 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
+using System.Drawing.Printing;
+using Font = System.Drawing.Font;
+
 
 namespace LoanSystem
 {
@@ -19,6 +22,8 @@ namespace LoanSystem
         private int applicationId;
         private string connectionString;
         private decimal outstandingbalance;
+        private PrintDocument printDocument;
+        private string receiptContent;
 
         public RepaymentForm(int appId, string connString, decimal loanAmount)
         {
@@ -190,9 +195,22 @@ namespace LoanSystem
                         }
                     }
 
-                    MessageBox.Show($"Repayment successful!\nNew Balance: ₱{newBalance:N2}\nTotal Principal Paid: ₱{newTotalPrincipalPaid:N2}\nNext Payment Date: {newNextPaymentDate:yyyy-MM-dd}",
-                        "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Repayment successful!" +
+                                    $"\nNew Balance: ₱{newBalance:N2}" +
+                                    $"\nTotal Principal Paid: ₱{newTotalPrincipalPaid:N2}" +
+                                    $"\nNext Payment Date: {newNextPaymentDate:yyyy-MM-dd}","Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Generate receipt
+                    GenerateReceipt(repaymentAmount, newBalance, newTotalPrincipalPaid, newNextPaymentDate);
+
+                    // Print the receipt
+                    PrintReceipt();
+
+                    // Optionally, save the receipt to a file
+                    SaveReceiptToFile(receiptContent);
+
                     this.Close();
+
                 }
                 catch (Exception ex)
                 {
@@ -205,7 +223,67 @@ namespace LoanSystem
             }
         }
 
+        private void GenerateReceipt(decimal repaymentAmount, decimal newBalance, decimal totalPrincipalPaid, DateTime nextPaymentDate)
+        {
+            StringBuilder receiptBuilder = new StringBuilder();
+            receiptBuilder.AppendLine("------------- Receipt -------------");
+            receiptBuilder.AppendLine($"Payment Date: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
+            receiptBuilder.AppendLine($"Repayment Amount: ₱{repaymentAmount:N2}");
+            receiptBuilder.AppendLine($"New Outstanding Balance: ₱{newBalance:N2}");
+            receiptBuilder.AppendLine($"Total Principal Paid: ₱{totalPrincipalPaid:N2}");
+            receiptBuilder.AppendLine($"Next Payment Date: {nextPaymentDate:yyyy-MM-dd}");
+            receiptBuilder.AppendLine("-----------------------------------");
+            receiptBuilder.AppendLine("Thank you for your payment!");
 
+            receiptContent = receiptBuilder.ToString();
+        }
+
+        private void InitializePrintDocument()
+        {
+            printDocument = new PrintDocument();
+            printDocument.PrintPage += PrintDocument_PrintPage;
+        }
+
+        private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            // Print the receipt content
+            e.Graphics.DrawString(receiptContent, new Font("Arial", 12), Brushes.Black, new PointF(50, 50));
+        }
+
+        private void PrintReceipt()
+        {
+            try
+            {
+                if (printDocument == null)
+                {
+                    InitializePrintDocument();
+                }
+
+                PrintDialog printDialog = new PrintDialog
+                {
+                    Document = printDocument
+                };
+
+                if (printDialog.ShowDialog() == DialogResult.OK)
+                {
+                    printDocument.Print();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while printing: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void SaveReceiptToFile(string content)
+        {
+            string directory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "LoanReceipts");
+            Directory.CreateDirectory(directory);
+
+            string filePath = Path.Combine(directory, $"Receipt_{DateTime.Now:yyyyMMdd_HHmmss}.txt");
+            File.WriteAllText(filePath, content);
+            MessageBox.Show($"Receipt saved to {filePath}", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
 
     }

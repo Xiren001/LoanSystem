@@ -54,7 +54,7 @@
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Tahoma", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(255, 255, 192);
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
@@ -64,7 +64,7 @@
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ApplicationID, ApplicantName, ApprovalDate, LoanType, LoanAmount, RepaymentTerm, MonthlyPayment, OutstandingBalance, NextPaymentDueDate, RepaymentStatus, Action });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.White;
-            dataGridViewCellStyle2.Font = new Font("Tahoma", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.Font = new Font("Tahoma", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(255, 255, 192);
             dataGridViewCellStyle2.SelectionForeColor = Color.Black;
@@ -77,7 +77,7 @@
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1068, 541);
+            dataGridView1.Size = new Size(1383, 752);
             dataGridView1.TabIndex = 26;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -94,7 +94,7 @@
             ApplicantName.HeaderText = "Applicant Name";
             ApplicantName.Name = "ApplicantName";
             ApplicantName.ReadOnly = true;
-            ApplicantName.Width = 116;
+            ApplicantName.Width = 149;
             // 
             // ApprovalDate
             // 
@@ -162,11 +162,12 @@
             // btnTransfer
             // 
             btnTransfer.BackColor = Color.SeaGreen;
+            btnTransfer.FlatAppearance.BorderSize = 0;
             btnTransfer.FlatStyle = FlatStyle.Flat;
             btnTransfer.ForeColor = Color.Transparent;
-            btnTransfer.Location = new Point(937, 559);
+            btnTransfer.Location = new Point(1164, 770);
             btnTransfer.Name = "btnTransfer";
-            btnTransfer.Size = new Size(143, 38);
+            btnTransfer.Size = new Size(231, 38);
             btnTransfer.TabIndex = 27;
             btnTransfer.Text = "Proceed to Repayment";
             btnTransfer.UseVisualStyleBackColor = false;
@@ -177,7 +178,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1092, 609);
+            ClientSize = new Size(1407, 820);
             Controls.Add(btnTransfer);
             Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.None;

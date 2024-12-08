@@ -653,8 +653,6 @@ namespace LoanSystem
 
         private void ConfigureDataGridViewColumns()
         {
-            // Ensure DataGridView does not auto-generate columns
-            dataGridView1.AutoGenerateColumns = false;
 
             dataGridView1.Columns.Clear();
 
@@ -665,7 +663,7 @@ namespace LoanSystem
             // Configure columns with proper DataPropertyName
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
-                HeaderText = "Application ID",
+                HeaderText = "ID",
                 DataPropertyName = "id", // Match database column
                 Name = "idColumn"
             });

@@ -35,7 +35,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Tahoma", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(432, 258);
+            label1.Location = new Point(611, 330);
             label1.Name = "label1";
             label1.Size = new Size(252, 77);
             label1.TabIndex = 0;
@@ -45,7 +45,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1092, 609);
+            ClientSize = new Size(1407, 820);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "formReport";

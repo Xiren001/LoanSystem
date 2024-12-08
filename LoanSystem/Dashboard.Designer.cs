@@ -30,11 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            panel1 = new Panel();
-            label2 = new Label();
-            label1 = new Label();
             menu = new PictureBox();
             sidebar = new FlowLayoutPanel();
+            panel1 = new Panel();
             pnDashboard = new Panel();
             btnDashboard = new Button();
             menuContainer = new FlowLayoutPanel();
@@ -54,11 +52,14 @@
             btnReport = new Button();
             pnEmplo = new Panel();
             btnEmplo = new Button();
+            panel2 = new Panel();
+            panel4 = new Panel();
+            label2 = new Label();
             menuTransition = new System.Windows.Forms.Timer(components);
             sidebarTransition = new System.Windows.Forms.Timer(components);
-            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)menu).BeginInit();
             sidebar.SuspendLayout();
+            panel1.SuspendLayout();
             pnDashboard.SuspendLayout();
             menuContainer.SuspendLayout();
             panel3.SuspendLayout();
@@ -69,47 +70,16 @@
             pnRepayment.SuspendLayout();
             pnReport.SuspendLayout();
             pnEmplo.SuspendLayout();
+            panel2.SuspendLayout();
+            panel4.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.SeaGreen;
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(menu);
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1165, 52);
-            panel1.TabIndex = 0;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(1118, 16);
-            label2.Name = "label2";
-            label2.Size = new Size(19, 19);
-            label2.TabIndex = 2;
-            label2.Text = "x";
-            label2.Click += label2_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(71, 16);
-            label1.Name = "label1";
-            label1.Size = new Size(120, 19);
-            label1.TabIndex = 1;
-            label1.Text = "Loan Wise Bank";
             // 
             // menu
             // 
             menu.Image = (Image)resources.GetObject("menu.Image");
-            menu.Location = new Point(27, 16);
+            menu.Location = new Point(0, 0);
             menu.Name = "menu";
-            menu.Size = new Size(29, 23);
+            menu.Size = new Size(60, 48);
             menu.SizeMode = PictureBoxSizeMode.CenterImage;
             menu.TabIndex = 1;
             menu.TabStop = false;
@@ -117,23 +87,33 @@
             // 
             // sidebar
             // 
+            sidebar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             sidebar.BackColor = Color.SeaGreen;
+            sidebar.Controls.Add(panel1);
             sidebar.Controls.Add(pnDashboard);
             sidebar.Controls.Add(menuContainer);
             sidebar.Controls.Add(pnCustomer);
             sidebar.Controls.Add(pnRepayment);
             sidebar.Controls.Add(pnReport);
             sidebar.Controls.Add(pnEmplo);
-            sidebar.Location = new Point(0, 50);
+            sidebar.Controls.Add(panel2);
+            sidebar.Location = new Point(0, 0);
             sidebar.Name = "sidebar";
-            sidebar.Padding = new Padding(0, 15, 0, 0);
-            sidebar.Size = new Size(237, 612);
+            sidebar.Size = new Size(237, 917);
             sidebar.TabIndex = 1;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(menu);
+            panel1.Location = new Point(3, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(230, 48);
+            panel1.TabIndex = 6;
             // 
             // pnDashboard
             // 
             pnDashboard.Controls.Add(btnDashboard);
-            pnDashboard.Location = new Point(3, 18);
+            pnDashboard.Location = new Point(3, 57);
             pnDashboard.Name = "pnDashboard";
             pnDashboard.Size = new Size(230, 48);
             pnDashboard.TabIndex = 3;
@@ -160,7 +140,7 @@
             menuContainer.Controls.Add(panel8);
             menuContainer.Controls.Add(panel9);
             menuContainer.Controls.Add(panel10);
-            menuContainer.Location = new Point(3, 72);
+            menuContainer.Location = new Point(3, 111);
             menuContainer.Name = "menuContainer";
             menuContainer.Size = new Size(230, 53);
             menuContainer.TabIndex = 6;
@@ -264,7 +244,7 @@
             // pnCustomer
             // 
             pnCustomer.Controls.Add(btnCustomer);
-            pnCustomer.Location = new Point(3, 131);
+            pnCustomer.Location = new Point(3, 170);
             pnCustomer.Name = "pnCustomer";
             pnCustomer.Size = new Size(230, 48);
             pnCustomer.TabIndex = 4;
@@ -288,7 +268,7 @@
             // pnRepayment
             // 
             pnRepayment.Controls.Add(btnRepayment);
-            pnRepayment.Location = new Point(3, 185);
+            pnRepayment.Location = new Point(3, 224);
             pnRepayment.Name = "pnRepayment";
             pnRepayment.Size = new Size(230, 48);
             pnRepayment.TabIndex = 4;
@@ -312,7 +292,7 @@
             // pnReport
             // 
             pnReport.Controls.Add(btnReport);
-            pnReport.Location = new Point(3, 239);
+            pnReport.Location = new Point(3, 278);
             pnReport.Name = "pnReport";
             pnReport.Size = new Size(230, 48);
             pnReport.TabIndex = 4;
@@ -336,7 +316,7 @@
             // pnEmplo
             // 
             pnEmplo.Controls.Add(btnEmplo);
-            pnEmplo.Location = new Point(3, 293);
+            pnEmplo.Location = new Point(3, 332);
             pnEmplo.Name = "pnEmplo";
             pnEmplo.Size = new Size(230, 48);
             pnEmplo.TabIndex = 5;
@@ -357,6 +337,37 @@
             btnEmplo.UseVisualStyleBackColor = false;
             btnEmplo.Click += btnEmplo_Click;
             // 
+            // panel2
+            // 
+            panel2.Controls.Add(panel4);
+            panel2.Location = new Point(3, 386);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(230, 55);
+            panel2.TabIndex = 6;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.Transparent;
+            panel4.Controls.Add(label2);
+            panel4.Location = new Point(3, 3);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(224, 48);
+            panel4.TabIndex = 0;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(79, 16);
+            label2.Name = "label2";
+            label2.Size = new Size(65, 19);
+            label2.TabIndex = 3;
+            label2.Text = "Logout";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            label2.Click += label2_Click_1;
+            // 
             // menuTransition
             // 
             menuTransition.Interval = 10;
@@ -372,23 +383,21 @@
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1164, 661);
+            ClientSize = new Size(1474, 816);
             Controls.Add(sidebar);
-            Controls.Add(panel1);
             Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             IsMdiContainer = true;
             Margin = new Padding(4);
             Name = "Dashboard";
-            Padding = new Padding(68, 52, 0, 0);
+            Padding = new Padding(68, 0, 0, 0);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Loan Management System";
             Load += Dashboard_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)menu).EndInit();
             sidebar.ResumeLayout(false);
+            panel1.ResumeLayout(false);
             pnDashboard.ResumeLayout(false);
             menuContainer.ResumeLayout(false);
             panel3.ResumeLayout(false);
@@ -399,14 +408,14 @@
             pnRepayment.ResumeLayout(false);
             pnReport.ResumeLayout(false);
             pnEmplo.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel panel1;
         private PictureBox menu;
-        private Label label1;
         private FlowLayoutPanel sidebar;
         private Button btnDashboard;
         private Panel pnDashboard;
@@ -427,8 +436,11 @@
         private FlowLayoutPanel menuContainer;
         private System.Windows.Forms.Timer menuTransition;
         private System.Windows.Forms.Timer sidebarTransition;
-        private Label label2;
         private Panel pnEmplo;
         private Button btnEmplo;
+        private Panel panel1;
+        private Label label2;
+        private Panel panel2;
+        private Panel panel4;
     }
 }

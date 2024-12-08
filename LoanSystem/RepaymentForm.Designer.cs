@@ -35,22 +35,23 @@
             // 
             // txtRepaymentAmount
             // 
+            txtRepaymentAmount.BackColor = Color.LightGray;
             txtRepaymentAmount.BorderStyle = BorderStyle.FixedSingle;
             txtRepaymentAmount.Font = new Font("Tahoma", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtRepaymentAmount.Location = new Point(12, 50);
+            txtRepaymentAmount.Location = new Point(12, 43);
             txtRepaymentAmount.Multiline = true;
             txtRepaymentAmount.Name = "txtRepaymentAmount";
-            txtRepaymentAmount.Size = new Size(310, 43);
+            txtRepaymentAmount.Size = new Size(310, 50);
             txtRepaymentAmount.TabIndex = 24;
             txtRepaymentAmount.TextAlign = HorizontalAlignment.Center;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(95, 19);
+            label1.Font = new Font("Tahoma", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(12, 22);
             label1.Name = "label1";
-            label1.Size = new Size(154, 19);
+            label1.Size = new Size(196, 25);
             label1.TabIndex = 25;
             label1.Text = "Enter the Amount";
             // 
@@ -59,9 +60,9 @@
             btnConfirmRepayment.BackColor = Color.FromArgb(255, 255, 128);
             btnConfirmRepayment.FlatStyle = FlatStyle.Flat;
             btnConfirmRepayment.ForeColor = Color.Black;
-            btnConfirmRepayment.Location = new Point(95, 108);
+            btnConfirmRepayment.Location = new Point(81, 108);
             btnConfirmRepayment.Name = "btnConfirmRepayment";
-            btnConfirmRepayment.Size = new Size(154, 32);
+            btnConfirmRepayment.Size = new Size(168, 38);
             btnConfirmRepayment.TabIndex = 26;
             btnConfirmRepayment.Text = "Pay";
             btnConfirmRepayment.UseVisualStyleBackColor = false;
@@ -71,6 +72,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.LightGray;
             ClientSize = new Size(334, 158);
             Controls.Add(btnConfirmRepayment);
             Controls.Add(label1);

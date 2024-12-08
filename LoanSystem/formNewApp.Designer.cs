@@ -52,11 +52,12 @@
             // newAppBtn
             // 
             newAppBtn.BackColor = Color.SeaGreen;
+            newAppBtn.FlatAppearance.BorderSize = 0;
             newAppBtn.FlatStyle = FlatStyle.Flat;
             newAppBtn.ForeColor = Color.Transparent;
-            newAppBtn.Location = new Point(788, 12);
+            newAppBtn.Location = new Point(1262, 12);
             newAppBtn.Name = "newAppBtn";
-            newAppBtn.Size = new Size(143, 38);
+            newAppBtn.Size = new Size(133, 38);
             newAppBtn.TabIndex = 24;
             newAppBtn.Text = "Create";
             newAppBtn.UseVisualStyleBackColor = false;
@@ -67,7 +68,7 @@
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Tahoma", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(255, 255, 192);
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
@@ -76,7 +77,7 @@
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.White;
-            dataGridViewCellStyle2.Font = new Font("Tahoma", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(255, 255, 192);
             dataGridViewCellStyle2.SelectionForeColor = Color.Black;
@@ -86,7 +87,7 @@
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ApplicationID, ApplicantName, ApplicationDate, LoanType, LoanAmount, EmploymentStatus, AnnualIncome, Status, AssignedOfficer, Action });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Tahoma", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.Font = new Font("Tahoma", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(255, 255, 192);
             dataGridViewCellStyle3.SelectionForeColor = Color.Black;
@@ -98,7 +99,7 @@
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1068, 541);
+            dataGridView1.Size = new Size(1383, 752);
             dataGridView1.TabIndex = 25;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -115,7 +116,7 @@
             ApplicantName.HeaderText = "Applicant Name";
             ApplicantName.Name = "ApplicantName";
             ApplicantName.ReadOnly = true;
-            ApplicantName.Width = 116;
+            ApplicantName.Width = 149;
             // 
             // ApplicationDate
             // 
@@ -176,11 +177,12 @@
             // newAppUpdate
             // 
             newAppUpdate.BackColor = Color.Khaki;
+            newAppUpdate.FlatAppearance.BorderSize = 0;
             newAppUpdate.FlatStyle = FlatStyle.Flat;
             newAppUpdate.ForeColor = Color.Black;
-            newAppUpdate.Location = new Point(937, 12);
+            newAppUpdate.Location = new Point(1114, 12);
             newAppUpdate.Name = "newAppUpdate";
-            newAppUpdate.Size = new Size(143, 38);
+            newAppUpdate.Size = new Size(133, 38);
             newAppUpdate.TabIndex = 26;
             newAppUpdate.Text = "Update";
             newAppUpdate.UseVisualStyleBackColor = false;
@@ -192,7 +194,7 @@
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.BackgroundImageLayout = ImageLayout.None;
             button1.ForeColor = Color.Transparent;
-            button1.Location = new Point(12, 12);
+            button1.Location = new Point(1363, 777);
             button1.Name = "button1";
             button1.Size = new Size(32, 31);
             button1.TabIndex = 27;
@@ -204,7 +206,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1092, 609);
+            ClientSize = new Size(1407, 820);
             Controls.Add(button1);
             Controls.Add(newAppUpdate);
             Controls.Add(dataGridView1);
