@@ -190,7 +190,7 @@
             // 
             // repaymentbtn
             // 
-            repaymentbtn.BackColor = Color.FromArgb(12, 154, 140);
+            repaymentbtn.BackColor = Color.SeaGreen;
             repaymentbtn.FlatStyle = FlatStyle.Flat;
             repaymentbtn.ForeColor = Color.Transparent;
             repaymentbtn.Location = new Point(821, 24);

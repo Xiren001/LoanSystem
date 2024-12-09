@@ -51,7 +51,7 @@
             // 
             // newAppBtn
             // 
-            newAppBtn.BackColor = Color.FromArgb(12, 154, 140);
+            newAppBtn.BackColor = Color.SeaGreen;
             newAppBtn.FlatAppearance.BorderSize = 0;
             newAppBtn.FlatStyle = FlatStyle.Flat;
             newAppBtn.ForeColor = Color.Transparent;

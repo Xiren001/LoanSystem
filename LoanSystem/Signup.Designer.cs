@@ -174,7 +174,7 @@
             // 
             // SignUpBtn
             // 
-            SignUpBtn.BackColor = Color.FromArgb(12, 154, 140);
+            SignUpBtn.BackColor = Color.SeaGreen;
             SignUpBtn.FlatAppearance.BorderColor = Color.White;
             SignUpBtn.FlatAppearance.BorderSize = 2;
             SignUpBtn.FlatStyle = FlatStyle.Flat;
@@ -194,9 +194,9 @@
             label8.ForeColor = SystemColors.ControlText;
             label8.Location = new Point(27, 55);
             label8.Name = "label8";
-            label8.Size = new Size(114, 23);
+            label8.Size = new Size(106, 23);
             label8.TabIndex = 56;
-            label8.Text = "First Name";
+            label8.Text = "Full Name";
             // 
             // label1
             // 
@@ -390,9 +390,9 @@
             profilePanel.Controls.Add(label11);
             profilePanel.Controls.Add(label4);
             profilePanel.Controls.Add(panel1);
-            profilePanel.Location = new Point(-9, -7);
+            profilePanel.Location = new Point(-18, -7);
             profilePanel.Name = "profilePanel";
-            profilePanel.Size = new Size(1431, 838);
+            profilePanel.Size = new Size(1440, 841);
             profilePanel.TabIndex = 74;
             profilePanel.Visible = false;
             profilePanel.Paint += profilePanel_Paint;
@@ -427,7 +427,7 @@
             profileConfirmPassword.ImeMode = ImeMode.NoControl;
             profileConfirmPassword.Location = new Point(735, 656);
             profileConfirmPassword.Name = "profileConfirmPassword";
-            profileConfirmPassword.Size = new Size(327, 30);
+            profileConfirmPassword.Size = new Size(336, 30);
             profileConfirmPassword.TabIndex = 71;
             // 
             // profileNewPassword
@@ -440,7 +440,7 @@
             profileNewPassword.ImeMode = ImeMode.NoControl;
             profileNewPassword.Location = new Point(379, 656);
             profileNewPassword.Name = "profileNewPassword";
-            profileNewPassword.Size = new Size(331, 30);
+            profileNewPassword.Size = new Size(340, 30);
             profileNewPassword.TabIndex = 70;
             // 
             // profilePosition
@@ -586,7 +586,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(12, 154, 140);
+            panel1.BackColor = Color.SeaGreen;
             panel1.Controls.Add(profileImage);
             panel1.Controls.Add(UploadButton);
             panel1.Controls.Add(profileName);
@@ -601,7 +601,7 @@
             profileImage.Location = new Point(575, 16);
             profileImage.Name = "profileImage";
             profileImage.Size = new Size(270, 270);
-            profileImage.SizeMode = PictureBoxSizeMode.CenterImage;
+            profileImage.SizeMode = PictureBoxSizeMode.StretchImage;
             profileImage.TabIndex = 0;
             profileImage.TabStop = false;
             // 

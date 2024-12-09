@@ -161,7 +161,7 @@
             // 
             // btnTransfer
             // 
-            btnTransfer.BackColor = Color.FromArgb(12, 154, 140);
+            btnTransfer.BackColor = Color.SeaGreen;
             btnTransfer.FlatAppearance.BorderSize = 0;
             btnTransfer.FlatStyle = FlatStyle.Flat;
             btnTransfer.ForeColor = Color.Transparent;

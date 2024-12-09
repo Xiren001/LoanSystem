@@ -93,7 +93,7 @@
             // sidebar
             // 
             sidebar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            sidebar.BackColor = Color.FromArgb(12, 154, 140);
+            sidebar.BackColor = Color.SeaGreen;
             sidebar.Controls.Add(panel1);
             sidebar.Controls.Add(pnDashboard);
             sidebar.Controls.Add(menuContainer);
@@ -126,7 +126,7 @@
             // 
             // btnDashboard
             // 
-            btnDashboard.BackColor = Color.FromArgb(12, 154, 140);
+            btnDashboard.BackColor = Color.SeaGreen;
             btnDashboard.FlatStyle = FlatStyle.Flat;
             btnDashboard.ForeColor = Color.Transparent;
             btnDashboard.Image = (Image)resources.GetObject("btnDashboard.Image");
@@ -161,7 +161,7 @@
             // 
             // loanApp
             // 
-            loanApp.BackColor = Color.FromArgb(12, 154, 140);
+            loanApp.BackColor = Color.SeaGreen;
             loanApp.FlatStyle = FlatStyle.Flat;
             loanApp.ForeColor = Color.Transparent;
             loanApp.Image = (Image)resources.GetObject("loanApp.Image");
@@ -185,7 +185,7 @@
             // 
             // btnNewApp
             // 
-            btnNewApp.BackColor = Color.FromArgb(12, 154, 140);
+            btnNewApp.BackColor = Color.SeaGreen;
             btnNewApp.FlatStyle = FlatStyle.Flat;
             btnNewApp.ForeColor = Color.Transparent;
             btnNewApp.Image = (Image)resources.GetObject("btnNewApp.Image");
@@ -209,7 +209,7 @@
             // 
             // btnPending
             // 
-            btnPending.BackColor = Color.FromArgb(12, 154, 140);
+            btnPending.BackColor = Color.SeaGreen;
             btnPending.FlatStyle = FlatStyle.Flat;
             btnPending.ForeColor = Color.Transparent;
             btnPending.Image = (Image)resources.GetObject("btnPending.Image");
@@ -233,7 +233,7 @@
             // 
             // btnAppRej
             // 
-            btnAppRej.BackColor = Color.FromArgb(12, 154, 140);
+            btnAppRej.BackColor = Color.SeaGreen;
             btnAppRej.FlatStyle = FlatStyle.Flat;
             btnAppRej.ForeColor = Color.Transparent;
             btnAppRej.Image = (Image)resources.GetObject("btnAppRej.Image");
@@ -257,7 +257,7 @@
             // 
             // btnCustomer
             // 
-            btnCustomer.BackColor = Color.FromArgb(12, 154, 140);
+            btnCustomer.BackColor = Color.SeaGreen;
             btnCustomer.FlatStyle = FlatStyle.Flat;
             btnCustomer.ForeColor = Color.Transparent;
             btnCustomer.Image = (Image)resources.GetObject("btnCustomer.Image");
@@ -281,7 +281,7 @@
             // 
             // btnRepayment
             // 
-            btnRepayment.BackColor = Color.FromArgb(12, 154, 140);
+            btnRepayment.BackColor = Color.SeaGreen;
             btnRepayment.FlatStyle = FlatStyle.Flat;
             btnRepayment.ForeColor = Color.Transparent;
             btnRepayment.Image = (Image)resources.GetObject("btnRepayment.Image");
@@ -305,7 +305,7 @@
             // 
             // btnComp
             // 
-            btnComp.BackColor = Color.FromArgb(12, 154, 140);
+            btnComp.BackColor = Color.SeaGreen;
             btnComp.FlatStyle = FlatStyle.Flat;
             btnComp.ForeColor = Color.Transparent;
             btnComp.Image = (Image)resources.GetObject("btnComp.Image");
@@ -329,7 +329,7 @@
             // 
             // btnReject
             // 
-            btnReject.BackColor = Color.FromArgb(12, 154, 140);
+            btnReject.BackColor = Color.SeaGreen;
             btnReject.FlatStyle = FlatStyle.Flat;
             btnReject.ForeColor = Color.Transparent;
             btnReject.Image = (Image)resources.GetObject("btnReject.Image");
@@ -353,7 +353,7 @@
             // 
             // btnEmplo
             // 
-            btnEmplo.BackColor = Color.FromArgb(12, 154, 140);
+            btnEmplo.BackColor = Color.SeaGreen;
             btnEmplo.FlatStyle = FlatStyle.Flat;
             btnEmplo.ForeColor = Color.Transparent;
             btnEmplo.Image = (Image)resources.GetObject("btnEmplo.Image");

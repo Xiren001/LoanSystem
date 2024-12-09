@@ -115,7 +115,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(12, 154, 140);
+            BackColor = Color.SeaGreen;
             ClientSize = new Size(506, 225);
             Controls.Add(panel1);
             Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
