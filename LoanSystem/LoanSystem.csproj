@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="LiveCharts" Version="0.9.7" />
+    <PackageReference Include="ScottPlot" Version="5.0.47" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
     <PackageReference Include="WinForms.DataVisualization" Version="1.9.2" />
   </ItemGroup>

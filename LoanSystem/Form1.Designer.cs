@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignInForm));
             lblSign = new Label();
-            panelSign = new Panel();
             pictureBox1 = new PictureBox();
             SigninEmail = new TextBox();
             panel1 = new Panel();
@@ -38,10 +37,13 @@
             SigninPassword = new TextBox();
             SignInBtn = new Button();
             SigninShowpass = new CheckBox();
-            panelSign.SuspendLayout();
+            panelSign = new Panel();
+            label2 = new Label();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            panelSign.SuspendLayout();
             SuspendLayout();
             // 
             // lblSign
@@ -49,28 +51,20 @@
             lblSign.AutoSize = true;
             lblSign.BackColor = Color.Transparent;
             lblSign.Font = new Font("Tahoma", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSign.ForeColor = Color.White;
-            lblSign.Location = new Point(486, 59);
+            lblSign.ForeColor = Color.FromArgb(12, 154, 140);
+            lblSign.Location = new Point(505, 134);
             lblSign.Name = "lblSign";
-            lblSign.Size = new Size(112, 35);
+            lblSign.Size = new Size(248, 35);
             lblSign.TabIndex = 1;
-            lblSign.Text = "LOGIN";
-            // 
-            // panelSign
-            // 
-            panelSign.BackColor = Color.SeaGreen;
-            panelSign.Controls.Add(pictureBox1);
-            panelSign.Location = new Point(0, -1);
-            panelSign.Name = "panelSign";
-            panelSign.Size = new Size(363, 450);
-            panelSign.TabIndex = 2;
+            lblSign.Text = "Loan Wise Bank";
             // 
             // pictureBox1
             // 
+            pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(-18, -8);
+            pictureBox1.Location = new Point(526, 42);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(390, 466);
+            pictureBox1.Size = new Size(182, 89);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
@@ -86,25 +80,27 @@
             SigninEmail.Location = new Point(15, 12);
             SigninEmail.Name = "SigninEmail";
             SigninEmail.PlaceholderText = "Email";
-            SigninEmail.Size = new Size(298, 20);
+            SigninEmail.Size = new Size(424, 20);
             SigninEmail.TabIndex = 4;
             // 
             // panel1
             // 
             panel1.BackColor = Color.White;
+            panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(SigninEmail);
-            panel1.Location = new Point(396, 145);
+            panel1.Location = new Point(394, 209);
             panel1.Name = "panel1";
-            panel1.Size = new Size(325, 42);
+            panel1.Size = new Size(453, 42);
             panel1.TabIndex = 2;
             // 
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.BorderStyle = BorderStyle.FixedSingle;
             panel2.Controls.Add(SigninPassword);
-            panel2.Location = new Point(396, 202);
+            panel2.Location = new Point(394, 266);
             panel2.Name = "panel2";
-            panel2.Size = new Size(325, 42);
+            panel2.Size = new Size(453, 42);
             panel2.TabIndex = 2;
             // 
             // SigninPassword
@@ -119,19 +115,19 @@
             SigninPassword.Name = "SigninPassword";
             SigninPassword.PasswordChar = '*';
             SigninPassword.PlaceholderText = "Password";
-            SigninPassword.Size = new Size(298, 20);
+            SigninPassword.Size = new Size(424, 20);
             SigninPassword.TabIndex = 4;
             // 
             // SignInBtn
             // 
-            SignInBtn.BackColor = Color.SeaGreen;
+            SignInBtn.BackColor = Color.FromArgb(12, 154, 140);
             SignInBtn.FlatAppearance.BorderColor = Color.White;
             SignInBtn.FlatAppearance.BorderSize = 2;
             SignInBtn.FlatStyle = FlatStyle.Flat;
             SignInBtn.ForeColor = Color.White;
-            SignInBtn.Location = new Point(396, 296);
+            SignInBtn.Location = new Point(394, 391);
             SignInBtn.Name = "SignInBtn";
-            SignInBtn.Size = new Size(325, 43);
+            SignInBtn.Size = new Size(453, 43);
             SignInBtn.TabIndex = 5;
             SignInBtn.Text = "Sign in";
             SignInBtn.UseVisualStyleBackColor = false;
@@ -140,8 +136,8 @@
             // SigninShowpass
             // 
             SigninShowpass.AutoSize = true;
-            SigninShowpass.ForeColor = Color.White;
-            SigninShowpass.Location = new Point(582, 250);
+            SigninShowpass.ForeColor = Color.Black;
+            SigninShowpass.Location = new Point(708, 314);
             SigninShowpass.Name = "SigninShowpass";
             SigninShowpass.Size = new Size(139, 23);
             SigninShowpass.TabIndex = 6;
@@ -149,12 +145,48 @@
             SigninShowpass.UseVisualStyleBackColor = true;
             SigninShowpass.CheckedChanged += SigninShowpass_CheckedChanged;
             // 
+            // panelSign
+            // 
+            panelSign.BackColor = Color.FromArgb(12, 154, 140);
+            panelSign.Controls.Add(label2);
+            panelSign.Controls.Add(label1);
+            panelSign.Location = new Point(0, -1);
+            panelSign.Name = "panelSign";
+            panelSign.Size = new Size(368, 518);
+            panelSign.TabIndex = 2;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Tahoma", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(74, 263);
+            label2.Name = "label2";
+            label2.Size = new Size(207, 46);
+            label2.TabIndex = 3;
+            label2.Text = "Please enter your \r\ncredentials to log in.";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Tahoma", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(116, 197);
+            label1.Name = "label1";
+            label1.Size = new Size(128, 45);
+            label1.TabIndex = 2;
+            label1.Text = "Hello!";
+            // 
             // SignInForm
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.SeaGreen;
-            ClientSize = new Size(755, 450);
+            BackColor = Color.White;
+            ClientSize = new Size(872, 516);
+            Controls.Add(pictureBox1);
             Controls.Add(SigninShowpass);
             Controls.Add(SignInBtn);
             Controls.Add(panel2);
@@ -168,22 +200,21 @@
             Name = "SignInForm";
             RightToLeft = RightToLeft.No;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Signin";
             TransparencyKey = Color.FromArgb(0, 64, 0);
             Load += SignInForm_Load;
-            panelSign.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panelSign.ResumeLayout(false);
+            panelSign.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
         private Label lblSign;
-        public Panel panelSign;
         private TextBox SigninEmail;
         private Panel panel1;
         private Panel panel2;
@@ -191,5 +222,8 @@
         private Button SignInBtn;
         private CheckBox SigninShowpass;
         private PictureBox pictureBox1;
+        public Panel panelSign;
+        private Label label2;
+        private Label label1;
     }
 }

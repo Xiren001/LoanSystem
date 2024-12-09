@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formRepayment));
             dataGridView1 = new DataGridView();
             LoanID = new DataGridViewTextBoxColumn();
@@ -85,32 +85,32 @@
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = Color.White;
-            dataGridViewCellStyle4.Font = new Font("Tahoma", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(255, 255, 192);
-            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(255, 255, 192);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.White;
-            dataGridViewCellStyle5.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(255, 255, 192);
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.Desktop;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(255, 255, 192);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.Desktop;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { LoanID, ApplicantName, LoanType, RepaymentStatus });
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Window;
-            dataGridViewCellStyle6.Font = new Font("Tahoma", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(255, 255, 192);
-            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Tahoma", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(255, 255, 192);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.GridColor = Color.Black;
             dataGridView1.Location = new Point(12, 12);
             dataGridView1.MultiSelect = false;
@@ -190,7 +190,7 @@
             // 
             // repaymentbtn
             // 
-            repaymentbtn.BackColor = Color.SeaGreen;
+            repaymentbtn.BackColor = Color.FromArgb(12, 154, 140);
             repaymentbtn.FlatStyle = FlatStyle.Flat;
             repaymentbtn.ForeColor = Color.Transparent;
             repaymentbtn.Location = new Point(821, 24);

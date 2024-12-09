@@ -197,7 +197,9 @@ namespace LoanSystem
 
                     MessageBox.Show($"Repayment successful!" +
                                     $"\nNew Balance: ₱{newBalance:N2}" +
+                                    $"\n" +
                                     $"\nTotal Principal Paid: ₱{newTotalPrincipalPaid:N2}" +
+                                    $"\n" +
                                     $"\nNext Payment Date: {newNextPaymentDate:yyyy-MM-dd}","Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Generate receipt
@@ -219,7 +221,7 @@ namespace LoanSystem
             }
             else
             {
-                MessageBox.Show("Please enter a valid repayment amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter a valid amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -282,7 +284,7 @@ namespace LoanSystem
 
             string filePath = Path.Combine(directory, $"Receipt_{DateTime.Now:yyyyMMdd_HHmmss}.txt");
             File.WriteAllText(filePath, content);
-            MessageBox.Show($"Receipt saved to {filePath}", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Receipt saved", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 

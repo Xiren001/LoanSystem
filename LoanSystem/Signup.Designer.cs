@@ -174,7 +174,7 @@
             // 
             // SignUpBtn
             // 
-            SignUpBtn.BackColor = Color.SeaGreen;
+            SignUpBtn.BackColor = Color.FromArgb(12, 154, 140);
             SignUpBtn.FlatAppearance.BorderColor = Color.White;
             SignUpBtn.FlatAppearance.BorderSize = 2;
             SignUpBtn.FlatStyle = FlatStyle.Flat;
@@ -586,7 +586,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.SeaGreen;
+            panel1.BackColor = Color.FromArgb(12, 154, 140);
             panel1.Controls.Add(profileImage);
             panel1.Controls.Add(UploadButton);
             panel1.Controls.Add(profileName);

@@ -257,7 +257,7 @@ namespace LoanSystem
 
                     if (recordExists > 0)
                     {
-                        MessageBox.Show("This record already exists in the repayment table.", "Duplicate Record", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("This record already exists.", "Duplicate Record", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
 
@@ -334,7 +334,7 @@ namespace LoanSystem
 
                         reader.Close();
                         insertCommand.ExecuteNonQuery();
-                        MessageBox.Show("Record successfully transferred to repayment table!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Record successfully activated", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -364,7 +364,7 @@ namespace LoanSystem
             }
             else
             {
-                MessageBox.Show("Please select a record to transfer.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a record to activate.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }

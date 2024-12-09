@@ -487,7 +487,7 @@ namespace LoanSystem
                             while (reader.Read())
                             {
                                 string fullName = $"{reader["firstname"]} {reader["lastname"]}";
-                                string message = $"The loan record for {fullName} (ID: {reader["Id"]}) has been fully repaid. Do you want to move this record to the paid table?";
+                                string message = $"The loan record for {fullName} (ID: {reader["Id"]}) has been fully repaid. Do you want to move this record to the Completed table?";
                                 DialogResult dialogResult = MessageBox.Show(message, "Confirm Move", MessageBoxButtons.OK, MessageBoxIcon.Question);
 
                                 if (dialogResult == DialogResult.OK)

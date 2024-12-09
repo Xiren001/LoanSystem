@@ -31,7 +31,6 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             dataGridView1 = new DataGridView();
-            pendingApplicantName = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -68,35 +67,23 @@
             dataGridView1.TabIndex = 27;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // pendingApplicantName
-            // 
-            pendingApplicantName.AutoSize = true;
-            pendingApplicantName.Font = new Font("Tahoma", 18F, FontStyle.Bold);
-            pendingApplicantName.Location = new Point(564, 350);
-            pendingApplicantName.Name = "pendingApplicantName";
-            pendingApplicantName.Size = new Size(202, 29);
-            pendingApplicantName.TabIndex = 28;
-            pendingApplicantName.Text = "Applicant Name";
-            // 
             // formRejected
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1407, 820);
-            Controls.Add(pendingApplicantName);
             Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "formRejected";
             Text = "formRejected";
+            Load += formRejected_Load_1;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private DataGridView dataGridView1;
-        private Label pendingApplicantName;
     }
 }

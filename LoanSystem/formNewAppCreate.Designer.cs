@@ -112,7 +112,7 @@
             // 
             // btnCreateNewApp
             // 
-            btnCreateNewApp.BackColor = Color.SeaGreen;
+            btnCreateNewApp.BackColor = Color.FromArgb(12, 154, 140);
             btnCreateNewApp.Font = new Font("Tahoma", 12F);
             btnCreateNewApp.ForeColor = Color.White;
             btnCreateNewApp.Location = new Point(383, 764);

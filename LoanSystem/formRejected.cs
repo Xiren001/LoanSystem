@@ -12,7 +12,7 @@ namespace LoanSystem
             InitializeComponent();
         }
 
-        private void formRejected_Load(object sender, EventArgs e)
+        private void formRejected_Load_1(object sender, EventArgs e)
         {
             // Disable the ControlBox (close, minimize, maximize)
             this.ControlBox = false;
@@ -26,24 +26,19 @@ namespace LoanSystem
 
         private void LoadRejectedApplications()
         {
-            // Connection string - replace with your actual database connection string
             string connectionString = "Data Source=XIREN\\SQLEXPRESS;Initial Catalog=LoanWise;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;";
 
             try
             {
-                string query = @"SELECT Id, lastname, firstname, phonenumber, email, employername, amount ,loanpurpose, applicationdate, repaymentterm, applicationdate, CreditScore FROM rejectedApplications";
+                string query = @"SELECT Id, lastname, firstname, phonenumber, email, employername, amount, loanpurpose, applicationdate, repaymentterm, CreditScore FROM rejectedApplications";
 
-                // Create a connection and data adapter
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
                     DataTable dataTable = new DataTable();
-
-                    // Fetch data
                     adapter.Fill(dataTable);
 
-                    // Bind data to DataGridView
                     dataGridView1.DataSource = dataTable;
 
                     // Dynamically configure the DataGridView columns
@@ -58,12 +53,11 @@ namespace LoanSystem
 
         private void ConfigureDataGridView()
         {
-            // Clear and manually set the column headers to ensure only relevant fields are visible
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.Columns.Clear();
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            // Dynamically map only important fields
+            // Map database fields dynamically
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
                 HeaderText = "Application ID",
@@ -74,77 +68,70 @@ namespace LoanSystem
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
                 HeaderText = "Last Name",
-                DataPropertyName = "Last Name",
+                DataPropertyName = "lastname",
                 Name = "lastNameColumn"
             });
 
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
                 HeaderText = "First Name",
-                DataPropertyName = "First Name",
+                DataPropertyName = "firstname",
                 Name = "firstNameColumn"
             });
 
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
-                HeaderText = "Date of Birth",
-                DataPropertyName = "Date of Birth",
-                Name = "dobColumn"
-            });
-
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Gender",
-                DataPropertyName = "Gender",
-                Name = "genderColumn"
-            });
-
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
                 HeaderText = "Phone Number",
-                DataPropertyName = "Phone Number",
+                DataPropertyName = "phonenumber",
                 Name = "phoneColumn"
             });
 
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
                 HeaderText = "Email Address",
-                DataPropertyName = "Email Address",
+                DataPropertyName = "email",
                 Name = "emailColumn"
             });
 
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
-                HeaderText = "Employer",
-                DataPropertyName = "Employer",
+                HeaderText = "Employer Name",
+                DataPropertyName = "employername",
                 Name = "employerColumn"
             });
 
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
-                HeaderText = "Loan Type",
-                DataPropertyName = "Loan Type",
-                Name = "loanTypeColumn"
+                HeaderText = "Loan Purpose",
+                DataPropertyName = "loanpurpose",
+                Name = "loanPurposeColumn"
             });
 
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
                 HeaderText = "Loan Amount",
-                DataPropertyName = "Loan Amount",
+                DataPropertyName = "amount",
                 Name = "loanAmountColumn"
             });
 
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
                 HeaderText = "Application Date",
-                DataPropertyName = "Application Date",
+                DataPropertyName = "applicationdate",
                 Name = "applicationDateColumn"
             });
 
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
+                HeaderText = "Repayment Term",
+                DataPropertyName = "repaymentterm",
+                Name = "repaymentTermColumn"
+            });
+
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
                 HeaderText = "Credit Score",
-                DataPropertyName = "Credit Score",
+                DataPropertyName = "CreditScore",
                 Name = "creditScoreColumn"
             });
         }

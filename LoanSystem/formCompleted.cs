@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace LoanSystem
@@ -11,57 +12,66 @@ namespace LoanSystem
         {
             InitializeComponent();
         }
-
-        private void formCompleted_Load(object sender, EventArgs e)
+        private void formCompleted_Load_1(object sender, EventArgs e)
         {
-            // Disable window buttons to restrict the close, minimize, or maximize
+
+            // Disable the ControlBox (close, maximize, minimize buttons)
             this.ControlBox = false;
 
-            // Load data into DataGridView from database
-            LoadCompletedPayments();
+            // Load completed client data into DataGridView when the form loads
+            LoadCompletedData();
 
-            // Attach click event
+            // Attach cell click event handler
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
         }
 
-        private void LoadCompletedPayments()
+        private void LoadCompletedData()
         {
+            // Connection string - replace with your actual database connection string
             string connectionString = "Data Source=XIREN\\SQLEXPRESS;Initial Catalog=LoanWise;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;";
 
             try
             {
-                // Execute SQL query
-                string query = @"
-                    SELECT Id, lastname, firstname, phonenumber, email, employername, amount ,loanpurpose, applicationdate, repaymentterm, TransferDate, outstandingbalance FROM paidtable";
+                // SQL query to fetch completed client data
+                string query = "SELECT Id, lastname, firstname, middlename, dob, gender, martialstatus, phonenumber, email FROM paidtable";
 
+                // Establish a connection to the database
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
 
+                    // Fetch data using SqlDataAdapter
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
 
+                    // Bind the data to the DataGridView
                     dataGridView1.DataSource = dataTable;
 
-                    ConfigureDataGridView();
+                    // Configure the DataGridView columns
+                    ConfigureDataGridViewColumns();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred while loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Show error message if data loading fails
+                MessageBox.Show($"An error occurred while loading completed client data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void ConfigureDataGridView()
+        private void ConfigureDataGridViewColumns()
         {
+            // Clear existing columns to avoid duplication
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.Columns.Clear();
+
+            // Set DataGridView to adjust column sizes proportionally
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+            // Add columns for completed client data
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
-                HeaderText = "ID",
+                HeaderText = "Client ID",
                 DataPropertyName = "Id",
                 Name = "idColumn"
             });
@@ -82,6 +92,34 @@ namespace LoanSystem
 
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
             {
+                HeaderText = "Middle Name",
+                DataPropertyName = "middlename",
+                Name = "middleNameColumn"
+            });
+
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Date of Birth",
+                DataPropertyName = "dob",
+                Name = "dobColumn"
+            });
+
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Gender",
+                DataPropertyName = "gender",
+                Name = "genderColumn"
+            });
+
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Martial Status",
+                DataPropertyName = "martialstatus",
+                Name = "maritalStatusColumn"
+            });
+
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
                 HeaderText = "Phone Number",
                 DataPropertyName = "phonenumber",
                 Name = "phoneNumberColumn"
@@ -93,64 +131,21 @@ namespace LoanSystem
                 DataPropertyName = "email",
                 Name = "emailColumn"
             });
-
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Employer Name",
-                DataPropertyName = "employername",
-                Name = "employerNameColumn"
-            });
-
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Loan Amount",
-                DataPropertyName = "amount",
-                Name = "loanAmountColumn"
-            });
-
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Loan Purpose",
-                DataPropertyName = "loanpurpose",
-                Name = "loanPurposeColumn"
-            });
-
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Application Date",
-                DataPropertyName = "applicationdate",
-                Name = "applicationDateColumn"
-            });
-
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Repayment Term",
-                DataPropertyName = "repaymentterm",
-                Name = "repaymentTermColumn"
-            });
-
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Transfer Date",
-                DataPropertyName = "TransferDate",
-                Name = "transferDateColumn"
-            });
-
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Outstanding Balance",
-                DataPropertyName = "outstandingbalance",
-                Name = "outstandingBalanceColumn"
-            });
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0) // Ensure a valid cell is clicked
             {
-                string selectedId = dataGridView1.Rows[e.RowIndex].Cells["idColumn"].Value.ToString();
-                MessageBox.Show($"You clicked on the payment with ID: {selectedId}", "Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Retrieve the selected completed client's ID and name
+                string clientId = dataGridView1.Rows[e.RowIndex].Cells["idColumn"].Value.ToString();
+                string clientName = dataGridView1.Rows[e.RowIndex].Cells["lastNameColumn"].Value.ToString();
+
+                // Show a message or perform an action
+                MessageBox.Show($"You clicked on Completed Client ID: {clientId}, Name: {clientName}", "Cell Clicked", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+      
     }
 }
