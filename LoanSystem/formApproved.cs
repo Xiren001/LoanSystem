@@ -236,7 +236,7 @@ namespace LoanSystem
             dataGridView1.CellFormatting += DataGridView1_CellFormatting;
         }
 
-     
+
 
 
 
@@ -367,6 +367,11 @@ namespace LoanSystem
                 MessageBox.Show("Please select a record to activate.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LoadApprovedData();
         }
     }
 }

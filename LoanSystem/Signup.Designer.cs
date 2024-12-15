@@ -625,7 +625,7 @@
             profileName.AutoSize = true;
             profileName.Font = new Font("Tahoma", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             profileName.ForeColor = Color.White;
-            profileName.Location = new Point(655, 299);
+            profileName.Location = new Point(575, 301);
             profileName.Name = "profileName";
             profileName.Size = new Size(124, 29);
             profileName.TabIndex = 2;

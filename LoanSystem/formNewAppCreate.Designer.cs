@@ -232,7 +232,7 @@
             loanType.Font = new Font("Tahoma", 14.25F);
             loanType.ForeColor = SystemColors.WindowFrame;
             loanType.FormattingEnabled = true;
-            loanType.Items.AddRange(new object[] { "Personal Loan", "Home Loan (Housing Loan)", "Car Loan (Auto Loan)", "Business Loan", "Educational Loan" });
+            loanType.Items.AddRange(new object[] { "Personal Loan", "Home Loan", "Car Loan", "Business Loan", "Educational Loan" });
             loanType.Location = new Point(24, 487);
             loanType.Margin = new Padding(3, 5, 3, 3);
             loanType.Name = "loanType";

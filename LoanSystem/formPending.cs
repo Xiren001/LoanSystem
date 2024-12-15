@@ -508,23 +508,23 @@ namespace LoanSystem
 
                                 // Step 4: Credit Score Calculation
                                 int creditScore = 0;
-                                creditScore += annualIncome >= 500000 ? 20 : 10; // Maximum: 20
-                                creditScore += dti <= 30 ? 15 : (dti <= 50 ? 10 : 5); // Maximum: 15
-                                creditScore += employmentStatus == "Full-time" && yearsEmployment >= 3 ? 10 : 5; // Maximum: 10
+                                creditScore += annualIncome >= 500000 ? 20 : 10; 
+                                creditScore += dti <= 30 ? 15 : (dti <= 50 ? 10 : 5);
+                                creditScore += employmentStatus == "Full-time" && yearsEmployment >= 3 ? 10 : 5; 
 
-                                creditScore += loanPurpose.ToLower() == "home renovation" || loanPurpose.ToLower() == "essential" ? 10 : 5; // Maximum: 10
-                                creditScore += estimatedValue > loanAmount ? 10 : 0; // Maximum: 10
+                                creditScore += loanPurpose.ToLower() == "Capital" || loanPurpose.ToLower() == "Housing" ? 10 : 5; 
+                                creditScore += estimatedValue > loanAmount ? 10 : 0;
 
                                 switch (loanType.ToLower())
                                 {
-                                    case "Personal loan": creditScore += 5; break; // Maximum: 5
-                                    case "Home loan": creditScore += 10; break; // Maximum: 10
-                                    case "Car loan": creditScore += 8; break; // Maximum: 8
-                                    case "Business loan": creditScore += 15; break; // Maximum: 15
-                                    case "Educational loan": creditScore += 7; break; // Maximum: 7
+                                    case "personal loan": creditScore += 5; break; 
+                                    case "home loan": creditScore += 10; break; 
+                                    case "car loan": creditScore += 8; break;
+                                    case "business loan": creditScore += 15; break;
+                                    case "educational loan": creditScore += 7; break; 
                                 }
 
-                                creditScore += repaymentTerm <= 12 ? 10 : repaymentTerm <= 36 ? 8 : repaymentTerm <= 60 ? 5 : 3; // Maximum: 10
+                                creditScore += repaymentTerm <= 12 ? 10 : repaymentTerm <= 36 ? 8 : repaymentTerm <= 60 ? 5 : 3;
 
                                 string creditColor = creditScore >= 80 ? "Green Zone" :
                                                      creditScore >= 50 ? "Yellow Zone" :

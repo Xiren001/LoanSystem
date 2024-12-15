@@ -30,6 +30,7 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formApproved));
             dataGridView1 = new DataGridView();
             ApplicationID = new DataGridViewTextBoxColumn();
             ApplicantName = new DataGridViewTextBoxColumn();
@@ -43,6 +44,7 @@
             RepaymentStatus = new DataGridViewTextBoxColumn();
             Action = new DataGridViewTextBoxColumn();
             btnTransfer = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -173,12 +175,26 @@
             btnTransfer.UseVisualStyleBackColor = false;
             btnTransfer.Click += btnTransfer_Click_1;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Transparent;
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.BackgroundImageLayout = ImageLayout.None;
+            button1.ForeColor = Color.Transparent;
+            button1.Location = new Point(1164, 774);
+            button1.Name = "button1";
+            button1.Size = new Size(32, 31);
+            button1.TabIndex = 29;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // formApproved
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1407, 820);
+            Controls.Add(button1);
             Controls.Add(btnTransfer);
             Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.None;
@@ -204,5 +220,6 @@
         private DataGridViewTextBoxColumn RepaymentStatus;
         private DataGridViewTextBoxColumn Action;
         private Button btnTransfer;
+        private Button button1;
     }
 }

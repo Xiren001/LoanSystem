@@ -35,16 +35,17 @@ namespace LoanSystem
         {
             // Set default text for btnEmplo
             btnEmplo.Text = "Employee";
+            DisableAllButtons();
 
             switch (CurrentUser.Usertype)
             {
                 case UserType.LoanOfficer:
                     EnableLoanOfficerFeatures();
-                    btnEmplo.Text = "Profile"; // Update text for LoanOfficer
+                    btnEmplo.Text = "Profile"; // Update text for Loan Officer
                     break;
                 case UserType.BranchManager:
                     EnableBranchManagerFeatures();
-                    btnEmplo.Text = "Profile"; // Update text for BranchManager
+                    btnEmplo.Text = "Profile"; // Update text for Branch Manager
                     break;
                 case UserType.Accountant:
                     EnableAccountantFeatures();
@@ -61,53 +62,71 @@ namespace LoanSystem
             }
         }
 
+        private void DisableAllButtons()
+        {
+            btnDashboard.Enabled = false;
+            loanApp.Enabled = false;
+            btnNewApp.Enabled = false;
+            btnPending.Enabled = false;
+            btnAppRej.Enabled = false;
+            btnCustomer.Enabled = false;
+            btnRepayment.Enabled = false;
+            btnComp.Enabled = false;
+            btnReject.Enabled = false;
+            btnEmplo.Enabled = false;
+        }
 
         private void EnableLoanOfficerFeatures()
         {
-            btnNewApp.Enabled = true;
-            btnPending.Enabled = true;
-            btnAppRej.Enabled = true;
-            btnRepayment.Enabled = true;
-            btnCustomer.Enabled = true;
-
+            loanApp.Enabled = true;
+            btnNewApp.Enabled = true;       // Create new applications
+            btnAppRej.Enabled = true;      // View approved applications
+            btnCustomer.Enabled = true;    // Manage customers
+            btnReject.Enabled = true;
             // Disable unnecessary features
             btnEmplo.Enabled = true;
         }
 
         private void EnableBranchManagerFeatures()
         {
-            btnNewApp.Enabled = true;
-            btnPending.Enabled = true;
-            btnAppRej.Enabled = true;
-            btnCustomer.Enabled = true;
-
+            loanApp.Enabled = true;
+            btnNewApp.Enabled = true;       // Create new applications
+            btnPending.Enabled = true;     // View pending applications
+            btnAppRej.Enabled = true;      // View approved applications
+            btnCustomer.Enabled = true;    // Manage customers
+            btnRepayment.Enabled = true;
+            btnComp.Enabled = true;
+            btnReject.Enabled = true;
             // Disable unnecessary features
-            btnRepayment.Enabled = false;
             btnEmplo.Enabled = true;
         }
 
         private void EnableAccountantFeatures()
         {
-            btnRepayment.Enabled = true;
+            btnRepayment.Enabled = true;   // Manage repayments
+            btnPending.Enabled = true;
 
             // Disable unnecessary features
-            btnNewApp.Enabled = false;
-            btnPending.Enabled = false;
-            btnAppRej.Enabled = false;
+            btnNewApp.Enabled = false;     // No new application creation
+            btnPending.Enabled = false;    // No access to pending applications
+            btnAppRej.Enabled = false;     // No access to approved applications
             btnEmplo.Enabled = true;
         }
 
         private void EnableSystemAdministratorFeatures()
         {
-            // Full access
-            btnCustomer.Enabled = false;
+            btnDashboard.Enabled = true;
+            loanApp.Enabled = true;
             btnNewApp.Enabled = true;
             btnPending.Enabled = true;
             btnAppRej.Enabled = true;
-            btnRepayment.Enabled = true;
             btnCustomer.Enabled = true;
+            btnRepayment.Enabled = true;
+            btnComp.Enabled = true;
+            btnReject.Enabled = true;
             btnEmplo.Enabled = true;
         }
+
 
         bool menuExpand = false;
 

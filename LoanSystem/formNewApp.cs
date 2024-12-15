@@ -169,14 +169,6 @@ namespace LoanSystem
                 DataPropertyName = "status",
                 Name = "statusColumn"
             });
-
-            // Add Assigned Officer column
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Assigned Officer",
-                DataPropertyName = "assignedofficer",
-                Name = "assignedOfficerColumn"
-            });
         }
 
         private void newAppBtn_Click(object sender, EventArgs e)
